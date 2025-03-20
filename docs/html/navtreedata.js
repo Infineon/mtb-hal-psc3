@@ -35,8 +35,10 @@ var NAVTREE =
       [ "Compile Time Dependencies", "index.html#autotoc_md7", null ],
       [ "Error reporting", "index.html#autotoc_md8", null ],
       [ "RTOS Integration", "index.html#autotoc_md9", null ],
-      [ "More information", "index.html#autotoc_md10", null ]
+      [ "Data Cache Management", "index.html#autotoc_md10", null ],
+      [ "More information", "index.html#autotoc_md11", null ]
     ] ],
+    [ "DCACHE Management", "md_asset_dcache.html", null ],
     [ "HAL API Reference", "modules.html", "modules" ]
   ] ]
 ];
@@ -44,8 +46,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "group__group__hal.html",
-"group__group__hal__impl__hw__types.html#unionmtb__hal__comp__configurator__t_8____unnamed12____",
-"group__group__result.html#gga9008565cba0207520330a1cb8509a8d0a1790547c55bc32d1d493e20b67b9c654"
+"group__group__hal__results.html#gga282238a3cd4da88799258412ba837ceba10a9e6996db8e879312926fb2333f58f",
+"group__group__hal__uart.html#gabe0ddbacc05c603d0b04d9c8df6af3e9"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

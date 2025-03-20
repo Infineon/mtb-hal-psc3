@@ -38,6 +38,14 @@
  *******************************************************************************
  * * Enable/disable the clock
  * * Update the clock frequency
+ *
+ *******************************************************************************
+ * \section subsection_clock_snippets Code snippets
+ *******************************************************************************
+ * \note Error checking is omitted for clarity
+ * \subsection subsection_clock_snippet_1 Snippet 1: Defining and using a custom clock
+ * interface, both directly and passing to a HAL driver to manipulate.
+ * \snippet hal_clock.c snippet_mtb_hal_clock_custom_interface
  */
 
 #pragma once
@@ -45,6 +53,7 @@
 #include "cy_result.h"
 #include "mtb_hal_hw_types.h"
 
+#if defined(MTB_HAL_DRIVER_AVAILABLE_CLOCK)
 
 #if defined(__cplusplus)
 extern "C" {
@@ -103,8 +112,8 @@ typedef struct
 /** Attempts to update the enablement of the specified clock.
  *
  * \note If disabled, any clocks or peripherals that are using this will stop working. Make sure
- * to switch the clock source of any downstream clocks if necessary
- * to keep them running prior to disabling their source.
+ * to switch the clock source of any downstream clocks if necessary to keep them running prior to
+ * disabling their source.
  *
  * @param[in] clock         The clock object to update the enablement of.
  * @param[in] enabled       Whether the clock should be enabled (true) or disabled (false).
@@ -143,3 +152,5 @@ cy_rslt_t mtb_hal_clock_set_frequency(mtb_hal_clock_t* clock, uint32_t hz,
 #endif /* MTB_HAL_CLOCK_IMPL_HEADER */
 
 /** \} group_hal_clock */
+
+#endif // defined(MTB_HAL_DRIVER_AVAILABLE_CLOCK)

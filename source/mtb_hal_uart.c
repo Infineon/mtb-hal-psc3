@@ -33,19 +33,16 @@
 #include "mtb_hal_system_impl.h"
 #include "mtb_hal_utils.h"
 #include "mtb_hal_irq_impl.h"
-#if defined(HAL_NEXT_TODO)
 #if (MTB_HAL_DRIVER_AVAILABLE_DMA)
 #include "mtb_hal_dma.h"
 #endif /* (MTB_HAL_DRIVER_AVAILABLE_DMA */
-#endif //defined(HAL_NEXT_TODO)
 #if defined(COMPONENT_MW_ASYNC_TRANSFER)
 #include "mtb_async_transfer.h"
 #endif // defined(COMPONENT_MW_ASYNC_TRANSFER)
 
 #if (MTB_HAL_DRIVER_AVAILABLE_UART)
 
-/** \addtogroup group_hal_uart UART
- * \ingroup group_hal
+/** \ingroup group_hal_uart
  * \{
  * \section group_hal_uart_dma_transfers Asynchronous DMA Transfers
  * Asynchronous transfers can be performed using DMA to load data into
@@ -88,7 +85,7 @@ static volatile mtb_hal_uart_t* _mtb_hal_uart_irq_obj = NULL;
 
 //HAL_NEXT_TODO Propose to move to the PDL
 /** Returns the UART's mode of operation */
-__STATIC_INLINE uint32_t Cy_SCB_UART_GetMode(CySCB_Type const* base)
+__STATIC_INLINE uint32_t _mtb_hal_uart_get_mode(CySCB_Type const* base)
 {
     return _FLD2VAL(SCB_UART_CTRL_MODE, SCB_UART_CTRL(base));
 }
@@ -105,10 +102,7 @@ static void _mtb_hal_uart_irq_handler(mtb_hal_uart_t* obj)
      * just might change where the original pointer points */
     mtb_hal_uart_t* old_irq_obj = (mtb_hal_uart_t*)_mtb_hal_uart_irq_obj;
 
-    if (NULL == obj)
-    {
-        return;  /* The interrupt object is not valid */
-    }
+    CY_ASSERT(NULL != obj);
 
     _mtb_hal_uart_irq_obj = obj;
 
@@ -239,6 +233,7 @@ static void _mtb_hal_uart_cb_wrapper(uint32_t event)
        here, they
      * just might change where the original pointer points */
     mtb_hal_uart_t* obj = (mtb_hal_uart_t*)_mtb_hal_uart_irq_obj;
+    CY_ASSERT(NULL != obj);
     mtb_hal_uart_event_t anded_events = (mtb_hal_uart_event_t)(obj->irq_cause & event);
 
     if (anded_events)
@@ -253,22 +248,50 @@ static void _mtb_hal_uart_cb_wrapper(uint32_t event)
 }
 
 
+/** Determines if the UART peripheral is currently in use for RX */
+static bool _mtb_hal_uart_is_rx_active(mtb_hal_uart_t* obj)
+{
+    CY_ASSERT(NULL != obj);
+    CY_ASSERT(NULL != obj->context);
+    return
+        #if defined(COMPONENT_MW_ASYNC_TRANSFER)
+        //Calling the mtb_async_transfer_available_read directly (instead of accessing via
+        //a function pointer setup only when the async interface is used) as it is simple
+        //function and overhead may be comparable to setting up the function pointer option
+        ((NULL != obj->async_ctx) && (!mtb_async_transfer_available_read(obj->async_ctx))) ||
+        #endif // defined(COMPONENT_MW_ASYNC_TRANSFER)
+        (0UL != (obj->context->rxStatus & CY_SCB_UART_RECEIVE_ACTIVE));
+}
+
+
+/** Determines if UART peripheral is in use */
+__STATIC_INLINE bool _mtb_hal_uart_is_busy(mtb_hal_uart_t* obj)
+{
+    return (_mtb_hal_uart_is_rx_active(obj) || mtb_hal_uart_is_tx_active(obj));
+}
+
+
 #if defined(COMPONENT_MW_ASYNC_TRANSFER)
 
 /** Handles the UART async transfer Invokes the fifo level event processing functions */
-cy_rslt_t _mtb_hal_uart_async_transfer_handler(void* obj, uint32_t event)
+cy_rslt_t _mtb_hal_uart_async_transfer_handler(void* obj)
 {
     uint32_t      direction = 0;
     cy_rslt_t     result = CY_RSLT_SUCCESS;
     mtb_hal_uart_t* uart_obj = (mtb_hal_uart_t*)obj;
 
+    CY_ASSERT(NULL != uart_obj);
+
+    uint32_t txMasked = Cy_SCB_GetTxInterruptStatusMasked(uart_obj->base);
+    uint32_t rxMasked = Cy_SCB_GetRxInterruptStatusMasked(uart_obj->base);
+
     /* RX FIFO level event  */
-    if (0u != (CY_SCB_UART_RX_TRIGGER & event))
+    if (0u != (CY_SCB_UART_RX_TRIGGER & rxMasked))
     {
         direction = MTB_ASYNC_TRANSFER_DIRECTION_READ;
     }
     /* TX FIFO level event  */
-    if (0u != (CY_SCB_UART_TX_TRIGGER & event))
+    if (0u != (CY_SCB_UART_TX_TRIGGER & txMasked))
     {
         direction |= MTB_ASYNC_TRANSFER_DIRECTION_WRITE;
     }
@@ -282,31 +305,88 @@ cy_rslt_t _mtb_hal_uart_async_transfer_handler(void* obj, uint32_t event)
 }
 
 
+/** Returns the number of bytes available in RX FIFO */
+uint32_t _mtb_hal_uart_async_transfer_get_num_rx_fifo(void* inst_ref)
+{
+    return Cy_SCB_UART_GetNumInRxFifo(((mtb_hal_uart_t*)inst_ref)->base);
+}
+
+
 /** Returns the number of elements that can be written to the TX FIFO */
 uint32_t _mtb_hal_uart_async_transfer_get_num_tx_fifo(void* inst_ref)
 {
-    return (Cy_SCB_GetFifoSize((CySCB_Type*)inst_ref) -
-            Cy_SCB_UART_GetNumInTxFifo((CySCB_Type*)inst_ref));
+    CY_ASSERT(NULL != inst_ref);
+    return (Cy_SCB_GetFifoSize(((mtb_hal_uart_t*)inst_ref)->base) -
+            Cy_SCB_UART_GetNumInTxFifo(((mtb_hal_uart_t*)inst_ref)->base));
 }
 
 
 /** Enable/disable the UART RX Interrupt event */
 void _mtb_hal_uart_async_transfer_enable_rx_event(void* inst_ref, bool enable)
 {
-    uint32_t rx_mask = Cy_SCB_GetRxInterruptMask((CySCB_Type*)inst_ref);
+    CY_ASSERT(NULL != inst_ref);
+    uint32_t savedIntrStatus = mtb_hal_system_critical_section_enter();
+    uint32_t rx_mask = Cy_SCB_GetRxInterruptMask(((mtb_hal_uart_t*)inst_ref)->base);
     rx_mask = (enable ? (rx_mask | CY_SCB_UART_RX_TRIGGER) : (rx_mask & ~CY_SCB_UART_RX_TRIGGER));
-    Cy_SCB_SetRxInterruptMask((CySCB_Type*)inst_ref, rx_mask);
+    Cy_SCB_SetRxInterruptMask(((mtb_hal_uart_t*)inst_ref)->base, rx_mask);
+    mtb_hal_system_critical_section_exit(savedIntrStatus);
 }
 
 
 /** Enable/disable the UART TX Interrupt event */
 void _mtb_hal_uart_async_transfer_enable_tx_event(void* inst_ref, bool enable)
 {
-    uint32_t tx_mask = Cy_SCB_GetTxInterruptMask((CySCB_Type*)inst_ref);
+    CY_ASSERT(NULL != inst_ref);
+    uint32_t savedIntrStatus = mtb_hal_system_critical_section_enter();
+    uint32_t tx_mask = Cy_SCB_GetTxInterruptMask(((mtb_hal_uart_t*)inst_ref)->base);
     //Disable the TX done interrupt. Re-enable once the tx data is transferred to the TX FIFO
     tx_mask &= ~CY_SCB_UART_TX_DONE;
     tx_mask = (enable ? (tx_mask | CY_SCB_UART_TX_TRIGGER) : (tx_mask & ~CY_SCB_UART_TX_TRIGGER));
-    Cy_SCB_SetTxInterruptMask((CySCB_Type*)inst_ref, tx_mask);
+    Cy_SCB_SetTxInterruptMask(((mtb_hal_uart_t*)inst_ref)->base, tx_mask);
+    mtb_hal_system_critical_section_exit(savedIntrStatus);
+}
+
+
+/** Get the UART RX transfer length for single transfer */
+uint32_t _mtb_hal_uart_async_transfer_get_rx_transfer_len(void* inst_ref)
+{
+    CY_ASSERT(NULL != inst_ref);
+    /* RX transfer length is RTS FIFO level when flow control is enabled
+       and RTS output is connected to a pin */
+    if (((mtb_hal_uart_t*)inst_ref)->rts_enable)
+    {
+        return Cy_SCB_UART_GetRtsFifoLevel(((mtb_hal_uart_t*)inst_ref)->base);
+    }
+    /* RX transfer length is half of the fifo size when flow control is not enabled*/
+    else
+    {
+        return (Cy_SCB_GetFifoSize(((mtb_hal_uart_t*)inst_ref)->base)/2);
+    }
+}
+
+
+/** Get the UART TX transfer length for single transfer */
+uint32_t _mtb_hal_uart_async_transfer_get_tx_transfer_len(void* inst_ref)
+{
+    CY_ASSERT(NULL != inst_ref);
+    /* TX transfer length is half of the fifo size */
+    return (Cy_SCB_GetFifoSize(((mtb_hal_uart_t*)inst_ref)->base)/2);
+}
+
+
+/** Sets the RX FIFO threshold. When there are more data elements in the
+   FIFO than this level, the RX level interrupt is triggered */
+void _mtb_hal_uart_async_transfer_set_rx_fifo_level(void* inst_ref, uint32_t level)
+{
+    Cy_SCB_SetRxFifoLevel(((mtb_hal_uart_t*)inst_ref)->base, level);
+}
+
+
+/** Sets the RX FIFO threshold.When there are fewer data elements in the
+   FIFO than this level, the TX level interrupt is triggered */
+void _mtb_hal_uart_async_transfer_set_tx_fifo_level(void* inst_ref, uint32_t level)
+{
+    Cy_SCB_SetTxFifoLevel(((mtb_hal_uart_t*)inst_ref)->base, level);
 }
 
 
@@ -315,26 +395,44 @@ cy_rslt_t _mtb_hal_uart_config_async_common(mtb_hal_uart_t* obj,
                                             mtb_async_transfer_context_t* context,
                                             mtb_async_transfer_interface_t* interface)
 {
+    #if defined(COMPONENT_MW_ASYNC_TRANSFER)
+    /* Return busy if an async operation is in progress */
+    #if defined(MTB_HAL_DISABLE_ERR_CHECK)
+    CY_ASSERT_AND_RETURN(((NULL != obj->async_ctx) &&
+                          (mtb_hal_uart_is_async_tx_available(obj) ||
+                           mtb_hal_uart_is_async_rx_available(
+                               obj))), MTB_HAL_UART_RSLT_ERR_BUSY);
+    #else
+    if ((NULL != obj->async_ctx) &&
+        (!mtb_hal_uart_is_async_tx_available(obj) || !mtb_hal_uart_is_async_rx_available(obj)))
+    {
+        return MTB_HAL_UART_RSLT_ERR_BUSY;
+    }
+    #endif // defined(MTB_HAL_DISABLE_ERR_CHECK)
+    #endif // defined(COMPONENT_MW_ASYNC_TRANSFER)
+
     /* Set the UART peripheral interface */
     memset(interface, 0, sizeof(mtb_async_transfer_interface_t));
 
+    obj->async_handler = NULL;
+
     interface->rx_addr = (uint32_t*)&((obj->base)->RX_FIFO_RD);
     interface->tx_addr = (uint32_t*)&((obj->base)->TX_FIFO_WR);
-    /*Set this directly to the communications peripheral interface base address.*/
-    interface->inst_ref = obj->base;
-    interface->get_num_rx_fifo = (mtb_async_transfer_get_num_fifo_t)Cy_SCB_UART_GetNumInRxFifo;
-    interface->get_num_tx_fifo =
-        (mtb_async_transfer_get_num_fifo_t)_mtb_hal_uart_async_transfer_get_num_tx_fifo;
-    interface->set_rx_fifo_level = (mtb_async_transfer_set_fifo_level_t)Cy_SCB_SetRxFifoLevel;
-    interface->set_tx_fifo_level = (mtb_async_transfer_set_fifo_level_t)Cy_SCB_SetTxFifoLevel;
+    /*Set this directly to the communications peripheral object.*/
+    interface->inst_ref = obj;
+    interface->get_num_rx_fifo = _mtb_hal_uart_async_transfer_get_num_rx_fifo;
+    interface->get_num_tx_fifo = _mtb_hal_uart_async_transfer_get_num_tx_fifo;
+    interface->set_rx_fifo_level = _mtb_hal_uart_async_transfer_set_rx_fifo_level;
+    interface->set_tx_fifo_level = _mtb_hal_uart_async_transfer_set_tx_fifo_level;
     interface->enable_rx_event = _mtb_hal_uart_async_transfer_enable_rx_event;
     interface->enable_tx_event = _mtb_hal_uart_async_transfer_enable_tx_event;
-    interface->rx_fifo_depth = Cy_SCB_GetFifoSize(obj->base);
-    interface->tx_fifo_depth = Cy_SCB_GetFifoSize(obj->base);
+    interface->get_rx_transfer_len = _mtb_hal_uart_async_transfer_get_rx_transfer_len;
+    interface->get_tx_transfer_len = _mtb_hal_uart_async_transfer_get_tx_transfer_len;
     interface->transfer_width = _mtb_hal_scb_get_transfer_width(obj->base); /* Read from config
                                                                                registers */
 
-    obj->async_handler = _mtb_hal_uart_async_transfer_handler;
+    interface->enter_critical_section = Cy_SysLib_EnterCriticalSection;
+    interface->exit_critical_section = Cy_SysLib_ExitCriticalSection;
     obj->async_ctx = context;
 
     return CY_RSLT_SUCCESS;
@@ -347,18 +445,29 @@ cy_rslt_t _mtb_hal_uart_config_async_common(mtb_hal_uart_t* obj,
 void _mtb_hal_uart_async_transfer_event_callback(void* callback_arg,
                                                  mtb_async_transfer_direction_t direction)
 {
+    mtb_hal_uart_event_t  event;
     mtb_hal_uart_t*       obj    = (mtb_hal_uart_t*)callback_arg;
-    mtb_hal_uart_event_t  event  =
-        (direction ==
-         MTB_ASYNC_TRANSFER_DIRECTION_READ) ? MTB_HAL_UART_IRQ_RX_DONE :
-        MTB_HAL_UART_IRQ_TX_TRANSMIT_IN_FIFO;
-    event &= (mtb_hal_uart_event_t)(obj->irq_cause);
+    if (NULL == obj)
+    {
+        return;  /* The object is not valid */
+    }
 
-    //Re-enable the tx done interrupt.
-    if (obj->irq_cause & MTB_HAL_UART_IRQ_TX_DONE)
+    if (direction == MTB_ASYNC_TRANSFER_DIRECTION_READ)
+    {
+        event = MTB_HAL_UART_IRQ_RX_DONE;
+    }
+    else
+    {
+        // Bytes are tranmsitted to the HW FIFO
+        event = MTB_HAL_UART_IRQ_TX_TRANSMIT_IN_FIFO;
+    }
+    //Enable the tx done interrupt from the HW
+    if ((obj->irq_cause & MTB_HAL_UART_IRQ_TX_DONE) &&
+        (event == MTB_HAL_UART_IRQ_TX_TRANSMIT_IN_FIFO))
     {
         mtb_hal_uart_enable_event(obj, MTB_HAL_UART_IRQ_TX_DONE, true);
     }
+    event &= (mtb_hal_uart_event_t)(obj->irq_cause);
     if (event)
     {
         mtb_hal_uart_event_callback_t callback =
@@ -371,6 +480,64 @@ void _mtb_hal_uart_async_transfer_event_callback(void* callback_arg,
 }
 
 
+#if (MTB_HAL_DRIVER_AVAILABLE_DMA)
+
+/** Enable/disable the DMA transfer complete event and UART DMA channel*/
+void _mtb_hal_uart_async_transfer_enable_dma(void* inst_ref, bool enable)
+{
+    CY_ASSERT(NULL != inst_ref);
+    mtb_hal_dma_enable_event((mtb_hal_dma_t*)inst_ref,
+                             MTB_HAL_DMA_DESCRIPTOR_COMPLETE,
+                             enable);
+    mtb_hal_dma_enable_event((mtb_hal_dma_t*)inst_ref,
+                             MTB_HAL_DMA_TRANSFER_COMPLETE,
+                             enable);
+    enable ? mtb_hal_dma_enable((mtb_hal_dma_t*)inst_ref) : mtb_hal_dma_disable(
+        (mtb_hal_dma_t*)inst_ref);
+}
+
+
+/** RX DMA transfer complete event callback */
+void _mtb_hal_uart_rx_dma_event_callback(void* callback_arg, mtb_hal_dma_event_t event)
+{
+    mtb_hal_uart_t* obj = (mtb_hal_uart_t*)callback_arg;
+    CY_UNUSED_PARAMETER(event);
+    CY_ASSERT(NULL != obj);
+    CY_ASSERT(NULL != obj->async_ctx);
+    mtb_async_transfer_process_dma_complete(obj->async_ctx, MTB_ASYNC_TRANSFER_DIRECTION_READ);
+}
+
+
+/** TX DMA transfer complete event callback */
+void _mtb_hal_uart_tx_dma_event_callback(void* callback_arg, mtb_hal_dma_event_t event)
+{
+    mtb_hal_uart_t* obj = (mtb_hal_uart_t*)callback_arg;
+    CY_UNUSED_PARAMETER(event);
+    CY_ASSERT(NULL != obj);
+    CY_ASSERT(NULL != obj->async_ctx);
+    mtb_async_transfer_process_dma_complete(obj->async_ctx, MTB_ASYNC_TRANSFER_DIRECTION_WRITE);
+}
+
+
+//--------------------------------------------------------------------------------------------------
+// _mtb_hal_uart_dma_set_src_addr
+//--------------------------------------------------------------------------------------------------
+cy_rslt_t _mtb_hal_uart_dma_set_src_addr(void* dma_ref, void* addr)
+{
+    return mtb_hal_dma_set_src_addr((mtb_hal_dma_t*)dma_ref, (uint32_t)addr);
+}
+
+
+//--------------------------------------------------------------------------------------------------
+// _mtb_hal_uart_dma_set_dst_addr
+//--------------------------------------------------------------------------------------------------
+cy_rslt_t _mtb_hal_uart_dma_set_dst_addr(void* dma_ref, void* addr)
+{
+    return mtb_hal_dma_set_dst_addr((mtb_hal_dma_t*)dma_ref, (uint32_t)addr);
+}
+
+
+#endif // (MTB_HAL_DRIVER_AVAILABLE_DMA)
 #endif // defined(COMPONENT_MW_ASYNC_TRANSFER)
 
 /*******************************************************************************
@@ -383,13 +550,16 @@ cy_rslt_t mtb_hal_uart_setup(mtb_hal_uart_t* obj, const mtb_hal_uart_configurato
     CY_ASSERT(NULL != obj);
     CY_ASSERT(NULL != cfg);
     CY_ASSERT(NULL != context);
+    CY_ASSERT(NULL != cfg->base);
 
     memset(obj, 0, sizeof(mtb_hal_uart_t));
     obj->base    = cfg->base;
     obj->clock   = (clock == NULL) ? cfg->clock : clock;
     obj->context = context;
+    #if defined(COMPONENT_MW_ASYNC_TRANSFER)
+    obj->rts_enable = cfg->rts_enable;
+    #endif // defined(COMPONENT_MW_ASYNC_TRANSFER)
     obj->irq_cause = MTB_HAL_UART_IRQ_NONE;
-
     return CY_RSLT_SUCCESS;
 }
 
@@ -397,6 +567,8 @@ cy_rslt_t mtb_hal_uart_setup(mtb_hal_uart_t* obj, const mtb_hal_uart_configurato
 /** Configure the baud rate */
 cy_rslt_t mtb_hal_uart_set_baud(mtb_hal_uart_t* obj, uint32_t baudrate, uint32_t* actualbaud)
 {
+    CY_ASSERT(NULL != obj);
+    CY_ASSERT(NULL != obj->base);
     CY_ASSERT(NULL != obj->clock->interface->get_frequency_hz);
     CY_ASSERT(NULL != obj->clock->interface->set_frequency_hz);
 
@@ -406,6 +578,15 @@ cy_rslt_t mtb_hal_uart_set_baud(mtb_hal_uart_t* obj, uint32_t baudrate, uint32_t
     uint32_t  actual_freq;
     uint32_t  tolerance;
     uint32_t  oversample;
+
+    #if defined(MTB_HAL_DISABLE_ERR_CHECK)
+    CY_ASSERT_AND_RETURN((!_mtb_hal_uart_is_busy(obj)), MTB_HAL_UART_RSLT_ERR_BUSY);
+    #else
+    if (_mtb_hal_uart_is_busy(obj))
+    {
+        return MTB_HAL_UART_RSLT_ERR_BUSY;
+    }
+    #endif
 
     Cy_SCB_UART_Disable(obj->base, NULL);
 
@@ -452,12 +633,17 @@ cy_rslt_t mtb_hal_uart_set_baud(mtb_hal_uart_t* obj, uint32_t baudrate, uint32_t
 /** Check the number of bytes available to read from the receive buffers */
 uint32_t mtb_hal_uart_readable(mtb_hal_uart_t* obj)
 {
+    CY_ASSERT(NULL != obj);
+    CY_ASSERT(NULL != obj->base);
+    uint32_t savedIntrStatus = mtb_hal_system_critical_section_enter();
     uint32_t number_available = Cy_SCB_UART_GetNumInRxFifo(obj->base);
 
     if (obj->context->rxRingBuf != NULL)
     {
+        CY_ASSERT(NULL != obj->context);
         number_available += Cy_SCB_UART_GetNumInRingBuffer(obj->base, obj->context);
     }
+    mtb_hal_system_critical_section_exit(savedIntrStatus);
     return number_available;
 }
 
@@ -465,6 +651,8 @@ uint32_t mtb_hal_uart_readable(mtb_hal_uart_t* obj)
 /** Check the number of bytes than can be written to the transmit buffer */
 uint32_t mtb_hal_uart_writable(mtb_hal_uart_t* obj)
 {
+    CY_ASSERT(NULL != obj);
+    CY_ASSERT(NULL != obj->base);
     return Cy_SCB_GetFifoSize(obj->base) - Cy_SCB_GetNumInTxFifo(obj->base);
 }
 
@@ -472,11 +660,14 @@ uint32_t mtb_hal_uart_writable(mtb_hal_uart_t* obj)
 /** Clear the UART buffers */
 cy_rslt_t mtb_hal_uart_clear(mtb_hal_uart_t* obj)
 {
+    CY_ASSERT(NULL != obj);
+    CY_ASSERT(NULL != obj->base);
     Cy_SCB_UART_ClearRxFifo(obj->base);
     Cy_SCB_UART_ClearTxFifo(obj->base);
 
     if (obj->context->rxRingBuf != NULL)
     {
+        CY_ASSERT(NULL != obj->context);
         Cy_SCB_UART_ClearRingBuffer(obj->base, obj->context);
     }
 
@@ -487,6 +678,8 @@ cy_rslt_t mtb_hal_uart_clear(mtb_hal_uart_t* obj)
 /** Configure the UART CTS for flow control */
 cy_rslt_t mtb_hal_uart_enable_cts_flow_control(mtb_hal_uart_t* obj, bool enable)
 {
+    CY_ASSERT(NULL != obj);
+    CY_ASSERT(NULL != obj->base);
     enable ? Cy_SCB_UART_EnableCts(obj->base) : Cy_SCB_UART_DisableCts(obj->base);
     return CY_RSLT_SUCCESS;
 }
@@ -495,6 +688,23 @@ cy_rslt_t mtb_hal_uart_enable_cts_flow_control(mtb_hal_uart_t* obj, bool enable)
 /** Begin synchronous TX transfer. */
 cy_rslt_t mtb_hal_uart_write(mtb_hal_uart_t* obj, void* tx, size_t* tx_length)
 {
+    CY_ASSERT(NULL != obj);
+    CY_ASSERT(NULL != obj->base);
+    CY_ASSERT(NULL != tx);
+    CY_ASSERT(NULL != tx_length);
+    #if defined(COMPONENT_MW_ASYNC_TRANSFER)
+    /* Return busy if an async write operation is in progress */
+    #if defined(MTB_HAL_DISABLE_ERR_CHECK)
+    CY_ASSERT_AND_RETURN(((NULL != obj->async_ctx) && mtb_hal_uart_is_async_tx_available(
+                              obj)), MTB_HAL_UART_RSLT_ERR_BUSY);
+    #else
+    if ((NULL != obj->async_ctx) && (!mtb_hal_uart_is_async_tx_available(obj)))
+    {
+        return MTB_HAL_UART_RSLT_ERR_BUSY;
+    }
+    #endif // defined(MTB_HAL_DISABLE_ERR_CHECK)
+    #endif // defined(COMPONENT_MW_ASYNC_TRANSFER)
+
     *tx_length = Cy_SCB_UART_PutArray(obj->base, tx, *tx_length);
     return CY_RSLT_SUCCESS;
 }
@@ -503,6 +713,24 @@ cy_rslt_t mtb_hal_uart_write(mtb_hal_uart_t* obj, void* tx, size_t* tx_length)
 /** Begin synchronous RX transfer */
 cy_rslt_t mtb_hal_uart_read(mtb_hal_uart_t* obj, void* rx, size_t* rx_length)
 {
+    CY_ASSERT(NULL != obj);
+    CY_ASSERT(NULL != obj->base);
+    CY_ASSERT(NULL != rx);
+    CY_ASSERT(NULL != rx_length);
+
+    #if defined(COMPONENT_MW_ASYNC_TRANSFER)
+    /* Return busy if an async read operation is in progress */
+    #if defined(MTB_HAL_DISABLE_ERR_CHECK)
+    CY_ASSERT_AND_RETURN(((NULL != obj->async_ctx) && mtb_hal_uart_is_async_rx_available(
+                              obj)), MTB_HAL_UART_RSLT_ERR_BUSY);
+    #else
+    if ((NULL != obj->async_ctx) && (!mtb_hal_uart_is_async_rx_available(obj)))
+    {
+        return MTB_HAL_UART_RSLT_ERR_BUSY;
+    }
+    #endif // defined(MTB_HAL_DISABLE_ERR_CHECK)
+    #endif // defined(COMPONENT_MW_ASYNC_TRANSFER)
+
     *rx_length = Cy_SCB_UART_GetArray(obj->base, rx, *rx_length);
     return CY_RSLT_SUCCESS;
 }
@@ -511,12 +739,18 @@ cy_rslt_t mtb_hal_uart_read(mtb_hal_uart_t* obj, void* rx, size_t* rx_length)
 /** Determines if the UART peripheral is currently in use for TX */
 bool mtb_hal_uart_is_tx_active(mtb_hal_uart_t* obj)
 {
-    return (0UL != (obj->context->txStatus & CY_SCB_UART_TRANSMIT_ACTIVE)) || !Cy_SCB_IsTxComplete(
-        obj->base)
-           #if defined(COMPONENT_MW_ASYNC_TRANSFER)
-           || ((NULL != obj->async_ctx) && (!mtb_async_transfer_available_write(obj->async_ctx)))
-           #endif // defined(COMPONENT_MW_ASYNC_TRANSFER)
-    ;
+    CY_ASSERT(NULL != obj);
+    CY_ASSERT(NULL != obj->base);
+    CY_ASSERT(NULL != obj->context);
+    return
+        #if defined(COMPONENT_MW_ASYNC_TRANSFER)
+        //Calling the mtb_async_transfer_available_write directly (instead of accessing via
+        //a function pointer setup only when the async interface is used) as it is simple
+        //function and overhead may be comparable to setting up the function pointer option
+        ((NULL != obj->async_ctx) && (!mtb_async_transfer_available_write(obj->async_ctx))) ||
+        #endif // defined(COMPONENT_MW_ASYNC_TRANSFER)
+        (0UL != (obj->context->txStatus & CY_SCB_UART_TRANSMIT_ACTIVE)) || !Cy_SCB_IsTxComplete(
+        obj->base);
 }
 
 
@@ -524,6 +758,9 @@ bool mtb_hal_uart_is_tx_active(mtb_hal_uart_t* obj)
 void mtb_hal_uart_register_callback(mtb_hal_uart_t* obj, mtb_hal_uart_event_callback_t callback,
                                     void* callback_arg)
 {
+    CY_ASSERT(NULL != obj);
+    CY_ASSERT(NULL != obj->base);
+    CY_ASSERT(NULL != obj->context);
     uint32_t savedIntrStatus = mtb_hal_system_critical_section_enter();
     obj->callback_data.callback = (cy_israddress)callback;
     obj->callback_data.callback_arg = callback_arg;
@@ -535,6 +772,9 @@ void mtb_hal_uart_register_callback(mtb_hal_uart_t* obj, mtb_hal_uart_event_call
 /** Enable or disable specified UART events.*/
 void mtb_hal_uart_enable_event(mtb_hal_uart_t* obj, mtb_hal_uart_event_t event, bool enable)
 {
+    CY_ASSERT(NULL != obj);
+    CY_ASSERT(NULL != obj->base);
+
     #if defined(HAL_NEXT_TODO)
     #if defined(BCM55500)
     Cy_SCB_DisableInterrupt(obj->base);
@@ -556,12 +796,12 @@ void mtb_hal_uart_enable_event(mtb_hal_uart_t* obj, mtb_hal_uart_event_t event, 
     {
         // Omit underflow condition as the interrupt perpetually triggers
         //Standard mode only uses OVERFLOW irq
-        if (Cy_SCB_UART_GetMode(obj->base) == CY_SCB_UART_STANDARD)
+        if (_mtb_hal_uart_get_mode(obj->base) == CY_SCB_UART_STANDARD)
         {
             tx_mask |= (CY_SCB_UART_TX_OVERFLOW | CY_SCB_UART_TRANSMIT_ERR);
         }
         //SMARTCARD mode uses OVERFLOW, NACK, and ARB_LOST irq's
-        else if (Cy_SCB_UART_GetMode(obj->base) == CY_SCB_UART_SMARTCARD)
+        else if (_mtb_hal_uart_get_mode(obj->base) == CY_SCB_UART_SMARTCARD)
         {
             tx_mask |=
                 (CY_SCB_UART_TX_OVERFLOW | CY_SCB_TX_INTR_UART_NACK | CY_SCB_TX_INTR_UART_ARB_LOST |
@@ -601,9 +841,6 @@ void mtb_hal_uart_enable_event(mtb_hal_uart_t* obj, mtb_hal_uart_event_t event, 
     {
         obj->irq_cause &= ~event;
     }
-    uint32_t current_tx_mask = Cy_SCB_GetTxInterruptMask(obj->base);
-    uint32_t current_rx_mask = Cy_SCB_GetRxInterruptMask(obj->base);
-
     if (event == MTB_HAL_UART_IRQ_NONE)
     {
         /* "No interrupt" is equivalent for both "enable" and "disable" */
@@ -611,20 +848,30 @@ void mtb_hal_uart_enable_event(mtb_hal_uart_t* obj, mtb_hal_uart_event_t event, 
         tx_mask = CY_SCB_TX_INTR_MASK;
         rx_mask = CY_SCB_RX_INTR_MASK;
     }
+
+    uint32_t savedIntrStatus = mtb_hal_system_critical_section_enter();
+    //Get and modify TX events
+    uint32_t current_tx_mask = Cy_SCB_GetTxInterruptMask(obj->base);
     if (enable && tx_mask)
     {
         Cy_SCB_ClearTxInterrupt(obj->base, tx_mask);
     }
+    Cy_SCB_SetTxInterruptMask(obj->base,
+                              (enable ? (current_tx_mask | tx_mask) : (current_tx_mask &
+                                                                       ~tx_mask)));
+
+
+    //Get and modify RX events
+    uint32_t current_rx_mask = Cy_SCB_GetRxInterruptMask(obj->base);
+
     if (enable && rx_mask)
     {
         Cy_SCB_ClearRxInterrupt(obj->base, rx_mask);
     }
-    Cy_SCB_SetTxInterruptMask(obj->base,
-                              (enable ? (current_tx_mask | tx_mask) : (current_tx_mask &
-                                                                       ~tx_mask)));
     Cy_SCB_SetRxInterruptMask(obj->base,
                               (enable ? (current_rx_mask | rx_mask) : (current_rx_mask &
                                                                        ~rx_mask)));
+    mtb_hal_system_critical_section_exit(savedIntrStatus);
 
     #if defined(HAL_NEXT_TODO)
     #if defined(BCM55500)
@@ -640,11 +887,12 @@ void mtb_hal_uart_enable_event(mtb_hal_uart_t* obj, mtb_hal_uart_event_t event, 
 /** Process interrupts related related to a UART instance.*/
 cy_rslt_t mtb_hal_uart_process_interrupt(mtb_hal_uart_t* obj)
 {
+    CY_ASSERT(NULL != obj);
     #if defined(COMPONENT_MW_ASYNC_TRANSFER)
     if (NULL != obj->async_handler)
     {
-        obj->async_handler(obj, Cy_SCB_GetTxInterruptStatusMasked(
-                               obj->base)|Cy_SCB_GetRxInterruptStatusMasked(obj->base));
+        CY_ASSERT(NULL != obj->base);
+        obj->async_handler(obj);
     }
     #endif
     _mtb_hal_uart_irq_handler(obj);
@@ -656,13 +904,18 @@ cy_rslt_t mtb_hal_uart_process_interrupt(mtb_hal_uart_t* obj)
 /**Configure the UART async transfer interface */
 cy_rslt_t mtb_hal_uart_config_async(mtb_hal_uart_t* obj, mtb_async_transfer_context_t* context)
 {
+    cy_rslt_t result;
     mtb_async_transfer_interface_t interface;
-    cy_rslt_t result = _mtb_hal_uart_config_async_common(obj, context, &interface);
+    CY_ASSERT(NULL != obj);
+    CY_ASSERT(NULL != context);
+
+    result = _mtb_hal_uart_config_async_common(obj, context, &interface);
     if (CY_RSLT_SUCCESS == result)
     {
         result = mtb_async_transfer_init(context, &interface);
         if (CY_RSLT_SUCCESS == result)
         {
+            obj->async_handler = _mtb_hal_uart_async_transfer_handler;
             obj->async_event_callback = _mtb_hal_uart_async_transfer_event_callback;
             result = mtb_async_transfer_register_callback(context, obj->async_event_callback, obj);
         }
@@ -671,12 +924,56 @@ cy_rslt_t mtb_hal_uart_config_async(mtb_hal_uart_t* obj, mtb_async_transfer_cont
 }
 
 
+#if (MTB_HAL_DRIVER_AVAILABLE_DMA)
+/**Configure the UART async transfer interface */
+cy_rslt_t mtb_hal_uart_config_async_dma(mtb_hal_uart_t* obj, mtb_hal_dma_t* dma_rx,
+                                        mtb_hal_dma_t* dma_tx,
+                                        mtb_async_transfer_context_t* context)
+{
+    mtb_async_transfer_interface_t interface;
+    CY_ASSERT(NULL != obj);
+    CY_ASSERT(NULL != context);
+    cy_rslt_t result = _mtb_hal_uart_config_async_common(obj, context, &interface);
+    if (CY_RSLT_SUCCESS == result)
+    {
+        interface.dma_rx_ref = dma_rx;
+        interface.dma_tx_ref = dma_tx;
+        interface.dma_set_length = (mtb_async_transfer_dma_set_len_t)mtb_hal_dma_set_length;
+        interface.dma_set_src = _mtb_hal_uart_dma_set_src_addr;
+        interface.dma_set_dest = _mtb_hal_uart_dma_set_dst_addr;
+        interface.dma_enable_rx = _mtb_hal_uart_async_transfer_enable_dma;
+        interface.dma_enable_tx = _mtb_hal_uart_async_transfer_enable_dma;
+        if (NULL != dma_rx)
+        {
+            mtb_hal_dma_register_callback(dma_rx, _mtb_hal_uart_rx_dma_event_callback, obj);
+        }
+        if (NULL != dma_tx)
+        {
+            mtb_hal_dma_register_callback(dma_tx, _mtb_hal_uart_tx_dma_event_callback, obj);
+        }
+        result = mtb_async_transfer_init(context, &interface);
+        if (CY_RSLT_SUCCESS == result)
+        {
+            obj->async_handler = _mtb_hal_uart_async_transfer_handler;
+            obj->async_event_callback = _mtb_hal_uart_async_transfer_event_callback;
+            result = mtb_async_transfer_register_callback(context, obj->async_event_callback, obj);
+        }
+    }
+    return result;
+}
+
+
+#endif /* (MTB_HAL_DRIVER_AVAILABLE_DMA) */
+
+
 /** Note: Before calling any of the below  functions, either mtb_hal_uart_config_async or
    mtb_hal_uart_config_async_dma must have been called.*/
 
 /** Begin asynchronous RX transfer. */
 cy_rslt_t mtb_hal_uart_read_async(mtb_hal_uart_t* obj, void* rx, size_t length)
 {
+    CY_ASSERT(NULL != obj);
+    CY_ASSERT(NULL != rx);
     CY_ASSERT(NULL != obj->async_ctx);
     return mtb_async_transfer_read(obj->async_ctx, rx, length);
 }
@@ -685,6 +982,8 @@ cy_rslt_t mtb_hal_uart_read_async(mtb_hal_uart_t* obj, void* rx, size_t length)
 /** Begin asynchronous TX transfer.*/
 cy_rslt_t mtb_hal_uart_write_async(mtb_hal_uart_t* obj, void* tx, size_t length)
 {
+    CY_ASSERT(NULL != obj);
+    CY_ASSERT(NULL != tx);
     CY_ASSERT(NULL != obj->async_ctx);
     return mtb_async_transfer_write(obj->async_ctx, tx, length);
 }
@@ -693,6 +992,7 @@ cy_rslt_t mtb_hal_uart_write_async(mtb_hal_uart_t* obj, void* tx, size_t length)
 /** Checks whether the UART interface is available to start a write transfer */
 bool mtb_hal_uart_is_async_tx_available(mtb_hal_uart_t* obj)
 {
+    CY_ASSERT(NULL != obj);
     CY_ASSERT(NULL != obj->async_ctx);
     return mtb_async_transfer_available_write(obj->async_ctx);
 }
@@ -701,6 +1001,7 @@ bool mtb_hal_uart_is_async_tx_available(mtb_hal_uart_t* obj)
 /** Checks whether the UART interface is available to start a read transfer */
 bool mtb_hal_uart_is_async_rx_available(mtb_hal_uart_t* obj)
 {
+    CY_ASSERT(NULL != obj);
     CY_ASSERT(NULL != obj->async_ctx);
     return mtb_async_transfer_available_read(obj->async_ctx);
 }
@@ -709,14 +1010,17 @@ bool mtb_hal_uart_is_async_rx_available(mtb_hal_uart_t* obj)
 /** Abort the ongoing read transaction.*/
 cy_rslt_t mtb_hal_uart_read_abort(mtb_hal_uart_t* obj)
 {
+    CY_ASSERT(NULL != obj);
+    CY_ASSERT(NULL != obj->base);
     cy_rslt_t result = CY_RSLT_SUCCESS;
 
-    //Clear the RX FIFO
-    Cy_SCB_UART_ClearRxFifo(obj->base);
-    if ((NULL != obj->async_ctx) && (!mtb_async_transfer_available_read(obj->async_ctx)))
+    /* Abort the async read transfer */
+    if (NULL != obj->async_ctx)
     {
         result = mtb_async_transfer_abort_read(obj->async_ctx);
     }
+    /* Clear the RX FIFO */
+    Cy_SCB_UART_ClearRxFifo(obj->base);
     return result;
 }
 
@@ -724,14 +1028,17 @@ cy_rslt_t mtb_hal_uart_read_abort(mtb_hal_uart_t* obj)
 /** Abort the ongoing write transaction. */
 cy_rslt_t mtb_hal_uart_write_abort(mtb_hal_uart_t* obj)
 {
+    CY_ASSERT(NULL != obj);
+    CY_ASSERT(NULL != obj->base);
     cy_rslt_t result = CY_RSLT_SUCCESS;
 
-    //Clear the TX FIFO
-    Cy_SCB_UART_ClearTxFifo(obj->base);
-    if ((NULL != obj->async_ctx) && (!mtb_async_transfer_available_write(obj->async_ctx)))
+    /* Abort the async write transfer */
+    if (NULL != obj->async_ctx)
     {
         result = mtb_async_transfer_abort_write(obj->async_ctx);
     }
+    /* Clear the TX FIFO */
+    Cy_SCB_UART_ClearTxFifo(obj->base);
     return result;
 }
 

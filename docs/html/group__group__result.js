@@ -3,7 +3,7 @@ var group__group__result =
     [ "cy_rslt_decode_t", "group__group__result.html#unioncy__rslt__decode__t", [
       [ "raw", "group__group__result.html#aa46cfbec8a99e1c9bce73b87f1f988c9", null ]
     ] ],
-    [ "cy_rslt_decode_t.__unnamed16__", "group__group__result.html#structcy__rslt__decode__t_8____unnamed16____", [
+    [ "cy_rslt_decode_t.__unnamed17__", "group__group__result.html#structcy__rslt__decode__t_8____unnamed17____", [
       [ "code", "group__group__result.html#ac13367945d5d4c91047b3b50234aa7ab", null ],
       [ "type", "group__group__result.html#a599dcce2998a6b40b1e38e8c6006cb0a", null ],
       [ "module", "group__group__result.html#a22884db148f0ffb0d830ba431102b0b5", null ]
@@ -50,6 +50,7 @@ var group__group__result =
       [ "CY_RSLT_MODULE_DRIVER_SMIF", "group__group__result.html#gga9008565cba0207520330a1cb8509a8d0a1b61143b00f6d418f48c65ae5dbeb372", null ],
       [ "CY_RSLT_MODULE_DRIVER_TCPWM", "group__group__result.html#gga9008565cba0207520330a1cb8509a8d0a85e26dea0054c519c6653ec1a7368576", null ],
       [ "CY_RSLT_MODULE_DRIVER_PROT", "group__group__result.html#gga9008565cba0207520330a1cb8509a8d0a053998d0385e4798bff5a9132672570d", null ],
+      [ "CY_RSLT_MODULE_DRIVER_HVSS", "group__group__result.html#gga9008565cba0207520330a1cb8509a8d0a67c448dcd31da8003b3943222315b10c", null ],
       [ "CY_RSLT_MODULE_DRIVER_CRWDT", "group__group__result.html#gga9008565cba0207520330a1cb8509a8d0a2b93583e6fbf57a8fc084c0edd120c28", null ],
       [ "CY_RSLT_MODULE_DRIVER_TRIGMUX", "group__group__result.html#gga9008565cba0207520330a1cb8509a8d0af3553a6bff542f1f609bfa43a8db1605", null ],
       [ "CY_RSLT_MODULE_DRIVER_WDT", "group__group__result.html#gga9008565cba0207520330a1cb8509a8d0a7286bb3d479c492e1306abdef034c306", null ],
@@ -71,6 +72,8 @@ var group__group__result =
       [ "CY_RSLT_MODULE_DRIVER_MSCLP", "group__group__result.html#gga9008565cba0207520330a1cb8509a8d0aed3dd57a9b76ec1b0f612d3beb2cb0df", null ],
       [ "CY_RSLT_MODULE_DRIVER_EVTGEN", "group__group__result.html#gga9008565cba0207520330a1cb8509a8d0ac2fc66f31cf1775461fde206aa9cd19a", null ],
       [ "CY_RSLT_MODULE_DRIVER_SAR2", "group__group__result.html#gga9008565cba0207520330a1cb8509a8d0a556f94e44063eedd35902918290b3e8b", null ],
+      [ "CY_RSLT_MODULE_DRIVER_DSADC", "group__group__result.html#gga9008565cba0207520330a1cb8509a8d0a0b33e680efd06ffa12c109a70ee184f3", null ],
+      [ "CY_RSLT_MODULE_DRIVER_CAN2B", "group__group__result.html#gga9008565cba0207520330a1cb8509a8d0a1b8a6dcc775844139fa2bf0b47999e8e", null ],
       [ "CY_RSLT_MODULE_DRIVER_KEYSCAN", "group__group__result.html#gga9008565cba0207520330a1cb8509a8d0ac3fe5c1390bd3da0a397af4f1fac8a96", null ],
       [ "CY_RSLT_MODULE_DRIVER_PDM_PCM2", "group__group__result.html#gga9008565cba0207520330a1cb8509a8d0a8108e24a01c2130c03f018293573b30f", null ],
       [ "CY_RSLT_MODULE_DRIVER_CRYPTOLITE", "group__group__result.html#gga9008565cba0207520330a1cb8509a8d0ab8047a8ce963ee7e66e98863a99b083e", null ],

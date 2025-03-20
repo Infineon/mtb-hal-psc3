@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['i2c_20_28inter_2dintegrated_20circuit_29_0',['I2C (Inter-Integrated Circuit)',['../group__group__hal__i2c.html',1,'']]],
-  ['i2c_20hal_20results_1',['I2C HAL Results',['../group__group__hal__results__i2c.html',1,'']]],
-  ['implementation_20specific_2',['Implementation Specific',['../group__group__hal__impl.html',1,'']]]
+  ['general_20types_0',['General Types',['../group__group__hal__general__types.html',1,'']]],
+  ['gpio_20_28general_20purpose_20input_20output_29_1',['GPIO (General Purpose Input Output)',['../group__group__hal__gpio.html',1,'']]],
+  ['gpio_20hal_20results_2',['GPIO HAL Results',['../group__group__hal__results__gpio.html',1,'']]]
 ];

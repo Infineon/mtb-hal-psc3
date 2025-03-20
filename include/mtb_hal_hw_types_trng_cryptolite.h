@@ -1,0 +1,55 @@
+/***************************************************************************//**
+* \file mtb_hal_hw_types_trng_cryptolite.h
+*
+*********************************************************************************
+* \copyright
+* Copyright 2024-2025 Cypress Semiconductor Corporation (an Infineon company) or
+* an affiliate of Cypress Semiconductor Corporation
+*
+* SPDX-License-Identifier: Apache-2.0
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*******************************************************************************/
+
+#pragma once
+
+#include "cy_pdl.h"
+
+#if defined(CY_IP_MXCRYPTOLITE)
+
+ /**
+ * \ingroup group_hal_availability
+ * \{
+ */
+
+#if !defined(MTB_HAL_DRIVER_AVAILABLE_TRNG)
+/** Macro specifying whether the TRNG driver is available for the current device */
+#define MTB_HAL_DRIVER_AVAILABLE_TRNG (1u)
+#endif // !defined(MTB_HAL_DRIVER_AVAILABLE_TRNG)
+
+/** \} group_hal_availability */
+
+
+/**
+ * @brief RNG object
+ *
+ * Application code should not rely on the specific contents of this struct.
+ * They are considered an implementation detail which is subject to change
+ * between platforms and/or HAL releases.
+ */
+typedef struct
+{
+    CRYPTOLITE_Type*                base; //!< Base address of CRYPTOLITE IP instance
+} mtb_hal_trng_t;
+
+#endif

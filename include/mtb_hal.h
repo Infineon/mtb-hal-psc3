@@ -64,6 +64,7 @@
 
 /**
  * \addtogroup group_hal_impl
+ * \{
  */
 
 #pragma once
@@ -71,6 +72,7 @@
 #include "mtb_hal_general_types.h"
 #include "mtb_hal_hw_types.h"
 #include "mtb_hal_drivers.h"
+
 
 /** Macro specifying the major version number of the HAL API. Since there are multiple HAL library
  * implementations, this is not necessarily the same as the major version number of the library. It
@@ -81,84 +83,7 @@
  * check for whether a specific driver is available, the MTB_HAL_DRIVER_AVAILABLE_X macros defined
  * in
  * \ref group_hal_availability should be used.
- * \def MTB_HAL_API_VERSION
  */
+ #define MTB_HAL_API_VERSION                         (3)
 
-/**
- * \ingroup group_hal_availability
- * \{
- */
-
-/** Macro specifying whether the ADC driver is available for the current device
- * \def MTB_HAL_DRIVER_AVAILABLE_ADC
- */
-/** Macro specifying whether the Clock driver is available for the current device
- * \def MTB_HAL_DRIVER_AVAILABLE_CLOCK
- */
-/** Macro specifying whether the COMP driver is available for the current device
- * \def MTB_HAL_DRIVER_AVAILABLE_COMP
- */
-/** Macro specifying whether the CORDIC driver is available for the current device
- * \def MTB_HAL_DRIVER_AVAILABLE_CORDIC
- */
-/** Macro specifying whether the DMA driver is available for the current device
- * \def MTB_HAL_DRIVER_AVAILABLE_DMA
- */
-/** Macro specifying whether the NVM driver is available for the current device
- * \def MTB_HAL_DRIVER_AVAILABLE_NVM
- */
-/** Macro specifying whether the GPIO driver is available for the current device
- * \def MTB_HAL_DRIVER_AVAILABLE_GPIO
- */
-/** Macro specifying whether the GPIO Port driver is available for the current device
- *  \def MTB_HAL_DRIVER_AVAILABLE_GPIO_PORT
- */
-/** Macro specifying whether the I2C driver is available for the current device
- * \def MTB_HAL_DRIVER_AVAILABLE_I2C
- */
-/** Macro specifying whether the IPC driver is available for the current device
- * \def MTB_HAL_DRIVER_AVAILABLE_IPC
- */
-/** Macro specifying whether the LPTimer driver is available for the current device
- * \def MTB_HAL_DRIVER_AVAILABLE_LPTIMER
- */
-/** Macro specifying whether the MEMORYSPI driver is available for the current device
- * \def MTB_HAL_DRIVER_AVAILABLE_MEMORYSPI
- */
-/** Macro specifying whether the PWM driver is available for the current device
- * \def MTB_HAL_DRIVER_AVAILABLE_PWM
- */
-/** Macro specifying whether the RTC driver is available for the current device
- * \def MTB_HAL_DRIVER_AVAILABLE_RTC
- */
-/** Macro specifying whether the SDHC driver is available for the current device
- * \def MTB_HAL_DRIVER_AVAILABLE_SDHC
- */
-/** Macro specifying whether the SDIO driver is available for the current device
- * \def MTB_HAL_DRIVER_AVAILABLE_SDIO
- */
-/** Macro specifying whether the SDIO host driver is available for the current device
- * \def MTB_HAL_DRIVER_AVAILABLE_SDIO_HOST
- */
-/** Macro specifying whether the SDIO dev driver is available for the current device
- * \def MTB_HAL_DRIVER_AVAILABLE_SDIO_DEV
- */
-/** Macro specifying whether the SPI driver is available for the current device
- * \def MTB_HAL_DRIVER_AVAILABLE_SPI
- */
-/** Macro specifying whether the SysPM driver is available for the current device
- * \def MTB_HAL_DRIVER_AVAILABLE_SYSPM
- */
-/** Macro specifying whether the System driver is available for the current device
- * \def MTB_HAL_DRIVER_AVAILABLE_SYSTEM
- */
-/** Macro specifying whether the Timer driver is available for the current device
- * \def MTB_HAL_DRIVER_AVAILABLE_TIMER
- */
-/** Macro specifying whether the TRNG driver is available for the current device
- * \def MTB_HAL_DRIVER_AVAILABLE_TRNG
- */
-/** Macro specifying whether the UART driver is available for the current device
- * \def MTB_HAL_DRIVER_AVAILABLE_UART
- */
-/** \} group_hal_availability */
+/** \} group_hal_impl */

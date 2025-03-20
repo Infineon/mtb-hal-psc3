@@ -275,6 +275,33 @@ cy_rslt_t mtb_hal_clock_set_hf_clock_enabled(const void* clk, bool enable)
 }
 
 
+//--------------------------------------------------------------------------------------------------
+// mtb_hal_clock_set_enabled
+//--------------------------------------------------------------------------------------------------
+cy_rslt_t mtb_hal_clock_set_enabled(mtb_hal_clock_t* clock, bool enabled, bool wait_for_lock)
+{
+    // API not implemented yet
+    CY_UNUSED_PARAMETER(clock);
+    CY_UNUSED_PARAMETER(enabled);
+    CY_UNUSED_PARAMETER(wait_for_lock);
+    return MTB_HAL_CLOCK_RSLT_ERR_NOT_SUPPORTED;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+// mtb_hal_clock_set_frequency
+//--------------------------------------------------------------------------------------------------
+cy_rslt_t mtb_hal_clock_set_frequency(mtb_hal_clock_t* clock, uint32_t hz,
+                                      const mtb_hal_clock_tolerance_t* tolerance)
+{
+    // API not implemented yet
+    CY_UNUSED_PARAMETER(clock);
+    CY_UNUSED_PARAMETER(hz);
+    CY_UNUSED_PARAMETER(tolerance);
+    return MTB_HAL_CLOCK_RSLT_ERR_NOT_SUPPORTED;
+}
+
+
 #if defined(__cplusplus)
 }
 #endif /* defined(__cplusplus) */

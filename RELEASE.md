@@ -5,16 +5,30 @@ On devices which contain multiple cores, this library is supported on all cores.
 
 ### What's Included?
 This release of the HAL includes support for the following drivers:
+* ADC
+* Clock
+* Comp
+* DMA
 * GPIO
 * I2C
+* LPTimer
 * NVM
+* PWM
+* RTC
 * SPI
+* SysPm
 * System
+* TRNG
+* Timer
 * UART
 
 ### What Changed?
+#### v1.1.0
+* Added support for ADC, Clock, Comp, DMA, I2C, LPTimer, PWM, RTC, SPI, Syspm, Timer, TRNG drivers.
+
 #### v1.0.0
 * Initial release for PSC3 support.
+
 
 ### Supported Software and Tools
 This version of the Hardware Abstraction Layer was validated for compatibility with the following Software and Tools:

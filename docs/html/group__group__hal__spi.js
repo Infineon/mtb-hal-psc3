@@ -8,7 +8,12 @@ var group__group__hal__spi =
       [ "MTB_HAL_SPI_IRQ_DONE", "group__group__hal__spi.html#ggac7012d47f3054e7b3e207531e08351dba44087672f13ef0f2d312f513217473d8", null ],
       [ "MTB_HAL_SPI_IRQ_ERROR", "group__group__hal__spi.html#ggac7012d47f3054e7b3e207531e08351dba62d20cbc8eb9b51a77f02e1e364c2eb6", null ]
     ] ],
+    [ "mtb_hal_spi_fifo_type_t", "group__group__hal__spi.html#ga5518960186b11f881c436e4706ccef08", [
+      [ "MTB_HAL_SPI_FIFO_RX", "group__group__hal__spi.html#gga5518960186b11f881c436e4706ccef08aeb9b0dc2335f5ce442d1a5cc730306e4", null ],
+      [ "MTB_HAL_SPI_FIFO_TX", "group__group__hal__spi.html#gga5518960186b11f881c436e4706ccef08a4aa8f18a35a7df76ba911f0777fcfbab", null ]
+    ] ],
     [ "mtb_hal_spi_set_frequency", "group__group__hal__spi.html#ga0f3e46217b46ed98ea29ca0a9fa9340a", null ],
+    [ "mtb_hal_spi_set_fifo_level", "group__group__hal__spi.html#ga8ea4bcdd12cb51967fd838f1e8df92ff", null ],
     [ "mtb_hal_spi_get", "group__group__hal__spi.html#ga5cc0a0f76ffba41ed77d6e3c9751757c", null ],
     [ "mtb_hal_spi_put", "group__group__hal__spi.html#ga2d632a03356463e361053298ab04c859", null ],
     [ "mtb_hal_spi_controller_write", "group__group__hal__spi.html#ga33b8e3a79be6876015376bf5cdad68f8", null ],

@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['general_20types_0',['General Types',['../group__group__hal__general__types.html',1,'']]],
-  ['gpio_20_28general_20purpose_20input_20output_29_1',['GPIO (General Purpose Input Output)',['../group__group__hal__gpio.html',1,'']]],
-  ['gpio_20hal_20results_2',['GPIO HAL Results',['../group__group__hal__results__gpio.html',1,'']]]
+  ['clock_0',['Clock',['../group__group__hal__clock.html',1,'']]],
+  ['clock_20hal_20results_1',['Clock HAL Results',['../group__group__hal__results__clock.html',1,'']]],
+  ['comp_20_28analog_20comparator_29_2',['COMP (Analog Comparator)',['../group__group__hal__comp.html',1,'']]],
+  ['comparator_20hal_20results_3',['Comparator HAL Results',['../group__group__hal__results__comp.html',1,'']]]
 ];

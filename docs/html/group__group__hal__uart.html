@@ -138,7 +138,7 @@ Snippet 1: Initialization</h2>
 <div class="line"> </div>
 <div class="line">    <span class="comment">// Variable Declarations</span></div>
 <div class="line">    <a class="code hl_typedef" href="group__group__result.html#gaca79700fcc701534ce61778a9bcf57d1">cy_rslt_t</a>                         rslt;</div>
-<div class="line">    <a class="code hl_struct" href="group__group__hal__impl__hw__types.html#structmtb__hal__uart__t">mtb_hal_uart_t</a>                    uart_obj;</div>
+<div class="line">    <a class="code hl_struct" href="structmtb__hal__uart__t.html">mtb_hal_uart_t</a>                    uart_obj;</div>
 <div class="line">    cy_stc_scb_uart_context_t         uart_context;</div>
 <div class="line">    uint32_t                          actualbaud;</div>
 <div class="line">    uint8_t                           tx_buf[TX_BUF_SIZE] = { <span class="charliteral">&#39;1&#39;</span>, <span class="charliteral">&#39;2&#39;</span>, <span class="charliteral">&#39;3&#39;</span>, <span class="charliteral">&#39;4&#39;</span> };</div>
@@ -167,16 +167,16 @@ Snippet 1: Initialization</h2>
 <div class="line">    <a class="code hl_function" href="group__group__hal__uart.html#gaf1ab834a30f34f2f5e678c2a33715eea">mtb_hal_uart_read</a>(&amp;uart_obj, (<span class="keywordtype">void</span>*)rx_buf, &amp;rx_length);</div>
 <div class="line">    Cy_SysLib_Delay(UART_DELAY);</div>
 <div class="line"> </div>
-<div class="ttc" id="agroup__group__hal__impl__hw__types_html_structmtb__hal__uart__t"><div class="ttname"><a href="group__group__hal__impl__hw__types.html#structmtb__hal__uart__t">mtb_hal_uart_t</a></div><div class="ttdoc">UART object.</div><div class="ttdef"><b>Definition:</b> mtb_hal_hw_types.h:1144</div></div>
-<div class="ttc" id="agroup__group__hal__uart_html_ga2a7bab0a1fc98289ce5ed23f223d4d05"><div class="ttname"><a href="group__group__hal__uart.html#ga2a7bab0a1fc98289ce5ed23f223d4d05">mtb_hal_uart_write</a></div><div class="ttdeci">cy_rslt_t mtb_hal_uart_write(mtb_hal_uart_t *obj, void *tx, size_t *tx_length)</div><div class="ttdoc">Begin synchronous TX transfer.</div></div>
-<div class="ttc" id="agroup__group__hal__uart_html_ga85bed7153936d5ab91f5672496f2a03e"><div class="ttname"><a href="group__group__hal__uart.html#ga85bed7153936d5ab91f5672496f2a03e">mtb_hal_uart_set_baud</a></div><div class="ttdeci">cy_rslt_t mtb_hal_uart_set_baud(mtb_hal_uart_t *obj, uint32_t baudrate, uint32_t *actualbaud)</div><div class="ttdoc">Configure the baud rate.</div></div>
+<div class="ttc" id="agroup__group__hal__uart_html_ga2a7bab0a1fc98289ce5ed23f223d4d05"><div class="ttname"><a href="group__group__hal__uart.html#ga2a7bab0a1fc98289ce5ed23f223d4d05">mtb_hal_uart_write</a></div><div class="ttdeci">cy_rslt_t mtb_hal_uart_write(mtb_hal_uart_t *obj, void *tx, size_t *tx_length)</div><div class="ttdoc">Begin synchronous TX transfer.</div><div class="ttdef"><b>Definition:</b> mtb_hal_uart.c:689</div></div>
+<div class="ttc" id="agroup__group__hal__uart_html_ga85bed7153936d5ab91f5672496f2a03e"><div class="ttname"><a href="group__group__hal__uart.html#ga85bed7153936d5ab91f5672496f2a03e">mtb_hal_uart_set_baud</a></div><div class="ttdeci">cy_rslt_t mtb_hal_uart_set_baud(mtb_hal_uart_t *obj, uint32_t baudrate, uint32_t *actualbaud)</div><div class="ttdoc">Configure the baud rate.</div><div class="ttdef"><b>Definition:</b> mtb_hal_uart.c:568</div></div>
 <div class="ttc" id="agroup__group__hal__uart_html_gabe0ddbacc05c603d0b04d9c8df6af3e9"><div class="ttname"><a href="group__group__hal__uart.html#gabe0ddbacc05c603d0b04d9c8df6af3e9">mtb_hal_uart_put</a></div><div class="ttdeci">cy_rslt_t mtb_hal_uart_put(mtb_hal_uart_t *obj, uint32_t value)</div><div class="ttdoc">Send a character.</div></div>
-<div class="ttc" id="agroup__group__hal__uart_html_gaf1ab834a30f34f2f5e678c2a33715eea"><div class="ttname"><a href="group__group__hal__uart.html#gaf1ab834a30f34f2f5e678c2a33715eea">mtb_hal_uart_read</a></div><div class="ttdeci">cy_rslt_t mtb_hal_uart_read(mtb_hal_uart_t *obj, void *rx, size_t *rx_length)</div><div class="ttdoc">Begin synchronous RX transfer (enable interrupt for data collecting)</div></div>
-<div class="ttc" id="agroup__group__result_html_gaca79700fcc701534ce61778a9bcf57d1"><div class="ttname"><a href="group__group__result.html#gaca79700fcc701534ce61778a9bcf57d1">cy_rslt_t</a></div><div class="ttdeci">uint32_t cy_rslt_t</div><div class="ttdoc">Provides the result of an operation as a structured bitfield.</div><div class="ttdef"><b>Definition:</b> cy_result.h:451</div></div>
+<div class="ttc" id="agroup__group__hal__uart_html_gaf1ab834a30f34f2f5e678c2a33715eea"><div class="ttname"><a href="group__group__hal__uart.html#gaf1ab834a30f34f2f5e678c2a33715eea">mtb_hal_uart_read</a></div><div class="ttdeci">cy_rslt_t mtb_hal_uart_read(mtb_hal_uart_t *obj, void *rx, size_t *rx_length)</div><div class="ttdoc">Begin synchronous RX transfer (enable interrupt for data collecting)</div><div class="ttdef"><b>Definition:</b> mtb_hal_uart.c:714</div></div>
+<div class="ttc" id="agroup__group__result_html_gaca79700fcc701534ce61778a9bcf57d1"><div class="ttname"><a href="group__group__result.html#gaca79700fcc701534ce61778a9bcf57d1">cy_rslt_t</a></div><div class="ttdeci">uint32_t cy_rslt_t</div><div class="ttdoc">Provides the result of an operation as a structured bitfield.</div><div class="ttdef"><b>Definition:</b> cy_result.h:457</div></div>
+<div class="ttc" id="astructmtb__hal__uart__t_html"><div class="ttname"><a href="structmtb__hal__uart__t.html">mtb_hal_uart_t</a></div><div class="ttdoc">UART object.</div><div class="ttdef"><b>Definition:</b> mtb_hal_hw_types_uart_scb.h:66</div></div>
 </div><!-- fragment --><h2><a class="anchor" id="subsection_uart_snippet_2"></a>
 Snippet 2: Interrupts on UART events</h2>
 <p >In the following snippet, UART events are handled in a callback function. The callback function has to be registered and then the events have to be enabled.</p>
-<div class="fragment"><div class="line"><a class="code hl_struct" href="group__group__hal__impl__hw__types.html#structmtb__hal__uart__t">mtb_hal_uart_t</a> uart_obj;</div>
+<div class="fragment"><div class="line"><a class="code hl_struct" href="structmtb__hal__uart__t.html">mtb_hal_uart_t</a> uart_obj;</div>
 <div class="line"> </div>
 <div class="line"><span class="comment">// UART interrupt handler</span></div>
 <div class="line"><span class="keywordtype">void</span> uart_interrupt_handler(<span class="keywordtype">void</span>)</div>
@@ -241,14 +241,14 @@ Snippet 2: Interrupts on UART events</h2>
 <div class="line"> </div>
 <div class="line"><span class="preprocessor">#endif </span><span class="comment">/* !defined (SUT_WOUNDING_TEST) */</span><span class="preprocessor"></span></div>
 <div class="line"> </div>
-<div class="ttc" id="agroup__group__hal__uart_html_ga4174a8b56f39e4855daa81c833cd3388"><div class="ttname"><a href="group__group__hal__uart.html#ga4174a8b56f39e4855daa81c833cd3388">mtb_hal_uart_enable_event</a></div><div class="ttdeci">void mtb_hal_uart_enable_event(mtb_hal_uart_t *obj, mtb_hal_uart_event_t event, bool enable)</div><div class="ttdoc">Enable or disable specified UART events.</div></div>
-<div class="ttc" id="agroup__group__hal__uart_html_ga43a7a5f71f84d21cfb7d01525ef73624"><div class="ttname"><a href="group__group__hal__uart.html#ga43a7a5f71f84d21cfb7d01525ef73624">mtb_hal_uart_event_t</a></div><div class="ttdeci">mtb_hal_uart_event_t</div><div class="ttdoc">UART enum to enable/disable/report interrupt cause flags.</div><div class="ttdef"><b>Definition:</b> mtb_hal_uart.h:163</div></div>
-<div class="ttc" id="agroup__group__hal__uart_html_ga487dd43d7c3ff9aa3796befc88cb5201"><div class="ttname"><a href="group__group__hal__uart.html#ga487dd43d7c3ff9aa3796befc88cb5201">mtb_hal_uart_register_callback</a></div><div class="ttdeci">void mtb_hal_uart_register_callback(mtb_hal_uart_t *obj, mtb_hal_uart_event_callback_t callback, void *callback_arg)</div><div class="ttdoc">Register a uart callback handler.</div></div>
-<div class="ttc" id="agroup__group__hal__uart_html_ga610e83a5a1614589dd4c436605b7f8f1"><div class="ttname"><a href="group__group__hal__uart.html#ga610e83a5a1614589dd4c436605b7f8f1">mtb_hal_uart_process_interrupt</a></div><div class="ttdeci">cy_rslt_t mtb_hal_uart_process_interrupt(mtb_hal_uart_t *obj)</div><div class="ttdoc">Process interrupts related related to a UART instance.</div></div>
-<div class="ttc" id="agroup__group__hal__uart_html_gga43a7a5f71f84d21cfb7d01525ef73624a2c05d17ddd48964d6b7b2596f87446ae"><div class="ttname"><a href="group__group__hal__uart.html#gga43a7a5f71f84d21cfb7d01525ef73624a2c05d17ddd48964d6b7b2596f87446ae">MTB_HAL_UART_IRQ_TX_ERROR</a></div><div class="ttdeci">@ MTB_HAL_UART_IRQ_TX_ERROR</div><div class="ttdoc">An error occurred during RX.</div><div class="ttdef"><b>Definition:</b> mtb_hal_uart.h:177</div></div>
-<div class="ttc" id="agroup__group__hal__uart_html_gga43a7a5f71f84d21cfb7d01525ef73624a503dc66a64875ea8d62f35b5a4afce1f"><div class="ttname"><a href="group__group__hal__uart.html#gga43a7a5f71f84d21cfb7d01525ef73624a503dc66a64875ea8d62f35b5a4afce1f">MTB_HAL_UART_IRQ_TX_DONE</a></div><div class="ttdeci">@ MTB_HAL_UART_IRQ_TX_DONE</div><div class="ttdoc">All TX data has been transmitted (applicable only for mtb_hal_uart_write_async)</div><div class="ttdef"><b>Definition:</b> mtb_hal_uart.h:169</div></div>
-<div class="ttc" id="agroup__group__hal__uart_html_gga43a7a5f71f84d21cfb7d01525ef73624a577d703e942f088224c1c616367cf70c"><div class="ttname"><a href="group__group__hal__uart.html#gga43a7a5f71f84d21cfb7d01525ef73624a577d703e942f088224c1c616367cf70c">MTB_HAL_UART_IRQ_RX_DONE</a></div><div class="ttdeci">@ MTB_HAL_UART_IRQ_RX_DONE</div><div class="ttdoc">An error occurred during TX.</div><div class="ttdef"><b>Definition:</b> mtb_hal_uart.h:171</div></div>
-<div class="ttc" id="agroup__group__result_html_gaf58fac450d9fff4472f03ad68f6e546e"><div class="ttname"><a href="group__group__result.html#gaf58fac450d9fff4472f03ad68f6e546e">CY_RSLT_SUCCESS</a></div><div class="ttdeci">#define CY_RSLT_SUCCESS</div><div class="ttdoc">cy_rslt_t return value indicating success</div><div class="ttdef"><b>Definition:</b> cy_result.h:478</div></div>
+<div class="ttc" id="agroup__group__hal__uart_html_ga4174a8b56f39e4855daa81c833cd3388"><div class="ttname"><a href="group__group__hal__uart.html#ga4174a8b56f39e4855daa81c833cd3388">mtb_hal_uart_enable_event</a></div><div class="ttdeci">void mtb_hal_uart_enable_event(mtb_hal_uart_t *obj, mtb_hal_uart_event_t event, bool enable)</div><div class="ttdoc">Enable or disable specified UART events.</div><div class="ttdef"><b>Definition:</b> mtb_hal_uart.c:773</div></div>
+<div class="ttc" id="agroup__group__hal__uart_html_ga43a7a5f71f84d21cfb7d01525ef73624"><div class="ttname"><a href="group__group__hal__uart.html#ga43a7a5f71f84d21cfb7d01525ef73624">mtb_hal_uart_event_t</a></div><div class="ttdeci">mtb_hal_uart_event_t</div><div class="ttdoc">UART enum to enable/disable/report interrupt cause flags.</div><div class="ttdef"><b>Definition:</b> mtb_hal_uart.h:167</div></div>
+<div class="ttc" id="agroup__group__hal__uart_html_ga487dd43d7c3ff9aa3796befc88cb5201"><div class="ttname"><a href="group__group__hal__uart.html#ga487dd43d7c3ff9aa3796befc88cb5201">mtb_hal_uart_register_callback</a></div><div class="ttdeci">void mtb_hal_uart_register_callback(mtb_hal_uart_t *obj, mtb_hal_uart_event_callback_t callback, void *callback_arg)</div><div class="ttdoc">Register a uart callback handler.</div><div class="ttdef"><b>Definition:</b> mtb_hal_uart.c:758</div></div>
+<div class="ttc" id="agroup__group__hal__uart_html_ga610e83a5a1614589dd4c436605b7f8f1"><div class="ttname"><a href="group__group__hal__uart.html#ga610e83a5a1614589dd4c436605b7f8f1">mtb_hal_uart_process_interrupt</a></div><div class="ttdeci">cy_rslt_t mtb_hal_uart_process_interrupt(mtb_hal_uart_t *obj)</div><div class="ttdoc">Process interrupts related related to a UART instance.</div><div class="ttdef"><b>Definition:</b> mtb_hal_uart.c:888</div></div>
+<div class="ttc" id="agroup__group__hal__uart_html_gga43a7a5f71f84d21cfb7d01525ef73624a2c05d17ddd48964d6b7b2596f87446ae"><div class="ttname"><a href="group__group__hal__uart.html#gga43a7a5f71f84d21cfb7d01525ef73624a2c05d17ddd48964d6b7b2596f87446ae">MTB_HAL_UART_IRQ_TX_ERROR</a></div><div class="ttdeci">@ MTB_HAL_UART_IRQ_TX_ERROR</div><div class="ttdoc">An error occurred during RX.</div><div class="ttdef"><b>Definition:</b> mtb_hal_uart.h:181</div></div>
+<div class="ttc" id="agroup__group__hal__uart_html_gga43a7a5f71f84d21cfb7d01525ef73624a503dc66a64875ea8d62f35b5a4afce1f"><div class="ttname"><a href="group__group__hal__uart.html#gga43a7a5f71f84d21cfb7d01525ef73624a503dc66a64875ea8d62f35b5a4afce1f">MTB_HAL_UART_IRQ_TX_DONE</a></div><div class="ttdeci">@ MTB_HAL_UART_IRQ_TX_DONE</div><div class="ttdoc">All TX data has been transmitted (applicable only for mtb_hal_uart_write_async)</div><div class="ttdef"><b>Definition:</b> mtb_hal_uart.h:173</div></div>
+<div class="ttc" id="agroup__group__hal__uart_html_gga43a7a5f71f84d21cfb7d01525ef73624a577d703e942f088224c1c616367cf70c"><div class="ttname"><a href="group__group__hal__uart.html#gga43a7a5f71f84d21cfb7d01525ef73624a577d703e942f088224c1c616367cf70c">MTB_HAL_UART_IRQ_RX_DONE</a></div><div class="ttdeci">@ MTB_HAL_UART_IRQ_RX_DONE</div><div class="ttdoc">An error occurred during TX.</div><div class="ttdef"><b>Definition:</b> mtb_hal_uart.h:175</div></div>
+<div class="ttc" id="agroup__group__result_html_gaf58fac450d9fff4472f03ad68f6e546e"><div class="ttname"><a href="group__group__result.html#gaf58fac450d9fff4472f03ad68f6e546e">CY_RSLT_SUCCESS</a></div><div class="ttdeci">#define CY_RSLT_SUCCESS</div><div class="ttdoc">cy_rslt_t return value indicating success</div><div class="ttdef"><b>Definition:</b> cy_result.h:484</div></div>
 </div><!-- fragment --> <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="groups" name="groups"></a>
 API Reference</h2></td></tr>
@@ -305,43 +305,43 @@ Enumerations</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ga85bed7153936d5ab91f5672496f2a03e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__group__result.html#gaca79700fcc701534ce61778a9bcf57d1">cy_rslt_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__uart.html#ga85bed7153936d5ab91f5672496f2a03e">mtb_hal_uart_set_baud</a> (<a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__uart__t">mtb_hal_uart_t</a> *obj, uint32_t baudrate, uint32_t *actualbaud)</td></tr>
+<tr class="memitem:ga85bed7153936d5ab91f5672496f2a03e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__group__result.html#gaca79700fcc701534ce61778a9bcf57d1">cy_rslt_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__uart.html#ga85bed7153936d5ab91f5672496f2a03e">mtb_hal_uart_set_baud</a> (<a class="el" href="structmtb__hal__uart__t.html">mtb_hal_uart_t</a> *obj, uint32_t baudrate, uint32_t *actualbaud)</td></tr>
 <tr class="memdesc:ga85bed7153936d5ab91f5672496f2a03e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configure the baud rate.  <a href="group__group__hal__uart.html#ga85bed7153936d5ab91f5672496f2a03e">More...</a><br /></td></tr>
 <tr class="separator:ga85bed7153936d5ab91f5672496f2a03e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga4f5f549b5109783a570862a3d92f1b4f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__group__result.html#gaca79700fcc701534ce61778a9bcf57d1">cy_rslt_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__uart.html#ga4f5f549b5109783a570862a3d92f1b4f">mtb_hal_uart_get</a> (<a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__uart__t">mtb_hal_uart_t</a> *obj, uint8_t *value, uint32_t timeout)</td></tr>
+<tr class="memitem:ga4f5f549b5109783a570862a3d92f1b4f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__group__result.html#gaca79700fcc701534ce61778a9bcf57d1">cy_rslt_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__uart.html#ga4f5f549b5109783a570862a3d92f1b4f">mtb_hal_uart_get</a> (<a class="el" href="structmtb__hal__uart__t.html">mtb_hal_uart_t</a> *obj, uint8_t *value, uint32_t timeout)</td></tr>
 <tr class="memdesc:ga4f5f549b5109783a570862a3d92f1b4f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a character.  <a href="group__group__hal__uart.html#ga4f5f549b5109783a570862a3d92f1b4f">More...</a><br /></td></tr>
 <tr class="separator:ga4f5f549b5109783a570862a3d92f1b4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gabe0ddbacc05c603d0b04d9c8df6af3e9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__group__result.html#gaca79700fcc701534ce61778a9bcf57d1">cy_rslt_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__uart.html#gabe0ddbacc05c603d0b04d9c8df6af3e9">mtb_hal_uart_put</a> (<a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__uart__t">mtb_hal_uart_t</a> *obj, uint32_t value)</td></tr>
+<tr class="memitem:gabe0ddbacc05c603d0b04d9c8df6af3e9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__group__result.html#gaca79700fcc701534ce61778a9bcf57d1">cy_rslt_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__uart.html#gabe0ddbacc05c603d0b04d9c8df6af3e9">mtb_hal_uart_put</a> (<a class="el" href="structmtb__hal__uart__t.html">mtb_hal_uart_t</a> *obj, uint32_t value)</td></tr>
 <tr class="memdesc:gabe0ddbacc05c603d0b04d9c8df6af3e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send a character.  <a href="group__group__hal__uart.html#gabe0ddbacc05c603d0b04d9c8df6af3e9">More...</a><br /></td></tr>
 <tr class="separator:gabe0ddbacc05c603d0b04d9c8df6af3e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gac533b33377a993538c393a4c9185358a"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__uart.html#gac533b33377a993538c393a4c9185358a">mtb_hal_uart_readable</a> (<a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__uart__t">mtb_hal_uart_t</a> *obj)</td></tr>
+<tr class="memitem:gac533b33377a993538c393a4c9185358a"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__uart.html#gac533b33377a993538c393a4c9185358a">mtb_hal_uart_readable</a> (<a class="el" href="structmtb__hal__uart__t.html">mtb_hal_uart_t</a> *obj)</td></tr>
 <tr class="memdesc:gac533b33377a993538c393a4c9185358a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check the number of bytes available to read from the receive buffers.  <a href="group__group__hal__uart.html#gac533b33377a993538c393a4c9185358a">More...</a><br /></td></tr>
 <tr class="separator:gac533b33377a993538c393a4c9185358a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga6e526932baf1cbe809f3ad67af237d98"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__uart.html#ga6e526932baf1cbe809f3ad67af237d98">mtb_hal_uart_writable</a> (<a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__uart__t">mtb_hal_uart_t</a> *obj)</td></tr>
+<tr class="memitem:ga6e526932baf1cbe809f3ad67af237d98"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__uart.html#ga6e526932baf1cbe809f3ad67af237d98">mtb_hal_uart_writable</a> (<a class="el" href="structmtb__hal__uart__t.html">mtb_hal_uart_t</a> *obj)</td></tr>
 <tr class="memdesc:ga6e526932baf1cbe809f3ad67af237d98"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check the number of bytes than can be written to the transmit buffer.  <a href="group__group__hal__uart.html#ga6e526932baf1cbe809f3ad67af237d98">More...</a><br /></td></tr>
 <tr class="separator:ga6e526932baf1cbe809f3ad67af237d98"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga2303e9a118cb213f51a656c1e33ff2ff"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__group__result.html#gaca79700fcc701534ce61778a9bcf57d1">cy_rslt_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__uart.html#ga2303e9a118cb213f51a656c1e33ff2ff">mtb_hal_uart_clear</a> (<a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__uart__t">mtb_hal_uart_t</a> *obj)</td></tr>
+<tr class="memitem:ga2303e9a118cb213f51a656c1e33ff2ff"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__group__result.html#gaca79700fcc701534ce61778a9bcf57d1">cy_rslt_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__uart.html#ga2303e9a118cb213f51a656c1e33ff2ff">mtb_hal_uart_clear</a> (<a class="el" href="structmtb__hal__uart__t.html">mtb_hal_uart_t</a> *obj)</td></tr>
 <tr class="memdesc:ga2303e9a118cb213f51a656c1e33ff2ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear the UART buffers.  <a href="group__group__hal__uart.html#ga2303e9a118cb213f51a656c1e33ff2ff">More...</a><br /></td></tr>
 <tr class="separator:ga2303e9a118cb213f51a656c1e33ff2ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaf1bd67fb2333fc4bffb47f6e192e59c3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__group__result.html#gaca79700fcc701534ce61778a9bcf57d1">cy_rslt_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__uart.html#gaf1bd67fb2333fc4bffb47f6e192e59c3">mtb_hal_uart_enable_cts_flow_control</a> (<a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__uart__t">mtb_hal_uart_t</a> *obj, bool enable)</td></tr>
+<tr class="memitem:gaf1bd67fb2333fc4bffb47f6e192e59c3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__group__result.html#gaca79700fcc701534ce61778a9bcf57d1">cy_rslt_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__uart.html#gaf1bd67fb2333fc4bffb47f6e192e59c3">mtb_hal_uart_enable_cts_flow_control</a> (<a class="el" href="structmtb__hal__uart__t.html">mtb_hal_uart_t</a> *obj, bool enable)</td></tr>
 <tr class="memdesc:gaf1bd67fb2333fc4bffb47f6e192e59c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configure the UART CTS for flow control.  <a href="group__group__hal__uart.html#gaf1bd67fb2333fc4bffb47f6e192e59c3">More...</a><br /></td></tr>
 <tr class="separator:gaf1bd67fb2333fc4bffb47f6e192e59c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga2a7bab0a1fc98289ce5ed23f223d4d05"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__group__result.html#gaca79700fcc701534ce61778a9bcf57d1">cy_rslt_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__uart.html#ga2a7bab0a1fc98289ce5ed23f223d4d05">mtb_hal_uart_write</a> (<a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__uart__t">mtb_hal_uart_t</a> *obj, void *tx, size_t *tx_length)</td></tr>
+<tr class="memitem:ga2a7bab0a1fc98289ce5ed23f223d4d05"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__group__result.html#gaca79700fcc701534ce61778a9bcf57d1">cy_rslt_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__uart.html#ga2a7bab0a1fc98289ce5ed23f223d4d05">mtb_hal_uart_write</a> (<a class="el" href="structmtb__hal__uart__t.html">mtb_hal_uart_t</a> *obj, void *tx, size_t *tx_length)</td></tr>
 <tr class="memdesc:ga2a7bab0a1fc98289ce5ed23f223d4d05"><td class="mdescLeft">&#160;</td><td class="mdescRight">Begin synchronous TX transfer.  <a href="group__group__hal__uart.html#ga2a7bab0a1fc98289ce5ed23f223d4d05">More...</a><br /></td></tr>
 <tr class="separator:ga2a7bab0a1fc98289ce5ed23f223d4d05"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaf1ab834a30f34f2f5e678c2a33715eea"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__group__result.html#gaca79700fcc701534ce61778a9bcf57d1">cy_rslt_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__uart.html#gaf1ab834a30f34f2f5e678c2a33715eea">mtb_hal_uart_read</a> (<a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__uart__t">mtb_hal_uart_t</a> *obj, void *rx, size_t *rx_length)</td></tr>
+<tr class="memitem:gaf1ab834a30f34f2f5e678c2a33715eea"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__group__result.html#gaca79700fcc701534ce61778a9bcf57d1">cy_rslt_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__uart.html#gaf1ab834a30f34f2f5e678c2a33715eea">mtb_hal_uart_read</a> (<a class="el" href="structmtb__hal__uart__t.html">mtb_hal_uart_t</a> *obj, void *rx, size_t *rx_length)</td></tr>
 <tr class="memdesc:gaf1ab834a30f34f2f5e678c2a33715eea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Begin synchronous RX transfer (enable interrupt for data collecting)  <a href="group__group__hal__uart.html#gaf1ab834a30f34f2f5e678c2a33715eea">More...</a><br /></td></tr>
 <tr class="separator:gaf1ab834a30f34f2f5e678c2a33715eea"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga9c36a3abecf7fc20c33749888c0cb012"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__uart.html#ga9c36a3abecf7fc20c33749888c0cb012">mtb_hal_uart_is_tx_active</a> (<a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__uart__t">mtb_hal_uart_t</a> *obj)</td></tr>
+<tr class="memitem:ga9c36a3abecf7fc20c33749888c0cb012"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__uart.html#ga9c36a3abecf7fc20c33749888c0cb012">mtb_hal_uart_is_tx_active</a> (<a class="el" href="structmtb__hal__uart__t.html">mtb_hal_uart_t</a> *obj)</td></tr>
 <tr class="memdesc:ga9c36a3abecf7fc20c33749888c0cb012"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines if the UART peripheral is currently in use for TX.  <a href="group__group__hal__uart.html#ga9c36a3abecf7fc20c33749888c0cb012">More...</a><br /></td></tr>
 <tr class="separator:ga9c36a3abecf7fc20c33749888c0cb012"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga487dd43d7c3ff9aa3796befc88cb5201"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__uart.html#ga487dd43d7c3ff9aa3796befc88cb5201">mtb_hal_uart_register_callback</a> (<a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__uart__t">mtb_hal_uart_t</a> *obj, <a class="el" href="group__group__hal__uart.html#gab0218238d7678dac62cf0c1b4d672833">mtb_hal_uart_event_callback_t</a> callback, void *callback_arg)</td></tr>
+<tr class="memitem:ga487dd43d7c3ff9aa3796befc88cb5201"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__uart.html#ga487dd43d7c3ff9aa3796befc88cb5201">mtb_hal_uart_register_callback</a> (<a class="el" href="structmtb__hal__uart__t.html">mtb_hal_uart_t</a> *obj, <a class="el" href="group__group__hal__uart.html#gab0218238d7678dac62cf0c1b4d672833">mtb_hal_uart_event_callback_t</a> callback, void *callback_arg)</td></tr>
 <tr class="memdesc:ga487dd43d7c3ff9aa3796befc88cb5201"><td class="mdescLeft">&#160;</td><td class="mdescRight">Register a uart callback handler.  <a href="group__group__hal__uart.html#ga487dd43d7c3ff9aa3796befc88cb5201">More...</a><br /></td></tr>
 <tr class="separator:ga487dd43d7c3ff9aa3796befc88cb5201"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga4174a8b56f39e4855daa81c833cd3388"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__uart.html#ga4174a8b56f39e4855daa81c833cd3388">mtb_hal_uart_enable_event</a> (<a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__uart__t">mtb_hal_uart_t</a> *obj, <a class="el" href="group__group__hal__uart.html#ga43a7a5f71f84d21cfb7d01525ef73624">mtb_hal_uart_event_t</a> event, bool enable)</td></tr>
+<tr class="memitem:ga4174a8b56f39e4855daa81c833cd3388"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__uart.html#ga4174a8b56f39e4855daa81c833cd3388">mtb_hal_uart_enable_event</a> (<a class="el" href="structmtb__hal__uart__t.html">mtb_hal_uart_t</a> *obj, <a class="el" href="group__group__hal__uart.html#ga43a7a5f71f84d21cfb7d01525ef73624">mtb_hal_uart_event_t</a> event, bool enable)</td></tr>
 <tr class="memdesc:ga4174a8b56f39e4855daa81c833cd3388"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enable or disable specified UART events.  <a href="group__group__hal__uart.html#ga4174a8b56f39e4855daa81c833cd3388">More...</a><br /></td></tr>
 <tr class="separator:ga4174a8b56f39e4855daa81c833cd3388"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga610e83a5a1614589dd4c436605b7f8f1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__group__result.html#gaca79700fcc701534ce61778a9bcf57d1">cy_rslt_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__uart.html#ga610e83a5a1614589dd4c436605b7f8f1">mtb_hal_uart_process_interrupt</a> (<a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__uart__t">mtb_hal_uart_t</a> *obj)</td></tr>
+<tr class="memitem:ga610e83a5a1614589dd4c436605b7f8f1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__group__result.html#gaca79700fcc701534ce61778a9bcf57d1">cy_rslt_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__uart.html#ga610e83a5a1614589dd4c436605b7f8f1">mtb_hal_uart_process_interrupt</a> (<a class="el" href="structmtb__hal__uart__t.html">mtb_hal_uart_t</a> *obj)</td></tr>
 <tr class="memdesc:ga610e83a5a1614589dd4c436605b7f8f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Process interrupts related related to a UART instance.  <a href="group__group__hal__uart.html#ga610e83a5a1614589dd4c436605b7f8f1">More...</a><br /></td></tr>
 <tr class="separator:ga610e83a5a1614589dd4c436605b7f8f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -396,7 +396,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="group__group__result.html#gaca79700fcc701534ce61778a9bcf57d1">cy_rslt_t</a> mtb_hal_uart_set_baud </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__uart__t">mtb_hal_uart_t</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="structmtb__hal__uart__t.html">mtb_hal_uart_t</a> *&#160;</td>
           <td class="paramname"><em>obj</em>, </td>
         </tr>
         <tr>
@@ -441,7 +441,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="group__group__result.html#gaca79700fcc701534ce61778a9bcf57d1">cy_rslt_t</a> mtb_hal_uart_get </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__uart__t">mtb_hal_uart_t</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="structmtb__hal__uart__t.html">mtb_hal_uart_t</a> *&#160;</td>
           <td class="paramname"><em>obj</em>, </td>
         </tr>
         <tr>
@@ -487,7 +487,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="group__group__result.html#gaca79700fcc701534ce61778a9bcf57d1">cy_rslt_t</a> mtb_hal_uart_put </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__uart__t">mtb_hal_uart_t</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="structmtb__hal__uart__t.html">mtb_hal_uart_t</a> *&#160;</td>
           <td class="paramname"><em>obj</em>, </td>
         </tr>
         <tr>
@@ -526,7 +526,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">uint32_t mtb_hal_uart_readable </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__uart__t">mtb_hal_uart_t</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="structmtb__hal__uart__t.html">mtb_hal_uart_t</a> *&#160;</td>
           <td class="paramname"><em>obj</em></td><td>)</td>
           <td></td>
         </tr>
@@ -553,7 +553,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">uint32_t mtb_hal_uart_writable </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__uart__t">mtb_hal_uart_t</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="structmtb__hal__uart__t.html">mtb_hal_uart_t</a> *&#160;</td>
           <td class="paramname"><em>obj</em></td><td>)</td>
           <td></td>
         </tr>
@@ -580,7 +580,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="group__group__result.html#gaca79700fcc701534ce61778a9bcf57d1">cy_rslt_t</a> mtb_hal_uart_clear </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__uart__t">mtb_hal_uart_t</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="structmtb__hal__uart__t.html">mtb_hal_uart_t</a> *&#160;</td>
           <td class="paramname"><em>obj</em></td><td>)</td>
           <td></td>
         </tr>
@@ -607,7 +607,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="group__group__result.html#gaca79700fcc701534ce61778a9bcf57d1">cy_rslt_t</a> mtb_hal_uart_enable_cts_flow_control </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__uart__t">mtb_hal_uart_t</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="structmtb__hal__uart__t.html">mtb_hal_uart_t</a> *&#160;</td>
           <td class="paramname"><em>obj</em>, </td>
         </tr>
         <tr>
@@ -646,7 +646,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="group__group__result.html#gaca79700fcc701534ce61778a9bcf57d1">cy_rslt_t</a> mtb_hal_uart_write </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__uart__t">mtb_hal_uart_t</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="structmtb__hal__uart__t.html">mtb_hal_uart_t</a> *&#160;</td>
           <td class="paramname"><em>obj</em>, </td>
         </tr>
         <tr>
@@ -692,7 +692,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="group__group__result.html#gaca79700fcc701534ce61778a9bcf57d1">cy_rslt_t</a> mtb_hal_uart_read </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__uart__t">mtb_hal_uart_t</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="structmtb__hal__uart__t.html">mtb_hal_uart_t</a> *&#160;</td>
           <td class="paramname"><em>obj</em>, </td>
         </tr>
         <tr>
@@ -725,7 +725,8 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The status of the rx request </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The status of the rx request</dd></dl>
+<p>Begin synchronous RX transfer (enable interrupt for data collecting) </p>
 
 </div>
 </div>
@@ -738,7 +739,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">bool mtb_hal_uart_is_tx_active </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__uart__t">mtb_hal_uart_t</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="structmtb__hal__uart__t.html">mtb_hal_uart_t</a> *&#160;</td>
           <td class="paramname"><em>obj</em></td><td>)</td>
           <td></td>
         </tr>
@@ -766,7 +767,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void mtb_hal_uart_register_callback </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__uart__t">mtb_hal_uart_t</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="structmtb__hal__uart__t.html">mtb_hal_uart_t</a> *&#160;</td>
           <td class="paramname"><em>obj</em>, </td>
         </tr>
         <tr>
@@ -811,7 +812,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void mtb_hal_uart_enable_event </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__uart__t">mtb_hal_uart_t</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="structmtb__hal__uart__t.html">mtb_hal_uart_t</a> *&#160;</td>
           <td class="paramname"><em>obj</em>, </td>
         </tr>
         <tr>
@@ -856,7 +857,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="group__group__result.html#gaca79700fcc701534ce61778a9bcf57d1">cy_rslt_t</a> mtb_hal_uart_process_interrupt </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__uart__t">mtb_hal_uart_t</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="structmtb__hal__uart__t.html">mtb_hal_uart_t</a> *&#160;</td>
           <td class="paramname"><em>obj</em></td><td>)</td>
           <td></td>
         </tr>

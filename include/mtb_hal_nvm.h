@@ -81,6 +81,8 @@
 #include "mtb_hal_general_types.h"
 #include "mtb_hal_hw_types.h"
 
+#if defined(MTB_HAL_DRIVER_AVAILABLE_NVM)
+
 #if defined(__cplusplus)
 extern "C" {
 #endif
@@ -237,5 +239,7 @@ const mtb_hal_nvm_region_info_t* mtb_hal_nvm_get_region_for_address(mtb_hal_nvm_
 #ifdef MTB_HAL_NVM_IMPL_HEADER
 #include MTB_HAL_NVM_IMPL_HEADER
 #endif /* MTB_HAL_NVM_IMPL_HEADER */
+
+#endif //defined(MTB_HAL_DRIVER_AVAILABLE_NVM)
 
 /** \} group_hal_nvm */

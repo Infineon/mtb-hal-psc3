@@ -36,16 +36,18 @@
 #include "mtb_hal_gpio_m0s8ioss_v1.h"
 #elif (defined(CY_IP_MXS22IOSS) && (CY_IP_MXS22IOSS_VERSION == 1))
 #include "mtb_hal_gpio_common.h"
-#elif (defined(CY_IP_MXS40IOSS) && (CY_IP_MXS40IOSS_VERSION == 3))
+#elif (defined(CY_IP_IOCL) && (CY_IP_IOCL_VERSION == 1))
+#include "mtb_hal_gpio_common.h"
+#elif (defined(CY_IP_MXS40IOSS) && (CY_IP_MXS40IOSS_VERSION == 3 || CY_IP_MXS40IOSS_VERSION == 5))
 #include "mtb_hal_gpio_common.h"
 #elif (defined(CY_IP_MXS40SIOSS) && (CY_IP_MXS40SIOSS_VERSION == 1))
 #include "mtb_hal_gpio_common.h"
 #else
 #error "Unhandled version"
-#endif
+#endif // if (defined(CY_IP_M0S8IOSS) && (CY_IP_M0S8IOSS_VERSION == 1))
 
 #if defined(CY_IP_MXS40IOSS) || defined(CY_IP_M0S8IOSS) || defined(CY_IP_MXS40SIOSS) || \
-    defined(CY_IP_MXS22IOSS)
+    defined(CY_IP_MXS22IOSS) || defined(CY_IP_IOCL)
 
 #if defined(__cplusplus)
 extern "C" {

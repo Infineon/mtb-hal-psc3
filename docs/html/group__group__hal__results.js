@@ -1,12 +1,20 @@
 var group__group__hal__results =
 [
+    [ "ADC HAL Results", "group__group__hal__results__adc.html", "group__group__hal__results__adc" ],
     [ "Clock HAL Results", "group__group__hal__results__clock.html", "group__group__hal__results__clock" ],
+    [ "Comparator HAL Results", "group__group__hal__results__comp.html", "group__group__hal__results__comp" ],
+    [ "DMA HAL Results", "group__group__hal__results__dma.html", "group__group__hal__results__dma" ],
     [ "GPIO HAL Results", "group__group__hal__results__gpio.html", "group__group__hal__results__gpio" ],
     [ "I2C HAL Results", "group__group__hal__results__i2c.html", "group__group__hal__results__i2c" ],
+    [ "LPTimer HAL Results", "group__group__hal__results__lptimer.html", "group__group__hal__results__lptimer" ],
     [ "NVM HAL Results", "group__group__hal__results__nvm.html", "group__group__hal__results__nvm" ],
+    [ "PWM HAL Results", "group__group__hal__results__pwm.html", "group__group__hal__results__pwm" ],
+    [ "RTC HAL Results", "group__group__hal__results__rtc.html", "group__group__hal__results__rtc" ],
     [ "SPI HAL Results", "group__group__hal__results__spi.html", "group__group__hal__results__spi" ],
     [ "SYSPM HAL Results", "group__group__hal__results__syspm.html", "group__group__hal__results__syspm" ],
     [ "SYSTEM HAL Results", "group__group__hal__results__system.html", "group__group__hal__results__system" ],
+    [ "Timer HAL Results", "group__group__hal__results__timer.html", "group__group__hal__results__timer" ],
+    [ "TRNG HAL Results", "group__group__hal__results__trng.html", "group__group__hal__results__trng" ],
     [ "UART HAL Results", "group__group__hal__results__uart.html", "group__group__hal__results__uart" ],
     [ "mtb_hal_rslt_module_chip", "group__group__hal__results.html#ga282238a3cd4da88799258412ba837ceb", [
       [ "MTB_HAL_RSLT_MODULE_ADC", "group__group__hal__results.html#gga282238a3cd4da88799258412ba837ceba0fb2a348d3639460b493dba0ac01520b", null ],
@@ -19,6 +27,7 @@ var group__group__hal__results =
       [ "MTB_HAL_RSLT_MODULE_IPC", "group__group__hal__results.html#gga282238a3cd4da88799258412ba837ceba8e748297016db16deee722d105b72ed5", null ],
       [ "MTB_HAL_RSLT_MODULE_LPTIMER", "group__group__hal__results.html#gga282238a3cd4da88799258412ba837ceba4a188f29f80d8d7327a85df6e298fa6d", null ],
       [ "MTB_HAL_RSLT_MODULE_MEMORYSPI", "group__group__hal__results.html#gga282238a3cd4da88799258412ba837ceba10a9e6996db8e879312926fb2333f58f", null ],
+      [ "MTB_HAL_RSLT_MODULE_NPNZ", "group__group__hal__results.html#gga282238a3cd4da88799258412ba837ceba1aea5c1d83c9e0f7928de18299419d4e", null ],
       [ "MTB_HAL_RSLT_MODULE_NVM", "group__group__hal__results.html#gga282238a3cd4da88799258412ba837ceba0c82d2db13666bfcccaf934097c03213", null ],
       [ "MTB_HAL_RSLT_MODULE_PWM", "group__group__hal__results.html#gga282238a3cd4da88799258412ba837cebaa9b48b723fb176e64964c022bad7bc06", null ],
       [ "MTB_HAL_RSLT_MODULE_RTC", "group__group__hal__results.html#gga282238a3cd4da88799258412ba837cebad2c023f623a4be490a4ee25cf328f152", null ],

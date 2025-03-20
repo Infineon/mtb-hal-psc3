@@ -103,7 +103,8 @@
 #include <stdbool.h>
 #include "cy_result.h"
 #include "mtb_hal_hw_types.h"
-#include "mtb_hal_pdl_map.h"
+
+#if defined(MTB_HAL_DRIVER_AVAILABLE_GPIO)
 
 #if defined(__cplusplus)
 extern "C" {
@@ -307,11 +308,6 @@ void mtb_hal_gpio_port_read(mtb_hal_gpio_port_t* port, uint32_t* value);
  *
  * See \ref subsection_gpio_snippet_4.
  *
- * \note The signature for this function is slightly different from other HAL register_callback
- * functions. This is because the mtb_hal_gpio_t is a enum value and not a pointer to a struct. This
- * prevents storing the callback information on the instance object itself. So instead we need a
- * different mechanism to keep track of this data.
- *
  * @param[in] obj           The GPIO object
  * @param[in] callback      The callback handler which will be invoked when the event occurs
  * @param[in] callback_arg  Generic argument that will be provided to the callback when called
@@ -347,5 +343,7 @@ cy_rslt_t mtb_hal_gpio_process_interrupt(mtb_hal_gpio_t* obj);
 #ifdef MTB_HAL_GPIO_IMPL_HEADER
 #include MTB_HAL_GPIO_IMPL_HEADER
 #endif /* MTB_HAL_GPIO_IMPL_HEADER */
+
+#endif // defined(MTB_HAL_DRIVER_AVAILABLE_GPIO)
 
 /** \} group_hal_gpio */

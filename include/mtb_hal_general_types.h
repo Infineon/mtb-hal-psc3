@@ -67,24 +67,25 @@ enum mtb_hal_rslt_module_chip
     MTB_HAL_RSLT_MODULE_CLOCK         = (0x02),  //!< An error occurred in Clock module
     MTB_HAL_RSLT_MODULE_COMP          = (0x03),  //!< An error occurred in comparator module
     MTB_HAL_RSLT_MODULE_CORDIC        = (0x04),  //!< An error occurred in CORDIC module
-    MTB_HAL_RSLT_MODULE_DMA           = (0x03),  //!< An error occurred in DMA module
-    MTB_HAL_RSLT_MODULE_GPIO          = (0x04),  //!< An error occurred in GPIO module
-    MTB_HAL_RSLT_MODULE_I2C           = (0x05),  //!< An error occurred in I2C module
-    MTB_HAL_RSLT_MODULE_IPC           = (0x06),  //!< An error occurred in IPC module
+    MTB_HAL_RSLT_MODULE_DMA           = (0x05),  //!< An error occurred in DMA module
+    MTB_HAL_RSLT_MODULE_GPIO          = (0x06),  //!< An error occurred in GPIO module
+    MTB_HAL_RSLT_MODULE_I2C           = (0x07),  //!< An error occurred in I2C module
+    MTB_HAL_RSLT_MODULE_IPC           = (0x08),  //!< An error occurred in IPC module
                                                  //!< module
-    MTB_HAL_RSLT_MODULE_LPTIMER       = (0x07),  //!< An error occurred in LPTimer module
-    MTB_HAL_RSLT_MODULE_MEMORYSPI     = (0x08),  //!< An error occurred in MEMORYSPI module
-    MTB_HAL_RSLT_MODULE_NVM           = (0x09),  //!< An error occurred in NVM module
-    MTB_HAL_RSLT_MODULE_PWM           = (0x0A),  //!< An error occurred in PWM module
-    MTB_HAL_RSLT_MODULE_RTC           = (0x10),  //!< An error occurred in RTC module
-    MTB_HAL_RSLT_MODULE_SDHC          = (0x11),  //!< An error occurred in SDHC module
-    MTB_HAL_RSLT_MODULE_SDIO          = (0x12),  //!< An error occurred in SDIO module
-    MTB_HAL_RSLT_MODULE_SPI           = (0x13),  //!< An error occurred in SPI module
-    MTB_HAL_RSLT_MODULE_SYSPM         = (0x14),  //!< An error occurred in SysPM module
-    MTB_HAL_RSLT_MODULE_SYSTEM        = (0x15),  //!< An error occurred in System module
-    MTB_HAL_RSLT_MODULE_TIMER         = (0x16),  //!< An error occurred in Timer module
-    MTB_HAL_RSLT_MODULE_TRNG          = (0x17),  //!< An error occurred in TRNG module
-    MTB_HAL_RSLT_MODULE_UART          = (0x18)   //!< An error occurred in UART module
+    MTB_HAL_RSLT_MODULE_LPTIMER       = (0x09),  //!< An error occurred in LPTimer module
+    MTB_HAL_RSLT_MODULE_MEMORYSPI     = (0x0A),  //!< An error occurred in MEMORYSPI module
+    MTB_HAL_RSLT_MODULE_NPNZ          = (0x0B),  //!< An error occurred in Filter module
+    MTB_HAL_RSLT_MODULE_NVM           = (0x0C),  //!< An error occurred in NVM module
+    MTB_HAL_RSLT_MODULE_PWM           = (0x0D),  //!< An error occurred in PWM module
+    MTB_HAL_RSLT_MODULE_RTC           = (0x0E),  //!< An error occurred in RTC module
+    MTB_HAL_RSLT_MODULE_SDHC          = (0x0F),  //!< An error occurred in SDHC module
+    MTB_HAL_RSLT_MODULE_SDIO          = (0x10),  //!< An error occurred in SDIO module
+    MTB_HAL_RSLT_MODULE_SPI           = (0x11),  //!< An error occurred in SPI module
+    MTB_HAL_RSLT_MODULE_SYSPM         = (0x12),  //!< An error occurred in SysPM module
+    MTB_HAL_RSLT_MODULE_SYSTEM        = (0x13),  //!< An error occurred in System module
+    MTB_HAL_RSLT_MODULE_TIMER         = (0x14),  //!< An error occurred in Timer module
+    MTB_HAL_RSLT_MODULE_TRNG          = (0x15),  //!< An error occurred in TRNG module
+    MTB_HAL_RSLT_MODULE_UART          = (0x16)   //!< An error occurred in UART module
 };
 
 /**

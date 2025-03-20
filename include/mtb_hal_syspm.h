@@ -33,17 +33,24 @@
  * \{
  * Interface for changing power states and restricting when they are allowed.
  *
- * At the System level, the APIs are intended to allow the application to specify
- * exactly what is happening. It can request changes to both the MCU Power State
- * as well as the System Wide Power State. There are three supported MCU Power
- * States:
+ * There are three supported MCU Power States:
  * * Active - This is the normal operating state of the MCU
  * * Sleep - In this state the MCU is no longer running. It can be woken up again
  * from an interrupt. This state is reached by calling \ref mtb_hal_syspm_sleep.
  * * Deep Sleep - In this state the MCU is no longer running. It can only be woken
  * up by select interrupts. This state is reached by calling \ref
  * mtb_hal_syspm_deepsleep.
-
+ *
+ * Some devices support multiple modes for the DeepSleep power state. The currently
+ * selected DeepSleep mode, which will be entered by \ref mtb_hal_syspm_deepsleep,
+ * can be determined via the \ref mtb_hal_syspm_get_deepsleep_mode function. Configuration
+ * of the DeepSleep mode can be performed via platform specific APIs (e.g. PDL).
+ *
+ * \note The power management functionality available depends on the availability
+ * of the features in the hardware. For detailed information about exactly what is
+ * supported on each device, refer to the Device Datasheet or Technical Reference
+ * Manual (TRM).
+ *
  * Any time a power state transition is requested a series of callbacks are invoked.
  * This allows peripherals, or other parts of the application, to confirm they are
  * not currently doing something that would not work in the requested power state.
@@ -61,22 +68,6 @@
  * The lock is a counter with a max count of USHRT_MAX. It must be locked/unlocked
  * an equal number of times before the device is actually able to enter deep sleep.
  *
- * All peripherals are expected to operate in the default Active/Normal power
- * state. Some peripherals (primarily analog) can operate in lower power states as
- * well. These drivers will operate in all power states that the hardware supports.
- *
- * When power transitions are requested each type of peripheral has a default
- * behavior. Peripherals that can continue to operate in the requested power mode
- * do not interfere. Peripherals that are not currently active allow the transition,
- * but make sure they restore their state if needed for when the device comes back.
- * Peripherals that are active and cannot continue to work in the requested power
- * state will block the transition.
- *
- * \note The power management functionality available depends on the availability
- * of the features in the hardware. For detailed information about exactly what is
- * supported on each device, refer to the Device Datasheet or Technical Reference
- * Manual (TRM).
-
  * \section section_syspm_features Features
  * This driver provides control over multiple different types of power management
  * and when those transitions are allowed:
@@ -124,6 +115,8 @@
 #include "mtb_hal_hw_types.h"
 #include "mtb_hal_system.h"
 
+#if defined(MTB_HAL_DRIVER_AVAILABLE_SYSPM)
+
 #if defined(__cplusplus)
 extern "C" {
 #endif
@@ -137,21 +130,12 @@ extern "C" {
 /** Incorrect argument passed into a function. */
 #define MTB_HAL_SYSPM_RSLT_BAD_ARGUMENT               \
     (CY_RSLT_CREATE_EX(CY_RSLT_TYPE_ERROR, CY_RSLT_MODULE_ABSTRACTION_HAL, MTB_HAL_RSLT_MODULE_SYSPM, 0))
-/** Driver was unable to be initialized. */
-#define MTB_HAL_SYSPM_RSLT_INIT_ERROR                 \
-    (CY_RSLT_CREATE_EX(CY_RSLT_TYPE_ERROR, CY_RSLT_MODULE_ABSTRACTION_HAL, MTB_HAL_RSLT_MODULE_SYSPM, 1))
 /** Failed to register callback */
 #define MTB_HAL_SYSPM_RSLT_CB_REGISTER_ERROR          \
-    (CY_RSLT_CREATE_EX(CY_RSLT_TYPE_ERROR, CY_RSLT_MODULE_ABSTRACTION_HAL, MTB_HAL_RSLT_MODULE_SYSPM, 2))
-/** Power Management transition is pending, data cannot be transferred */
-#define MTB_HAL_SYSPM_RSLT_ERR_PM_PENDING             \
-    (CY_RSLT_CREATE_EX(CY_RSLT_TYPE_ERROR, CY_RSLT_MODULE_ABSTRACTION_HAL, MTB_HAL_RSLT_MODULE_SYSPM, 3))
-/** Functionality not supported on the current platform */
-#define MTB_HAL_SYSPM_RSLT_ERR_NOT_SUPPORTED           \
-    (CY_RSLT_CREATE_EX(CY_RSLT_TYPE_ERROR, CY_RSLT_MODULE_ABSTRACTION_HAL, MTB_HAL_RSLT_MODULE_SYSPM, 4))
+    (CY_RSLT_CREATE_EX(CY_RSLT_TYPE_ERROR, CY_RSLT_MODULE_ABSTRACTION_HAL, MTB_HAL_RSLT_MODULE_SYSPM, 1))
 /** Deepsleep has been locked */
 #define MTB_HAL_SYSPM_RSLT_DEEPSLEEP_LOCKED           \
-    (CY_RSLT_CREATE_EX(CY_RSLT_TYPE_ERROR, CY_RSLT_MODULE_ABSTRACTION_HAL, MTB_HAL_RSLT_MODULE_SYSPM, 5))
+    (CY_RSLT_CREATE_EX(CY_RSLT_TYPE_ERROR, CY_RSLT_MODULE_ABSTRACTION_HAL, MTB_HAL_RSLT_MODULE_SYSPM, 2))
 
 /**
  * \}
@@ -180,67 +164,50 @@ typedef enum
  */
 typedef enum
 {
-    MTB_HAL_SYSPM_CB_CPU_SLEEP             = 0x01U,   /**< Flag for MCU sleep callback. */
-    MTB_HAL_SYSPM_CB_CPU_DEEPSLEEP         = 0x02U,   /**< Flag for MCU deep sleep callback. */
-    MTB_HAL_SYSPM_CB_CPU_DEEPSLEEP_RAM     = 0x04U,   /**< Flag for MCU deep sleep ram callback. */
-    MTB_HAL_SYSPM_CB_SYSTEM_HIBERNATE      = 0x08U,   /**< Flag for Hibernate callback. */
-    MTB_HAL_SYSPM_CB_SYSTEM_NORMAL         = 0x10U,   /**< Flag for Normal mode callback. */
-    MTB_HAL_SYSPM_CB_SYSTEM_LOW            = 0x20U,   /**< Flag for Low power mode callback. */
-    MTB_HAL_SYSPM_CB_SYSTEM_HIGH           = 0x40U    /**< Flag for High Performance mode callback.
-                                                       */
+/** Flag for MCU sleep callback. */
+    MTB_HAL_SYSPM_CB_CPU_SLEEP             = MTB_HAL_MAP_SYSPM_CB_SLEEP,
+/** Flag for MCU deep sleep callback. */
+    MTB_HAL_SYSPM_CB_CPU_DEEPSLEEP         = MTB_HAL_MAP_SYSPM_CB_DEEPSLEEP,
+/** Flag for MCU deep sleep ram callback. */
+    MTB_HAL_SYSPM_CB_CPU_DEEPSLEEP_RAM     = MTB_HAL_MAP_SYSPM_CB_DEEPSLEEP_RAM,
+/** Flag for Hibernate callback. */
+    MTB_HAL_SYSPM_CB_SYSTEM_HIBERNATE      = MTB_HAL_MAP_SYSPM_CB_HIBERNATE,
+/** Flag for Normal mode callback. */
+    MTB_HAL_SYSPM_CB_SYSTEM_NORMAL         = MTB_HAL_MAP_SYSPM_CB_NORMAL,
+/** Flag for Low power mode callback. */
+    MTB_HAL_SYSPM_CB_SYSTEM_LOW            = MTB_HAL_MAP_SYSPM_CB_LOW,
+/** Flag for High Performance mode callback. */
+    MTB_HAL_SYSPM_CB_SYSTEM_HIGH           = MTB_HAL_MAP_SYSPM_CB_HIGH
 } mtb_hal_syspm_callback_state_t;
-
-/** Define for enabling all system and MCU state callbacks .*/
-#define MTB_HAL_SYSPM_CALLBACK_STATE_ALL (MTB_HAL_SYSPM_CB_CPU_SLEEP\
-                                        | MTB_HAL_SYSPM_CB_CPU_DEEPSLEEP\
-                                        | MTB_HAL_SYSPM_CB_CPU_DEEPSLEEP_RAM\
-                                        | MTB_HAL_SYSPM_CB_SYSTEM_HIBERNATE\
-                                        | MTB_HAL_SYSPM_CB_SYSTEM_NORMAL\
-                                        | MTB_HAL_SYSPM_CB_SYSTEM_LOW\
-                                        | MTB_HAL_SYSPM_CB_SYSTEM_HIGH)
 
 /** Enumeration of the transition modes in custom callback. The general sequence
  * is: CHECK_READY, BEFORE_TRANSITION, AFTER_TRANSITION.
  * If any callback indicates that it is not able to change state as part of
  * CHECK_READY, CHECK_FAIL will be run instead of the BEFORE/AFTER_TRANSITION.
  */
-
-// HAL Next TODO - these can probably be put into mtb_hal_pdl_map.h
 typedef enum
 {
-    MTB_HAL_SYSPM_CHECK_READY              = 0x01U, /**< Callbacks with this mode are executed
-                                                       before entering into the
-                                                       low power mode. The purpose of this
-                                                          transition state is to check
-                                                       if the device is ready to enter the low power
-                                                          mode. The application
-                                                       must not perform any actions that would
-                                                          prevent transition after
-                                                       returning true for this mode. */
-    MTB_HAL_SYSPM_CHECK_FAIL               = 0x02U, /**< Callbacks with this mode are only executed
-                                                       if the callback returned true
-                                                       for MTB_HAL_SYSPM_CHECK_READY and a later
-                                                          callback returns false for
-                                                       MTB_HAL_SYSPM_CHECK_READY. This mode should
-                                                          roll back any changes made
-                                                       to avoid blocking transition made in
-                                                          MTB_HAL_SYSPM_CHECK_READY mode*/
-    MTB_HAL_SYSPM_BEFORE_TRANSITION        = 0x04U, /**< Callbacks with this mode are executed after
-                                                       the MTB_HAL_SYSPM_CHECK_READY
-                                                       callbacks' execution returns true. In this
-                                                          mode, the application must
-                                                       perform the actions to be done before
-                                                          entering into the low power mode. */
-    MTB_HAL_SYSPM_AFTER_TRANSITION         = 0x08U, /**< In this mode, the application must perform
-                                                       the actions to be done after
-                                                       exiting the low power mode. */
-    MTB_HAL_SYSPM_AFTER_DS_WFI_TRANSITION  = 0x10U  /**< Performs the actions to be done after
-                                                       exiting the Deepsleep low
-                                                       power mode if entered and before the
-                                                          interrupts are enabled.This mode is not
-                                                       invoked on all devices, see the
-                                                          implementation specific documentation for
-                                                          details. */
+    /** Callbacks with this mode are executed before entering into the low power mode. The purpose
+     * of this transition state is to check if the device is ready to enter the low power mode. The
+     * application must not perform any actions that would prevent transition after returning true
+     * for this mode. */
+    MTB_HAL_SYSPM_CHECK_READY              = MTB_HAL_MAP_SYSPM_CHECK_READY,
+    /** Callbacks with this mode are only executed if the callback returned true for
+     * MTB_HAL_SYSPM_CHECK_READY and a later callback returns false for MTB_HAL_SYSPM_CHECK_READY.
+     * This mode should roll back any changes made to avoid blocking transition made in
+     * MTB_HAL_SYSPM_CHECK_READY mode*/
+    MTB_HAL_SYSPM_CHECK_FAIL               = MTB_HAL_MAP_SYSPM_CHECK_FAIL,
+    /** Callbacks with this mode are executed after the MTB_HAL_SYSPM_CHECK_READY callbacks'
+     * execution returns true. In this mode, the callback must perform the actions to be done before
+     * entering into the low power mode. */
+    MTB_HAL_SYSPM_BEFORE_TRANSITION        = MTB_HAL_MAP_SYSPM_BEFORE_TRANSITION,
+    /** In this mode, the application must perform the actions to be done after exiting the low
+     * power mode. */
+    MTB_HAL_SYSPM_AFTER_TRANSITION         = MTB_HAL_MAP_SYSPM_AFTER_TRANSITION,
+    /** Performs the actions to be done after exiting the Deepsleep low power mode if entered and
+     * before the interrupts are enabled. This mode is not invoked on all devices, see the
+     * implementation specific documentation for details. */
+    MTB_HAL_SYSPM_AFTER_DS_WFI_TRANSITION  = MTB_HAL_MAP_SYSPM_AFTER_DS_WFI_TRANSITION
 } mtb_hal_syspm_callback_mode_t;
 
 /** The system wide custom action power callback type.
@@ -263,35 +230,35 @@ typedef struct mtb_hal_syspm_callback_data
 {
     /** Callback to run on power state change */
     mtb_hal_syspm_callback_t              callback;
-    /** Power states that should trigger calling the callback. Multiple
-     * \ref mtb_hal_syspm_callback_state_t values can be ored together. */
-    mtb_hal_syspm_callback_state_t        states;
+    /** Power states that should trigger calling the callback. */
+    mtb_hal_syspm_callback_state_t        state;
     /** Modes to ignore invoking the callback for. Multiple
      * \ref mtb_hal_syspm_callback_mode_t values can be ored together. */
     mtb_hal_syspm_callback_mode_t         ignore_modes;
     /** Argument value to provide to the callback. */
-    void* args;
-    /** Pointer to the next callback strucure. This should be initialized to NULL. */
-    struct mtb_hal_syspm_callback_data* next;
-} mtb_hal_syspm_callback_data_t;
+    void* arg;
+} mtb_hal_syspm_callback_params_t;
 
 /** Register the specified handler with the power manager to be notified of power
- * state changes. This is intended for application wide decisions. Peripherals handle
- * their ability to perform power transitions internally. This callback will be called
- * before any of the peripheral callbacks for \ref MTB_HAL_SYSPM_CHECK_READY and
- * \ref MTB_HAL_SYSPM_BEFORE_TRANSITION. This callback will be called after all peripheral
- * callback for \ref MTB_HAL_SYSPM_CHECK_FAIL and \ref MTB_HAL_SYSPM_AFTER_TRANSITION.
+ * state changes. This callback will be called before any of the peripheral callbacks
+ * for \ref MTB_HAL_SYSPM_CHECK_READY and \ref MTB_HAL_SYSPM_BEFORE_TRANSITION.
  * \note The callback will be executed from a critical section
  *
- * @param[in] callback_data The data for the callback to register
+ * @param[out] obj      The callback object. The caller must allocate the
+ *                      memory for this object, but the HAL will populate its
+ * @param[in] params    The paramers for the callback to register
+ * @return CY_RSLT_SUCCESS if the callback was successfully registered, otherwise an error
+
  */
-void mtb_hal_syspm_register_callback(mtb_hal_syspm_callback_data_t* callback_data);
+cy_rslt_t mtb_hal_syspm_register_callback(mtb_hal_syspm_callback_data_t* obj,
+                                          mtb_hal_syspm_callback_params_t* params);
 
 /** Removes the registered handler from the power manager so no future notifications are made.
  *
- * * @param[in] callback_data The data for the callback to unregister
+ * @param[in] obj The callback object to unregister.
+ * @return CY_RSLT_SUCCESS if the callback was successfully unregistered, otherwise an error
  */
-void mtb_hal_syspm_unregister_callback(mtb_hal_syspm_callback_data_t* callback_data);
+cy_rslt_t mtb_hal_syspm_unregister_callback(mtb_hal_syspm_callback_data_t* obj);
 
 /** Set CPU to sleep mode.
  *
@@ -336,7 +303,7 @@ void mtb_hal_syspm_unlock_deepsleep(void);
  *
  * @param[in]   lptimer_obj Pre-Initialized LPTimer object.
  * @param[in]   desired_ms  Desired number of ms to deep-sleep.
- * @param[out]  actual_ms   Actual number of ms that was spent in deep-sleep.
+ * @param[out]  actual_ms   Actual number of ms in which systick timer was disabled.
  *                          This value can range from 0 to desired_ms - 1
  *                          depending on how long the device was able to deep-sleep.
  * @return The status of the deep-sleep request.
@@ -377,5 +344,7 @@ mtb_hal_syspm_system_deep_sleep_mode_t mtb_hal_syspm_get_deepsleep_mode(void);
 #ifdef MTB_HAL_SYSPM_IMPL_HEADER
 #include MTB_HAL_SYSPM_IMPL_HEADER
 #endif /* MTB_HAL_SYSTEM_IMPL_HEADER */
+
+#endif // defined(MTB_HAL_DRIVER_AVAILABLE_SYSPM)
 
 /** \} group_hal_system */

@@ -59,6 +59,9 @@ When using HAL in an RTOS environment with the `RTOS_AWARE` component enabled, s
 
 It is not safe to invoke more than one operation on the same HAL driver instance at a given time. If multiple threads can potentially interact with a HAL driver instance, it is the caller's responsibility to implement mutual exclusion measures (e.g. RTOS mutex, RTOS semaphore) to ensure that only one thread at a time interacts with a given instance.
 
+## Data Cache Management
+Devices such as those in the XMC72 series contain a data cache (DCACHE). When working with DCACHE, it is important to be aware of issues related to cache coherency. The HAL contains code to perform cache management, but it also requires the application to be suitably structured. Refer to [DCACHE Management](docs/html/md_asset_dcache.html) for more information on this topic.
+
 ## More information
 * [API Reference Guide] (https://infineon.github.io/mtb-hal-psc3/html/modules.html)
 * [Cypress Semiconductor, an Infineon Technologies Company] (http://www.cypress.com)

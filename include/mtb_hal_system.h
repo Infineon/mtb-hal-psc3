@@ -72,6 +72,8 @@
 #include "cy_result.h"
 #include "mtb_hal_hw_types.h"
 
+#if defined(MTB_HAL_DRIVER_AVAILABLE_SYSTEM)
+
 #if defined(__cplusplus)
 extern "C" {
 #endif
@@ -162,6 +164,10 @@ cy_rslt_t mtb_hal_system_delay_ms(uint32_t milliseconds);
  * run any other RTOS tasks, however if the scheduler or a high priority interrupt
  * comes it they can take over anyway.
  *
+ * Note: The delay calculation does not account for interrupt processing. If the use case
+ * is sensitive to the timing precision of this delay, consider encapsulating this function
+ * within a critical section for protection against additional delay.
+ *
  * @param[in] microseconds The number of micro-seconds to delay for
  */
 void mtb_hal_system_delay_us(uint16_t microseconds);
@@ -191,5 +197,7 @@ cy_rslt_t mtb_hal_system_reset_device(void);
 #ifdef MTB_HAL_SYSTEM_IMPL_HEADER
 #include MTB_HAL_SYSTEM_IMPL_HEADER
 #endif /* MTB_HAL_SYSTEM_IMPL_HEADER */
+
+#endif // defined(MTB_HAL_DRIVER_AVAILABLE_SYSTEM)
 
 /** \} group_hal_system */

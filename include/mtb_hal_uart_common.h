@@ -49,7 +49,7 @@ extern "C" {
 /*******************************************************************************
 *                        Public Function Prototypes
 *******************************************************************************/
-/** Return the SCB data transfer width */
+/** Return the SCB data transfer width, in bytes */
 __STATIC_INLINE uint32_t _mtb_hal_scb_get_transfer_width(CySCB_Type* base)
 {
     uint32_t transfer_width = 0;
@@ -57,15 +57,15 @@ __STATIC_INLINE uint32_t _mtb_hal_scb_get_transfer_width(CySCB_Type* base)
     uint8_t mem_width = _FLD2VAL(SCB_CTRL_MEM_WIDTH, SCB_CTRL(base));
     if (CY_SCB_MEM_WIDTH_BYTE == mem_width)
     {
-        transfer_width = 8;
+        transfer_width = 1;
     }
     else if (CY_SCB_MEM_WIDTH_HALFWORD == mem_width)
     {
-        transfer_width = 16;
+        transfer_width = 2;
     }
     else
     {
-        transfer_width = 32;
+        transfer_width = 4;
     }
     return transfer_width;
 }

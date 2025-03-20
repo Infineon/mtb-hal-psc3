@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['hal_20driver_20availability_0',['HAL Driver Availability',['../group__group__hal__availability.html',1,'']]],
-  ['hal_20driver_20availability_20macros_1',['HAL Driver Availability Macros',['../group__group__hal__impl__availability.html',1,'']]],
-  ['hal_20drivers_2',['HAL Drivers',['../group__group__hal.html',1,'']]],
-  ['hal_20general_20types_2fmacros_3',['HAL General Types/Macros',['../group__group__hal__types.html',1,'']]]
+  ['dma_20_28direct_20memory_20access_29_0',['DMA (Direct Memory Access)',['../group__group__hal__dma.html',1,'(Global Namespace)'],['../group__group__hal__impl__dma.html',1,'(Global Namespace)']]],
+  ['dma_20hal_20results_1',['DMA HAL Results',['../group__group__hal__results__dma.html',1,'']]]
 ];

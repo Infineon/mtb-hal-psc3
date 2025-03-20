@@ -84,7 +84,8 @@ $(document).ready(function(){initNavTree('group__group__hal__impl.html',''); ini
 
 <div class="header">
   <div class="summary">
-<a href="#groups">API Reference</a>  </div>
+<a href="#groups">API Reference</a> &#124;
+<a href="#define-members">Macros</a>  </div>
   <div class="headertitle"><div class="title">Implementation Specific</div></div>
 </div><!--header-->
 <div class="contents">
@@ -142,17 +143,56 @@ Device Specific Errors</h1>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="groups" name="groups"></a>
 API Reference</h2></td></tr>
-<tr class="memitem:group__group__hal__impl__availability"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__impl__availability.html">HAL Driver Availability Macros</a></td></tr>
+<tr class="memitem:group__group__hal__impl__adc"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__impl__adc.html">ADC (Analog to Digital Converter)</a></td></tr>
+<tr class="memdesc:group__group__hal__impl__adc"><td class="mdescLeft">&#160;</td><td class="mdescRight">ADC reads on PSC3 do not automatically clear the read status after reading the result. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__group__hal__impl__dma"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__impl__dma.html">DMA (Direct Memory Access)</a></td></tr>
+<tr class="memdesc:group__group__hal__impl__dma"><td class="mdescLeft">&#160;</td><td class="mdescRight">DW (DataWire) is one of two DMA hardware implementations. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:group__group__hal__impl__hw__types"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__impl__hw__types.html">Specific Hardware Types</a></td></tr>
 <tr class="memdesc:group__group__hal__impl__hw__types"><td class="mdescLeft">&#160;</td><td class="mdescRight">Aliases for types which are part of the public HAL interface but whose representations need to vary per HAL implementation. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:group__group__hal__impl__nvm"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__impl__nvm.html">NVM (Onboard Non-Volatile Memory)</a></td></tr>
-<tr class="memdesc:group__group__hal__impl__nvm"><td class="mdescLeft">&#160;</td><td class="mdescRight">File Name: mtb_hal_nvm.c. <br /></td></tr>
+<tr class="memitem:group__group__hal__impl__lptimer"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__impl__lptimer.html">LPTimer (Low-Power Timer)</a></td></tr>
+<tr class="memdesc:group__group__hal__impl__lptimer"><td class="mdescLeft">&#160;</td><td class="mdescRight">The maximum number of ticks that can set to an LPTimer is 0xFFF0FFFF. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__group__hal__impl__syspm"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__impl__syspm.html">System Power Management</a></td></tr>
+<tr class="memdesc:group__group__hal__impl__syspm"><td class="mdescLeft">&#160;</td><td class="mdescRight">The Power Management has the following characteristics:<br  />
+ <a class="el" href="group__group__hal__syspm.html#gga691dc5889dbab1928b10cbaa4d0c34d4a943e0e33811979e063eaa3c4cca89a37">MTB_HAL_SYSPM_CB_SYSTEM_NORMAL</a> equates to the Low Power mode<br  />
+ <a class="el" href="group__group__hal__syspm.html#gga691dc5889dbab1928b10cbaa4d0c34d4a2d69e8f9b51e1f50e6b64166b8d64082">MTB_HAL_SYSPM_CB_SYSTEM_LOW</a> equates to the Ultra Low Power mode. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__group__hal__impl__trng"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__impl__trng.html">TRNG (True Random Number Generator)</a></td></tr>
+<tr class="memdesc:group__group__hal__impl__trng"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialization polynomial values for the True Random Number Generator. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__group__hal__impl__rtc"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__impl__rtc.html">RTC (Real Time Clock)</a></td></tr>
+<tr class="memdesc:group__group__hal__impl__rtc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Internally the RTC only stores the year as a two digit BCD value (0-99); no century information is stored. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:group__group__hal__impl__spi"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__impl__spi.html">SPI (Serial Peripheral Interface)</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:ga5362f6849364b94133e56d4f96955c3d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__impl.html#ga5362f6849364b94133e56d4f96955c3d">MTB_HAL_API_VERSION</a>&#160;&#160;&#160;(3)</td></tr>
+<tr class="memdesc:ga5362f6849364b94133e56d4f96955c3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Macro specifying the major version number of the HAL API.  <a href="group__group__hal__impl.html#ga5362f6849364b94133e56d4f96955c3d">More...</a><br /></td></tr>
+<tr class="separator:ga5362f6849364b94133e56d4f96955c3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="ga5362f6849364b94133e56d4f96955c3d" name="ga5362f6849364b94133e56d4f96955c3d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga5362f6849364b94133e56d4f96955c3d">&#9670;&nbsp;</a></span>MTB_HAL_API_VERSION</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MTB_HAL_API_VERSION&#160;&#160;&#160;(3)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Macro specifying the major version number of the HAL API. </p>
+<p >Since there are multiple HAL library implementations, this is not necessarily the same as the major version number of the library. It is instead intended as a single version number that can be used across implementation libraries to know what signatures to use in the case an API is updated in the future. Once an API is available, its API will remain consistant across libraries sharing the same version here. </p><dl class="section note"><dt>Note</dt><dd>Support for new drivers/functionality may be added without changing the version number, to check for whether a specific driver is available, the MTB_HAL_DRIVER_AVAILABLE_X macros defined in <a class="el" href="group__group__hal__availability.html">HAL Driver Availability</a> should be used. </dd></dl>
+
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part

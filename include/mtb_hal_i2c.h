@@ -94,7 +94,8 @@
 #include <stdbool.h>
 #include "cy_result.h"
 #include "mtb_hal_hw_types.h"
-#include "mtb_hal_pdl_map.h"
+
+#if defined(MTB_HAL_DRIVER_AVAILABLE_I2C)
 
 #if defined(__cplusplus)
 extern "C" {
@@ -445,5 +446,7 @@ cy_rslt_t mtb_hal_i2c_process_interrupt(mtb_hal_i2c_t* obj);
 #ifdef MTB_HAL_I2C_IMPL_HEADER
 #include MTB_HAL_I2C_IMPL_HEADER
 #endif /* MTB_HAL_I2C_IMPL_HEADER */
+
+#endif // defined(MTB_HAL_DRIVER_AVAILABLE_I2C)
 
 /** \} group_hal_i2c */

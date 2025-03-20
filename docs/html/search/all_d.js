@@ -1,8 +1,5 @@
 var searchData=
 [
-  ['raw_0',['raw',['../group__group__result.html#aa46cfbec8a99e1c9bce73b87f1f988c9',1,'cy_rslt_decode_t']]],
-  ['region_5fcount_1',['region_count',['../group__group__hal__nvm.html#a65c06df727ec049daafae955c195f984',1,'mtb_hal_nvm_info_t']]],
-  ['regions_2',['regions',['../group__group__hal__nvm.html#a17c1a11f78a4da1a14c127f2d3da2698',1,'mtb_hal_nvm_info_t']]],
-  ['result_20codes_3',['Result Codes',['../group__group__hal__results.html',1,'']]],
-  ['result_20type_4',['Result Type',['../group__group__result.html',1,'']]]
+  ['offset_0',['offset',['../group__group__hal__nvm.html#ab46ac70a6b0a62fe75ebfd7e069082a4',1,'mtb_hal_nvm_region_info_t']]],
+  ['op_5fin_5fcallback_1',['op_in_callback',['../structmtb__hal__i2c__t.html#aa7eff110ddece6b846087a969016e67d',1,'mtb_hal_i2c_t']]]
 ];

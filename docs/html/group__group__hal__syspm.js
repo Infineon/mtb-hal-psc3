@@ -1,14 +1,12 @@
 var group__group__hal__syspm =
 [
     [ "SYSPM HAL Results", "group__group__hal__results__syspm.html", "group__group__hal__results__syspm" ],
-    [ "mtb_hal_syspm_callback_data_t", "group__group__hal__syspm.html#structmtb__hal__syspm__callback__data__t", [
-      [ "callback", "group__group__hal__syspm.html#aac58da64e0ed09f863d4bc62038f0933", null ],
-      [ "states", "group__group__hal__syspm.html#a3a998c5d555234be680aa117972e9a3e", null ],
-      [ "ignore_modes", "group__group__hal__syspm.html#ac3a80d1f82965f3599a301fafca90e1b", null ],
-      [ "args", "group__group__hal__syspm.html#a1e094894c988f425135b5bf25761e4cd", null ],
-      [ "next", "group__group__hal__syspm.html#a04b8b24c7fc1e7ed80f10254100edbd8", null ]
+    [ "mtb_hal_syspm_callback_params_t", "group__group__hal__syspm.html#structmtb__hal__syspm__callback__params__t", [
+      [ "callback", "group__group__hal__syspm.html#a4808ef77290559ab95b8fcc97176bd4a", null ],
+      [ "state", "group__group__hal__syspm.html#a039495e6cfbcdb942f66998d8162e68f", null ],
+      [ "ignore_modes", "group__group__hal__syspm.html#a376edef28b00c3e2dccc261ddbe04b2f", null ],
+      [ "arg", "group__group__hal__syspm.html#a612861d2b0cf77c52226ce2d0f0e445e", null ]
     ] ],
-    [ "MTB_HAL_SYSPM_CALLBACK_STATE_ALL", "group__group__hal__syspm.html#ga2fed63b1c382cefcc2944425dad5490e", null ],
     [ "mtb_hal_syspm_callback_t", "group__group__hal__syspm.html#ga5ede0b91ce456162ef04f5f2c3296f54", null ],
     [ "mtb_hal_syspm_system_deep_sleep_mode_t", "group__group__hal__syspm.html#gac65483c92a89b178ab6a1a7c9ef8e947", [
       [ "MTB_HAL_SYSPM_SYSTEM_DEEPSLEEP_NONE", "group__group__hal__syspm.html#ggac65483c92a89b178ab6a1a7c9ef8e947a357246029610c0ceb8beb9edc48dcf3b", null ],
@@ -32,8 +30,8 @@ var group__group__hal__syspm =
       [ "MTB_HAL_SYSPM_AFTER_TRANSITION", "group__group__hal__syspm.html#gga8c1406573cb935a6e847b1914a492d70a80a5989f7fa33d043e1f54a3e2a12269", null ],
       [ "MTB_HAL_SYSPM_AFTER_DS_WFI_TRANSITION", "group__group__hal__syspm.html#gga8c1406573cb935a6e847b1914a492d70a319783ad99b59d408584fa1206f060d4", null ]
     ] ],
-    [ "mtb_hal_syspm_register_callback", "group__group__hal__syspm.html#ga610e95b779a2fb3603fde3356e4f8b6f", null ],
-    [ "mtb_hal_syspm_unregister_callback", "group__group__hal__syspm.html#ga192638c8d361c00449aba0fa98740aa9", null ],
+    [ "mtb_hal_syspm_register_callback", "group__group__hal__syspm.html#gacfc8d0cf40f48f91743367f70e43c48a", null ],
+    [ "mtb_hal_syspm_unregister_callback", "group__group__hal__syspm.html#ga88930aa9c4b67a4b78e4f83b517cc50f", null ],
     [ "mtb_hal_syspm_sleep", "group__group__hal__syspm.html#gaf861965317611e6a247fe20f18d25cdf", null ],
     [ "mtb_hal_syspm_deepsleep", "group__group__hal__syspm.html#gacfaa3dc405630a0acfc06a6bae7f511c", null ],
     [ "mtb_hal_syspm_lock_deepsleep", "group__group__hal__syspm.html#ga001357e514b21137e4a5aea186bb3376", null ],

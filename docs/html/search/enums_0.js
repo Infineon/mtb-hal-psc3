@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['_5fmtb_5fhal_5fsdxx_5fdata_5ftransfer_5fstatus_5ft_0',['_mtb_hal_sdxx_data_transfer_status_t',['../group__group__hal__impl__hw__types.html#gac1ee9d2300303ba1b0918e52db53912e',1,'mtb_hal_hw_types.h']]]
+  ['cy_5fen_5frslt_5fmodule_5ft_0',['cy_en_rslt_module_t',['../group__group__result.html#ga9008565cba0207520330a1cb8509a8d0',1,'cy_result.h']]],
+  ['cy_5fen_5frslt_5ftype_5ft_1',['cy_en_rslt_type_t',['../group__group__result.html#ga379d2c0a6a4ef22f04e53e8eb4c9ee79',1,'cy_result.h']]]
 ];

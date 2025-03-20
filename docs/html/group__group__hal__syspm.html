@@ -86,7 +86,6 @@ $(document).ready(function(){initNavTree('group__group__hal__syspm.html',''); in
   <div class="summary">
 <a href="#groups">API Reference</a> &#124;
 <a href="#nested-classes">Data Structures</a> &#124;
-<a href="#define-members">Macros</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
 <a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a>  </div>
@@ -95,16 +94,15 @@ $(document).ready(function(){initNavTree('group__group__hal__syspm.html',''); in
 <div class="contents">
 <a name="details" id="details"></a><h2 class="groupheader">General Description</h2>
 <p >Interface for changing power states and restricting when they are allowed. </p>
-<p >At the System level, the APIs are intended to allow the application to specify exactly what is happening. It can request changes to both the MCU Power State as well as the System Wide Power State. There are three supported MCU Power States:</p><ul>
+<p >There are three supported MCU Power States:</p><ul>
 <li>Active - This is the normal operating state of the MCU</li>
 <li>Sleep - In this state the MCU is no longer running. It can be woken up again from an interrupt. This state is reached by calling <a class="el" href="group__group__hal__syspm.html#gaf861965317611e6a247fe20f18d25cdf">mtb_hal_syspm_sleep</a>.</li>
 <li>Deep Sleep - In this state the MCU is no longer running. It can only be woken up by select interrupts. This state is reached by calling <a class="el" href="group__group__hal__syspm.html#gacfaa3dc405630a0acfc06a6bae7f511c">mtb_hal_syspm_deepsleep</a>.</li>
 </ul>
-<p >Any time a power state transition is requested a series of callbacks are invoked. This allows peripherals, or other parts of the application, to confirm they are not currently doing something that would not work in the requested power state. Middleware has the option to register a callback function(s) to be called on requested state transitions by callling <a class="el" href="group__group__hal__syspm.html#ga610e95b779a2fb3603fde3356e4f8b6f">mtb_hal_syspm_register_callback</a>. Each callback registered can specify the exact set of states ( <a class="el" href="group__group__hal__syspm.html#ga691dc5889dbab1928b10cbaa4d0c34d4">mtb_hal_syspm_callback_state_t</a> ) that it should be called for. Each callback is invoked multiple times as part of the transition process as defined by <a class="el" href="group__group__hal__syspm.html#ga8c1406573cb935a6e847b1914a492d70">mtb_hal_syspm_callback_mode_t</a>.</p>
-<p >At any point the code can lock the ability to enter deep sleep by calling <a class="el" href="group__group__hal__syspm.html#ga001357e514b21137e4a5aea186bb3376">mtb_hal_syspm_lock_deepsleep</a>. This should be done in critical blocks that need to continue remain active. When the critical work is complete, and the lock is no longer needed, it can be released by calling <a class="el" href="group__group__hal__syspm.html#ga120dcd9be700a41962cbf4d43afae8c8">mtb_hal_syspm_unlock_deepsleep</a>. The lock is a counter with a max count of USHRT_MAX. It must be locked/unlocked an equal number of times before the device is actually able to enter deep sleep.</p>
-<p >All peripherals are expected to operate in the default Active/Normal power state. Some peripherals (primarily analog) can operate in lower power states as well. These drivers will operate in all power states that the hardware supports.</p>
-<p >When power transitions are requested each type of peripheral has a default behavior. Peripherals that can continue to operate in the requested power mode do not interfere. Peripherals that are not currently active allow the transition, but make sure they restore their state if needed for when the device comes back. Peripherals that are active and cannot continue to work in the requested power state will block the transition.</p>
+<p >Some devices support multiple modes for the DeepSleep power state. The currently selected DeepSleep mode, which will be entered by <a class="el" href="group__group__hal__syspm.html#gacfaa3dc405630a0acfc06a6bae7f511c">mtb_hal_syspm_deepsleep</a>, can be determined via the <a class="el" href="group__group__hal__syspm.html#gaa74f4937237e9a9c925e1c1e92784ec0">mtb_hal_syspm_get_deepsleep_mode</a> function. Configuration of the DeepSleep mode can be performed via platform specific APIs (e.g. PDL).</p>
 <dl class="section note"><dt>Note</dt><dd>The power management functionality available depends on the availability of the features in the hardware. For detailed information about exactly what is supported on each device, refer to the Device Datasheet or Technical Reference Manual (TRM).</dd></dl>
+<p>Any time a power state transition is requested a series of callbacks are invoked. This allows peripherals, or other parts of the application, to confirm they are not currently doing something that would not work in the requested power state. Middleware has the option to register a callback function(s) to be called on requested state transitions by callling <a class="el" href="group__group__hal__syspm.html#gacfc8d0cf40f48f91743367f70e43c48a">mtb_hal_syspm_register_callback</a>. Each callback registered can specify the exact set of states ( <a class="el" href="group__group__hal__syspm.html#ga691dc5889dbab1928b10cbaa4d0c34d4">mtb_hal_syspm_callback_state_t</a> ) that it should be called for. Each callback is invoked multiple times as part of the transition process as defined by <a class="el" href="group__group__hal__syspm.html#ga8c1406573cb935a6e847b1914a492d70">mtb_hal_syspm_callback_mode_t</a>.</p>
+<p >At any point the code can lock the ability to enter deep sleep by calling <a class="el" href="group__group__hal__syspm.html#ga001357e514b21137e4a5aea186bb3376">mtb_hal_syspm_lock_deepsleep</a>. This should be done in critical blocks that need to continue remain active. When the critical work is complete, and the lock is no longer needed, it can be released by calling <a class="el" href="group__group__hal__syspm.html#ga120dcd9be700a41962cbf4d43afae8c8">mtb_hal_syspm_unlock_deepsleep</a>. The lock is a counter with a max count of USHRT_MAX. It must be locked/unlocked an equal number of times before the device is actually able to enter deep sleep.</p>
 <h1><a class="anchor" id="section_syspm_features"></a>
 Features</h1>
 <p >This driver provides control over multiple different types of power management and when those transitions are allowed:</p><ul>
@@ -124,8 +122,8 @@ Snippet 1: Simple deep sleep locking</h2>
 <div class="line">    <span class="comment">// Perform work that should not be interrupted by deepsleep</span></div>
 <div class="line"> </div>
 <div class="line">    <a class="code hl_function" href="group__group__hal__syspm.html#ga120dcd9be700a41962cbf4d43afae8c8">mtb_hal_syspm_unlock_deepsleep</a>();</div>
-<div class="ttc" id="agroup__group__hal__syspm_html_ga001357e514b21137e4a5aea186bb3376"><div class="ttname"><a href="group__group__hal__syspm.html#ga001357e514b21137e4a5aea186bb3376">mtb_hal_syspm_lock_deepsleep</a></div><div class="ttdeci">void mtb_hal_syspm_lock_deepsleep(void)</div><div class="ttdoc">Lock deep sleep.</div></div>
-<div class="ttc" id="agroup__group__hal__syspm_html_ga120dcd9be700a41962cbf4d43afae8c8"><div class="ttname"><a href="group__group__hal__syspm.html#ga120dcd9be700a41962cbf4d43afae8c8">mtb_hal_syspm_unlock_deepsleep</a></div><div class="ttdeci">void mtb_hal_syspm_unlock_deepsleep(void)</div><div class="ttdoc">Unlock deep sleep.</div></div>
+<div class="ttc" id="agroup__group__hal__syspm_html_ga001357e514b21137e4a5aea186bb3376"><div class="ttname"><a href="group__group__hal__syspm.html#ga001357e514b21137e4a5aea186bb3376">mtb_hal_syspm_lock_deepsleep</a></div><div class="ttdeci">void mtb_hal_syspm_lock_deepsleep(void)</div><div class="ttdoc">Lock deep sleep.</div><div class="ttdef"><b>Definition:</b> mtb_hal_syspm.c:326</div></div>
+<div class="ttc" id="agroup__group__hal__syspm_html_ga120dcd9be700a41962cbf4d43afae8c8"><div class="ttname"><a href="group__group__hal__syspm.html#ga120dcd9be700a41962cbf4d43afae8c8">mtb_hal_syspm_unlock_deepsleep</a></div><div class="ttdeci">void mtb_hal_syspm_unlock_deepsleep(void)</div><div class="ttdoc">Unlock deep sleep.</div><div class="ttdef"><b>Definition:</b> mtb_hal_syspm.c:339</div></div>
 </div><!-- fragment --><h2><a class="anchor" id="subsection_syspm_snippet_2"></a>
 Snippet 2: Calling different power state functions</h2>
 <p >The following snippet shows the different functions that exist to change power states on the device and how they can each be called. </p><div class="fragment"><div class="line">    <a class="code hl_typedef" href="group__group__result.html#gaca79700fcc701534ce61778a9bcf57d1">cy_rslt_t</a> rslt;</div>
@@ -136,16 +134,9 @@ Snippet 2: Calling different power state functions</h2>
 <div class="line">    <span class="comment">// Put the MCU to deep-sleep. Many peripherals will also stop.</span></div>
 <div class="line">    rslt = <a class="code hl_function" href="group__group__hal__syspm.html#gacfaa3dc405630a0acfc06a6bae7f511c">mtb_hal_syspm_deepsleep</a>();</div>
 <div class="line"> </div>
-<div class="line">    <span class="comment">// Put the system into a hibernate state. Most of the system will stop.</span></div>
-<div class="line">    rslt = mtb_hal_syspm_hibernate(MTB_HAL_SYSPM_HIBERNATE_WDT);</div>
-<div class="line"> </div>
-<div class="line">    <span class="comment">// Put the system into a low power state. Peripherals will continue to work, but some may have</span></div>
-<div class="line">    <span class="comment">// restrictions on operating clock frequency or voltages.</span></div>
-<div class="line">    rslt = mtb_hal_syspm_set_system_state(MTB_HAL_SYSPM_SYSTEM_LOW);</div>
-<div class="line"> </div>
-<div class="ttc" id="agroup__group__hal__syspm_html_gacfaa3dc405630a0acfc06a6bae7f511c"><div class="ttname"><a href="group__group__hal__syspm.html#gacfaa3dc405630a0acfc06a6bae7f511c">mtb_hal_syspm_deepsleep</a></div><div class="ttdeci">cy_rslt_t mtb_hal_syspm_deepsleep(void)</div><div class="ttdoc">Set CPU to deep sleep mode.</div></div>
+<div class="ttc" id="agroup__group__hal__syspm_html_gacfaa3dc405630a0acfc06a6bae7f511c"><div class="ttname"><a href="group__group__hal__syspm.html#gacfaa3dc405630a0acfc06a6bae7f511c">mtb_hal_syspm_deepsleep</a></div><div class="ttdeci">cy_rslt_t mtb_hal_syspm_deepsleep(void)</div><div class="ttdoc">Set CPU to deep sleep mode.</div><div class="ttdef"><b>Definition:</b> mtb_hal_syspm.c:351</div></div>
 <div class="ttc" id="agroup__group__hal__syspm_html_gaf861965317611e6a247fe20f18d25cdf"><div class="ttname"><a href="group__group__hal__syspm.html#gaf861965317611e6a247fe20f18d25cdf">mtb_hal_syspm_sleep</a></div><div class="ttdeci">cy_rslt_t mtb_hal_syspm_sleep(void)</div><div class="ttdoc">Set CPU to sleep mode.</div></div>
-<div class="ttc" id="agroup__group__result_html_gaca79700fcc701534ce61778a9bcf57d1"><div class="ttname"><a href="group__group__result.html#gaca79700fcc701534ce61778a9bcf57d1">cy_rslt_t</a></div><div class="ttdeci">uint32_t cy_rslt_t</div><div class="ttdoc">Provides the result of an operation as a structured bitfield.</div><div class="ttdef"><b>Definition:</b> cy_result.h:451</div></div>
+<div class="ttc" id="agroup__group__result_html_gaca79700fcc701534ce61778a9bcf57d1"><div class="ttname"><a href="group__group__result.html#gaca79700fcc701534ce61778a9bcf57d1">cy_rslt_t</a></div><div class="ttdeci">uint32_t cy_rslt_t</div><div class="ttdoc">Provides the result of an operation as a structured bitfield.</div><div class="ttdef"><b>Definition:</b> cy_result.h:457</div></div>
 </div><!-- fragment --><h2><a class="anchor" id="subsection_syspm_snippet_3"></a>
 Snippet 3: Using callbacks for application power management</h2>
 <p >The following snippet shows how to use the callback mechanisms to manage whether it is safe to enter low power modes. </p><div class="fragment"><div class="line"><span class="keywordtype">bool</span> syspm_app_callback(<a class="code hl_enumeration" href="group__group__hal__syspm.html#ga691dc5889dbab1928b10cbaa4d0c34d4">mtb_hal_syspm_callback_state_t</a> state, <a class="code hl_enumeration" href="group__group__hal__syspm.html#ga8c1406573cb935a6e847b1914a492d70">mtb_hal_syspm_callback_mode_t</a> mode,</div>
@@ -161,8 +152,8 @@ Snippet 3: Using callbacks for application power management</h2>
 <div class="line">            <span class="comment">// If it is OK the change, make sure nothing will invalidate this and return true.</span></div>
 <div class="line">            <span class="comment">// If it is not OK the change, return false.</span></div>
 <div class="line"> </div>
-<div class="line">            <span class="comment">// Example: prevent transition if requested mode is HIBERNATE.</span></div>
-<div class="line">            allow_transition = (state != <a class="code hl_enumvalue" href="group__group__hal__syspm.html#gga691dc5889dbab1928b10cbaa4d0c34d4aec8cf572dcb28aad02bfc4dea07ebd9b">MTB_HAL_SYSPM_CB_SYSTEM_HIBERNATE</a>);</div>
+<div class="line">            <span class="comment">// Example: prevent transition if requested mode is DEEPSLEEP.</span></div>
+<div class="line">            allow_transition = (state != <a class="code hl_enumvalue" href="group__group__hal__syspm.html#gga691dc5889dbab1928b10cbaa4d0c34d4a2e5fa0bd9e30a7b817c17a5ede6cd2c7">MTB_HAL_SYSPM_CB_CPU_DEEPSLEEP</a>);</div>
 <div class="line">            <span class="keywordflow">break</span>;</div>
 <div class="line"> </div>
 <div class="line">        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="group__group__hal__syspm.html#gga8c1406573cb935a6e847b1914a492d70aa1c11cc55900b51dff51056e2e80e6f9">MTB_HAL_SYSPM_CHECK_FAIL</a>:</div>
@@ -190,44 +181,58 @@ Snippet 3: Using callbacks for application power management</h2>
 <div class="line"><span class="keywordtype">void</span> snippet_mtb_hal_syspm_app_callback(<span class="keywordtype">void</span>)</div>
 <div class="line">{</div>
 <div class="line">    <a class="code hl_typedef" href="group__group__result.html#gaca79700fcc701534ce61778a9bcf57d1">cy_rslt_t</a>                   rslt;</div>
-<div class="line">    <a class="code hl_struct" href="group__group__hal__syspm.html#structmtb__hal__syspm__callback__data__t">mtb_hal_syspm_callback_data_t</a> callback_data =</div>
+<div class="line">    <span class="comment">// Register the same callback to be invoked for both Sleep and DeepSleep transitions</span></div>
+<div class="line">    <span class="comment">// The `state` argument can be used to differentiate the applicable state when</span></div>
+<div class="line">    <span class="comment">// the callback is invoked during a transition</span></div>
+<div class="line">    <a class="code hl_struct" href="group__group__hal__syspm.html#structmtb__hal__syspm__callback__params__t">mtb_hal_syspm_callback_params_t</a> params_sleep =</div>
 <div class="line">    {</div>
-<div class="line">        .<a class="code hl_variable" href="group__group__hal__syspm.html#aac58da64e0ed09f863d4bc62038f0933">callback</a> = syspm_app_callback,</div>
-<div class="line">        .states   =</div>
-<div class="line">            (<a class="code hl_enumeration" href="group__group__hal__syspm.html#ga691dc5889dbab1928b10cbaa4d0c34d4">mtb_hal_syspm_callback_state_t</a>)(<a class="code hl_enumvalue" href="group__group__hal__syspm.html#gga691dc5889dbab1928b10cbaa4d0c34d4aec8cf572dcb28aad02bfc4dea07ebd9b">MTB_HAL_SYSPM_CB_SYSTEM_HIBERNATE</a> |</div>
-<div class="line">                                             <a class="code hl_enumvalue" href="group__group__hal__syspm.html#gga691dc5889dbab1928b10cbaa4d0c34d4a2d69e8f9b51e1f50e6b64166b8d64082">MTB_HAL_SYSPM_CB_SYSTEM_LOW</a>),</div>
-<div class="line">        .args     = NULL,</div>
-<div class="line">        .next     = NULL,</div>
+<div class="line">        .<a class="code hl_variable" href="group__group__hal__syspm.html#a4808ef77290559ab95b8fcc97176bd4a">callback</a> = syspm_app_callback,</div>
+<div class="line">        .state    = <a class="code hl_enumvalue" href="group__group__hal__syspm.html#gga691dc5889dbab1928b10cbaa4d0c34d4a4479e16262e4ed0e800b013499825c1f">MTB_HAL_SYSPM_CB_CPU_SLEEP</a>,</div>
+<div class="line">        .arg      = NULL,</div>
 <div class="line">    };</div>
 <div class="line"> </div>
-<div class="line">    <a class="code hl_function" href="group__group__hal__syspm.html#ga610e95b779a2fb3603fde3356e4f8b6f">mtb_hal_syspm_register_callback</a>(&amp;callback_data);</div>
+<div class="line">    <a class="code hl_struct" href="group__group__hal__syspm.html#structmtb__hal__syspm__callback__params__t">mtb_hal_syspm_callback_params_t</a> params_deepsleep =</div>
+<div class="line">    {</div>
+<div class="line">        .<a class="code hl_variable" href="group__group__hal__syspm.html#a4808ef77290559ab95b8fcc97176bd4a">callback</a> = syspm_app_callback,</div>
+<div class="line">        .state    = <a class="code hl_enumvalue" href="group__group__hal__syspm.html#gga691dc5889dbab1928b10cbaa4d0c34d4a2e5fa0bd9e30a7b817c17a5ede6cd2c7">MTB_HAL_SYSPM_CB_CPU_DEEPSLEEP</a>,</div>
+<div class="line">        .arg      = NULL,</div>
+<div class="line">    };</div>
 <div class="line"> </div>
-<div class="line">    <span class="comment">// Attempt to hibernate. This will be rejected by the callback.</span></div>
-<div class="line">    rslt = mtb_hal_syspm_hibernate(MTB_HAL_SYSPM_HIBERNATE_RTC_ALARM);</div>
+<div class="line"> </div>
+<div class="line">    <a class="code hl_struct" href="group__group__hal__impl__hw__types.html#structmtb__hal__syspm__callback__data__t">mtb_hal_syspm_callback_data_t</a> cb_sleep;</div>
+<div class="line">    <a class="code hl_struct" href="group__group__hal__impl__hw__types.html#structmtb__hal__syspm__callback__data__t">mtb_hal_syspm_callback_data_t</a> cb_deepsleep;</div>
+<div class="line"> </div>
+<div class="line">    <a class="code hl_function" href="group__group__hal__syspm.html#gacfc8d0cf40f48f91743367f70e43c48a">mtb_hal_syspm_register_callback</a>(&amp;cb_sleep, &amp;params_sleep);</div>
+<div class="line">    <a class="code hl_function" href="group__group__hal__syspm.html#gacfc8d0cf40f48f91743367f70e43c48a">mtb_hal_syspm_register_callback</a>(&amp;cb_deepsleep, &amp;params_deepsleep);</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Attempt to DeepSleep. This will be rejected by the callback.</span></div>
+<div class="line">    rslt = <a class="code hl_function" href="group__group__hal__syspm.html#gacfaa3dc405630a0acfc06a6bae7f511c">mtb_hal_syspm_deepsleep</a>();</div>
 <div class="line">    <span class="keywordflow">if</span> (<a class="code hl_define" href="group__group__result.html#gaf58fac450d9fff4472f03ad68f6e546e">CY_RSLT_SUCCESS</a> != rslt)</div>
 <div class="line">    {</div>
-<div class="line">        <span class="comment">// If couldn&#39;t go to hibernate, try deep sleep.</span></div>
-<div class="line">        rslt = <a class="code hl_function" href="group__group__hal__syspm.html#gacfaa3dc405630a0acfc06a6bae7f511c">mtb_hal_syspm_deepsleep</a>();</div>
+<div class="line">        <span class="comment">// If the device couldn&#39;t go to DeepSleep, try sleep</span></div>
+<div class="line">        rslt = <a class="code hl_function" href="group__group__hal__syspm.html#gaf861965317611e6a247fe20f18d25cdf">mtb_hal_syspm_sleep</a>();</div>
 <div class="line">    }</div>
 <div class="line"> </div>
-<div class="line">    <a class="code hl_function" href="group__group__hal__syspm.html#ga192638c8d361c00449aba0fa98740aa9">mtb_hal_syspm_unregister_callback</a>(&amp;callback_data);</div>
+<div class="line">    <a class="code hl_function" href="group__group__hal__syspm.html#ga88930aa9c4b67a4b78e4f83b517cc50f">mtb_hal_syspm_unregister_callback</a>(&amp;cb_sleep);</div>
+<div class="line">    <a class="code hl_function" href="group__group__hal__syspm.html#ga88930aa9c4b67a4b78e4f83b517cc50f">mtb_hal_syspm_unregister_callback</a>(&amp;cb_deepsleep);</div>
 <div class="line">}</div>
 <div class="line"> </div>
 <div class="line"> </div>
-<div class="ttc" id="agroup__group__hal__syspm_html_aac58da64e0ed09f863d4bc62038f0933"><div class="ttname"><a href="group__group__hal__syspm.html#aac58da64e0ed09f863d4bc62038f0933">mtb_hal_syspm_callback_data_t::callback</a></div><div class="ttdeci">mtb_hal_syspm_callback_t callback</div><div class="ttdoc">Callback to run on power state change.</div><div class="ttdef"><b>Definition:</b> mtb_hal_syspm.h:265</div></div>
-<div class="ttc" id="agroup__group__hal__syspm_html_ga192638c8d361c00449aba0fa98740aa9"><div class="ttname"><a href="group__group__hal__syspm.html#ga192638c8d361c00449aba0fa98740aa9">mtb_hal_syspm_unregister_callback</a></div><div class="ttdeci">void mtb_hal_syspm_unregister_callback(mtb_hal_syspm_callback_data_t *callback_data)</div><div class="ttdoc">Removes the registered handler from the power manager so no future notifications are made.</div></div>
-<div class="ttc" id="agroup__group__hal__syspm_html_ga610e95b779a2fb3603fde3356e4f8b6f"><div class="ttname"><a href="group__group__hal__syspm.html#ga610e95b779a2fb3603fde3356e4f8b6f">mtb_hal_syspm_register_callback</a></div><div class="ttdeci">void mtb_hal_syspm_register_callback(mtb_hal_syspm_callback_data_t *callback_data)</div><div class="ttdoc">Register the specified handler with the power manager to be notified of power state changes.</div></div>
-<div class="ttc" id="agroup__group__hal__syspm_html_ga691dc5889dbab1928b10cbaa4d0c34d4"><div class="ttname"><a href="group__group__hal__syspm.html#ga691dc5889dbab1928b10cbaa4d0c34d4">mtb_hal_syspm_callback_state_t</a></div><div class="ttdeci">mtb_hal_syspm_callback_state_t</div><div class="ttdoc">Flags enum for the cpu state in a custom callback.</div><div class="ttdef"><b>Definition:</b> mtb_hal_syspm.h:182</div></div>
-<div class="ttc" id="agroup__group__hal__syspm_html_ga8c1406573cb935a6e847b1914a492d70"><div class="ttname"><a href="group__group__hal__syspm.html#ga8c1406573cb935a6e847b1914a492d70">mtb_hal_syspm_callback_mode_t</a></div><div class="ttdeci">mtb_hal_syspm_callback_mode_t</div><div class="ttdoc">Enumeration of the transition modes in custom callback.</div><div class="ttdef"><b>Definition:</b> mtb_hal_syspm.h:210</div></div>
-<div class="ttc" id="agroup__group__hal__syspm_html_gga691dc5889dbab1928b10cbaa4d0c34d4a2d69e8f9b51e1f50e6b64166b8d64082"><div class="ttname"><a href="group__group__hal__syspm.html#gga691dc5889dbab1928b10cbaa4d0c34d4a2d69e8f9b51e1f50e6b64166b8d64082">MTB_HAL_SYSPM_CB_SYSTEM_LOW</a></div><div class="ttdeci">@ MTB_HAL_SYSPM_CB_SYSTEM_LOW</div><div class="ttdoc">Flag for Low power mode callback.</div><div class="ttdef"><b>Definition:</b> mtb_hal_syspm.h:188</div></div>
-<div class="ttc" id="agroup__group__hal__syspm_html_gga691dc5889dbab1928b10cbaa4d0c34d4aec8cf572dcb28aad02bfc4dea07ebd9b"><div class="ttname"><a href="group__group__hal__syspm.html#gga691dc5889dbab1928b10cbaa4d0c34d4aec8cf572dcb28aad02bfc4dea07ebd9b">MTB_HAL_SYSPM_CB_SYSTEM_HIBERNATE</a></div><div class="ttdeci">@ MTB_HAL_SYSPM_CB_SYSTEM_HIBERNATE</div><div class="ttdoc">Flag for Hibernate callback.</div><div class="ttdef"><b>Definition:</b> mtb_hal_syspm.h:186</div></div>
-<div class="ttc" id="agroup__group__hal__syspm_html_gga8c1406573cb935a6e847b1914a492d70a1ec5f520b677b096ac6d7ffd4695236f"><div class="ttname"><a href="group__group__hal__syspm.html#gga8c1406573cb935a6e847b1914a492d70a1ec5f520b677b096ac6d7ffd4695236f">MTB_HAL_SYSPM_CHECK_READY</a></div><div class="ttdeci">@ MTB_HAL_SYSPM_CHECK_READY</div><div class="ttdoc">Callbacks with this mode are executed before entering into the low power mode.</div><div class="ttdef"><b>Definition:</b> mtb_hal_syspm.h:211</div></div>
-<div class="ttc" id="agroup__group__hal__syspm_html_gga8c1406573cb935a6e847b1914a492d70a319783ad99b59d408584fa1206f060d4"><div class="ttname"><a href="group__group__hal__syspm.html#gga8c1406573cb935a6e847b1914a492d70a319783ad99b59d408584fa1206f060d4">MTB_HAL_SYSPM_AFTER_DS_WFI_TRANSITION</a></div><div class="ttdeci">@ MTB_HAL_SYSPM_AFTER_DS_WFI_TRANSITION</div><div class="ttdoc">Performs the actions to be done after exiting the Deepsleep low power mode if entered and before the ...</div><div class="ttdef"><b>Definition:</b> mtb_hal_syspm.h:237</div></div>
-<div class="ttc" id="agroup__group__hal__syspm_html_gga8c1406573cb935a6e847b1914a492d70a80a5989f7fa33d043e1f54a3e2a12269"><div class="ttname"><a href="group__group__hal__syspm.html#gga8c1406573cb935a6e847b1914a492d70a80a5989f7fa33d043e1f54a3e2a12269">MTB_HAL_SYSPM_AFTER_TRANSITION</a></div><div class="ttdeci">@ MTB_HAL_SYSPM_AFTER_TRANSITION</div><div class="ttdoc">In this mode, the application must perform the actions to be done after exiting the low power mode.</div><div class="ttdef"><b>Definition:</b> mtb_hal_syspm.h:234</div></div>
-<div class="ttc" id="agroup__group__hal__syspm_html_gga8c1406573cb935a6e847b1914a492d70aa1c11cc55900b51dff51056e2e80e6f9"><div class="ttname"><a href="group__group__hal__syspm.html#gga8c1406573cb935a6e847b1914a492d70aa1c11cc55900b51dff51056e2e80e6f9">MTB_HAL_SYSPM_CHECK_FAIL</a></div><div class="ttdeci">@ MTB_HAL_SYSPM_CHECK_FAIL</div><div class="ttdoc">Callbacks with this mode are only executed if the callback returned true for MTB_HAL_SYSPM_CHECK_READ...</div><div class="ttdef"><b>Definition:</b> mtb_hal_syspm.h:220</div></div>
-<div class="ttc" id="agroup__group__hal__syspm_html_gga8c1406573cb935a6e847b1914a492d70ae907f6459924e85c66b1797012ad1613"><div class="ttname"><a href="group__group__hal__syspm.html#gga8c1406573cb935a6e847b1914a492d70ae907f6459924e85c66b1797012ad1613">MTB_HAL_SYSPM_BEFORE_TRANSITION</a></div><div class="ttdeci">@ MTB_HAL_SYSPM_BEFORE_TRANSITION</div><div class="ttdoc">Callbacks with this mode are executed after the MTB_HAL_SYSPM_CHECK_READY callbacks' execution return...</div><div class="ttdef"><b>Definition:</b> mtb_hal_syspm.h:228</div></div>
-<div class="ttc" id="agroup__group__hal__syspm_html_structmtb__hal__syspm__callback__data__t"><div class="ttname"><a href="group__group__hal__syspm.html#structmtb__hal__syspm__callback__data__t">mtb_hal_syspm_callback_data_t</a></div><div class="ttdoc">Power management callback data object.</div><div class="ttdef"><b>Definition:</b> mtb_hal_syspm.h:263</div></div>
-<div class="ttc" id="agroup__group__result_html_gaf58fac450d9fff4472f03ad68f6e546e"><div class="ttname"><a href="group__group__result.html#gaf58fac450d9fff4472f03ad68f6e546e">CY_RSLT_SUCCESS</a></div><div class="ttdeci">#define CY_RSLT_SUCCESS</div><div class="ttdoc">cy_rslt_t return value indicating success</div><div class="ttdef"><b>Definition:</b> cy_result.h:478</div></div>
+<div class="ttc" id="agroup__group__hal__impl__hw__types_html_structmtb__hal__syspm__callback__data__t"><div class="ttname"><a href="group__group__hal__impl__hw__types.html#structmtb__hal__syspm__callback__data__t">mtb_hal_syspm_callback_data_t</a></div><div class="ttdoc">SysPm callback data object.</div><div class="ttdef"><b>Definition:</b> mtb_hal_hw_types_syspm.h:54</div></div>
+<div class="ttc" id="agroup__group__hal__syspm_html_a4808ef77290559ab95b8fcc97176bd4a"><div class="ttname"><a href="group__group__hal__syspm.html#a4808ef77290559ab95b8fcc97176bd4a">mtb_hal_syspm_callback_params_t::callback</a></div><div class="ttdeci">mtb_hal_syspm_callback_t callback</div><div class="ttdoc">Callback to run on power state change.</div><div class="ttdef"><b>Definition:</b> mtb_hal_syspm.h:232</div></div>
+<div class="ttc" id="agroup__group__hal__syspm_html_ga691dc5889dbab1928b10cbaa4d0c34d4"><div class="ttname"><a href="group__group__hal__syspm.html#ga691dc5889dbab1928b10cbaa4d0c34d4">mtb_hal_syspm_callback_state_t</a></div><div class="ttdeci">mtb_hal_syspm_callback_state_t</div><div class="ttdoc">Flags enum for the cpu state in a custom callback.</div><div class="ttdef"><b>Definition:</b> mtb_hal_syspm.h:166</div></div>
+<div class="ttc" id="agroup__group__hal__syspm_html_ga88930aa9c4b67a4b78e4f83b517cc50f"><div class="ttname"><a href="group__group__hal__syspm.html#ga88930aa9c4b67a4b78e4f83b517cc50f">mtb_hal_syspm_unregister_callback</a></div><div class="ttdeci">cy_rslt_t mtb_hal_syspm_unregister_callback(mtb_hal_syspm_callback_data_t *obj)</div><div class="ttdoc">Removes the registered handler from the power manager so no future notifications are made.</div><div class="ttdef"><b>Definition:</b> mtb_hal_syspm.c:316</div></div>
+<div class="ttc" id="agroup__group__hal__syspm_html_ga8c1406573cb935a6e847b1914a492d70"><div class="ttname"><a href="group__group__hal__syspm.html#ga8c1406573cb935a6e847b1914a492d70">mtb_hal_syspm_callback_mode_t</a></div><div class="ttdeci">mtb_hal_syspm_callback_mode_t</div><div class="ttdoc">Enumeration of the transition modes in custom callback.</div><div class="ttdef"><b>Definition:</b> mtb_hal_syspm.h:189</div></div>
+<div class="ttc" id="agroup__group__hal__syspm_html_gacfc8d0cf40f48f91743367f70e43c48a"><div class="ttname"><a href="group__group__hal__syspm.html#gacfc8d0cf40f48f91743367f70e43c48a">mtb_hal_syspm_register_callback</a></div><div class="ttdeci">cy_rslt_t mtb_hal_syspm_register_callback(mtb_hal_syspm_callback_data_t *obj, mtb_hal_syspm_callback_params_t *params)</div><div class="ttdoc">Register the specified handler with the power manager to be notified of power state changes.</div><div class="ttdef"><b>Definition:</b> mtb_hal_syspm.c:288</div></div>
+<div class="ttc" id="agroup__group__hal__syspm_html_gga691dc5889dbab1928b10cbaa4d0c34d4a2e5fa0bd9e30a7b817c17a5ede6cd2c7"><div class="ttname"><a href="group__group__hal__syspm.html#gga691dc5889dbab1928b10cbaa4d0c34d4a2e5fa0bd9e30a7b817c17a5ede6cd2c7">MTB_HAL_SYSPM_CB_CPU_DEEPSLEEP</a></div><div class="ttdeci">@ MTB_HAL_SYSPM_CB_CPU_DEEPSLEEP</div><div class="ttdoc">Flag for MCU deep sleep callback.</div><div class="ttdef"><b>Definition:</b> mtb_hal_syspm.h:170</div></div>
+<div class="ttc" id="agroup__group__hal__syspm_html_gga691dc5889dbab1928b10cbaa4d0c34d4a4479e16262e4ed0e800b013499825c1f"><div class="ttname"><a href="group__group__hal__syspm.html#gga691dc5889dbab1928b10cbaa4d0c34d4a4479e16262e4ed0e800b013499825c1f">MTB_HAL_SYSPM_CB_CPU_SLEEP</a></div><div class="ttdeci">@ MTB_HAL_SYSPM_CB_CPU_SLEEP</div><div class="ttdoc">Flag for MCU sleep callback.</div><div class="ttdef"><b>Definition:</b> mtb_hal_syspm.h:168</div></div>
+<div class="ttc" id="agroup__group__hal__syspm_html_gga8c1406573cb935a6e847b1914a492d70a1ec5f520b677b096ac6d7ffd4695236f"><div class="ttname"><a href="group__group__hal__syspm.html#gga8c1406573cb935a6e847b1914a492d70a1ec5f520b677b096ac6d7ffd4695236f">MTB_HAL_SYSPM_CHECK_READY</a></div><div class="ttdeci">@ MTB_HAL_SYSPM_CHECK_READY</div><div class="ttdoc">Callbacks with this mode are executed before entering into the low power mode.</div><div class="ttdef"><b>Definition:</b> mtb_hal_syspm.h:194</div></div>
+<div class="ttc" id="agroup__group__hal__syspm_html_gga8c1406573cb935a6e847b1914a492d70a319783ad99b59d408584fa1206f060d4"><div class="ttname"><a href="group__group__hal__syspm.html#gga8c1406573cb935a6e847b1914a492d70a319783ad99b59d408584fa1206f060d4">MTB_HAL_SYSPM_AFTER_DS_WFI_TRANSITION</a></div><div class="ttdeci">@ MTB_HAL_SYSPM_AFTER_DS_WFI_TRANSITION</div><div class="ttdoc">Performs the actions to be done after exiting the Deepsleep low power mode if entered and before the ...</div><div class="ttdef"><b>Definition:</b> mtb_hal_syspm.h:210</div></div>
+<div class="ttc" id="agroup__group__hal__syspm_html_gga8c1406573cb935a6e847b1914a492d70a80a5989f7fa33d043e1f54a3e2a12269"><div class="ttname"><a href="group__group__hal__syspm.html#gga8c1406573cb935a6e847b1914a492d70a80a5989f7fa33d043e1f54a3e2a12269">MTB_HAL_SYSPM_AFTER_TRANSITION</a></div><div class="ttdeci">@ MTB_HAL_SYSPM_AFTER_TRANSITION</div><div class="ttdoc">In this mode, the application must perform the actions to be done after exiting the low power mode.</div><div class="ttdef"><b>Definition:</b> mtb_hal_syspm.h:206</div></div>
+<div class="ttc" id="agroup__group__hal__syspm_html_gga8c1406573cb935a6e847b1914a492d70aa1c11cc55900b51dff51056e2e80e6f9"><div class="ttname"><a href="group__group__hal__syspm.html#gga8c1406573cb935a6e847b1914a492d70aa1c11cc55900b51dff51056e2e80e6f9">MTB_HAL_SYSPM_CHECK_FAIL</a></div><div class="ttdeci">@ MTB_HAL_SYSPM_CHECK_FAIL</div><div class="ttdoc">Callbacks with this mode are only executed if the callback returned true for MTB_HAL_SYSPM_CHECK_READ...</div><div class="ttdef"><b>Definition:</b> mtb_hal_syspm.h:199</div></div>
+<div class="ttc" id="agroup__group__hal__syspm_html_gga8c1406573cb935a6e847b1914a492d70ae907f6459924e85c66b1797012ad1613"><div class="ttname"><a href="group__group__hal__syspm.html#gga8c1406573cb935a6e847b1914a492d70ae907f6459924e85c66b1797012ad1613">MTB_HAL_SYSPM_BEFORE_TRANSITION</a></div><div class="ttdeci">@ MTB_HAL_SYSPM_BEFORE_TRANSITION</div><div class="ttdoc">Callbacks with this mode are executed after the MTB_HAL_SYSPM_CHECK_READY callbacks' execution return...</div><div class="ttdef"><b>Definition:</b> mtb_hal_syspm.h:203</div></div>
+<div class="ttc" id="agroup__group__hal__syspm_html_structmtb__hal__syspm__callback__params__t"><div class="ttname"><a href="group__group__hal__syspm.html#structmtb__hal__syspm__callback__params__t">mtb_hal_syspm_callback_params_t</a></div><div class="ttdoc">Power management callback data object.</div><div class="ttdef"><b>Definition:</b> mtb_hal_syspm.h:230</div></div>
+<div class="ttc" id="agroup__group__result_html_gaf58fac450d9fff4472f03ad68f6e546e"><div class="ttname"><a href="group__group__result.html#gaf58fac450d9fff4472f03ad68f6e546e">CY_RSLT_SUCCESS</a></div><div class="ttdeci">#define CY_RSLT_SUCCESS</div><div class="ttdoc">cy_rslt_t return value indicating success</div><div class="ttdef"><b>Definition:</b> cy_result.h:484</div></div>
 </div><!-- fragment --> <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="groups" name="groups"></a>
 API Reference</h2></td></tr>
@@ -237,15 +242,9 @@ API Reference</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Data Structures</h2></td></tr>
-<tr class="memitem:structmtb__hal__syspm__callback__data__t"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__syspm.html#structmtb__hal__syspm__callback__data__t">mtb_hal_syspm_callback_data_t</a></td></tr>
-<tr class="memdesc:structmtb__hal__syspm__callback__data__t"><td class="mdescLeft">&#160;</td><td class="mdescRight">Power management callback data object.  <a href="group__group__hal__syspm.html#structmtb__hal__syspm__callback__data__t">More...</a><br /></td></tr>
-<tr class="separator:structmtb__hal__syspm__callback__data__t"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
-Macros</h2></td></tr>
-<tr class="memitem:ga2fed63b1c382cefcc2944425dad5490e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__syspm.html#ga2fed63b1c382cefcc2944425dad5490e">MTB_HAL_SYSPM_CALLBACK_STATE_ALL</a></td></tr>
-<tr class="memdesc:ga2fed63b1c382cefcc2944425dad5490e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Define for enabling all system and MCU state callbacks .  <a href="group__group__hal__syspm.html#ga2fed63b1c382cefcc2944425dad5490e">More...</a><br /></td></tr>
-<tr class="separator:ga2fed63b1c382cefcc2944425dad5490e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:structmtb__hal__syspm__callback__params__t"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__syspm.html#structmtb__hal__syspm__callback__params__t">mtb_hal_syspm_callback_params_t</a></td></tr>
+<tr class="memdesc:structmtb__hal__syspm__callback__params__t"><td class="mdescLeft">&#160;</td><td class="mdescRight">Power management callback data object.  <a href="group__group__hal__syspm.html#structmtb__hal__syspm__callback__params__t">More...</a><br /></td></tr>
+<tr class="separator:structmtb__hal__syspm__callback__params__t"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
@@ -268,33 +267,33 @@ Enumerations</h2></td></tr>
 <tr class="memdesc:gac65483c92a89b178ab6a1a7c9ef8e947"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enumeration of the system Deep Sleep modes.  <a href="group__group__hal__syspm.html#gac65483c92a89b178ab6a1a7c9ef8e947">More...</a><br /></td></tr>
 <tr class="separator:gac65483c92a89b178ab6a1a7c9ef8e947"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga691dc5889dbab1928b10cbaa4d0c34d4"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__syspm.html#ga691dc5889dbab1928b10cbaa4d0c34d4">mtb_hal_syspm_callback_state_t</a> { <br />
-&#160;&#160;<a class="el" href="group__group__hal__syspm.html#gga691dc5889dbab1928b10cbaa4d0c34d4a4479e16262e4ed0e800b013499825c1f">MTB_HAL_SYSPM_CB_CPU_SLEEP</a> = 0x01U
+&#160;&#160;<a class="el" href="group__group__hal__syspm.html#gga691dc5889dbab1928b10cbaa4d0c34d4a4479e16262e4ed0e800b013499825c1f">MTB_HAL_SYSPM_CB_CPU_SLEEP</a> = MTB_HAL_MAP_SYSPM_CB_SLEEP
 , <br />
-&#160;&#160;<a class="el" href="group__group__hal__syspm.html#gga691dc5889dbab1928b10cbaa4d0c34d4a2e5fa0bd9e30a7b817c17a5ede6cd2c7">MTB_HAL_SYSPM_CB_CPU_DEEPSLEEP</a> = 0x02U
+&#160;&#160;<a class="el" href="group__group__hal__syspm.html#gga691dc5889dbab1928b10cbaa4d0c34d4a2e5fa0bd9e30a7b817c17a5ede6cd2c7">MTB_HAL_SYSPM_CB_CPU_DEEPSLEEP</a> = MTB_HAL_MAP_SYSPM_CB_DEEPSLEEP
 , <br />
-&#160;&#160;<a class="el" href="group__group__hal__syspm.html#gga691dc5889dbab1928b10cbaa4d0c34d4abdc2c1ecbcda8a028bc783d750aeee0c">MTB_HAL_SYSPM_CB_CPU_DEEPSLEEP_RAM</a> = 0x04U
+&#160;&#160;<a class="el" href="group__group__hal__syspm.html#gga691dc5889dbab1928b10cbaa4d0c34d4abdc2c1ecbcda8a028bc783d750aeee0c">MTB_HAL_SYSPM_CB_CPU_DEEPSLEEP_RAM</a> = MTB_HAL_MAP_SYSPM_CB_DEEPSLEEP_RAM
 , <br />
-&#160;&#160;<a class="el" href="group__group__hal__syspm.html#gga691dc5889dbab1928b10cbaa4d0c34d4aec8cf572dcb28aad02bfc4dea07ebd9b">MTB_HAL_SYSPM_CB_SYSTEM_HIBERNATE</a> = 0x08U
+&#160;&#160;<a class="el" href="group__group__hal__syspm.html#gga691dc5889dbab1928b10cbaa4d0c34d4aec8cf572dcb28aad02bfc4dea07ebd9b">MTB_HAL_SYSPM_CB_SYSTEM_HIBERNATE</a> = MTB_HAL_MAP_SYSPM_CB_HIBERNATE
 , <br />
-&#160;&#160;<a class="el" href="group__group__hal__syspm.html#gga691dc5889dbab1928b10cbaa4d0c34d4a943e0e33811979e063eaa3c4cca89a37">MTB_HAL_SYSPM_CB_SYSTEM_NORMAL</a> = 0x10U
+&#160;&#160;<a class="el" href="group__group__hal__syspm.html#gga691dc5889dbab1928b10cbaa4d0c34d4a943e0e33811979e063eaa3c4cca89a37">MTB_HAL_SYSPM_CB_SYSTEM_NORMAL</a> = MTB_HAL_MAP_SYSPM_CB_NORMAL
 , <br />
-&#160;&#160;<a class="el" href="group__group__hal__syspm.html#gga691dc5889dbab1928b10cbaa4d0c34d4a2d69e8f9b51e1f50e6b64166b8d64082">MTB_HAL_SYSPM_CB_SYSTEM_LOW</a> = 0x20U
+&#160;&#160;<a class="el" href="group__group__hal__syspm.html#gga691dc5889dbab1928b10cbaa4d0c34d4a2d69e8f9b51e1f50e6b64166b8d64082">MTB_HAL_SYSPM_CB_SYSTEM_LOW</a> = MTB_HAL_MAP_SYSPM_CB_LOW
 , <br />
-&#160;&#160;<a class="el" href="group__group__hal__syspm.html#gga691dc5889dbab1928b10cbaa4d0c34d4a070f5803e00b0d463059a4611dc6e9a5">MTB_HAL_SYSPM_CB_SYSTEM_HIGH</a> = 0x40U
+&#160;&#160;<a class="el" href="group__group__hal__syspm.html#gga691dc5889dbab1928b10cbaa4d0c34d4a070f5803e00b0d463059a4611dc6e9a5">MTB_HAL_SYSPM_CB_SYSTEM_HIGH</a> = MTB_HAL_MAP_SYSPM_CB_HIGH
 <br />
  }</td></tr>
 <tr class="memdesc:ga691dc5889dbab1928b10cbaa4d0c34d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flags enum for the cpu state in a custom callback.  <a href="group__group__hal__syspm.html#ga691dc5889dbab1928b10cbaa4d0c34d4">More...</a><br /></td></tr>
 <tr class="separator:ga691dc5889dbab1928b10cbaa4d0c34d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga8c1406573cb935a6e847b1914a492d70"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__syspm.html#ga8c1406573cb935a6e847b1914a492d70">mtb_hal_syspm_callback_mode_t</a> { <br />
-&#160;&#160;<a class="el" href="group__group__hal__syspm.html#gga8c1406573cb935a6e847b1914a492d70a1ec5f520b677b096ac6d7ffd4695236f">MTB_HAL_SYSPM_CHECK_READY</a> = 0x01U
+&#160;&#160;<a class="el" href="group__group__hal__syspm.html#gga8c1406573cb935a6e847b1914a492d70a1ec5f520b677b096ac6d7ffd4695236f">MTB_HAL_SYSPM_CHECK_READY</a> = MTB_HAL_MAP_SYSPM_CHECK_READY
 , <br />
-&#160;&#160;<a class="el" href="group__group__hal__syspm.html#gga8c1406573cb935a6e847b1914a492d70aa1c11cc55900b51dff51056e2e80e6f9">MTB_HAL_SYSPM_CHECK_FAIL</a> = 0x02U
+&#160;&#160;<a class="el" href="group__group__hal__syspm.html#gga8c1406573cb935a6e847b1914a492d70aa1c11cc55900b51dff51056e2e80e6f9">MTB_HAL_SYSPM_CHECK_FAIL</a> = MTB_HAL_MAP_SYSPM_CHECK_FAIL
 , <br />
-&#160;&#160;<a class="el" href="group__group__hal__syspm.html#gga8c1406573cb935a6e847b1914a492d70ae907f6459924e85c66b1797012ad1613">MTB_HAL_SYSPM_BEFORE_TRANSITION</a> = 0x04U
+&#160;&#160;<a class="el" href="group__group__hal__syspm.html#gga8c1406573cb935a6e847b1914a492d70ae907f6459924e85c66b1797012ad1613">MTB_HAL_SYSPM_BEFORE_TRANSITION</a> = MTB_HAL_MAP_SYSPM_BEFORE_TRANSITION
 , <br />
-&#160;&#160;<a class="el" href="group__group__hal__syspm.html#gga8c1406573cb935a6e847b1914a492d70a80a5989f7fa33d043e1f54a3e2a12269">MTB_HAL_SYSPM_AFTER_TRANSITION</a> = 0x08U
+&#160;&#160;<a class="el" href="group__group__hal__syspm.html#gga8c1406573cb935a6e847b1914a492d70a80a5989f7fa33d043e1f54a3e2a12269">MTB_HAL_SYSPM_AFTER_TRANSITION</a> = MTB_HAL_MAP_SYSPM_AFTER_TRANSITION
 , <br />
-&#160;&#160;<a class="el" href="group__group__hal__syspm.html#gga8c1406573cb935a6e847b1914a492d70a319783ad99b59d408584fa1206f060d4">MTB_HAL_SYSPM_AFTER_DS_WFI_TRANSITION</a> = 0x10U
+&#160;&#160;<a class="el" href="group__group__hal__syspm.html#gga8c1406573cb935a6e847b1914a492d70a319783ad99b59d408584fa1206f060d4">MTB_HAL_SYSPM_AFTER_DS_WFI_TRANSITION</a> = MTB_HAL_MAP_SYSPM_AFTER_DS_WFI_TRANSITION
 <br />
  }</td></tr>
 <tr class="memdesc:ga8c1406573cb935a6e847b1914a492d70"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enumeration of the transition modes in custom callback.  <a href="group__group__hal__syspm.html#ga8c1406573cb935a6e847b1914a492d70">More...</a><br /></td></tr>
@@ -302,12 +301,12 @@ Enumerations</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ga610e95b779a2fb3603fde3356e4f8b6f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__syspm.html#ga610e95b779a2fb3603fde3356e4f8b6f">mtb_hal_syspm_register_callback</a> (<a class="el" href="group__group__hal__syspm.html#structmtb__hal__syspm__callback__data__t">mtb_hal_syspm_callback_data_t</a> *callback_data)</td></tr>
-<tr class="memdesc:ga610e95b779a2fb3603fde3356e4f8b6f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Register the specified handler with the power manager to be notified of power state changes.  <a href="group__group__hal__syspm.html#ga610e95b779a2fb3603fde3356e4f8b6f">More...</a><br /></td></tr>
-<tr class="separator:ga610e95b779a2fb3603fde3356e4f8b6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga192638c8d361c00449aba0fa98740aa9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__syspm.html#ga192638c8d361c00449aba0fa98740aa9">mtb_hal_syspm_unregister_callback</a> (<a class="el" href="group__group__hal__syspm.html#structmtb__hal__syspm__callback__data__t">mtb_hal_syspm_callback_data_t</a> *callback_data)</td></tr>
-<tr class="memdesc:ga192638c8d361c00449aba0fa98740aa9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes the registered handler from the power manager so no future notifications are made.  <a href="group__group__hal__syspm.html#ga192638c8d361c00449aba0fa98740aa9">More...</a><br /></td></tr>
-<tr class="separator:ga192638c8d361c00449aba0fa98740aa9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gacfc8d0cf40f48f91743367f70e43c48a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__group__result.html#gaca79700fcc701534ce61778a9bcf57d1">cy_rslt_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__syspm.html#gacfc8d0cf40f48f91743367f70e43c48a">mtb_hal_syspm_register_callback</a> (<a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__syspm__callback__data__t">mtb_hal_syspm_callback_data_t</a> *obj, <a class="el" href="group__group__hal__syspm.html#structmtb__hal__syspm__callback__params__t">mtb_hal_syspm_callback_params_t</a> *params)</td></tr>
+<tr class="memdesc:gacfc8d0cf40f48f91743367f70e43c48a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Register the specified handler with the power manager to be notified of power state changes.  <a href="group__group__hal__syspm.html#gacfc8d0cf40f48f91743367f70e43c48a">More...</a><br /></td></tr>
+<tr class="separator:gacfc8d0cf40f48f91743367f70e43c48a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga88930aa9c4b67a4b78e4f83b517cc50f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__group__result.html#gaca79700fcc701534ce61778a9bcf57d1">cy_rslt_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__syspm.html#ga88930aa9c4b67a4b78e4f83b517cc50f">mtb_hal_syspm_unregister_callback</a> (<a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__syspm__callback__data__t">mtb_hal_syspm_callback_data_t</a> *obj)</td></tr>
+<tr class="memdesc:ga88930aa9c4b67a4b78e4f83b517cc50f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes the registered handler from the power manager so no future notifications are made.  <a href="group__group__hal__syspm.html#ga88930aa9c4b67a4b78e4f83b517cc50f">More...</a><br /></td></tr>
+<tr class="separator:ga88930aa9c4b67a4b78e4f83b517cc50f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaf861965317611e6a247fe20f18d25cdf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__group__result.html#gaca79700fcc701534ce61778a9bcf57d1">cy_rslt_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__syspm.html#gaf861965317611e6a247fe20f18d25cdf">mtb_hal_syspm_sleep</a> (void)</td></tr>
 <tr class="memdesc:gaf861965317611e6a247fe20f18d25cdf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set CPU to sleep mode.  <a href="group__group__hal__syspm.html#gaf861965317611e6a247fe20f18d25cdf">More...</a><br /></td></tr>
 <tr class="separator:gaf861965317611e6a247fe20f18d25cdf"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -320,10 +319,10 @@ Functions</h2></td></tr>
 <tr class="memitem:ga120dcd9be700a41962cbf4d43afae8c8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__syspm.html#ga120dcd9be700a41962cbf4d43afae8c8">mtb_hal_syspm_unlock_deepsleep</a> (void)</td></tr>
 <tr class="memdesc:ga120dcd9be700a41962cbf4d43afae8c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unlock deep sleep.  <a href="group__group__hal__syspm.html#ga120dcd9be700a41962cbf4d43afae8c8">More...</a><br /></td></tr>
 <tr class="separator:ga120dcd9be700a41962cbf4d43afae8c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga34e4d3222a2d65f31f177c9155a36dfc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__group__result.html#gaca79700fcc701534ce61778a9bcf57d1">cy_rslt_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__syspm.html#ga34e4d3222a2d65f31f177c9155a36dfc">mtb_hal_syspm_tickless_deepsleep</a> (<a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__lptimer__t">mtb_hal_lptimer_t</a> *lptimer_obj, uint32_t desired_ms, uint32_t *actual_ms)</td></tr>
+<tr class="memitem:ga34e4d3222a2d65f31f177c9155a36dfc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__group__result.html#gaca79700fcc701534ce61778a9bcf57d1">cy_rslt_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__syspm.html#ga34e4d3222a2d65f31f177c9155a36dfc">mtb_hal_syspm_tickless_deepsleep</a> (mtb_hal_lptimer_t *lptimer_obj, uint32_t desired_ms, uint32_t *actual_ms)</td></tr>
 <tr class="memdesc:ga34e4d3222a2d65f31f177c9155a36dfc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Timed deep-sleep without system timer.  <a href="group__group__hal__syspm.html#ga34e4d3222a2d65f31f177c9155a36dfc">More...</a><br /></td></tr>
 <tr class="separator:ga34e4d3222a2d65f31f177c9155a36dfc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gafe35e11b5d4ab953a6556da3d3f0560f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__group__result.html#gaca79700fcc701534ce61778a9bcf57d1">cy_rslt_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__syspm.html#gafe35e11b5d4ab953a6556da3d3f0560f">mtb_hal_syspm_tickless_sleep</a> (<a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__lptimer__t">mtb_hal_lptimer_t</a> *lptimer_obj, uint32_t desired_ms, uint32_t *actual_ms)</td></tr>
+<tr class="memitem:gafe35e11b5d4ab953a6556da3d3f0560f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__group__result.html#gaca79700fcc701534ce61778a9bcf57d1">cy_rslt_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__syspm.html#gafe35e11b5d4ab953a6556da3d3f0560f">mtb_hal_syspm_tickless_sleep</a> (mtb_hal_lptimer_t *lptimer_obj, uint32_t desired_ms, uint32_t *actual_ms)</td></tr>
 <tr class="memdesc:gafe35e11b5d4ab953a6556da3d3f0560f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Timed sleep without system timer.  <a href="group__group__hal__syspm.html#gafe35e11b5d4ab953a6556da3d3f0560f">More...</a><br /></td></tr>
 <tr class="separator:gafe35e11b5d4ab953a6556da3d3f0560f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaa74f4937237e9a9c925e1c1e92784ec0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__group__hal__syspm.html#gac65483c92a89b178ab6a1a7c9ef8e947">mtb_hal_syspm_system_deep_sleep_mode_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__syspm.html#gaa74f4937237e9a9c925e1c1e92784ec0">mtb_hal_syspm_get_deepsleep_mode</a> (void)</td></tr>
@@ -331,82 +330,45 @@ Functions</h2></td></tr>
 <tr class="separator:gaa74f4937237e9a9c925e1c1e92784ec0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <hr/><h2 class="groupheader">Data Structure Documentation</h2>
-<a name="structmtb__hal__syspm__callback__data__t" id="structmtb__hal__syspm__callback__data__t"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#structmtb__hal__syspm__callback__data__t">&#9670;&nbsp;</a></span>mtb_hal_syspm_callback_data_t</h2>
+<a name="structmtb__hal__syspm__callback__params__t" id="structmtb__hal__syspm__callback__params__t"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#structmtb__hal__syspm__callback__params__t">&#9670;&nbsp;</a></span>mtb_hal_syspm_callback_params_t</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">struct mtb_hal_syspm_callback_data_t</td>
+          <td class="memname">struct mtb_hal_syspm_callback_params_t</td>
         </tr>
       </table>
 </div><div class="memdoc">
 <table class="fieldtable">
 <tr><th colspan="3">Data Fields</th></tr>
 <tr><td class="fieldtype">
-<a id="aac58da64e0ed09f863d4bc62038f0933" name="aac58da64e0ed09f863d4bc62038f0933"></a><a class="el" href="group__group__hal__syspm.html#ga5ede0b91ce456162ef04f5f2c3296f54">mtb_hal_syspm_callback_t</a></td>
+<a id="a4808ef77290559ab95b8fcc97176bd4a" name="a4808ef77290559ab95b8fcc97176bd4a"></a><a class="el" href="group__group__hal__syspm.html#ga5ede0b91ce456162ef04f5f2c3296f54">mtb_hal_syspm_callback_t</a></td>
 <td class="fieldname">
 callback</td>
 <td class="fielddoc">
 Callback to run on power state change. </td></tr>
 <tr><td class="fieldtype">
-<a id="a3a998c5d555234be680aa117972e9a3e" name="a3a998c5d555234be680aa117972e9a3e"></a><a class="el" href="group__group__hal__syspm.html#ga691dc5889dbab1928b10cbaa4d0c34d4">mtb_hal_syspm_callback_state_t</a></td>
+<a id="a039495e6cfbcdb942f66998d8162e68f" name="a039495e6cfbcdb942f66998d8162e68f"></a><a class="el" href="group__group__hal__syspm.html#ga691dc5889dbab1928b10cbaa4d0c34d4">mtb_hal_syspm_callback_state_t</a></td>
 <td class="fieldname">
-states</td>
+state</td>
 <td class="fielddoc">
-Power states that should trigger calling the callback. <p >Multiple <a class="el" href="group__group__hal__syspm.html#ga691dc5889dbab1928b10cbaa4d0c34d4">mtb_hal_syspm_callback_state_t</a> values can be ored together. </p>
-</td></tr>
+Power states that should trigger calling the callback. </td></tr>
 <tr><td class="fieldtype">
-<a id="ac3a80d1f82965f3599a301fafca90e1b" name="ac3a80d1f82965f3599a301fafca90e1b"></a><a class="el" href="group__group__hal__syspm.html#ga8c1406573cb935a6e847b1914a492d70">mtb_hal_syspm_callback_mode_t</a></td>
+<a id="a376edef28b00c3e2dccc261ddbe04b2f" name="a376edef28b00c3e2dccc261ddbe04b2f"></a><a class="el" href="group__group__hal__syspm.html#ga8c1406573cb935a6e847b1914a492d70">mtb_hal_syspm_callback_mode_t</a></td>
 <td class="fieldname">
 ignore_modes</td>
 <td class="fielddoc">
 Modes to ignore invoking the callback for. <p >Multiple <a class="el" href="group__group__hal__syspm.html#ga8c1406573cb935a6e847b1914a492d70">mtb_hal_syspm_callback_mode_t</a> values can be ored together. </p>
 </td></tr>
 <tr><td class="fieldtype">
-<a id="a1e094894c988f425135b5bf25761e4cd" name="a1e094894c988f425135b5bf25761e4cd"></a>void *</td>
+<a id="a612861d2b0cf77c52226ce2d0f0e445e" name="a612861d2b0cf77c52226ce2d0f0e445e"></a>void *</td>
 <td class="fieldname">
-args</td>
+arg</td>
 <td class="fielddoc">
 Argument value to provide to the callback. </td></tr>
-<tr><td class="fieldtype">
-<a id="a04b8b24c7fc1e7ed80f10254100edbd8" name="a04b8b24c7fc1e7ed80f10254100edbd8"></a>struct mtb_hal_syspm_callback_data *</td>
-<td class="fieldname">
-next</td>
-<td class="fielddoc">
-Pointer to the next callback strucure. <p >This should be initialized to NULL. </p>
-</td></tr>
 </table>
-
-</div>
-</div>
-<h2 class="groupheader">Macro Definition Documentation</h2>
-<a id="ga2fed63b1c382cefcc2944425dad5490e" name="ga2fed63b1c382cefcc2944425dad5490e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga2fed63b1c382cefcc2944425dad5490e">&#9670;&nbsp;</a></span>MTB_HAL_SYSPM_CALLBACK_STATE_ALL</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define MTB_HAL_SYSPM_CALLBACK_STATE_ALL</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">                                        (<a class="code hl_enumvalue" href="group__group__hal__syspm.html#gga691dc5889dbab1928b10cbaa4d0c34d4a4479e16262e4ed0e800b013499825c1f">MTB_HAL_SYSPM_CB_CPU_SLEEP</a>\</div>
-<div class="line">                                        | <a class="code hl_enumvalue" href="group__group__hal__syspm.html#gga691dc5889dbab1928b10cbaa4d0c34d4a2e5fa0bd9e30a7b817c17a5ede6cd2c7">MTB_HAL_SYSPM_CB_CPU_DEEPSLEEP</a>\</div>
-<div class="line">                                        | <a class="code hl_enumvalue" href="group__group__hal__syspm.html#gga691dc5889dbab1928b10cbaa4d0c34d4abdc2c1ecbcda8a028bc783d750aeee0c">MTB_HAL_SYSPM_CB_CPU_DEEPSLEEP_RAM</a>\</div>
-<div class="line">                                        | <a class="code hl_enumvalue" href="group__group__hal__syspm.html#gga691dc5889dbab1928b10cbaa4d0c34d4aec8cf572dcb28aad02bfc4dea07ebd9b">MTB_HAL_SYSPM_CB_SYSTEM_HIBERNATE</a>\</div>
-<div class="line">                                        | <a class="code hl_enumvalue" href="group__group__hal__syspm.html#gga691dc5889dbab1928b10cbaa4d0c34d4a943e0e33811979e063eaa3c4cca89a37">MTB_HAL_SYSPM_CB_SYSTEM_NORMAL</a>\</div>
-<div class="line">                                        | <a class="code hl_enumvalue" href="group__group__hal__syspm.html#gga691dc5889dbab1928b10cbaa4d0c34d4a2d69e8f9b51e1f50e6b64166b8d64082">MTB_HAL_SYSPM_CB_SYSTEM_LOW</a>\</div>
-<div class="line">                                        | <a class="code hl_enumvalue" href="group__group__hal__syspm.html#gga691dc5889dbab1928b10cbaa4d0c34d4a070f5803e00b0d463059a4611dc6e9a5">MTB_HAL_SYSPM_CB_SYSTEM_HIGH</a>)</div>
-<div class="ttc" id="agroup__group__hal__syspm_html_gga691dc5889dbab1928b10cbaa4d0c34d4a070f5803e00b0d463059a4611dc6e9a5"><div class="ttname"><a href="group__group__hal__syspm.html#gga691dc5889dbab1928b10cbaa4d0c34d4a070f5803e00b0d463059a4611dc6e9a5">MTB_HAL_SYSPM_CB_SYSTEM_HIGH</a></div><div class="ttdeci">@ MTB_HAL_SYSPM_CB_SYSTEM_HIGH</div><div class="ttdoc">Flag for High Performance mode callback.</div><div class="ttdef"><b>Definition:</b> mtb_hal_syspm.h:189</div></div>
-<div class="ttc" id="agroup__group__hal__syspm_html_gga691dc5889dbab1928b10cbaa4d0c34d4a2e5fa0bd9e30a7b817c17a5ede6cd2c7"><div class="ttname"><a href="group__group__hal__syspm.html#gga691dc5889dbab1928b10cbaa4d0c34d4a2e5fa0bd9e30a7b817c17a5ede6cd2c7">MTB_HAL_SYSPM_CB_CPU_DEEPSLEEP</a></div><div class="ttdeci">@ MTB_HAL_SYSPM_CB_CPU_DEEPSLEEP</div><div class="ttdoc">Flag for MCU deep sleep callback.</div><div class="ttdef"><b>Definition:</b> mtb_hal_syspm.h:184</div></div>
-<div class="ttc" id="agroup__group__hal__syspm_html_gga691dc5889dbab1928b10cbaa4d0c34d4a4479e16262e4ed0e800b013499825c1f"><div class="ttname"><a href="group__group__hal__syspm.html#gga691dc5889dbab1928b10cbaa4d0c34d4a4479e16262e4ed0e800b013499825c1f">MTB_HAL_SYSPM_CB_CPU_SLEEP</a></div><div class="ttdeci">@ MTB_HAL_SYSPM_CB_CPU_SLEEP</div><div class="ttdoc">Flag for MCU sleep callback.</div><div class="ttdef"><b>Definition:</b> mtb_hal_syspm.h:183</div></div>
-<div class="ttc" id="agroup__group__hal__syspm_html_gga691dc5889dbab1928b10cbaa4d0c34d4a943e0e33811979e063eaa3c4cca89a37"><div class="ttname"><a href="group__group__hal__syspm.html#gga691dc5889dbab1928b10cbaa4d0c34d4a943e0e33811979e063eaa3c4cca89a37">MTB_HAL_SYSPM_CB_SYSTEM_NORMAL</a></div><div class="ttdeci">@ MTB_HAL_SYSPM_CB_SYSTEM_NORMAL</div><div class="ttdoc">Flag for Normal mode callback.</div><div class="ttdef"><b>Definition:</b> mtb_hal_syspm.h:187</div></div>
-<div class="ttc" id="agroup__group__hal__syspm_html_gga691dc5889dbab1928b10cbaa4d0c34d4abdc2c1ecbcda8a028bc783d750aeee0c"><div class="ttname"><a href="group__group__hal__syspm.html#gga691dc5889dbab1928b10cbaa4d0c34d4abdc2c1ecbcda8a028bc783d750aeee0c">MTB_HAL_SYSPM_CB_CPU_DEEPSLEEP_RAM</a></div><div class="ttdeci">@ MTB_HAL_SYSPM_CB_CPU_DEEPSLEEP_RAM</div><div class="ttdoc">Flag for MCU deep sleep ram callback.</div><div class="ttdef"><b>Definition:</b> mtb_hal_syspm.h:185</div></div>
-</div><!-- fragment -->
-<p>Define for enabling all system and MCU state callbacks . </p>
 
 </div>
 </div>
@@ -521,70 +483,81 @@ Pointer to the next callback strucure. <p >This should be initialized to NULL. <
 <p >This mode should roll back any changes made to avoid blocking transition made in MTB_HAL_SYSPM_CHECK_READY mode </p>
 </td></tr>
 <tr><td class="fieldname"><a id="gga8c1406573cb935a6e847b1914a492d70ae907f6459924e85c66b1797012ad1613" name="gga8c1406573cb935a6e847b1914a492d70ae907f6459924e85c66b1797012ad1613"></a>MTB_HAL_SYSPM_BEFORE_TRANSITION&#160;</td><td class="fielddoc"><p >Callbacks with this mode are executed after the MTB_HAL_SYSPM_CHECK_READY callbacks' execution returns true. </p>
-<p >In this mode, the application must perform the actions to be done before entering into the low power mode. </p>
+<p >In this mode, the callback must perform the actions to be done before entering into the low power mode. </p>
 </td></tr>
 <tr><td class="fieldname"><a id="gga8c1406573cb935a6e847b1914a492d70a80a5989f7fa33d043e1f54a3e2a12269" name="gga8c1406573cb935a6e847b1914a492d70a80a5989f7fa33d043e1f54a3e2a12269"></a>MTB_HAL_SYSPM_AFTER_TRANSITION&#160;</td><td class="fielddoc"><p >In this mode, the application must perform the actions to be done after exiting the low power mode. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="gga8c1406573cb935a6e847b1914a492d70a319783ad99b59d408584fa1206f060d4" name="gga8c1406573cb935a6e847b1914a492d70a319783ad99b59d408584fa1206f060d4"></a>MTB_HAL_SYSPM_AFTER_DS_WFI_TRANSITION&#160;</td><td class="fielddoc"><p >Performs the actions to be done after exiting the Deepsleep low power mode if entered and before the interrupts are enabled.This mode is not invoked on all devices, see the implementation specific documentation for details. </p>
+<tr><td class="fieldname"><a id="gga8c1406573cb935a6e847b1914a492d70a319783ad99b59d408584fa1206f060d4" name="gga8c1406573cb935a6e847b1914a492d70a319783ad99b59d408584fa1206f060d4"></a>MTB_HAL_SYSPM_AFTER_DS_WFI_TRANSITION&#160;</td><td class="fielddoc"><p >Performs the actions to be done after exiting the Deepsleep low power mode if entered and before the interrupts are enabled. </p>
+<p >This mode is not invoked on all devices, see the implementation specific documentation for details. </p>
 </td></tr>
 </table>
 
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="ga610e95b779a2fb3603fde3356e4f8b6f" name="ga610e95b779a2fb3603fde3356e4f8b6f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga610e95b779a2fb3603fde3356e4f8b6f">&#9670;&nbsp;</a></span>mtb_hal_syspm_register_callback()</h2>
+<a id="gacfc8d0cf40f48f91743367f70e43c48a" name="gacfc8d0cf40f48f91743367f70e43c48a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gacfc8d0cf40f48f91743367f70e43c48a">&#9670;&nbsp;</a></span>mtb_hal_syspm_register_callback()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void mtb_hal_syspm_register_callback </td>
+          <td class="memname"><a class="el" href="group__group__result.html#gaca79700fcc701534ce61778a9bcf57d1">cy_rslt_t</a> mtb_hal_syspm_register_callback </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="group__group__hal__syspm.html#structmtb__hal__syspm__callback__data__t">mtb_hal_syspm_callback_data_t</a> *&#160;</td>
-          <td class="paramname"><em>callback_data</em></td><td>)</td>
+          <td class="paramtype"><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__syspm__callback__data__t">mtb_hal_syspm_callback_data_t</a> *&#160;</td>
+          <td class="paramname"><em>obj</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype"><a class="el" href="group__group__hal__syspm.html#structmtb__hal__syspm__callback__params__t">mtb_hal_syspm_callback_params_t</a> *&#160;</td>
+          <td class="paramname"><em>params</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Register the specified handler with the power manager to be notified of power state changes. </p>
-<p >This is intended for application wide decisions. Peripherals handle their ability to perform power transitions internally. This callback will be called before any of the peripheral callbacks for <a class="el" href="group__group__hal__syspm.html#gga8c1406573cb935a6e847b1914a492d70a1ec5f520b677b096ac6d7ffd4695236f">MTB_HAL_SYSPM_CHECK_READY</a> and <a class="el" href="group__group__hal__syspm.html#gga8c1406573cb935a6e847b1914a492d70ae907f6459924e85c66b1797012ad1613">MTB_HAL_SYSPM_BEFORE_TRANSITION</a>. This callback will be called after all peripheral callback for <a class="el" href="group__group__hal__syspm.html#gga8c1406573cb935a6e847b1914a492d70aa1c11cc55900b51dff51056e2e80e6f9">MTB_HAL_SYSPM_CHECK_FAIL</a> and <a class="el" href="group__group__hal__syspm.html#gga8c1406573cb935a6e847b1914a492d70a80a5989f7fa33d043e1f54a3e2a12269">MTB_HAL_SYSPM_AFTER_TRANSITION</a>. </p><dl class="section note"><dt>Note</dt><dd>The callback will be executed from a critical section</dd></dl>
+<p >This callback will be called before any of the peripheral callbacks for <a class="el" href="group__group__hal__syspm.html#gga8c1406573cb935a6e847b1914a492d70a1ec5f520b677b096ac6d7ffd4695236f">MTB_HAL_SYSPM_CHECK_READY</a> and <a class="el" href="group__group__hal__syspm.html#gga8c1406573cb935a6e847b1914a492d70ae907f6459924e85c66b1797012ad1613">MTB_HAL_SYSPM_BEFORE_TRANSITION</a>. </p><dl class="section note"><dt>Note</dt><dd>The callback will be executed from a critical section</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">callback_data</td><td>The data for the callback to register </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">obj</td><td>The callback object. The caller must allocate the memory for this object, but the HAL will populate its </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">params</td><td>The paramers for the callback to register </td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>CY_RSLT_SUCCESS if the callback was successfully registered, otherwise an error </dd></dl>
 
 </div>
 </div>
-<a id="ga192638c8d361c00449aba0fa98740aa9" name="ga192638c8d361c00449aba0fa98740aa9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga192638c8d361c00449aba0fa98740aa9">&#9670;&nbsp;</a></span>mtb_hal_syspm_unregister_callback()</h2>
+<a id="ga88930aa9c4b67a4b78e4f83b517cc50f" name="ga88930aa9c4b67a4b78e4f83b517cc50f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga88930aa9c4b67a4b78e4f83b517cc50f">&#9670;&nbsp;</a></span>mtb_hal_syspm_unregister_callback()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void mtb_hal_syspm_unregister_callback </td>
+          <td class="memname"><a class="el" href="group__group__result.html#gaca79700fcc701534ce61778a9bcf57d1">cy_rslt_t</a> mtb_hal_syspm_unregister_callback </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="group__group__hal__syspm.html#structmtb__hal__syspm__callback__data__t">mtb_hal_syspm_callback_data_t</a> *&#160;</td>
-          <td class="paramname"><em>callback_data</em></td><td>)</td>
+          <td class="paramtype"><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__syspm__callback__data__t">mtb_hal_syspm_callback_data_t</a> *&#160;</td>
+          <td class="paramname"><em>obj</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Removes the registered handler from the power manager so no future notifications are made. </p>
-<ul>
-<li><dl class="params"><dt>Parameters</dt><dd>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">callback_data</td><td>The data for the callback to unregister </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">obj</td><td>The callback object to unregister. </td></tr>
   </table>
   </dd>
 </dl>
-</li>
-</ul>
+<dl class="section return"><dt>Returns</dt><dd>CY_RSLT_SUCCESS if the callback was successfully unregistered, otherwise an error </dd></dl>
 
 </div>
 </div>
@@ -681,7 +654,7 @@ Pointer to the next callback strucure. <p >This should be initialized to NULL. <
         <tr>
           <td class="memname"><a class="el" href="group__group__result.html#gaca79700fcc701534ce61778a9bcf57d1">cy_rslt_t</a> mtb_hal_syspm_tickless_deepsleep </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__lptimer__t">mtb_hal_lptimer_t</a> *&#160;</td>
+          <td class="paramtype">mtb_hal_lptimer_t *&#160;</td>
           <td class="paramname"><em>lptimer_obj</em>, </td>
         </tr>
         <tr>
@@ -711,7 +684,7 @@ Pointer to the next callback strucure. <p >This should be initialized to NULL. <
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">lptimer_obj</td><td>Pre-Initialized LPTimer object. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">desired_ms</td><td>Desired number of ms to deep-sleep. </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">actual_ms</td><td>Actual number of ms that was spent in deep-sleep. This value can range from 0 to desired_ms - 1 depending on how long the device was able to deep-sleep. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">actual_ms</td><td>Actual number of ms in which systick timer was disabled. This value can range from 0 to desired_ms - 1 depending on how long the device was able to deep-sleep. </td></tr>
   </table>
   </dd>
 </dl>
@@ -728,7 +701,7 @@ Pointer to the next callback strucure. <p >This should be initialized to NULL. <
         <tr>
           <td class="memname"><a class="el" href="group__group__result.html#gaca79700fcc701534ce61778a9bcf57d1">cy_rslt_t</a> mtb_hal_syspm_tickless_sleep </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__lptimer__t">mtb_hal_lptimer_t</a> *&#160;</td>
+          <td class="paramtype">mtb_hal_lptimer_t *&#160;</td>
           <td class="paramname"><em>lptimer_obj</em>, </td>
         </tr>
         <tr>

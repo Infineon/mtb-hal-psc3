@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['nvm_20_28onboard_20non_2dvolatile_20memory_29_0',['NVM (Onboard Non-Volatile Memory)',['../group__group__hal__impl__nvm.html',1,'(Global Namespace)'],['../group__group__hal__nvm.html',1,'(Global Namespace)']]],
-  ['nvm_20hal_20results_1',['NVM HAL Results',['../group__group__hal__results__nvm.html',1,'']]]
+  ['hal_20driver_20availability_0',['HAL Driver Availability',['../group__group__hal__availability.html',1,'']]],
+  ['hal_20drivers_1',['HAL Drivers',['../group__group__hal.html',1,'']]],
+  ['hal_20general_20types_2fmacros_2',['HAL General Types/Macros',['../group__group__hal__types.html',1,'']]]
 ];

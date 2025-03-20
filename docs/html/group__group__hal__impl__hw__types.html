@@ -85,6 +85,7 @@ $(document).ready(function(){initNavTree('group__group__hal__impl__hw__types.htm
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Data Structures</a> &#124;
+<a href="#define-members">Macros</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
 <a href="#enum-members">Enumerations</a>  </div>
   <div class="headertitle"><div class="title">Specific Hardware Types<div class="ingroups"><a class="el" href="group__group__hal__impl.html">Implementation Specific</a></div></div></div>
@@ -92,256 +93,163 @@ $(document).ready(function(){initNavTree('group__group__hal__impl__hw__types.htm
 <div class="contents">
 <a name="details" id="details"></a><h2 class="groupheader">General Description</h2>
 <p >Aliases for types which are part of the public HAL interface but whose representations need to vary per HAL implementation. </p>
+<p >Provides implementation specific values for types that are part of the portable HAL UART API.</p>
+<p >Provides implementation specific values for types that are part of the portable HAL TRNG API.</p>
+<p >Provides implementation specific values for types that are part of the portable HAL Timer API.</p>
+<p >Provides implementation specific values for types that are part of the portable HAL System API.</p>
+<p >Provides implementation specific values for types that are part of the portable HAL SysPm API.</p>
+<p >Provides implementation specific values for types that are part of the portable HAL SPI API.</p>
+<p >Provides implementation specific values for types that are part of the portable HAL RTC API.</p>
+<p >Provides implementation specific values for types that are part of the portable HAL PWM API.</p>
+<p >Provides implementation specific values for types that are part of the portable HAL NVM API.</p>
+<p >Provides implementation specific values for types that are part of the portable HAL LPTimer API.</p>
+<p >Provides implementation specific values for types that are part of the portable HAL I2C API.</p>
+<p >Provides implementation specific values for types that are part of the portable HAL GPIO API.</p>
+<p >Provides implementation specific values for types that are part of the portable HAL DMA API.</p>
+<p >Provides implementation specific values for types that are part of the portable HAL Comp API.</p>
+<p >Provides implementation specific values for types that are part of the portable HAL Clock API.</p>
+<p >Provides implementation specific values for types that are part of the portable HAL ADC API.</p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Data Structures</h2></td></tr>
-<tr class="memitem:structmtb__hal__peri__div__t"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__peri__div__t">mtb_hal_peri_div_t</a></td></tr>
-<tr class="memdesc:structmtb__hal__peri__div__t"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clock Reference Structure in case of peri divider.  <a href="group__group__hal__impl__hw__types.html#structmtb__hal__peri__div__t">More...</a><br /></td></tr>
-<tr class="separator:structmtb__hal__peri__div__t"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:structmtb__hal__hf__clock__t"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__hf__clock__t">mtb_hal_hf_clock_t</a></td></tr>
-<tr class="memdesc:structmtb__hal__hf__clock__t"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clock Reference Structure in case of high frequency divider.  <a href="group__group__hal__impl__hw__types.html#structmtb__hal__hf__clock__t">More...</a><br /></td></tr>
-<tr class="separator:structmtb__hal__hf__clock__t"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:structmtb__hal__clock__interface__t"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__clock__interface__t">mtb_hal_clock_interface_t</a></td></tr>
-<tr class="memdesc:structmtb__hal__clock__interface__t"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clock Interface structure for clocks.  <a href="group__group__hal__impl__hw__types.html#structmtb__hal__clock__interface__t">More...</a><br /></td></tr>
-<tr class="separator:structmtb__hal__clock__interface__t"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:structmtb__hal__clock__t"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__clock__t">mtb_hal_clock_t</a></td></tr>
-<tr class="memdesc:structmtb__hal__clock__t"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clock object Application shall provide implementations for the functions needed by the clock object.  <a href="group__group__hal__impl__hw__types.html#structmtb__hal__clock__t">More...</a><br /></td></tr>
-<tr class="separator:structmtb__hal__clock__t"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:structmtb__hal__resource__inst__t"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__resource__inst__t">mtb_hal_resource_inst_t</a></td></tr>
-<tr class="memdesc:structmtb__hal__resource__inst__t"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a particular instance of a resource on the chip.  <a href="group__group__hal__impl__hw__types.html#structmtb__hal__resource__inst__t">More...</a><br /></td></tr>
-<tr class="separator:structmtb__hal__resource__inst__t"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:structmtb__hal__event__callback__data__t"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__event__callback__data__t">mtb_hal_event_callback_data_t</a></td></tr>
-<tr class="memdesc:structmtb__hal__event__callback__data__t"><td class="mdescLeft">&#160;</td><td class="mdescRight">Event callback data object.  <a href="group__group__hal__impl__hw__types.html#structmtb__hal__event__callback__data__t">More...</a><br /></td></tr>
-<tr class="separator:structmtb__hal__event__callback__data__t"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:struct__mtb__hal__buffer__info__t"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__impl__hw__types.html#struct__mtb__hal__buffer__info__t">_mtb_hal_buffer_info_t</a></td></tr>
-<tr class="memdesc:struct__mtb__hal__buffer__info__t"><td class="mdescLeft">&#160;</td><td class="mdescRight">Store information about buffer.  <a href="group__group__hal__impl__hw__types.html#struct__mtb__hal__buffer__info__t">More...</a><br /></td></tr>
-<tr class="separator:struct__mtb__hal__buffer__info__t"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:structmtb__hal__gpio__t"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__gpio__t">mtb_hal_gpio_t</a></td></tr>
-<tr class="memdesc:structmtb__hal__gpio__t"><td class="mdescLeft">&#160;</td><td class="mdescRight">Connection type definition.  <a href="group__group__hal__impl__hw__types.html#structmtb__hal__gpio__t">More...</a><br /></td></tr>
-<tr class="separator:structmtb__hal__gpio__t"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:structmtb__hal__tcpwm__t"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__tcpwm__t">mtb_hal_tcpwm_t</a></td></tr>
-<tr class="memdesc:structmtb__hal__tcpwm__t"><td class="mdescLeft">&#160;</td><td class="mdescRight">Shared TCPWM data between timer/counter and PWM.  <a href="group__group__hal__impl__hw__types.html#structmtb__hal__tcpwm__t">More...</a><br /></td></tr>
-<tr class="separator:structmtb__hal__tcpwm__t"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:structmtb__hal__dma__t"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__dma__t">mtb_hal_dma_t</a></td></tr>
-<tr class="memdesc:structmtb__hal__dma__t"><td class="mdescLeft">&#160;</td><td class="mdescRight">DMA object.  <a href="group__group__hal__impl__hw__types.html#structmtb__hal__dma__t">More...</a><br /></td></tr>
-<tr class="separator:structmtb__hal__dma__t"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:structmtb__hal__dma__configurator__t"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__dma__configurator__t">mtb_hal_dma_configurator_t</a></td></tr>
-<tr class="memdesc:structmtb__hal__dma__configurator__t"><td class="mdescLeft">&#160;</td><td class="mdescRight">DMA configurator struct.  <a href="group__group__hal__impl__hw__types.html#structmtb__hal__dma__configurator__t">More...</a><br /></td></tr>
-<tr class="separator:structmtb__hal__dma__configurator__t"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:structmtb__hal__adc__t"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__adc__t">mtb_hal_adc_t</a></td></tr>
-<tr class="memdesc:structmtb__hal__adc__t"><td class="mdescLeft">&#160;</td><td class="mdescRight">ADC object.  <a href="group__group__hal__impl__hw__types.html#structmtb__hal__adc__t">More...</a><br /></td></tr>
-<tr class="separator:structmtb__hal__adc__t"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:structmtb__hal__adc__configurator__t"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__adc__configurator__t">mtb_hal_adc_configurator_t</a></td></tr>
-<tr class="memdesc:structmtb__hal__adc__configurator__t"><td class="mdescLeft">&#160;</td><td class="mdescRight">ADC configurator struct.  <a href="group__group__hal__impl__hw__types.html#structmtb__hal__adc__configurator__t">More...</a><br /></td></tr>
-<tr class="separator:structmtb__hal__adc__configurator__t"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:structmtb__hal__adc__channel__t"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__adc__channel__t">mtb_hal_adc_channel_t</a></td></tr>
-<tr class="memdesc:structmtb__hal__adc__channel__t"><td class="mdescLeft">&#160;</td><td class="mdescRight">ADC channel object.  <a href="group__group__hal__impl__hw__types.html#structmtb__hal__adc__channel__t">More...</a><br /></td></tr>
-<tr class="separator:structmtb__hal__adc__channel__t"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:structmtb__hal__comp__t"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__comp__t">mtb_hal_comp_t</a></td></tr>
 <tr class="memdesc:structmtb__hal__comp__t"><td class="mdescLeft">&#160;</td><td class="mdescRight">Comparator object.  <a href="group__group__hal__impl__hw__types.html#structmtb__hal__comp__t">More...</a><br /></td></tr>
 <tr class="separator:structmtb__hal__comp__t"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:structmtb__hal__comp__configurator__t"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__comp__configurator__t">mtb_hal_comp_configurator_t</a></td></tr>
 <tr class="memdesc:structmtb__hal__comp__configurator__t"><td class="mdescLeft">&#160;</td><td class="mdescRight">Comp configurator struct.  <a href="group__group__hal__impl__hw__types.html#structmtb__hal__comp__configurator__t">More...</a><br /></td></tr>
 <tr class="separator:structmtb__hal__comp__configurator__t"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:structmtb__hal__cordic__t"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__cordic__t">mtb_hal_cordic_t</a></td></tr>
-<tr class="memdesc:structmtb__hal__cordic__t"><td class="mdescLeft">&#160;</td><td class="mdescRight">CORDIC object.  <a href="group__group__hal__impl__hw__types.html#structmtb__hal__cordic__t">More...</a><br /></td></tr>
-<tr class="separator:structmtb__hal__cordic__t"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:structmtb__hal__i2c__t"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__i2c__t">mtb_hal_i2c_t</a></td></tr>
-<tr class="memdesc:structmtb__hal__i2c__t"><td class="mdescLeft">&#160;</td><td class="mdescRight">I2C object.  <a href="group__group__hal__impl__hw__types.html#structmtb__hal__i2c__t">More...</a><br /></td></tr>
-<tr class="separator:structmtb__hal__i2c__t"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:structmtb__hal__i2c__configurator__t"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__i2c__configurator__t">mtb_hal_i2c_configurator_t</a></td></tr>
-<tr class="memdesc:structmtb__hal__i2c__configurator__t"><td class="mdescLeft">&#160;</td><td class="mdescRight">I2C configurator struct.  <a href="group__group__hal__impl__hw__types.html#structmtb__hal__i2c__configurator__t">More...</a><br /></td></tr>
-<tr class="separator:structmtb__hal__i2c__configurator__t"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:structmtb__hal__ipc__t"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__ipc__t">mtb_hal_ipc_t</a></td></tr>
-<tr class="memdesc:structmtb__hal__ipc__t"><td class="mdescLeft">&#160;</td><td class="mdescRight">IPC object.  <a href="group__group__hal__impl__hw__types.html#structmtb__hal__ipc__t">More...</a><br /></td></tr>
-<tr class="separator:structmtb__hal__ipc__t"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:struct__mtb__hal__ipc__queue__process__info__t"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__impl__hw__types.html#struct__mtb__hal__ipc__queue__process__info__t">_mtb_hal_ipc_queue_process_info_t</a></td></tr>
-<tr class="memdesc:struct__mtb__hal__ipc__queue__process__info__t"><td class="mdescLeft">&#160;</td><td class="mdescRight">HAL IPC notification info.  <a href="group__group__hal__impl__hw__types.html#struct__mtb__hal__ipc__queue__process__info__t">More...</a><br /></td></tr>
-<tr class="separator:struct__mtb__hal__ipc__queue__process__info__t"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:structmtb__hal__lptimer__t"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__lptimer__t">mtb_hal_lptimer_t</a></td></tr>
-<tr class="memdesc:structmtb__hal__lptimer__t"><td class="mdescLeft">&#160;</td><td class="mdescRight">LPTIMER object.  <a href="group__group__hal__impl__hw__types.html#structmtb__hal__lptimer__t">More...</a><br /></td></tr>
-<tr class="separator:structmtb__hal__lptimer__t"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:structmtb__hal__lptimer__configurator__t"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__lptimer__configurator__t">mtb_hal_lptimer_configurator_t</a></td></tr>
-<tr class="memdesc:structmtb__hal__lptimer__configurator__t"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lptimer configurator struct.  <a href="group__group__hal__impl__hw__types.html#structmtb__hal__lptimer__configurator__t">More...</a><br /></td></tr>
-<tr class="separator:structmtb__hal__lptimer__configurator__t"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:structmtb__hal__pwm__t"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__pwm__t">mtb_hal_pwm_t</a></td></tr>
-<tr class="memdesc:structmtb__hal__pwm__t"><td class="mdescLeft">&#160;</td><td class="mdescRight">PWM object.  <a href="group__group__hal__impl__hw__types.html#structmtb__hal__pwm__t">More...</a><br /></td></tr>
-<tr class="separator:structmtb__hal__pwm__t"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:structmtb__hal__pwm__configurator__t"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__pwm__configurator__t">mtb_hal_pwm_configurator_t</a></td></tr>
-<tr class="memdesc:structmtb__hal__pwm__configurator__t"><td class="mdescLeft">&#160;</td><td class="mdescRight">PWM configurator struct.  <a href="group__group__hal__impl__hw__types.html#structmtb__hal__pwm__configurator__t">More...</a><br /></td></tr>
-<tr class="separator:structmtb__hal__pwm__configurator__t"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:structmtb__hal__memoryspi__t"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__memoryspi__t">mtb_hal_memoryspi_t</a></td></tr>
-<tr class="memdesc:structmtb__hal__memoryspi__t"><td class="mdescLeft">&#160;</td><td class="mdescRight">MemorySPI object.  <a href="group__group__hal__impl__hw__types.html#structmtb__hal__memoryspi__t">More...</a><br /></td></tr>
-<tr class="separator:structmtb__hal__memoryspi__t"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:structmtb__hal__memoryspi__configurator__t"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__memoryspi__configurator__t">mtb_hal_memoryspi_configurator_t</a></td></tr>
-<tr class="memdesc:structmtb__hal__memoryspi__configurator__t"><td class="mdescLeft">&#160;</td><td class="mdescRight">MemorySPI configurator struct.  <a href="group__group__hal__impl__hw__types.html#structmtb__hal__memoryspi__configurator__t">More...</a><br /></td></tr>
-<tr class="separator:structmtb__hal__memoryspi__configurator__t"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:structmtb__hal__trng__t"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__trng__t">mtb_hal_trng_t</a></td></tr>
-<tr class="memdesc:structmtb__hal__trng__t"><td class="mdescLeft">&#160;</td><td class="mdescRight">RNG object.  <a href="group__group__hal__impl__hw__types.html#structmtb__hal__trng__t">More...</a><br /></td></tr>
-<tr class="separator:structmtb__hal__trng__t"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:structmtb__hal__dma__t"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__dma__t">mtb_hal_dma_t</a></td></tr>
+<tr class="memdesc:structmtb__hal__dma__t"><td class="mdescLeft">&#160;</td><td class="mdescRight">DMA object.  <a href="group__group__hal__impl__hw__types.html#structmtb__hal__dma__t">More...</a><br /></td></tr>
+<tr class="separator:structmtb__hal__dma__t"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:structmtb__hal__dma__configurator__t"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__dma__configurator__t">mtb_hal_dma_configurator_t</a></td></tr>
+<tr class="memdesc:structmtb__hal__dma__configurator__t"><td class="mdescLeft">&#160;</td><td class="mdescRight">DMA configurator struct.  <a href="group__group__hal__impl__hw__types.html#structmtb__hal__dma__configurator__t">More...</a><br /></td></tr>
+<tr class="separator:structmtb__hal__dma__configurator__t"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:structmtb__hal__nvm__configurator__t"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__nvm__configurator__t">mtb_hal_nvm_configurator_t</a></td></tr>
+<tr class="memdesc:structmtb__hal__nvm__configurator__t"><td class="mdescLeft">&#160;</td><td class="mdescRight">NVM configurator struct.  <a href="group__group__hal__impl__hw__types.html#structmtb__hal__nvm__configurator__t">More...</a><br /></td></tr>
+<tr class="separator:structmtb__hal__nvm__configurator__t"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:structmtb__hal__nvm__t"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__nvm__t">mtb_hal_nvm_t</a></td></tr>
+<tr class="memdesc:structmtb__hal__nvm__t"><td class="mdescLeft">&#160;</td><td class="mdescRight">NVM object.  <a href="group__group__hal__impl__hw__types.html#structmtb__hal__nvm__t">More...</a><br /></td></tr>
+<tr class="separator:structmtb__hal__nvm__t"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:structmtb__hal__rtc__t"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__rtc__t">mtb_hal_rtc_t</a></td></tr>
 <tr class="memdesc:structmtb__hal__rtc__t"><td class="mdescLeft">&#160;</td><td class="mdescRight">RTC object.  <a href="group__group__hal__impl__hw__types.html#structmtb__hal__rtc__t">More...</a><br /></td></tr>
 <tr class="separator:structmtb__hal__rtc__t"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:structmtb__hal__rtc__configurator__t"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__rtc__configurator__t">mtb_hal_rtc_configurator_t</a></td></tr>
 <tr class="memdesc:structmtb__hal__rtc__configurator__t"><td class="mdescLeft">&#160;</td><td class="mdescRight">RTC configurator struct.  <a href="group__group__hal__impl__hw__types.html#structmtb__hal__rtc__configurator__t">More...</a><br /></td></tr>
 <tr class="separator:structmtb__hal__rtc__configurator__t"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:struct__mtb__hal__sdxx__t"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__impl__hw__types.html#struct__mtb__hal__sdxx__t">_mtb_hal_sdxx_t</a></td></tr>
-<tr class="memdesc:struct__mtb__hal__sdxx__t"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains common members between SDHC and SDIO.  <a href="group__group__hal__impl__hw__types.html#struct__mtb__hal__sdxx__t">More...</a><br /></td></tr>
-<tr class="separator:struct__mtb__hal__sdxx__t"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:structmtb__hal__sdhc__t"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__sdhc__t">mtb_hal_sdhc_t</a></td></tr>
-<tr class="memdesc:structmtb__hal__sdhc__t"><td class="mdescLeft">&#160;</td><td class="mdescRight">SDHC object.  <a href="group__group__hal__impl__hw__types.html#structmtb__hal__sdhc__t">More...</a><br /></td></tr>
-<tr class="separator:structmtb__hal__sdhc__t"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:structmtb__hal__sdhc__configurator__t"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__sdhc__configurator__t">mtb_hal_sdhc_configurator_t</a></td></tr>
-<tr class="memdesc:structmtb__hal__sdhc__configurator__t"><td class="mdescLeft">&#160;</td><td class="mdescRight">SDHC configurator struct.  <a href="group__group__hal__impl__hw__types.html#structmtb__hal__sdhc__configurator__t">More...</a><br /></td></tr>
-<tr class="separator:structmtb__hal__sdhc__configurator__t"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:structmtb__hal__sdio__t"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__sdio__t">mtb_hal_sdio_t</a></td></tr>
-<tr class="memdesc:structmtb__hal__sdio__t"><td class="mdescLeft">&#160;</td><td class="mdescRight">SDIO object.  <a href="group__group__hal__impl__hw__types.html#structmtb__hal__sdio__t">More...</a><br /></td></tr>
-<tr class="separator:structmtb__hal__sdio__t"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:structmtb__hal__sdio__configurator__t"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__sdio__configurator__t">mtb_hal_sdio_configurator_t</a></td></tr>
-<tr class="memdesc:structmtb__hal__sdio__configurator__t"><td class="mdescLeft">&#160;</td><td class="mdescRight">SDIO configurator struct.  <a href="group__group__hal__impl__hw__types.html#structmtb__hal__sdio__configurator__t">More...</a><br /></td></tr>
-<tr class="separator:structmtb__hal__sdio__configurator__t"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:structmtb__hal__spi__t"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__spi__t">mtb_hal_spi_t</a></td></tr>
-<tr class="memdesc:structmtb__hal__spi__t"><td class="mdescLeft">&#160;</td><td class="mdescRight">SPI object.  <a href="group__group__hal__impl__hw__types.html#structmtb__hal__spi__t">More...</a><br /></td></tr>
-<tr class="separator:structmtb__hal__spi__t"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:structmtb__hal__spi__configurator__t"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__spi__configurator__t">mtb_hal_spi_configurator_t</a></td></tr>
-<tr class="memdesc:structmtb__hal__spi__configurator__t"><td class="mdescLeft">&#160;</td><td class="mdescRight">SPI configurator struct.  <a href="group__group__hal__impl__hw__types.html#structmtb__hal__spi__configurator__t">More...</a><br /></td></tr>
-<tr class="separator:structmtb__hal__spi__configurator__t"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:structmtb__hal__timer__t"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__timer__t">mtb_hal_timer_t</a></td></tr>
-<tr class="memdesc:structmtb__hal__timer__t"><td class="mdescLeft">&#160;</td><td class="mdescRight">Timer object.  <a href="group__group__hal__impl__hw__types.html#structmtb__hal__timer__t">More...</a><br /></td></tr>
-<tr class="separator:structmtb__hal__timer__t"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:structmtb__hal__timer__configurator__t"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__timer__configurator__t">mtb_hal_timer_configurator_t</a></td></tr>
-<tr class="memdesc:structmtb__hal__timer__configurator__t"><td class="mdescLeft">&#160;</td><td class="mdescRight">Timer configurator struct.  <a href="group__group__hal__impl__hw__types.html#structmtb__hal__timer__configurator__t">More...</a><br /></td></tr>
-<tr class="separator:structmtb__hal__timer__configurator__t"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:structmtb__hal__uart__t"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__uart__t">mtb_hal_uart_t</a></td></tr>
-<tr class="memdesc:structmtb__hal__uart__t"><td class="mdescLeft">&#160;</td><td class="mdescRight">UART object.  <a href="group__group__hal__impl__hw__types.html#structmtb__hal__uart__t">More...</a><br /></td></tr>
-<tr class="separator:structmtb__hal__uart__t"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:structmtb__hal__uart__configurator__t"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__uart__configurator__t">mtb_hal_uart_configurator_t</a></td></tr>
-<tr class="memdesc:structmtb__hal__uart__configurator__t"><td class="mdescLeft">&#160;</td><td class="mdescRight">UART configurator struct.  <a href="group__group__hal__impl__hw__types.html#structmtb__hal__uart__configurator__t">More...</a><br /></td></tr>
-<tr class="separator:structmtb__hal__uart__configurator__t"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:union__mtb__hal__buffer__info__t_8addr"><td class="memItemLeft" align="right" valign="top">union &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__impl__hw__types.html#union__mtb__hal__buffer__info__t_8addr">_mtb_hal_buffer_info_t.addr</a></td></tr>
-<tr class="separator:union__mtb__hal__buffer__info__t_8addr"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:unionmtb__hal__dma__t_8descriptor"><td class="memItemLeft" align="right" valign="top">union &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__impl__hw__types.html#unionmtb__hal__dma__t_8descriptor">mtb_hal_dma_t.descriptor</a></td></tr>
-<tr class="separator:unionmtb__hal__dma__t_8descriptor"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:structmtb__hal__syspm__callback__data__t"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__syspm__callback__data__t">mtb_hal_syspm_callback_data_t</a></td></tr>
+<tr class="memdesc:structmtb__hal__syspm__callback__data__t"><td class="mdescLeft">&#160;</td><td class="mdescRight">SysPm callback data object.  <a href="group__group__hal__impl__hw__types.html#structmtb__hal__syspm__callback__data__t">More...</a><br /></td></tr>
+<tr class="separator:structmtb__hal__syspm__callback__data__t"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:unionmtb__hal__comp__t_8____unnamed1____"><td class="memItemLeft" align="right" valign="top">union &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__impl__hw__types.html#unionmtb__hal__comp__t_8____unnamed1____">mtb_hal_comp_t.__unnamed1__</a></td></tr>
+<tr class="separator:unionmtb__hal__comp__t_8____unnamed1____"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:structmtb__hal__comp__t_8____unnamed1_____8____unnamed3____"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__comp__t_8____unnamed1_____8____unnamed3____">mtb_hal_comp_t.__unnamed1__.__unnamed3__</a></td></tr>
+<tr class="separator:structmtb__hal__comp__t_8____unnamed1_____8____unnamed3____"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:unionmtb__hal__comp__configurator__t_8____unnamed5____"><td class="memItemLeft" align="right" valign="top">union &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__impl__hw__types.html#unionmtb__hal__comp__configurator__t_8____unnamed5____">mtb_hal_comp_configurator_t.__unnamed5__</a></td></tr>
+<tr class="separator:unionmtb__hal__comp__configurator__t_8____unnamed5____"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:unionmtb__hal__comp__configurator__t_8____unnamed7____"><td class="memItemLeft" align="right" valign="top">union &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__impl__hw__types.html#unionmtb__hal__comp__configurator__t_8____unnamed7____">mtb_hal_comp_configurator_t.__unnamed7__</a></td></tr>
+<tr class="separator:unionmtb__hal__comp__configurator__t_8____unnamed7____"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:unionmtb__hal__dma__t_8base"><td class="memItemLeft" align="right" valign="top">union &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__impl__hw__types.html#unionmtb__hal__dma__t_8base">mtb_hal_dma_t.base</a></td></tr>
 <tr class="separator:unionmtb__hal__dma__t_8base"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:structmtb__hal__dma__configurator__t_8____unnamed4____"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__dma__configurator__t_8____unnamed4____">mtb_hal_dma_configurator_t.__unnamed4__</a></td></tr>
-<tr class="separator:structmtb__hal__dma__configurator__t_8____unnamed4____"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:unionmtb__hal__dma__configurator__t_8____unnamed4_____8____unnamed6____"><td class="memItemLeft" align="right" valign="top">union &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__impl__hw__types.html#unionmtb__hal__dma__configurator__t_8____unnamed4_____8____unnamed6____">mtb_hal_dma_configurator_t.__unnamed4__.__unnamed6__</a></td></tr>
-<tr class="separator:unionmtb__hal__dma__configurator__t_8____unnamed4_____8____unnamed6____"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:unionmtb__hal__dma__configurator__t_8____unnamed4_____8____unnamed8____"><td class="memItemLeft" align="right" valign="top">union &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__impl__hw__types.html#unionmtb__hal__dma__configurator__t_8____unnamed4_____8____unnamed8____">mtb_hal_dma_configurator_t.__unnamed4__.__unnamed8__</a></td></tr>
-<tr class="separator:unionmtb__hal__dma__configurator__t_8____unnamed4_____8____unnamed8____"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:unionmtb__hal__comp__t_8____unnamed10____"><td class="memItemLeft" align="right" valign="top">union &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__impl__hw__types.html#unionmtb__hal__comp__t_8____unnamed10____">mtb_hal_comp_t.__unnamed10__</a></td></tr>
-<tr class="separator:unionmtb__hal__comp__t_8____unnamed10____"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:unionmtb__hal__comp__configurator__t_8____unnamed12____"><td class="memItemLeft" align="right" valign="top">union &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__impl__hw__types.html#unionmtb__hal__comp__configurator__t_8____unnamed12____">mtb_hal_comp_configurator_t.__unnamed12__</a></td></tr>
-<tr class="separator:unionmtb__hal__comp__configurator__t_8____unnamed12____"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:structmtb__hal__sdhc__configurator__t_8gpios"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__sdhc__configurator__t_8gpios">mtb_hal_sdhc_configurator_t.gpios</a></td></tr>
-<tr class="separator:structmtb__hal__sdhc__configurator__t_8gpios"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:structmtb__hal__sdio__configurator__t_8gpios"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__sdio__configurator__t_8gpios">mtb_hal_sdio_configurator_t.gpios</a></td></tr>
-<tr class="separator:structmtb__hal__sdio__configurator__t_8gpios"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:unionmtb__hal__dma__t_8descriptor"><td class="memItemLeft" align="right" valign="top">union &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__impl__hw__types.html#unionmtb__hal__dma__t_8descriptor">mtb_hal_dma_t.descriptor</a></td></tr>
+<tr class="separator:unionmtb__hal__dma__t_8descriptor"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:structmtb__hal__dma__configurator__t_8____unnamed11____"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__dma__configurator__t_8____unnamed11____">mtb_hal_dma_configurator_t.__unnamed11__</a></td></tr>
+<tr class="separator:structmtb__hal__dma__configurator__t_8____unnamed11____"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:unionmtb__hal__dma__configurator__t_8____unnamed11_____8____unnamed13____"><td class="memItemLeft" align="right" valign="top">union &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__impl__hw__types.html#unionmtb__hal__dma__configurator__t_8____unnamed11_____8____unnamed13____">mtb_hal_dma_configurator_t.__unnamed11__.__unnamed13__</a></td></tr>
+<tr class="separator:unionmtb__hal__dma__configurator__t_8____unnamed11_____8____unnamed13____"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:unionmtb__hal__dma__configurator__t_8____unnamed11_____8____unnamed15____"><td class="memItemLeft" align="right" valign="top">union &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__impl__hw__types.html#unionmtb__hal__dma__configurator__t_8____unnamed11_____8____unnamed15____">mtb_hal_dma_configurator_t.__unnamed11__.__unnamed15__</a></td></tr>
+<tr class="separator:unionmtb__hal__dma__configurator__t_8____unnamed11_____8____unnamed15____"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:gaa806e91893e1d83804b5e18e8faa5534"><td class="memItemLeft" align="right" valign="top"><a id="gaa806e91893e1d83804b5e18e8faa5534" name="gaa806e91893e1d83804b5e18e8faa5534"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>MTB_HAL_ADC_IMPL_HEADER</b>&#160;&#160;&#160;&quot;mtb_hal_adc_impl.h&quot;</td></tr>
+<tr class="memdesc:gaa806e91893e1d83804b5e18e8faa5534"><td class="mdescLeft">&#160;</td><td class="mdescRight">IP-specific implementation header for ADC. <br /></td></tr>
+<tr class="separator:gaa806e91893e1d83804b5e18e8faa5534"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga14bee37d8fb3a0753f277cbc7663f4d7"><td class="memItemLeft" align="right" valign="top"><a id="ga14bee37d8fb3a0753f277cbc7663f4d7" name="ga14bee37d8fb3a0753f277cbc7663f4d7"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>MTB_HAL_CLOCK_IMPL_HEADER</b>&#160;&#160;&#160;&quot;mtb_hal_clock_impl.h&quot;</td></tr>
+<tr class="memdesc:ga14bee37d8fb3a0753f277cbc7663f4d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementation specific header for Clock. <br /></td></tr>
+<tr class="separator:ga14bee37d8fb3a0753f277cbc7663f4d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad2394ee452d2beffb200744a82d562f8"><td class="memItemLeft" align="right" valign="top"><a id="gad2394ee452d2beffb200744a82d562f8" name="gad2394ee452d2beffb200744a82d562f8"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>MTB_HAL_RSC_LPCOMP</b>&#160;&#160;&#160;(MTB_HAL_COMP_LP)</td></tr>
+<tr class="memdesc:gad2394ee452d2beffb200744a82d562f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">For backwards compatiblity with old PDLs. <br /></td></tr>
+<tr class="separator:gad2394ee452d2beffb200744a82d562f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6e1358f1a1fa16bc5a0ee0e13e1e2b73"><td class="memItemLeft" align="right" valign="top"><a id="ga6e1358f1a1fa16bc5a0ee0e13e1e2b73" name="ga6e1358f1a1fa16bc5a0ee0e13e1e2b73"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>MTB_HAL_RSC_CSG</b>&#160;&#160;&#160;(MTB_HAL_COMP_CSG)</td></tr>
+<tr class="memdesc:ga6e1358f1a1fa16bc5a0ee0e13e1e2b73"><td class="mdescLeft">&#160;</td><td class="mdescRight">For backwards compatiblity with old PDLs. <br /></td></tr>
+<tr class="separator:ga6e1358f1a1fa16bc5a0ee0e13e1e2b73"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga64fca3908adfe120b9517ead048e3c91"><td class="memItemLeft" align="right" valign="top"><a id="ga64fca3908adfe120b9517ead048e3c91" name="ga64fca3908adfe120b9517ead048e3c91"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>MTB_HAL_DMA_IMPL_HEADER</b>&#160;&#160;&#160;&quot;mtb_hal_dma_impl.h&quot;</td></tr>
+<tr class="memdesc:ga64fca3908adfe120b9517ead048e3c91"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementation specific header for DMA. <br /></td></tr>
+<tr class="separator:ga64fca3908adfe120b9517ead048e3c91"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab0d2684c4f81636e93488c9844e5c8bb"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__impl__hw__types.html#gab0d2684c4f81636e93488c9844e5c8bb">_MTB_HAL_DMA_ALIGN</a></td></tr>
+<tr class="memdesc:gab0d2684c4f81636e93488c9844e5c8bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Aligns a symbol as required by the DMA hardware.  <a href="group__group__hal__impl__hw__types.html#gab0d2684c4f81636e93488c9844e5c8bb">More...</a><br /></td></tr>
+<tr class="separator:gab0d2684c4f81636e93488c9844e5c8bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1b25e8d6f232e7a7372fcb41c15db780"><td class="memItemLeft" align="right" valign="top"><a id="ga1b25e8d6f232e7a7372fcb41c15db780" name="ga1b25e8d6f232e7a7372fcb41c15db780"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>MTB_HAL_GPIO_IMPL_HEADER</b>&#160;&#160;&#160;&quot;mtb_hal_gpio_impl.h&quot;</td></tr>
+<tr class="memdesc:ga1b25e8d6f232e7a7372fcb41c15db780"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementation specific header for GPIO. <br /></td></tr>
+<tr class="separator:ga1b25e8d6f232e7a7372fcb41c15db780"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga91a30b615157851ee7d472d492deeac2"><td class="memItemLeft" align="right" valign="top"><a id="ga91a30b615157851ee7d472d492deeac2" name="ga91a30b615157851ee7d472d492deeac2"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>MTB_HAL_I2C_IMPL_HEADER</b>&#160;&#160;&#160;&quot;mtb_hal_i2c_impl.h&quot;</td></tr>
+<tr class="memdesc:ga91a30b615157851ee7d472d492deeac2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementation specific header for I2C. <br /></td></tr>
+<tr class="separator:ga91a30b615157851ee7d472d492deeac2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gabca568342efb55d0cc607301569672a9"><td class="memItemLeft" align="right" valign="top"><a id="gabca568342efb55d0cc607301569672a9" name="gabca568342efb55d0cc607301569672a9"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>MTB_HAL_LPTIMER_IMPL_HEADER</b>&#160;&#160;&#160;&quot;mtb_hal_lptimer_impl.h&quot;</td></tr>
+<tr class="memdesc:gabca568342efb55d0cc607301569672a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementation specific header for LPTimer. <br /></td></tr>
+<tr class="separator:gabca568342efb55d0cc607301569672a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4291741bdd84b04879462c11a8faf45f"><td class="memItemLeft" align="right" valign="top"><a id="ga4291741bdd84b04879462c11a8faf45f" name="ga4291741bdd84b04879462c11a8faf45f"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>MTB_HAL_NVM_IMPL_HEADER</b>&#160;&#160;&#160;&quot;mtb_hal_nvm_impl.h&quot;</td></tr>
+<tr class="memdesc:ga4291741bdd84b04879462c11a8faf45f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementation specific header for NVM. <br /></td></tr>
+<tr class="separator:ga4291741bdd84b04879462c11a8faf45f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga88d3222a6004611a8e4c51c85883fb19"><td class="memItemLeft" align="right" valign="top"><a id="ga88d3222a6004611a8e4c51c85883fb19" name="ga88d3222a6004611a8e4c51c85883fb19"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>MTB_HAL_PWM_IMPL_HEADER</b>&#160;&#160;&#160;&quot;mtb_hal_pwm_impl.h&quot;</td></tr>
+<tr class="memdesc:ga88d3222a6004611a8e4c51c85883fb19"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementation specific header for PWM. <br /></td></tr>
+<tr class="separator:ga88d3222a6004611a8e4c51c85883fb19"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga54964c21232e09ce6a76c2a1f7f57e31"><td class="memItemLeft" align="right" valign="top"><a id="ga54964c21232e09ce6a76c2a1f7f57e31" name="ga54964c21232e09ce6a76c2a1f7f57e31"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>MTB_HAL_RTC_IMPL_HEADER</b>&#160;&#160;&#160;&quot;mtb_hal_rtc_impl.h&quot;</td></tr>
+<tr class="memdesc:ga54964c21232e09ce6a76c2a1f7f57e31"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementation specific header for RTC. <br /></td></tr>
+<tr class="separator:ga54964c21232e09ce6a76c2a1f7f57e31"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2589e4126be6d547ebbdc51054fa5e63"><td class="memItemLeft" align="right" valign="top"><a id="ga2589e4126be6d547ebbdc51054fa5e63" name="ga2589e4126be6d547ebbdc51054fa5e63"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>MTB_HAL_SPI_IMPL_HEADER</b>&#160;&#160;&#160;&quot;mtb_hal_spi_impl.h&quot;</td></tr>
+<tr class="memdesc:ga2589e4126be6d547ebbdc51054fa5e63"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementation specific header for SPI. <br /></td></tr>
+<tr class="separator:ga2589e4126be6d547ebbdc51054fa5e63"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga24f61c61c1222cfe00e0b488247c08c3"><td class="memItemLeft" align="right" valign="top"><a id="ga24f61c61c1222cfe00e0b488247c08c3" name="ga24f61c61c1222cfe00e0b488247c08c3"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>MTB_HAL_SYSPM_IMPL_HEADER</b>&#160;&#160;&#160;&quot;mtb_hal_syspm_impl.h&quot;</td></tr>
+<tr class="memdesc:ga24f61c61c1222cfe00e0b488247c08c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementation specific header for SysPm. <br /></td></tr>
+<tr class="separator:ga24f61c61c1222cfe00e0b488247c08c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga12459983e6b435498e9255cc087ebb09"><td class="memItemLeft" align="right" valign="top"><a id="ga12459983e6b435498e9255cc087ebb09" name="ga12459983e6b435498e9255cc087ebb09"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>MTB_HAL_SYSTEM_IMPL_HEADER</b>&#160;&#160;&#160;&quot;mtb_hal_system_impl.h&quot;</td></tr>
+<tr class="memdesc:ga12459983e6b435498e9255cc087ebb09"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementation specific header for System. <br /></td></tr>
+<tr class="separator:ga12459983e6b435498e9255cc087ebb09"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf8361085c0d742213ceecef81a9fb828"><td class="memItemLeft" align="right" valign="top"><a id="gaf8361085c0d742213ceecef81a9fb828" name="gaf8361085c0d742213ceecef81a9fb828"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>MTB_HAL_TIMER_IMPL_HEADER</b>&#160;&#160;&#160;&quot;mtb_hal_timer_impl.h&quot;</td></tr>
+<tr class="memdesc:gaf8361085c0d742213ceecef81a9fb828"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementation specific header for Timer. <br /></td></tr>
+<tr class="separator:gaf8361085c0d742213ceecef81a9fb828"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad5c5cfe558f9a95c7696257ee13558c0"><td class="memItemLeft" align="right" valign="top"><a id="gad5c5cfe558f9a95c7696257ee13558c0" name="gad5c5cfe558f9a95c7696257ee13558c0"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>MTB_HAL_TRNG_IMPL_HEADER</b>&#160;&#160;&#160;&quot;mtb_hal_trng_impl.h&quot;</td></tr>
+<tr class="memdesc:gad5c5cfe558f9a95c7696257ee13558c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementation specific header for TRNG. <br /></td></tr>
+<tr class="separator:gad5c5cfe558f9a95c7696257ee13558c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga791988692397657778b98437fb91a35c"><td class="memItemLeft" align="right" valign="top"><a id="ga791988692397657778b98437fb91a35c" name="ga791988692397657778b98437fb91a35c"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>MTB_HAL_UART_IMPL_HEADER</b>&#160;&#160;&#160;&quot;mtb_hal_uart_impl.h&quot;</td></tr>
+<tr class="memdesc:ga791988692397657778b98437fb91a35c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementation specific header for UART. <br /></td></tr>
+<tr class="separator:ga791988692397657778b98437fb91a35c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:ga400fba99ebb30ce5c527090454e70f76"><td class="memItemLeft" align="right" valign="top"><a id="ga400fba99ebb30ce5c527090454e70f76" name="ga400fba99ebb30ce5c527090454e70f76"></a>
-typedef uint32_t(*&#160;</td><td class="memItemRight" valign="bottom"><b>mtb_hal_clock_get_frequency_hz_t</b>) (const void *clock_ref)</td></tr>
-<tr class="memdesc:ga400fba99ebb30ce5c527090454e70f76"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the clock frequency. <br /></td></tr>
-<tr class="separator:ga400fba99ebb30ce5c527090454e70f76"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga208968ce610297bd0d2998fb9668e9da"><td class="memItemLeft" align="right" valign="top"><a id="ga208968ce610297bd0d2998fb9668e9da" name="ga208968ce610297bd0d2998fb9668e9da"></a>
-typedef <a class="el" href="group__group__result.html#gaca79700fcc701534ce61778a9bcf57d1">cy_rslt_t</a>(*&#160;</td><td class="memItemRight" valign="bottom"><b>mtb_hal_clock_set_frequency_hz_t</b>) (const void *clock_ref, uint32_t desired_frequency_hz, uint32_t tolerance_ppm)</td></tr>
-<tr class="memdesc:ga208968ce610297bd0d2998fb9668e9da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the clock frequency. <br /></td></tr>
-<tr class="separator:ga208968ce610297bd0d2998fb9668e9da"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga4705c4d0673b23f78d03e1173daf583f"><td class="memItemLeft" align="right" valign="top"><a id="ga4705c4d0673b23f78d03e1173daf583f" name="ga4705c4d0673b23f78d03e1173daf583f"></a>
-typedef <a class="el" href="group__group__result.html#gaca79700fcc701534ce61778a9bcf57d1">cy_rslt_t</a>(*&#160;</td><td class="memItemRight" valign="bottom"><b>mtb_hal_clock_set_enabled_t</b>) (const void *clock_ref, bool enabled)</td></tr>
-<tr class="memdesc:ga4705c4d0673b23f78d03e1173daf583f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enable or Disable the clock. <br /></td></tr>
-<tr class="separator:ga4705c4d0673b23f78d03e1173daf583f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga6b2c10c0469e0c636265fe3374b58971"><td class="memItemLeft" align="right" valign="top">typedef GPIO_PRT_Type *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__impl__hw__types.html#ga6b2c10c0469e0c636265fe3374b58971">mtb_hal_gpio_port_t</a></td></tr>
-<tr class="memdesc:ga6b2c10c0469e0c636265fe3374b58971"><td class="mdescLeft">&#160;</td><td class="mdescRight">GPIO Port object.  <a href="group__group__hal__impl__hw__types.html#ga6b2c10c0469e0c636265fe3374b58971">More...</a><br /></td></tr>
-<tr class="separator:ga6b2c10c0469e0c636265fe3374b58971"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga641d8b5693dd367a3eeb3d47ffc81371"><td class="memItemLeft" align="right" valign="top">typedef void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__impl__hw__types.html#ga641d8b5693dd367a3eeb3d47ffc81371">mtb_hal_nvm_configurator_t</a></td></tr>
-<tr class="memdesc:ga641d8b5693dd367a3eeb3d47ffc81371"><td class="mdescLeft">&#160;</td><td class="mdescRight">NVM configurator struct.  <a href="group__group__hal__impl__hw__types.html#ga641d8b5693dd367a3eeb3d47ffc81371">More...</a><br /></td></tr>
-<tr class="separator:ga641d8b5693dd367a3eeb3d47ffc81371"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga994293a41e46fcd5369bbbbda908359e"><td class="memItemLeft" align="right" valign="top">typedef void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__impl__hw__types.html#ga994293a41e46fcd5369bbbbda908359e">mtb_hal_nvm_t</a></td></tr>
-<tr class="memdesc:ga994293a41e46fcd5369bbbbda908359e"><td class="mdescLeft">&#160;</td><td class="mdescRight">NVM object.  <a href="group__group__hal__impl__hw__types.html#ga994293a41e46fcd5369bbbbda908359e">More...</a><br /></td></tr>
-<tr class="separator:ga994293a41e46fcd5369bbbbda908359e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga048a8b2dba1b8d344e99abb9c800682e"><td class="memItemLeft" align="right" valign="top">typedef void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__impl__hw__types.html#ga048a8b2dba1b8d344e99abb9c800682e">mtb_hal_trng_configurator_t</a></td></tr>
 <tr class="memdesc:ga048a8b2dba1b8d344e99abb9c800682e"><td class="mdescLeft">&#160;</td><td class="mdescRight">TRNG configurator struct.  <a href="group__group__hal__impl__hw__types.html#ga048a8b2dba1b8d344e99abb9c800682e">More...</a><br /></td></tr>
 <tr class="separator:ga048a8b2dba1b8d344e99abb9c800682e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr class="memitem:ga38bf37979b995e99b36bedc30c4f9144"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__impl__hw__types.html#ga38bf37979b995e99b36bedc30c4f9144">mtb_hal_resource_t</a> { <br />
-&#160;&#160;<a class="el" href="group__group__hal__impl__hw__types.html#gga38bf37979b995e99b36bedc30c4f9144af2be7c85ac8bfb01624aaacd06ff64cf">MTB_HAL_RSC_ADC</a>
+<tr class="memitem:ga46ae3dc66a51511ddee7b7aca5872c11"><td class="memItemLeft" align="right" valign="top"><a id="ga46ae3dc66a51511ddee7b7aca5872c11" name="ga46ae3dc66a51511ddee7b7aca5872c11"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__impl__hw__types.html#ga46ae3dc66a51511ddee7b7aca5872c11">mtb_hal_comp_type_t</a> { <br />
+&#160;&#160;<b>MTB_HAL_COMP_LP</b> = 0
 , <br />
-&#160;&#160;<a class="el" href="group__group__hal__impl__hw__types.html#gga38bf37979b995e99b36bedc30c4f9144acf4b32899a352879ac97ec7f9702ddcc">MTB_HAL_RSC_ADCMIC</a>
+&#160;&#160;<b>MTB_HAL_COMP_CSG</b> = 1
 , <br />
-&#160;&#160;<a class="el" href="group__group__hal__impl__hw__types.html#gga38bf37979b995e99b36bedc30c4f9144aa116508e0c34e00267a54cf4f29b2bbb">MTB_HAL_RSC_BLESS</a>
-, <br />
-&#160;&#160;<a class="el" href="group__group__hal__impl__hw__types.html#gga38bf37979b995e99b36bedc30c4f9144a2f0e91bc85086d815c95d6beb2bc2b11">MTB_HAL_RSC_CAN</a>
-, <br />
-&#160;&#160;<a class="el" href="group__group__hal__impl__hw__types.html#gga38bf37979b995e99b36bedc30c4f9144af3b506137e26a3846478f69fc8081065">MTB_HAL_RSC_CLKPATH</a>
-, <br />
-&#160;&#160;<a class="el" href="group__group__hal__impl__hw__types.html#gga38bf37979b995e99b36bedc30c4f9144af8173534edbe0f074db15cebf0d14ab3">MTB_HAL_RSC_CLOCK</a>
-, <br />
-&#160;&#160;<a class="el" href="group__group__hal__impl__hw__types.html#gga38bf37979b995e99b36bedc30c4f9144a20a33cf5d70ab618717c0485fd88aa24">MTB_HAL_RSC_CORDIC</a>
-, <br />
-&#160;&#160;<a class="el" href="group__group__hal__impl__hw__types.html#gga38bf37979b995e99b36bedc30c4f9144ae142577757bcc7e7d97b12e0da8422c0">MTB_HAL_RSC_CRYPTO</a>
-, <br />
-&#160;&#160;<a class="el" href="group__group__hal__impl__hw__types.html#gga38bf37979b995e99b36bedc30c4f9144a9892afa6d5e68062dbf4841aafb4a6a7">MTB_HAL_RSC_CSG</a>
-, <br />
-&#160;&#160;<a class="el" href="group__group__hal__impl__hw__types.html#gga38bf37979b995e99b36bedc30c4f9144a32d37aece4da2dfd63e2ba34a5310c98">MTB_HAL_RSC_DAC</a>
-, <br />
-&#160;&#160;<a class="el" href="group__group__hal__impl__hw__types.html#gga38bf37979b995e99b36bedc30c4f9144a611a7576784931ae5c77cb665aea6d9d">MTB_HAL_RSC_DMA</a>
-, <br />
-&#160;&#160;<a class="el" href="group__group__hal__impl__hw__types.html#gga38bf37979b995e99b36bedc30c4f9144ad906a4103f6ce6764f3b10b2664455cb">MTB_HAL_RSC_DW</a>
-, <br />
-&#160;&#160;<a class="el" href="group__group__hal__impl__hw__types.html#gga38bf37979b995e99b36bedc30c4f9144a8baac2b4feaa628efd88d76a863af2a5">MTB_HAL_RSC_ETH</a>
-, <br />
-&#160;&#160;<a class="el" href="group__group__hal__impl__hw__types.html#gga38bf37979b995e99b36bedc30c4f9144a4108109d0e0eb4d3b3f3af3149c736c2">MTB_HAL_RSC_GPIO</a>
-, <br />
-&#160;&#160;<a class="el" href="group__group__hal__impl__hw__types.html#gga38bf37979b995e99b36bedc30c4f9144a5b8d0440daeef1cf4b205fb39ae78219">MTB_HAL_RSC_I2S</a>
-, <br />
-&#160;&#160;<a class="el" href="group__group__hal__impl__hw__types.html#gga38bf37979b995e99b36bedc30c4f9144a1dfb6e47f6370fca6d22b1d129564e8a">MTB_HAL_RSC_I3C</a>
-, <br />
-&#160;&#160;<a class="el" href="group__group__hal__impl__hw__types.html#gga38bf37979b995e99b36bedc30c4f9144ad2ab8e28ebcf8175e23d46044c5bdbd5">MTB_HAL_RSC_KEYSCAN</a>
-, <br />
-&#160;&#160;<a class="el" href="group__group__hal__impl__hw__types.html#gga38bf37979b995e99b36bedc30c4f9144ab6675654774348642244fa28c4c0f92d">MTB_HAL_RSC_LCD</a>
-, <br />
-&#160;&#160;<a class="el" href="group__group__hal__impl__hw__types.html#gga38bf37979b995e99b36bedc30c4f9144ab06612162e209c84407d75de71162093">MTB_HAL_RSC_LIN</a>
-, <br />
-&#160;&#160;<a class="el" href="group__group__hal__impl__hw__types.html#gga38bf37979b995e99b36bedc30c4f9144a26b844edf2856c4a2930b99424022693">MTB_HAL_RSC_LPCOMP</a>
-, <br />
-&#160;&#160;<a class="el" href="group__group__hal__impl__hw__types.html#gga38bf37979b995e99b36bedc30c4f9144a7cee683f5ccdf441b6289b7dd4a30b8a">MTB_HAL_RSC_LPTIMER</a>
-, <br />
-&#160;&#160;<a class="el" href="group__group__hal__impl__hw__types.html#gga38bf37979b995e99b36bedc30c4f9144a3cf8cc6789d823627755b055d5ce33f4">MTB_HAL_RSC_MOTIF</a>
-, <br />
-&#160;&#160;<a class="el" href="group__group__hal__impl__hw__types.html#gga38bf37979b995e99b36bedc30c4f9144aa6612f56fe634f0c918db44c9b2d49d8">MTB_HAL_RSC_OPAMP</a>
-, <br />
-&#160;&#160;<a class="el" href="group__group__hal__impl__hw__types.html#gga38bf37979b995e99b36bedc30c4f9144aebeeab1b5db047856b12440014e56e86">MTB_HAL_RSC_PDM</a>
-, <br />
-&#160;&#160;<a class="el" href="group__group__hal__impl__hw__types.html#gga38bf37979b995e99b36bedc30c4f9144a4bb512affd5c62777cc937c43fe76619">MTB_HAL_RSC_PTC</a>
-, <br />
-&#160;&#160;<a class="el" href="group__group__hal__impl__hw__types.html#gga38bf37979b995e99b36bedc30c4f9144ab92f99d38c4256e59e8ea927fb22beb5">MTB_HAL_RSC_SMIF</a>
-, <br />
-&#160;&#160;<a class="el" href="group__group__hal__impl__hw__types.html#gga38bf37979b995e99b36bedc30c4f9144aee2ff3444b75da4c88833d05759518c2">MTB_HAL_RSC_RTC</a>
-, <br />
-&#160;&#160;<a class="el" href="group__group__hal__impl__hw__types.html#gga38bf37979b995e99b36bedc30c4f9144a1fca6de621b9895009e326b745793d17">MTB_HAL_RSC_SCB</a>
-, <br />
-&#160;&#160;<a class="el" href="group__group__hal__impl__hw__types.html#gga38bf37979b995e99b36bedc30c4f9144adba9ecdf95b0d900fe0abcb36b1a88fb">MTB_HAL_RSC_SDHC</a>
-, <br />
-&#160;&#160;<a class="el" href="group__group__hal__impl__hw__types.html#gga38bf37979b995e99b36bedc30c4f9144a9631e8d912656217753fde06dc857be3">MTB_HAL_RSC_SDIODEV</a>
-, <br />
-&#160;&#160;<a class="el" href="group__group__hal__impl__hw__types.html#gga38bf37979b995e99b36bedc30c4f9144a570d9b1479214143842372df00d93b97">MTB_HAL_RSC_TCPWM</a>
-, <br />
-&#160;&#160;<a class="el" href="group__group__hal__impl__hw__types.html#gga38bf37979b995e99b36bedc30c4f9144abccee35fbdd30982a5ca318a341ef27a">MTB_HAL_RSC_TDM</a>
-, <br />
-&#160;&#160;<a class="el" href="group__group__hal__impl__hw__types.html#gga38bf37979b995e99b36bedc30c4f9144a51eca0a588747895bff3284fe2a23dcf">MTB_HAL_RSC_UDB</a>
-, <br />
-&#160;&#160;<a class="el" href="group__group__hal__impl__hw__types.html#gga38bf37979b995e99b36bedc30c4f9144a5aa095b691fc76cd2697d069ee2a62f0">MTB_HAL_RSC_USB</a>
-, <br />
-&#160;&#160;<a class="el" href="group__group__hal__impl__hw__types.html#gga38bf37979b995e99b36bedc30c4f9144aae79ed965ef8244aaeac3f6125c0ad08">MTB_HAL_RSC_INVALID</a>
+&#160;&#160;<b>MTB_HAL_COMP_DCSG</b> = 2
 <br />
  }</td></tr>
-<tr class="memdesc:ga38bf37979b995e99b36bedc30c4f9144"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resource types that the hardware manager supports.  <a href="group__group__hal__impl__hw__types.html#ga38bf37979b995e99b36bedc30c4f9144">More...</a><br /></td></tr>
-<tr class="separator:ga38bf37979b995e99b36bedc30c4f9144"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memdesc:ga46ae3dc66a51511ddee7b7aca5872c11"><td class="mdescLeft">&#160;</td><td class="mdescRight">Comp type. <br /></td></tr>
+<tr class="separator:ga46ae3dc66a51511ddee7b7aca5872c11"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gac1b06e14fbe8eea1edf6009f030c7e4e"><td class="memItemLeft" align="right" valign="top"><a id="gac1b06e14fbe8eea1edf6009f030c7e4e" name="gac1b06e14fbe8eea1edf6009f030c7e4e"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__impl__hw__types.html#gac1b06e14fbe8eea1edf6009f030c7e4e">mtb_hal_dma_type_t</a> { <br />
 &#160;&#160;<b>MTB_HAL_DMA_DW</b> = 0
 , <br />
@@ -350,326 +258,74 @@ Enumerations</h2></td></tr>
  }</td></tr>
 <tr class="memdesc:gac1b06e14fbe8eea1edf6009f030c7e4e"><td class="mdescLeft">&#160;</td><td class="mdescRight">DMA type. <br /></td></tr>
 <tr class="separator:gac1b06e14fbe8eea1edf6009f030c7e4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gac1ee9d2300303ba1b0918e52db53912e"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__impl__hw__types.html#gac1ee9d2300303ba1b0918e52db53912e">_mtb_hal_sdxx_data_transfer_status_t</a> { <br />
-&#160;&#160;<a class="el" href="group__group__hal__impl__hw__types.html#ggac1ee9d2300303ba1b0918e52db53912ea85a02864732123f6e773ffb1857a9516">_MTB_HAL_SDXX_NOT_RUNNING</a> = 0x0
-, <br />
-&#160;&#160;<a class="el" href="group__group__hal__impl__hw__types.html#ggac1ee9d2300303ba1b0918e52db53912eaac1a881e5856d72801d111c8f543561a">_MTB_HAL_SDXX_WAIT_CMD_COMPLETE</a> = 0x1
-, <br />
-&#160;&#160;<a class="el" href="group__group__hal__impl__hw__types.html#ggac1ee9d2300303ba1b0918e52db53912eab896a730e1133e5d7977ab5504bf63ec">_MTB_HAL_SDXX_WAIT_XFER_COMPLETE</a> = 0x2
-, <br />
-&#160;&#160;<a class="el" href="group__group__hal__impl__hw__types.html#ggac1ee9d2300303ba1b0918e52db53912ead83947964ab8ff4b81c3bc72080cdc04">_MTB_HAL_SDXX_WAIT_BOTH</a>
-<br />
- }</td></tr>
-<tr class="memdesc:gac1ee9d2300303ba1b0918e52db53912e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Data transfer status on SDHC/SDIO.  <a href="group__group__hal__impl__hw__types.html#gac1ee9d2300303ba1b0918e52db53912e">More...</a><br /></td></tr>
-<tr class="separator:gac1ee9d2300303ba1b0918e52db53912e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <hr/><h2 class="groupheader">Data Structure Documentation</h2>
-<a name="structmtb__hal__peri__div__t" id="structmtb__hal__peri__div__t"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#structmtb__hal__peri__div__t">&#9670;&nbsp;</a></span>mtb_hal_peri_div_t</h2>
+<a name="structmtb__hal__comp__t" id="structmtb__hal__comp__t"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#structmtb__hal__comp__t">&#9670;&nbsp;</a></span>mtb_hal_comp_t</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">struct mtb_hal_peri_div_t</td>
+          <td class="memname">struct mtb_hal_comp_t</td>
         </tr>
       </table>
 </div><div class="memdoc">
 <table class="fieldtable">
 <tr><th colspan="3">Data Fields</th></tr>
 <tr><td class="fieldtype">
-<a id="a1cc889a1219387a49ae88aa541abd7c1" name="a1cc889a1219387a49ae88aa541abd7c1"></a>en_clk_dst_t</td>
+<a id="a9232b13c5f61d78a3df0f60f3cf779c4" name="a9232b13c5f61d78a3df0f60f3cf779c4"></a><a class="el" href="group__group__hal__impl__hw__types.html#ga46ae3dc66a51511ddee7b7aca5872c11">mtb_hal_comp_type_t</a></td>
 <td class="fieldname">
-clk_dst</td>
+comp_type</td>
 <td class="fielddoc">
 </td></tr>
 <tr><td class="fieldtype">
-<a id="a8286b2362db58dd3d74f385b95abe144" name="a8286b2362db58dd3d74f385b95abe144"></a>cy_en_divider_types_t</td>
+<a id="ae3a1fc11b1ecd7828da502a47eabda1e" name="ae3a1fc11b1ecd7828da502a47eabda1e"></a>union <a class="el" href="group__group__hal__impl__hw__types.html#unionmtb__hal__comp__t_8____unnamed1____">mtb_hal_comp_t.__unnamed1__</a></td>
 <td class="fieldname">
-div_type</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="a344df616c2c0c3abda64bb76f40cb228" name="a344df616c2c0c3abda64bb76f40cb228"></a>uint32_t</td>
-<td class="fieldname">
-div_num</td>
+__unnamed__</td>
 <td class="fielddoc">
 </td></tr>
 </table>
 
 </div>
 </div>
-<a name="structmtb__hal__hf__clock__t" id="structmtb__hal__hf__clock__t"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#structmtb__hal__hf__clock__t">&#9670;&nbsp;</a></span>mtb_hal_hf_clock_t</h2>
+<a name="structmtb__hal__comp__configurator__t" id="structmtb__hal__comp__configurator__t"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#structmtb__hal__comp__configurator__t">&#9670;&nbsp;</a></span>mtb_hal_comp_configurator_t</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">struct mtb_hal_hf_clock_t</td>
+          <td class="memname">struct mtb_hal_comp_configurator_t</td>
         </tr>
       </table>
 </div><div class="memdoc">
 <table class="fieldtable">
 <tr><th colspan="3">Data Fields</th></tr>
 <tr><td class="fieldtype">
-<a id="a602f497bee0fcb9e56b4089986fddbd0" name="a602f497bee0fcb9e56b4089986fddbd0"></a>uint32_t</td>
+<a id="a688adabe081d8077e2af345fb3f1a3b0" name="a688adabe081d8077e2af345fb3f1a3b0"></a><a class="el" href="group__group__hal__impl__hw__types.html#ga46ae3dc66a51511ddee7b7aca5872c11">mtb_hal_comp_type_t</a></td>
 <td class="fieldname">
-inst_num</td>
-<td class="fielddoc">
-</td></tr>
-</table>
-
-</div>
-</div>
-<a name="structmtb__hal__clock__interface__t" id="structmtb__hal__clock__interface__t"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#structmtb__hal__clock__interface__t">&#9670;&nbsp;</a></span>mtb_hal_clock_interface_t</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">struct mtb_hal_clock_interface_t</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<table class="fieldtable">
-<tr><th colspan="3">Data Fields</th></tr>
-<tr><td class="fieldtype">
-<a id="aff69b498d544dec4d53cd786c88a27e4" name="aff69b498d544dec4d53cd786c88a27e4"></a><a class="el" href="group__group__hal__impl__hw__types.html#ga400fba99ebb30ce5c527090454e70f76">mtb_hal_clock_get_frequency_hz_t</a></td>
-<td class="fieldname">
-get_frequency_hz</td>
+resource_type</td>
 <td class="fielddoc">
 </td></tr>
 <tr><td class="fieldtype">
-<a id="a27ba2457ed03e2f69470776077c711ac" name="a27ba2457ed03e2f69470776077c711ac"></a><a class="el" href="group__group__hal__impl__hw__types.html#ga208968ce610297bd0d2998fb9668e9da">mtb_hal_clock_set_frequency_hz_t</a></td>
-<td class="fieldname">
-set_frequency_hz</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="a3b42e1b7f2e95c17c6724bdc8a265603" name="a3b42e1b7f2e95c17c6724bdc8a265603"></a><a class="el" href="group__group__hal__impl__hw__types.html#ga4705c4d0673b23f78d03e1173daf583f">mtb_hal_clock_set_enabled_t</a></td>
-<td class="fieldname">
-set_enabled</td>
-<td class="fielddoc">
-</td></tr>
-</table>
-
-</div>
-</div>
-<a name="structmtb__hal__clock__t" id="structmtb__hal__clock__t"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#structmtb__hal__clock__t">&#9670;&nbsp;</a></span>mtb_hal_clock_t</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">struct mtb_hal_clock_t</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<table class="fieldtable">
-<tr><th colspan="3">Data Fields</th></tr>
-<tr><td class="fieldtype">
-<a id="a9ba49dd52dfef11783ef9be0a1eb3601" name="a9ba49dd52dfef11783ef9be0a1eb3601"></a>const void *</td>
-<td class="fieldname">
-clock_ref</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="a4d2798e06e0d8cccbf9c17bf3e6c552b" name="a4d2798e06e0d8cccbf9c17bf3e6c552b"></a>const <a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__clock__interface__t">mtb_hal_clock_interface_t</a> *</td>
-<td class="fieldname">
-interface</td>
-<td class="fielddoc">
-</td></tr>
-</table>
-
-</div>
-</div>
-<a name="structmtb__hal__resource__inst__t" id="structmtb__hal__resource__inst__t"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#structmtb__hal__resource__inst__t">&#9670;&nbsp;</a></span>mtb_hal_resource_inst_t</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">struct mtb_hal_resource_inst_t</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<table class="fieldtable">
-<tr><th colspan="3">Data Fields</th></tr>
-<tr><td class="fieldtype">
-<a id="ab741165284d0295228e7402fcd5ea384" name="ab741165284d0295228e7402fcd5ea384"></a><a class="el" href="group__group__hal__impl__hw__types.html#ga38bf37979b995e99b36bedc30c4f9144">mtb_hal_resource_t</a></td>
-<td class="fieldname">
-type</td>
-<td class="fielddoc">
-The resource block type. </td></tr>
-<tr><td class="fieldtype">
-<a id="ad831097a15cb07cd189741d524c5fde8" name="ad831097a15cb07cd189741d524c5fde8"></a>uint8_t</td>
-<td class="fieldname">
-block_num</td>
-<td class="fielddoc">
-The resource block index. </td></tr>
-<tr><td class="fieldtype">
-<a id="a5ca95db2fbee17c07bf2f1b7bdc95632" name="a5ca95db2fbee17c07bf2f1b7bdc95632"></a>uint8_t</td>
+<a id="a362dffcb7c387fa71309adf9f3d1f57b" name="a362dffcb7c387fa71309adf9f3d1f57b"></a>uint8_t</td>
 <td class="fieldname">
 channel_num</td>
 <td class="fielddoc">
-The channel number, if the resource type defines multiple channels per block instance. <p >Otherwise, 0 </p>
 </td></tr>
-</table>
-
-</div>
-</div>
-<a name="structmtb__hal__event__callback__data__t" id="structmtb__hal__event__callback__data__t"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#structmtb__hal__event__callback__data__t">&#9670;&nbsp;</a></span>mtb_hal_event_callback_data_t</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">struct mtb_hal_event_callback_data_t</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<table class="fieldtable">
-<tr><th colspan="3">Data Fields</th></tr>
 <tr><td class="fieldtype">
-<a id="a5165be2e2c2d953c97e26989c595280f" name="a5165be2e2c2d953c97e26989c595280f"></a>cy_israddress</td>
+<a id="a8a54a0518deb74d178caf8d6823e42dd" name="a8a54a0518deb74d178caf8d6823e42dd"></a>union <a class="el" href="group__group__hal__impl__hw__types.html#unionmtb__hal__comp__configurator__t_8____unnamed5____">mtb_hal_comp_configurator_t.__unnamed5__</a></td>
 <td class="fieldname">
-callback</td>
+__unnamed__</td>
 <td class="fielddoc">
 </td></tr>
 <tr><td class="fieldtype">
-<a id="a56f26a62ac556621923e48297cadd0b4" name="a56f26a62ac556621923e48297cadd0b4"></a>void *</td>
+<a id="a9ce123e93b11e4594a4debd464596c92" name="a9ce123e93b11e4594a4debd464596c92"></a>union <a class="el" href="group__group__hal__impl__hw__types.html#unionmtb__hal__comp__configurator__t_8____unnamed7____">mtb_hal_comp_configurator_t.__unnamed7__</a></td>
 <td class="fieldname">
-callback_arg</td>
+__unnamed__</td>
 <td class="fielddoc">
 </td></tr>
-</table>
-
-</div>
-</div>
-<a name="struct__mtb__hal__buffer__info__t" id="struct__mtb__hal__buffer__info__t"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#struct__mtb__hal__buffer__info__t">&#9670;&nbsp;</a></span>_mtb_hal_buffer_info_t</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">struct _mtb_hal_buffer_info_t</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<table class="fieldtable">
-<tr><th colspan="3">Data Fields</th></tr>
-<tr><td class="fieldtype">
-<a id="a7c94734c2fd354b2f86cc773745e697b" name="a7c94734c2fd354b2f86cc773745e697b"></a>union <a class="el" href="group__group__hal__impl__hw__types.html#union__mtb__hal__buffer__info__t_8addr">_mtb_hal_buffer_info_t.addr</a></td>
-<td class="fieldname">
-addr</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="a965d1d5ef00b86945eda4bfe01c12268" name="a965d1d5ef00b86945eda4bfe01c12268"></a>uint32_t</td>
-<td class="fieldname">
-size</td>
-<td class="fielddoc">
-</td></tr>
-</table>
-
-</div>
-</div>
-<a name="structmtb__hal__gpio__t" id="structmtb__hal__gpio__t"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#structmtb__hal__gpio__t">&#9670;&nbsp;</a></span>mtb_hal_gpio_t</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">struct mtb_hal_gpio_t</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<table class="fieldtable">
-<tr><th colspan="3">Data Fields</th></tr>
-<tr><td class="fieldtype">
-<a id="a194ddb09689a213e120b3ee77a99618d" name="a194ddb09689a213e120b3ee77a99618d"></a>uint8_t</td>
-<td class="fieldname">
-pin_num</td>
-<td class="fielddoc">
-The associated gpio pin number. </td></tr>
-<tr><td class="fieldtype">
-<a id="a240b3e0063cffdb174e76f5495f9f62d" name="a240b3e0063cffdb174e76f5495f9f62d"></a>uint8_t</td>
-<td class="fieldname">
-port_num</td>
-<td class="fielddoc">
-The associated gpio port number. </td></tr>
-<tr><td class="fieldtype">
-<a id="a5cf4ed5e2ab8dec1589feb71a88cfd10" name="a5cf4ed5e2ab8dec1589feb71a88cfd10"></a>GPIO_PRT_Type *</td>
-<td class="fieldname">
-port_addr</td>
-<td class="fielddoc">
-The associated gpio port address. </td></tr>
-<tr><td class="fieldtype">
-<a id="a11d9a4433ea330791e36284a5bde644f" name="a11d9a4433ea330791e36284a5bde644f"></a><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__event__callback__data__t">mtb_hal_event_callback_data_t</a></td>
-<td class="fieldname">
-callback_data</td>
-<td class="fielddoc">
-The callback data associated with the pin. </td></tr>
-</table>
-
-</div>
-</div>
-<a name="structmtb__hal__tcpwm__t" id="structmtb__hal__tcpwm__t"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#structmtb__hal__tcpwm__t">&#9670;&nbsp;</a></span>mtb_hal_tcpwm_t</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">struct mtb_hal_tcpwm_t</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<table class="fieldtable">
-<tr><th colspan="3">Data Fields</th></tr>
-<tr><td class="fieldtype">
-<a id="a57181b12f869b42c873ba1cd371e42a4" name="a57181b12f869b42c873ba1cd371e42a4"></a>TCPWM_Type *</td>
-<td class="fieldname">
-base</td>
-<td class="fielddoc">
-The base address pointer of the TCPWM resource. </td></tr>
-<tr><td class="fieldtype">
-<a id="affa370e3276819f28d14bfd33b66684e" name="affa370e3276819f28d14bfd33b66684e"></a>uint32_t</td>
-<td class="fieldname">
-group</td>
-<td class="fielddoc">
-The associated group number. </td></tr>
-<tr><td class="fieldtype">
-<a id="af1c4972159c37b545151377af8adbe1f" name="af1c4972159c37b545151377af8adbe1f"></a>uint32_t</td>
-<td class="fieldname">
-cntnum</td>
-<td class="fielddoc">
-The associated counter number. </td></tr>
-<tr><td class="fieldtype">
-<a id="a35060e7a035137e5921fab41a49b6c7e" name="a35060e7a035137e5921fab41a49b6c7e"></a>uint32_t</td>
-<td class="fieldname">
-max_count</td>
-<td class="fielddoc">
-The max count for the counter. </td></tr>
-<tr><td class="fieldtype">
-<a id="a1480ba41b4c529d29d981ce0e539afc8" name="a1480ba41b4c529d29d981ce0e539afc8"></a>const <a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__clock__t">mtb_hal_clock_t</a> *</td>
-<td class="fieldname">
-clock</td>
-<td class="fielddoc">
-The associated clock resource pointer. </td></tr>
-<tr><td class="fieldtype">
-<a id="aff1dbcb3fed22dbc477c9826048cfd39" name="aff1dbcb3fed22dbc477c9826048cfd39"></a>uint32_t</td>
-<td class="fieldname">
-clock_hz</td>
-<td class="fielddoc">
-The associated clock frequency. </td></tr>
 </table>
 
 </div>
@@ -688,15 +344,15 @@ The associated clock frequency. </td></tr>
 <table class="fieldtable">
 <tr><th colspan="3">Data Fields</th></tr>
 <tr><td class="fieldtype">
-<a id="accec32a159d88c9cb3a8598f67b68ec7" name="accec32a159d88c9cb3a8598f67b68ec7"></a><a class="el" href="group__group__hal__impl__hw__types.html#unionmtb__hal__dma__t_8descriptor">_MTB_HAL_DMA_ALIGN union mtb_hal_dma_t.descriptor</a></td>
+<a id="a64a720ac3d35dd4e0b50e9a70fc9ac37" name="a64a720ac3d35dd4e0b50e9a70fc9ac37"></a>union <a class="el" href="group__group__hal__impl__hw__types.html#unionmtb__hal__dma__t_8base">mtb_hal_dma_t.base</a></td>
 <td class="fieldname">
-descriptor</td>
+base</td>
 <td class="fielddoc">
 </td></tr>
 <tr><td class="fieldtype">
-<a id="a5838918a8965c6a6ff42e907ccf6be6e" name="a5838918a8965c6a6ff42e907ccf6be6e"></a>union <a class="el" href="group__group__hal__impl__hw__types.html#unionmtb__hal__dma__t_8base">mtb_hal_dma_t.base</a></td>
+<a id="a84a7125aab1be732667feb5576deafb1" name="a84a7125aab1be732667feb5576deafb1"></a>union <a class="el" href="group__group__hal__impl__hw__types.html#unionmtb__hal__dma__t_8descriptor">mtb_hal_dma_t.descriptor</a></td>
 <td class="fieldname">
-base</td>
+descriptor</td>
 <td class="fielddoc">
 </td></tr>
 <tr><td class="fieldtype">
@@ -730,7 +386,7 @@ irq_cause</td>
 <td class="fielddoc">
 </td></tr>
 <tr><td class="fieldtype">
-<a id="a31d3a2bd81449df5d75f21c8ffaa3ab2" name="a31d3a2bd81449df5d75f21c8ffaa3ab2"></a><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__event__callback__data__t">mtb_hal_event_callback_data_t</a></td>
+<a id="ab2bfc8bd015393ac562054c1ec6568e5" name="ab2bfc8bd015393ac562054c1ec6568e5"></a>_mtb_hal_event_callback_data_t</td>
 <td class="fieldname">
 callback_data</td>
 <td class="fielddoc">
@@ -765,7 +421,7 @@ channel</td>
 <td class="fielddoc">
 </td></tr>
 <tr><td class="fieldtype">
-<a id="a8b848900958ebc06a6d66aaae04261e8" name="a8b848900958ebc06a6d66aaae04261e8"></a>struct <a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__dma__configurator__t_8____unnamed4____">mtb_hal_dma_configurator_t.__unnamed4__</a></td>
+<a id="a2ed225f93e5c2a399ef0eea72c81ef1a" name="a2ed225f93e5c2a399ef0eea72c81ef1a"></a>struct <a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__dma__configurator__t_8____unnamed11____">mtb_hal_dma_configurator_t.__unnamed11__</a></td>
 <td class="fieldname">
 __unnamed__</td>
 <td class="fielddoc">
@@ -774,202 +430,21 @@ __unnamed__</td>
 
 </div>
 </div>
-<a name="structmtb__hal__adc__t" id="structmtb__hal__adc__t"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#structmtb__hal__adc__t">&#9670;&nbsp;</a></span>mtb_hal_adc_t</h2>
+<a name="structmtb__hal__nvm__configurator__t" id="structmtb__hal__nvm__configurator__t"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#structmtb__hal__nvm__configurator__t">&#9670;&nbsp;</a></span>mtb_hal_nvm_configurator_t</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">struct mtb_hal_adc_t</td>
+          <td class="memname">struct mtb_hal_nvm_configurator_t</td>
         </tr>
       </table>
 </div><div class="memdoc">
 <table class="fieldtable">
 <tr><th colspan="3">Data Fields</th></tr>
 <tr><td class="fieldtype">
-<a id="ac22a3a3128742aaef3acfe31f0fd55a5" name="ac22a3a3128742aaef3acfe31f0fd55a5"></a>SAR_Type *</td>
-<td class="fieldname">
-base</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="a1746ae89f509f6758a8c7f3301efa4f2" name="a1746ae89f509f6758a8c7f3301efa4f2"></a>const <a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__clock__t">mtb_hal_clock_t</a> *</td>
-<td class="fieldname">
-clock</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="aa855eb2c24e2db2a338f5d02e1949c5b" name="aa855eb2c24e2db2a338f5d02e1949c5b"></a>bool</td>
-<td class="fieldname">
-continuous_scanning</td>
-<td class="fielddoc">
-</td></tr>
-</table>
-
-</div>
-</div>
-<a name="structmtb__hal__adc__configurator__t" id="structmtb__hal__adc__configurator__t"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#structmtb__hal__adc__configurator__t">&#9670;&nbsp;</a></span>mtb_hal_adc_configurator_t</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">struct mtb_hal_adc_configurator_t</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<table class="fieldtable">
-<tr><th colspan="3">Data Fields</th></tr>
-<tr><td class="fieldtype">
-<a id="aafc616fa623b58b215df025f1c810062" name="aafc616fa623b58b215df025f1c810062"></a>SAR_Type *</td>
-<td class="fieldname">
-base</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="a36f2f03b872349baa7cc9bbb1e058ea6" name="a36f2f03b872349baa7cc9bbb1e058ea6"></a>cy_stc_sar_config_t const  *</td>
-<td class="fieldname">
-config</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="a98326847c0b734ef84aaf8f172975a8a" name="a98326847c0b734ef84aaf8f172975a8a"></a>const <a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__clock__t">mtb_hal_clock_t</a> *</td>
-<td class="fieldname">
-clock</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="aad2ab9a9d9b11a916f4379c0e06f1ec3" name="aad2ab9a9d9b11a916f4379c0e06f1ec3"></a>uint8_t</td>
-<td class="fieldname">
-num_channels</td>
-<td class="fielddoc">
-</td></tr>
-</table>
-
-</div>
-</div>
-<a name="structmtb__hal__adc__channel__t" id="structmtb__hal__adc__channel__t"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#structmtb__hal__adc__channel__t">&#9670;&nbsp;</a></span>mtb_hal_adc_channel_t</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">struct mtb_hal_adc_channel_t</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<table class="fieldtable">
-<tr><th colspan="3">Data Fields</th></tr>
-<tr><td class="fieldtype">
-<a id="a67170e470adc6c21aed65948587c46f4" name="a67170e470adc6c21aed65948587c46f4"></a><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__adc__t">mtb_hal_adc_t</a> *</td>
-<td class="fieldname">
-adc</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="abef3cf40998fc2ddf2c41c448ba6060d" name="abef3cf40998fc2ddf2c41c448ba6060d"></a>uint8_t</td>
-<td class="fieldname">
-channel_idx</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="a3e20ecfba6928f162763f25ced2c97a9" name="a3e20ecfba6928f162763f25ced2c97a9"></a>uint8_t</td>
-<td class="fieldname">
-channel_msk</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="a750262d5bec345fd8ac2581325a94ec4" name="a750262d5bec345fd8ac2581325a94ec4"></a>uint32_t</td>
-<td class="fieldname">
-minimum_acquisition_ns</td>
-<td class="fielddoc">
-</td></tr>
-</table>
-
-</div>
-</div>
-<a name="structmtb__hal__comp__t" id="structmtb__hal__comp__t"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#structmtb__hal__comp__t">&#9670;&nbsp;</a></span>mtb_hal_comp_t</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">struct mtb_hal_comp_t</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<table class="fieldtable">
-<tr><th colspan="3">Data Fields</th></tr>
-<tr><td class="fieldtype">
-<a id="a2a1506fca07dacce41791149b4c6f339" name="a2a1506fca07dacce41791149b4c6f339"></a><a class="el" href="group__group__hal__impl__hw__types.html#ga38bf37979b995e99b36bedc30c4f9144">mtb_hal_resource_t</a></td>
-<td class="fieldname">
-comp_type</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="ab77f1f2773e816ff2482beeea329c92d" name="ab77f1f2773e816ff2482beeea329c92d"></a>union <a class="el" href="group__group__hal__impl__hw__types.html#unionmtb__hal__comp__t_8____unnamed10____">mtb_hal_comp_t.__unnamed10__</a></td>
-<td class="fieldname">
-__unnamed__</td>
-<td class="fielddoc">
-</td></tr>
-</table>
-
-</div>
-</div>
-<a name="structmtb__hal__comp__configurator__t" id="structmtb__hal__comp__configurator__t"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#structmtb__hal__comp__configurator__t">&#9670;&nbsp;</a></span>mtb_hal_comp_configurator_t</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">struct mtb_hal_comp_configurator_t</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<table class="fieldtable">
-<tr><th colspan="3">Data Fields</th></tr>
-<tr><td class="fieldtype">
-<a id="a06391933ec18e31a5fa68aea382d437c" name="a06391933ec18e31a5fa68aea382d437c"></a><a class="el" href="group__group__hal__impl__hw__types.html#ga38bf37979b995e99b36bedc30c4f9144">mtb_hal_resource_t</a></td>
-<td class="fieldname">
-resource_type</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="a362dffcb7c387fa71309adf9f3d1f57b" name="a362dffcb7c387fa71309adf9f3d1f57b"></a>uint8_t</td>
-<td class="fieldname">
-channel_num</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="a85675978a470662b79017d4229d01bb7" name="a85675978a470662b79017d4229d01bb7"></a>union <a class="el" href="group__group__hal__impl__hw__types.html#unionmtb__hal__comp__configurator__t_8____unnamed12____">mtb_hal_comp_configurator_t.__unnamed12__</a></td>
-<td class="fieldname">
-__unnamed__</td>
-<td class="fielddoc">
-</td></tr>
-</table>
-
-</div>
-</div>
-<a name="structmtb__hal__cordic__t" id="structmtb__hal__cordic__t"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#structmtb__hal__cordic__t">&#9670;&nbsp;</a></span>mtb_hal_cordic_t</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">struct mtb_hal_cordic_t</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<table class="fieldtable">
-<tr><th colspan="3">Data Fields</th></tr>
-<tr><td class="fieldtype">
-<a id="a9d3492e521098b84011cd750d9dfcfc5" name="a9d3492e521098b84011cd750d9dfcfc5"></a>void *</td>
+<a id="ab764f5106003b083ee91e890fbc6579d" name="ab764f5106003b083ee91e890fbc6579d"></a>void *</td>
 <td class="fieldname">
 empty</td>
 <td class="fielddoc">
@@ -978,433 +453,23 @@ empty</td>
 
 </div>
 </div>
-<a name="structmtb__hal__i2c__t" id="structmtb__hal__i2c__t"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#structmtb__hal__i2c__t">&#9670;&nbsp;</a></span>mtb_hal_i2c_t</h2>
+<a name="structmtb__hal__nvm__t" id="structmtb__hal__nvm__t"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#structmtb__hal__nvm__t">&#9670;&nbsp;</a></span>mtb_hal_nvm_t</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">struct mtb_hal_i2c_t</td>
+          <td class="memname">struct mtb_hal_nvm_t</td>
         </tr>
       </table>
 </div><div class="memdoc">
 <table class="fieldtable">
 <tr><th colspan="3">Data Fields</th></tr>
 <tr><td class="fieldtype">
-<a id="ab5e6d79f4e33e1fd9b20adc47b097e23" name="ab5e6d79f4e33e1fd9b20adc47b097e23"></a>CySCB_Type *</td>
-<td class="fieldname">
-base</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="a3b717bf3e00bf7eb1acad5682bddd6ad" name="a3b717bf3e00bf7eb1acad5682bddd6ad"></a>cy_stc_scb_i2c_context_t *</td>
-<td class="fieldname">
-context</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="abdd0e75f361e071313a7387774ebf512" name="abdd0e75f361e071313a7387774ebf512"></a>const <a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__clock__t">mtb_hal_clock_t</a> *</td>
-<td class="fieldname">
-clock</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="a3963d2107f96f188da28398753256184" name="a3963d2107f96f188da28398753256184"></a><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__event__callback__data__t">mtb_hal_event_callback_data_t</a></td>
-<td class="fieldname">
-callback_data</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="a26e9e82a035b4f9b84e32d9b1705240d" name="a26e9e82a035b4f9b84e32d9b1705240d"></a><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__event__callback__data__t">mtb_hal_event_callback_data_t</a></td>
-<td class="fieldname">
-addr_callback_data</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="a684c0e73dba3bce1836782e3c2a1f8bc" name="a684c0e73dba3bce1836782e3c2a1f8bc"></a>uint32_t</td>
-<td class="fieldname">
-irq_cause</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="a3694b8a432b4449322d2f0660e95998c" name="a3694b8a432b4449322d2f0660e95998c"></a>uint8_t</td>
-<td class="fieldname">
-addr_irq_cause</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="aa7eff110ddece6b846087a969016e67d" name="aa7eff110ddece6b846087a969016e67d"></a>bool</td>
-<td class="fieldname">
-op_in_callback</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="a27e010f2f670c6de7c0bd2d01c6396b9" name="a27e010f2f670c6de7c0bd2d01c6396b9"></a><a class="el" href="group__group__hal__impl__hw__types.html#struct__mtb__hal__buffer__info__t">_mtb_hal_buffer_info_t</a></td>
-<td class="fieldname">
-rx_target_buff</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="a0bab5de8c8faaf1b452fff3d7d1f36a6" name="a0bab5de8c8faaf1b452fff3d7d1f36a6"></a><a class="el" href="group__group__hal__impl__hw__types.html#struct__mtb__hal__buffer__info__t">_mtb_hal_buffer_info_t</a></td>
-<td class="fieldname">
-tx_target_buff</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="a34cea5d623da27bec51140337afec725" name="a34cea5d623da27bec51140337afec725"></a>const cy_stc_scb_i2c_config_t *</td>
-<td class="fieldname">
-config</td>
-<td class="fielddoc">
-</td></tr>
-</table>
-
-</div>
-</div>
-<a name="structmtb__hal__i2c__configurator__t" id="structmtb__hal__i2c__configurator__t"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#structmtb__hal__i2c__configurator__t">&#9670;&nbsp;</a></span>mtb_hal_i2c_configurator_t</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">struct mtb_hal_i2c_configurator_t</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<table class="fieldtable">
-<tr><th colspan="3">Data Fields</th></tr>
-<tr><td class="fieldtype">
-<a id="a452ed229fe54d0a9dd2d23d3fb67f77c" name="a452ed229fe54d0a9dd2d23d3fb67f77c"></a>CySCB_Type *</td>
-<td class="fieldname">
-base</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="a3a4fa12fedddf29573100112995419a9" name="a3a4fa12fedddf29573100112995419a9"></a>const cy_stc_scb_i2c_config_t *</td>
-<td class="fieldname">
-config</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="a67114b1fdeb4b016422d06a4ca078613" name="a67114b1fdeb4b016422d06a4ca078613"></a>const <a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__clock__t">mtb_hal_clock_t</a> *</td>
-<td class="fieldname">
-clock</td>
-<td class="fielddoc">
-</td></tr>
-</table>
-
-</div>
-</div>
-<a name="structmtb__hal__ipc__t" id="structmtb__hal__ipc__t"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#structmtb__hal__ipc__t">&#9670;&nbsp;</a></span>mtb_hal_ipc_t</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">struct mtb_hal_ipc_t</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<table class="fieldtable">
-<tr><th colspan="3">Data Fields</th></tr>
-<tr><td class="fieldtype">
-<a id="a38fa502c0d6e5aec11260eae8e970d49" name="a38fa502c0d6e5aec11260eae8e970d49"></a>void *</td>
+<a id="a29270f7021999a327e6b0a153cdeda7c" name="a29270f7021999a327e6b0a153cdeda7c"></a>void *</td>
 <td class="fieldname">
 empty</td>
-<td class="fielddoc">
-</td></tr>
-</table>
-
-</div>
-</div>
-<a name="struct__mtb__hal__ipc__queue__process__info__t" id="struct__mtb__hal__ipc__queue__process__info__t"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#struct__mtb__hal__ipc__queue__process__info__t">&#9670;&nbsp;</a></span>_mtb_hal_ipc_queue_process_info_t</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">struct _mtb_hal_ipc_queue_process_info_t</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<table class="fieldtable">
-<tr><th colspan="3">Data Fields</th></tr>
-<tr><td class="fieldtype">
-<a id="acafe13408da6d237ae9d38b2c57f8652" name="acafe13408da6d237ae9d38b2c57f8652"></a>void *</td>
-<td class="fieldname">
-empty</td>
-<td class="fielddoc">
-</td></tr>
-</table>
-
-</div>
-</div>
-<a name="structmtb__hal__lptimer__t" id="structmtb__hal__lptimer__t"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#structmtb__hal__lptimer__t">&#9670;&nbsp;</a></span>mtb_hal_lptimer_t</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">struct mtb_hal_lptimer_t</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<table class="fieldtable">
-<tr><th colspan="3">Data Fields</th></tr>
-<tr><td class="fieldtype">
-<a id="af53f2c7dcf863f0d48934aed7be1aa90" name="af53f2c7dcf863f0d48934aed7be1aa90"></a>void *</td>
-<td class="fieldname">
-empty</td>
-<td class="fielddoc">
-</td></tr>
-</table>
-
-</div>
-</div>
-<a name="structmtb__hal__lptimer__configurator__t" id="structmtb__hal__lptimer__configurator__t"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#structmtb__hal__lptimer__configurator__t">&#9670;&nbsp;</a></span>mtb_hal_lptimer_configurator_t</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">struct mtb_hal_lptimer_configurator_t</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<table class="fieldtable">
-<tr><th colspan="3">Data Fields</th></tr>
-<tr><td class="fieldtype">
-<a id="a50e32b3ace1d6519eea8ff6346cbee60" name="a50e32b3ace1d6519eea8ff6346cbee60"></a>void *</td>
-<td class="fieldname">
-empty</td>
-<td class="fielddoc">
-</td></tr>
-</table>
-
-</div>
-</div>
-<a name="structmtb__hal__pwm__t" id="structmtb__hal__pwm__t"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#structmtb__hal__pwm__t">&#9670;&nbsp;</a></span>mtb_hal_pwm_t</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">struct mtb_hal_pwm_t</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<table class="fieldtable">
-<tr><th colspan="3">Data Fields</th></tr>
-<tr><td class="fieldtype">
-<a id="a45662a39385f17a88ad19752bfd4a5a2" name="a45662a39385f17a88ad19752bfd4a5a2"></a><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__tcpwm__t">mtb_hal_tcpwm_t</a></td>
-<td class="fieldname">
-tcpwm</td>
-<td class="fielddoc">
-</td></tr>
-</table>
-
-</div>
-</div>
-<a name="structmtb__hal__pwm__configurator__t" id="structmtb__hal__pwm__configurator__t"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#structmtb__hal__pwm__configurator__t">&#9670;&nbsp;</a></span>mtb_hal_pwm_configurator_t</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">struct mtb_hal_pwm_configurator_t</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<table class="fieldtable">
-<tr><th colspan="3">Data Fields</th></tr>
-<tr><td class="fieldtype">
-<a id="aa66b70c14bb6280296f00d3591013256" name="aa66b70c14bb6280296f00d3591013256"></a>TCPWM_Type *</td>
-<td class="fieldname">
-base</td>
-<td class="fielddoc">
-TCPWM base. </td></tr>
-<tr><td class="fieldtype">
-<a id="a248b2769d9e7de530ab6085fd1f4d2b7" name="a248b2769d9e7de530ab6085fd1f4d2b7"></a>uint32_t</td>
-<td class="fieldname">
-group</td>
-<td class="fielddoc">
-The resource group index. </td></tr>
-<tr><td class="fieldtype">
-<a id="a9707b05c17bcda4a96c2d95aea7d2e44" name="a9707b05c17bcda4a96c2d95aea7d2e44"></a>uint32_t</td>
-<td class="fieldname">
-cntnum</td>
-<td class="fielddoc">
-The resource counter index. </td></tr>
-<tr><td class="fieldtype">
-<a id="a82f699e859540e4ad034a6eddbca8446" name="a82f699e859540e4ad034a6eddbca8446"></a>uint32_t</td>
-<td class="fieldname">
-max_count</td>
-<td class="fielddoc">
-The max count for the counter. </td></tr>
-<tr><td class="fieldtype">
-<a id="a437260d69578aa6d45aa6b76d951f1d2" name="a437260d69578aa6d45aa6b76d951f1d2"></a>const <a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__clock__t">mtb_hal_clock_t</a> *</td>
-<td class="fieldname">
-clock</td>
-<td class="fielddoc">
-The clock resource pointer. </td></tr>
-</table>
-
-</div>
-</div>
-<a name="structmtb__hal__memoryspi__t" id="structmtb__hal__memoryspi__t"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#structmtb__hal__memoryspi__t">&#9670;&nbsp;</a></span>mtb_hal_memoryspi_t</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">struct mtb_hal_memoryspi_t</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<table class="fieldtable">
-<tr><th colspan="3">Data Fields</th></tr>
-<tr><td class="fieldtype">
-<a id="a9dbf8d8427bb13e44d4b760b4af97945" name="a9dbf8d8427bb13e44d4b760b4af97945"></a>SMIF_Type *</td>
-<td class="fieldname">
-base</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="adaf066d1cf5d5241c8e8df6ca4da7c7b" name="adaf066d1cf5d5241c8e8df6ca4da7c7b"></a>cy_en_smif_slave_select_t</td>
-<td class="fieldname">
-chip_select</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="a5cc08d603e4f7f3eb531c93a8548812f" name="a5cc08d603e4f7f3eb531c93a8548812f"></a>uint32_t</td>
-<td class="fieldname">
-configured_csel</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="a7d161c50154dc477b8b0c9309f5d9174" name="a7d161c50154dc477b8b0c9309f5d9174"></a>uint32_t</td>
-<td class="fieldname">
-instNumber</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="ad21e1a7a623ea1ec6fed0f6f0cb3e74e" name="ad21e1a7a623ea1ec6fed0f6f0cb3e74e"></a>cy_stc_smif_context_t</td>
-<td class="fieldname">
-context</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="aafbeb5f44e535ef9f7307685bbb44f4b" name="aafbeb5f44e535ef9f7307685bbb44f4b"></a>uint32_t</td>
-<td class="fieldname">
-enabled_events</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="a9287372d7b2857fbc31f7bf89007d043" name="a9287372d7b2857fbc31f7bf89007d043"></a><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__event__callback__data__t">mtb_hal_event_callback_data_t</a></td>
-<td class="fieldname">
-callback_data</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="aae2c5fb7a78d1aea84e105c46d45618c" name="aae2c5fb7a78d1aea84e105c46d45618c"></a>const <a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__clock__t">mtb_hal_clock_t</a> *</td>
-<td class="fieldname">
-clock</td>
-<td class="fielddoc">
-</td></tr>
-</table>
-
-</div>
-</div>
-<a name="structmtb__hal__memoryspi__configurator__t" id="structmtb__hal__memoryspi__configurator__t"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#structmtb__hal__memoryspi__configurator__t">&#9670;&nbsp;</a></span>mtb_hal_memoryspi_configurator_t</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">struct mtb_hal_memoryspi_configurator_t</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<table class="fieldtable">
-<tr><th colspan="3">Data Fields</th></tr>
-<tr><td class="fieldtype">
-<a id="a00ae48461afbef08f83aaba7cd84bbec" name="a00ae48461afbef08f83aaba7cd84bbec"></a>SMIF_Type *</td>
-<td class="fieldname">
-base</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="a227b35a6be52485ae3f9cff8327e46ee" name="a227b35a6be52485ae3f9cff8327e46ee"></a>const cy_stc_smif_config_t *</td>
-<td class="fieldname">
-config</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="a3468977167429c1c5af6276a641633d0" name="a3468977167429c1c5af6276a641633d0"></a>uint32_t</td>
-<td class="fieldname">
-instNumber</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="a9c8d7f2555ccf9a912a4f7b37bfce8fb" name="a9c8d7f2555ccf9a912a4f7b37bfce8fb"></a>cy_stc_smif_context_t</td>
-<td class="fieldname">
-context</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="a41bdd809687e4725360c54d3266c9058" name="a41bdd809687e4725360c54d3266c9058"></a>const <a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__clock__t">mtb_hal_clock_t</a> *</td>
-<td class="fieldname">
-clock</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="ad31f6f962dd86d8953b604316ea906fe" name="ad31f6f962dd86d8953b604316ea906fe"></a>bool</td>
-<td class="fieldname">
-csel[4]</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="ad5d343ceda455fe1ebd259ad0f6bbf17" name="ad5d343ceda455fe1ebd259ad0f6bbf17"></a>uint8_t</td>
-<td class="fieldname">
-irqs</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="a2b454903fe25faa0606a7d6920c24cb5" name="a2b454903fe25faa0606a7d6920c24cb5"></a>uint8_t</td>
-<td class="fieldname">
-dmas</td>
-<td class="fielddoc">
-</td></tr>
-</table>
-
-</div>
-</div>
-<a name="structmtb__hal__trng__t" id="structmtb__hal__trng__t"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#structmtb__hal__trng__t">&#9670;&nbsp;</a></span>mtb_hal_trng_t</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">struct mtb_hal_trng_t</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<table class="fieldtable">
-<tr><th colspan="3">Data Fields</th></tr>
-<tr><td class="fieldtype">
-<a id="a9c3a3780cd9808716f77a1dc7754c3bd" name="a9c3a3780cd9808716f77a1dc7754c3bd"></a>CRYPTO_Type *</td>
-<td class="fieldname">
-base</td>
 <td class="fielddoc">
 </td></tr>
 </table>
@@ -1457,683 +522,139 @@ empty</td>
 
 </div>
 </div>
-<a name="struct__mtb__hal__sdxx__t" id="struct__mtb__hal__sdxx__t"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#struct__mtb__hal__sdxx__t">&#9670;&nbsp;</a></span>_mtb_hal_sdxx_t</h2>
+<a name="structmtb__hal__syspm__callback__data__t" id="structmtb__hal__syspm__callback__data__t"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#structmtb__hal__syspm__callback__data__t">&#9670;&nbsp;</a></span>mtb_hal_syspm_callback_data_t</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">struct _mtb_hal_sdxx_t</td>
+          <td class="memname">struct mtb_hal_syspm_callback_data_t</td>
         </tr>
       </table>
 </div><div class="memdoc">
 <table class="fieldtable">
 <tr><th colspan="3">Data Fields</th></tr>
 <tr><td class="fieldtype">
-<a id="ae62fe7d663ce462ed17243ccd5f2c0b1" name="ae62fe7d663ce462ed17243ccd5f2c0b1"></a>bool</td>
+<a id="a13f426bd521be5246881e25c94ddfaaa" name="a13f426bd521be5246881e25c94ddfaaa"></a>cy_stc_syspm_callback_t</td>
 <td class="fieldname">
-is_sdio</td>
+pdl_cb</td>
 <td class="fielddoc">
 </td></tr>
 <tr><td class="fieldtype">
-<a id="a94389f9c166018f10364b569b6c0b7f4" name="a94389f9c166018f10364b569b6c0b7f4"></a>void *</td>
+<a id="ac3547ca34145df98f0d0d585ea81a6ce" name="ac3547ca34145df98f0d0d585ea81a6ce"></a>cy_stc_syspm_callback_params_t</td>
 <td class="fieldname">
-obj</td>
+cb_params</td>
 <td class="fielddoc">
 </td></tr>
 <tr><td class="fieldtype">
-<a id="adbd9372f3ff52a4b07ca7d10e8720c4b" name="adbd9372f3ff52a4b07ca7d10e8720c4b"></a>SDHC_Type *</td>
+<a id="a79821aacd78ec8e9a9eaa793461ba27e" name="a79821aacd78ec8e9a9eaa793461ba27e"></a>uint32_t</td>
 <td class="fieldname">
-base</td>
+state</td>
 <td class="fielddoc">
 </td></tr>
 <tr><td class="fieldtype">
-<a id="a12629dc55a4f620e2877974661648785" name="a12629dc55a4f620e2877974661648785"></a>cy_stc_sd_host_context_t</td>
+<a id="a95d7e27bea5be1829b11ec29070e9546" name="a95d7e27bea5be1829b11ec29070e9546"></a>void *</td>
 <td class="fieldname">
-context</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="acb32115d2b92ef010ce37c4017fda768" name="acb32115d2b92ef010ce37c4017fda768"></a>const <a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__clock__t">mtb_hal_clock_t</a> *</td>
-<td class="fieldname">
-clock</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="ac8245f9e17090c11035a737d51464327" name="ac8245f9e17090c11035a737d51464327"></a>bool</td>
-<td class="fieldname">
-emmc</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="a97b2ad13f123df51634854a196566db3" name="a97b2ad13f123df51634854a196566db3"></a>cy_en_sd_host_dma_type_t</td>
-<td class="fieldname">
-dma_type</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="a36477aac85da7d7070be3631d6e3acf5" name="a36477aac85da7d7070be3631d6e3acf5"></a>uint32_t</td>
-<td class="fieldname">
-adma_descriptor_tbl[2]</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="ab3d6513773d8e5fb17d0a60079d07777" name="ab3d6513773d8e5fb17d0a60079d07777"></a><a class="el" href="group__group__hal__impl__hw__types.html#gac1ee9d2300303ba1b0918e52db53912e">_mtb_hal_sdxx_data_transfer_status_t</a></td>
-<td class="fieldname">
-data_transfer_status</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="a988188f6a646008c8b2d917344a56d7e" name="a988188f6a646008c8b2d917344a56d7e"></a><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__gpio__t">mtb_hal_gpio_t</a></td>
-<td class="fieldname">
-pin_clk</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="a56f9f93a8c2981350bd5d2858a3571df" name="a56f9f93a8c2981350bd5d2858a3571df"></a><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__gpio__t">mtb_hal_gpio_t</a></td>
-<td class="fieldname">
-pin_cmd</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="a52c47e5f8eb91549e1c966710d85d3ef" name="a52c47e5f8eb91549e1c966710d85d3ef"></a>bool</td>
-<td class="fieldname">
-low_voltage_io_set</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="a407f2d3d5c82cd6348445750ec2f1806" name="a407f2d3d5c82cd6348445750ec2f1806"></a>uint32_t</td>
-<td class="fieldname">
-irq_cause</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="a9fdd5889a1b4f8344718011cd4054cb6" name="a9fdd5889a1b4f8344718011cd4054cb6"></a>bool</td>
-<td class="fieldname">
-dc_configured</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="ade83fe3e42cf421604a87ad64f148b28" name="ade83fe3e42cf421604a87ad64f148b28"></a>bool</td>
-<td class="fieldname">
-clock_owned</td>
+user_arg</td>
 <td class="fielddoc">
 </td></tr>
 </table>
 
 </div>
 </div>
-<a name="structmtb__hal__sdhc__t" id="structmtb__hal__sdhc__t"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#structmtb__hal__sdhc__t">&#9670;&nbsp;</a></span>mtb_hal_sdhc_t</h2>
+<a name="unionmtb__hal__comp__t_8____unnamed1____" id="unionmtb__hal__comp__t_8____unnamed1____"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#unionmtb__hal__comp__t_8____unnamed1____">&#9670;&nbsp;</a></span>mtb_hal_comp_t.__unnamed1__</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">struct mtb_hal_sdhc_t</td>
+          <td class="memname">union mtb_hal_comp_t.__unnamed1__</td>
         </tr>
       </table>
 </div><div class="memdoc">
 <table class="fieldtable">
 <tr><th colspan="3">Data Fields</th></tr>
 <tr><td class="fieldtype">
-<a id="a8c2ac4d6edbd7ca7003fd3172c43d237" name="a8c2ac4d6edbd7ca7003fd3172c43d237"></a><a class="el" href="group__group__hal__impl__hw__types.html#struct__mtb__hal__sdxx__t">_mtb_hal_sdxx_t</a></td>
+<a id="a1378d7d8767899287b0407055215aa4e" name="a1378d7d8767899287b0407055215aa4e"></a>struct <a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__comp__t_8____unnamed1_____8____unnamed3____">mtb_hal_comp_t.__unnamed1__.__unnamed3__</a></td>
 <td class="fieldname">
-sdxx</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="a13754711a15b1c608492ab591aff9189" name="a13754711a15b1c608492ab591aff9189"></a>cy_stc_sd_host_sd_card_config_t *</td>
-<td class="fieldname">
-card_config</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="a57353fe0a94db25163c0dab7dd221f14" name="a57353fe0a94db25163c0dab7dd221f14"></a>uint8_t</td>
-<td class="fieldname">
-bus_width</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="aaad1d6c27e965054f7d7955cded3cd8a" name="aaad1d6c27e965054f7d7955cded3cd8a"></a>bool</td>
-<td class="fieldname">
-enable_led_control</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="ab72148e2ee09a10c9b30bb6a0170b5e5" name="ab72148e2ee09a10c9b30bb6a0170b5e5"></a>uint8_t</td>
-<td class="fieldname">
-data_timeout_tout</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="aa2afed1b20f2d34ca6a3e53ef2929363" name="aa2afed1b20f2d34ca6a3e53ef2929363"></a>bool</td>
-<td class="fieldname">
-data_timeout_auto_reconfig</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="ae44a080195fe95f10c7d14a24761b703" name="ae44a080195fe95f10c7d14a24761b703"></a>uint32_t</td>
-<td class="fieldname">
-data_timeout_card_clocks_user</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="a9d10548adc74268a9b6bcbdefe4bf8c8" name="a9d10548adc74268a9b6bcbdefe4bf8c8"></a><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__gpio__t">mtb_hal_gpio_t</a></td>
-<td class="fieldname">
-pin_data[8]</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="a74f8e1f32f6a22e7bdefd362bd40564a" name="a74f8e1f32f6a22e7bdefd362bd40564a"></a>bool</td>
-<td class="fieldname">
-low_voltage_io_desired</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="a17938c7b992e6e61583e89c7020f4b4e" name="a17938c7b992e6e61583e89c7020f4b4e"></a>uint16_t</td>
-<td class="fieldname">
-emmc_generic_cmd6_time_ms</td>
+__unnamed__</td>
 <td class="fielddoc">
 </td></tr>
 </table>
 
 </div>
 </div>
-<a name="structmtb__hal__sdhc__configurator__t" id="structmtb__hal__sdhc__configurator__t"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#structmtb__hal__sdhc__configurator__t">&#9670;&nbsp;</a></span>mtb_hal_sdhc_configurator_t</h2>
+<a name="structmtb__hal__comp__t_8____unnamed1_____8____unnamed3____" id="structmtb__hal__comp__t_8____unnamed1_____8____unnamed3____"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#structmtb__hal__comp__t_8____unnamed1_____8____unnamed3____">&#9670;&nbsp;</a></span>mtb_hal_comp_t.__unnamed1__.__unnamed3__</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">struct mtb_hal_sdhc_configurator_t</td>
+          <td class="memname">struct mtb_hal_comp_t.__unnamed1__.__unnamed3__</td>
         </tr>
       </table>
 </div><div class="memdoc">
 <table class="fieldtable">
 <tr><th colspan="3">Data Fields</th></tr>
 <tr><td class="fieldtype">
-<a id="ab21a5f78bcb34f4b3e472e15444f5644" name="ab21a5f78bcb34f4b3e472e15444f5644"></a>SDHC_Type *</td>
+<a id="a0deb488364ff2caa9ee5f6413710ffc9" name="a0deb488364ff2caa9ee5f6413710ffc9"></a>_mtb_hal_lpcomp_base_t *</td>
 <td class="fieldname">
-base</td>
+base_lpcomp</td>
 <td class="fielddoc">
 </td></tr>
 <tr><td class="fieldtype">
-<a id="a993f3e1fba3cde3f51d8bf171bf772d7" name="a993f3e1fba3cde3f51d8bf171bf772d7"></a>const cy_stc_sd_host_init_config_t *</td>
+<a id="a6691488a6fc9189cb0fe22042926e5ab" name="a6691488a6fc9189cb0fe22042926e5ab"></a>_mtb_hal_lpcomp_channel_t</td>
 <td class="fieldname">
-host_config</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="a1964c68ca646697b9d87688257f478b3" name="a1964c68ca646697b9d87688257f478b3"></a>cy_stc_sd_host_sd_card_config_t *</td>
-<td class="fieldname">
-card_config</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="a6910b1f36794e549c1576ee22bcc3f89" name="a6910b1f36794e549c1576ee22bcc3f89"></a>const <a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__clock__t">mtb_hal_clock_t</a> *</td>
-<td class="fieldname">
-clock</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="ac7be13de66fe4562d02e08298b4fb46a" name="ac7be13de66fe4562d02e08298b4fb46a"></a>struct <a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__sdhc__configurator__t_8gpios">mtb_hal_sdhc_configurator_t.gpios</a></td>
-<td class="fieldname">
-gpios</td>
+channel_lpcomp</td>
 <td class="fielddoc">
 </td></tr>
 </table>
 
 </div>
 </div>
-<a name="structmtb__hal__sdio__t" id="structmtb__hal__sdio__t"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#structmtb__hal__sdio__t">&#9670;&nbsp;</a></span>mtb_hal_sdio_t</h2>
+<a name="unionmtb__hal__comp__configurator__t_8____unnamed5____" id="unionmtb__hal__comp__configurator__t_8____unnamed5____"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#unionmtb__hal__comp__configurator__t_8____unnamed5____">&#9670;&nbsp;</a></span>mtb_hal_comp_configurator_t.__unnamed5__</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">struct mtb_hal_sdio_t</td>
+          <td class="memname">union mtb_hal_comp_configurator_t.__unnamed5__</td>
         </tr>
       </table>
 </div><div class="memdoc">
 <table class="fieldtable">
 <tr><th colspan="3">Data Fields</th></tr>
 <tr><td class="fieldtype">
-<a id="a83ce6b21bfa4a5758c927c05049e19b4" name="a83ce6b21bfa4a5758c927c05049e19b4"></a><a class="el" href="group__group__hal__impl__hw__types.html#struct__mtb__hal__sdxx__t">_mtb_hal_sdxx_t</a></td>
+<a id="a2e5544f07e7bd9920937fbb47d8dbd87" name="a2e5544f07e7bd9920937fbb47d8dbd87"></a>const _mtb_hal_lpcomp_pdl_config_t *</td>
 <td class="fieldname">
-sdxx</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="a5e7087db228977bfc539e701a7eb7987" name="a5e7087db228977bfc539e701a7eb7987"></a><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__event__callback__data__t">mtb_hal_event_callback_data_t</a></td>
-<td class="fieldname">
-callback_data</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="aee0cd8c1a8725a0fd9156ff4b00aaad8" name="aee0cd8c1a8725a0fd9156ff4b00aaad8"></a><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__gpio__t">mtb_hal_gpio_t</a></td>
-<td class="fieldname">
-pin_data0</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="a13d97bec4dea8befe7299fae2d9f25cb" name="a13d97bec4dea8befe7299fae2d9f25cb"></a><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__gpio__t">mtb_hal_gpio_t</a></td>
-<td class="fieldname">
-pin_data1</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="aeff4788ea558c41fc4f829c7c78c65b0" name="aeff4788ea558c41fc4f829c7c78c65b0"></a><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__gpio__t">mtb_hal_gpio_t</a></td>
-<td class="fieldname">
-pin_data2</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="a4b1f107d353931c7c61144db65c2117b" name="a4b1f107d353931c7c61144db65c2117b"></a><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__gpio__t">mtb_hal_gpio_t</a></td>
-<td class="fieldname">
-pin_data3</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="aa4ef2dbefedc8ff959e6f1fa6d8f14d2" name="aa4ef2dbefedc8ff959e6f1fa6d8f14d2"></a>uint16_t</td>
-<td class="fieldname">
-block_size</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="a83a29d8dd1b7aca382f49b2a3e048535" name="a83a29d8dd1b7aca382f49b2a3e048535"></a>uint32_t</td>
-<td class="fieldname">
-events</td>
+lpcomp</td>
 <td class="fielddoc">
 </td></tr>
 </table>
 
 </div>
 </div>
-<a name="structmtb__hal__sdio__configurator__t" id="structmtb__hal__sdio__configurator__t"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#structmtb__hal__sdio__configurator__t">&#9670;&nbsp;</a></span>mtb_hal_sdio_configurator_t</h2>
+<a name="unionmtb__hal__comp__configurator__t_8____unnamed7____" id="unionmtb__hal__comp__configurator__t_8____unnamed7____"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#unionmtb__hal__comp__configurator__t_8____unnamed7____">&#9670;&nbsp;</a></span>mtb_hal_comp_configurator_t.__unnamed7__</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">struct mtb_hal_sdio_configurator_t</td>
+          <td class="memname">union mtb_hal_comp_configurator_t.__unnamed7__</td>
         </tr>
       </table>
 </div><div class="memdoc">
 <table class="fieldtable">
 <tr><th colspan="3">Data Fields</th></tr>
 <tr><td class="fieldtype">
-<a id="ab712000cf067c05e4ce7e66342388365" name="ab712000cf067c05e4ce7e66342388365"></a>SDHC_Type *</td>
+<a id="a5d8eec5bfd1d4e9867173c074549618c" name="a5d8eec5bfd1d4e9867173c074549618c"></a>_mtb_hal_lpcomp_base_t *</td>
 <td class="fieldname">
-base</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="a35ddd95e72d7d2a40484178ea8c9b0a6" name="a35ddd95e72d7d2a40484178ea8c9b0a6"></a>const cy_stc_sd_host_init_config_t *</td>
-<td class="fieldname">
-host_config</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="a4ce728f87da35d1f8eea4e43fd8f9d2c" name="a4ce728f87da35d1f8eea4e43fd8f9d2c"></a>const <a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__clock__t">mtb_hal_clock_t</a> *</td>
-<td class="fieldname">
-clock</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="ad0f465fa64b9cccee020b75ca533e3f6" name="ad0f465fa64b9cccee020b75ca533e3f6"></a>struct <a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__sdio__configurator__t_8gpios">mtb_hal_sdio_configurator_t.gpios</a></td>
-<td class="fieldname">
-gpios</td>
-<td class="fielddoc">
-</td></tr>
-</table>
-
-</div>
-</div>
-<a name="structmtb__hal__spi__t" id="structmtb__hal__spi__t"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#structmtb__hal__spi__t">&#9670;&nbsp;</a></span>mtb_hal_spi_t</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">struct mtb_hal_spi_t</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<table class="fieldtable">
-<tr><th colspan="3">Data Fields</th></tr>
-<tr><td class="fieldtype">
-<a id="a8a3880c73ae2ee28830f9baa8b5f9d64" name="a8a3880c73ae2ee28830f9baa8b5f9d64"></a>CySCB_Type *</td>
-<td class="fieldname">
-base</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="a8480f717212648ed5b847c77676a5290" name="a8480f717212648ed5b847c77676a5290"></a>const <a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__clock__t">mtb_hal_clock_t</a> *</td>
-<td class="fieldname">
-clock</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="a2e42a126c2818b3767983589a9d73069" name="a2e42a126c2818b3767983589a9d73069"></a>cy_stc_scb_spi_context_t *</td>
-<td class="fieldname">
-context</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="a4075d330ce38967f25d87d31bf4426ec" name="a4075d330ce38967f25d87d31bf4426ec"></a>uint16_t volatile</td>
-<td class="fieldname">
-pending</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="a168377b0b8c7573bc9e8f1892d03d41c" name="a168377b0b8c7573bc9e8f1892d03d41c"></a>bool</td>
-<td class="fieldname">
-is_target</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="a7637cd2c664d77126d050322bdd22ee7" name="a7637cd2c664d77126d050322bdd22ee7"></a>uint8_t</td>
-<td class="fieldname">
-data_bits</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="af4a7b471123582ab5e7af21dda535dc8" name="af4a7b471123582ab5e7af21dda535dc8"></a>uint32_t</td>
-<td class="fieldname">
-irq_cause</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="abcf4008cff81d0a7ebb67d2e3443e464" name="abcf4008cff81d0a7ebb67d2e3443e464"></a>uint8_t</td>
-<td class="fieldname">
-write_fill</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="a60aca80f9b06075d5f1bf681a4359917" name="a60aca80f9b06075d5f1bf681a4359917"></a>void *</td>
-<td class="fieldname">
-rx_buffer</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="af96103552e3a150f1ce95c6be43d0538" name="af96103552e3a150f1ce95c6be43d0538"></a>uint32_t</td>
-<td class="fieldname">
-rx_buffer_size</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="aaf8273502fdf83b0b473a0ddebe5eff2" name="aaf8273502fdf83b0b473a0ddebe5eff2"></a>const void *</td>
-<td class="fieldname">
-tx_buffer</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="a8f806c9852bd11f3c388ea010b2eb75e" name="a8f806c9852bd11f3c388ea010b2eb75e"></a>uint32_t</td>
-<td class="fieldname">
-tx_buffer_size</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="a5adf91661154e9d17fe6c1f8e841033c" name="a5adf91661154e9d17fe6c1f8e841033c"></a>bool</td>
-<td class="fieldname">
-is_async</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="aac43845979a9a92c7f83f3854c3bbb62" name="aac43845979a9a92c7f83f3854c3bbb62"></a><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__event__callback__data__t">mtb_hal_event_callback_data_t</a></td>
-<td class="fieldname">
-callback_data</td>
-<td class="fielddoc">
-</td></tr>
-</table>
-
-</div>
-</div>
-<a name="structmtb__hal__spi__configurator__t" id="structmtb__hal__spi__configurator__t"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#structmtb__hal__spi__configurator__t">&#9670;&nbsp;</a></span>mtb_hal_spi_configurator_t</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">struct mtb_hal_spi_configurator_t</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<table class="fieldtable">
-<tr><th colspan="3">Data Fields</th></tr>
-<tr><td class="fieldtype">
-<a id="accfd9fe6f5f2eb7b43b368151555204d" name="accfd9fe6f5f2eb7b43b368151555204d"></a>CySCB_Type *</td>
-<td class="fieldname">
-base</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="ad4e54443e727ec9ca7729a3e8486dce3" name="ad4e54443e727ec9ca7729a3e8486dce3"></a>const <a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__clock__t">mtb_hal_clock_t</a> *</td>
-<td class="fieldname">
-clock</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="ad6a5f7e7f3f5fcd03568f22f7fe90fd5" name="ad6a5f7e7f3f5fcd03568f22f7fe90fd5"></a>const cy_stc_scb_spi_config_t *</td>
-<td class="fieldname">
-config</td>
-<td class="fielddoc">
-</td></tr>
-</table>
-
-</div>
-</div>
-<a name="structmtb__hal__timer__t" id="structmtb__hal__timer__t"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#structmtb__hal__timer__t">&#9670;&nbsp;</a></span>mtb_hal_timer_t</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">struct mtb_hal_timer_t</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<table class="fieldtable">
-<tr><th colspan="3">Data Fields</th></tr>
-<tr><td class="fieldtype">
-<a id="af7af44bcef7407a888b6bde851362e56" name="af7af44bcef7407a888b6bde851362e56"></a><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__tcpwm__t">mtb_hal_tcpwm_t</a></td>
-<td class="fieldname">
-tcpwm</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="ad23a400d69ef74da55cdaee6d7da6f9b" name="ad23a400d69ef74da55cdaee6d7da6f9b"></a><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__event__callback__data__t">mtb_hal_event_callback_data_t</a></td>
-<td class="fieldname">
-callback_data</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="a532f89aec75bda6967c57857a0d7e737" name="a532f89aec75bda6967c57857a0d7e737"></a>uint32_t</td>
-<td class="fieldname">
-callback_event</td>
-<td class="fielddoc">
-Event requested. </td></tr>
-</table>
-
-</div>
-</div>
-<a name="structmtb__hal__timer__configurator__t" id="structmtb__hal__timer__configurator__t"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#structmtb__hal__timer__configurator__t">&#9670;&nbsp;</a></span>mtb_hal_timer_configurator_t</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">struct mtb_hal_timer_configurator_t</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<table class="fieldtable">
-<tr><th colspan="3">Data Fields</th></tr>
-<tr><td class="fieldtype">
-<a id="a81c2bc6ab56190f55224bccad27151d2" name="a81c2bc6ab56190f55224bccad27151d2"></a>uint32_t</td>
-<td class="fieldname">
-tcpwm_cntnum</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="a204551373401010d17ff002ae7274ff4" name="a204551373401010d17ff002ae7274ff4"></a>const <a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__clock__t">mtb_hal_clock_t</a> *</td>
-<td class="fieldname">
-clock</td>
-<td class="fielddoc">
-</td></tr>
-</table>
-
-</div>
-</div>
-<a name="structmtb__hal__uart__t" id="structmtb__hal__uart__t"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#structmtb__hal__uart__t">&#9670;&nbsp;</a></span>mtb_hal_uart_t</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">struct mtb_hal_uart_t</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<table class="fieldtable">
-<tr><th colspan="3">Data Fields</th></tr>
-<tr><td class="fieldtype">
-<a id="a894a064d2fe11b234bf7811f8238c60c" name="a894a064d2fe11b234bf7811f8238c60c"></a>CySCB_Type *</td>
-<td class="fieldname">
-base</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="a9127886a319fbb4f67d277447069cd5f" name="a9127886a319fbb4f67d277447069cd5f"></a>cy_stc_scb_uart_context_t *</td>
-<td class="fieldname">
-context</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="aa8e20c9d4328a2cd8f0bea9556ee92f8" name="aa8e20c9d4328a2cd8f0bea9556ee92f8"></a>const <a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__clock__t">mtb_hal_clock_t</a> *</td>
-<td class="fieldname">
-clock</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="af91af6baa69743526ba8fc068d1a3f04" name="af91af6baa69743526ba8fc068d1a3f04"></a><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__event__callback__data__t">mtb_hal_event_callback_data_t</a></td>
-<td class="fieldname">
-callback_data</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="aa091002e540154529389de0cf5b6b7aa" name="aa091002e540154529389de0cf5b6b7aa"></a>uint32_t</td>
-<td class="fieldname">
-irq_cause</td>
-<td class="fielddoc">
-</td></tr>
-</table>
-
-</div>
-</div>
-<a name="structmtb__hal__uart__configurator__t" id="structmtb__hal__uart__configurator__t"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#structmtb__hal__uart__configurator__t">&#9670;&nbsp;</a></span>mtb_hal_uart_configurator_t</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">struct mtb_hal_uart_configurator_t</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<table class="fieldtable">
-<tr><th colspan="3">Data Fields</th></tr>
-<tr><td class="fieldtype">
-<a id="a774938e844557ce8c0a0597defc31091" name="a774938e844557ce8c0a0597defc31091"></a>CySCB_Type *</td>
-<td class="fieldname">
-base</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="a47e839ad2228beb09f295edcde486e77" name="a47e839ad2228beb09f295edcde486e77"></a>const <a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__clock__t">mtb_hal_clock_t</a> *</td>
-<td class="fieldname">
-clock</td>
-<td class="fielddoc">
-</td></tr>
-</table>
-
-</div>
-</div>
-<a name="union__mtb__hal__buffer__info__t_8addr" id="union__mtb__hal__buffer__info__t_8addr"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#union__mtb__hal__buffer__info__t_8addr">&#9670;&nbsp;</a></span>_mtb_hal_buffer_info_t.addr</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">union _mtb_hal_buffer_info_t.addr</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<table class="fieldtable">
-<tr><th colspan="3">Data Fields</th></tr>
-<tr><td class="fieldtype">
-<a id="a9e3669d19b675bd57058fd4664205d2a" name="a9e3669d19b675bd57058fd4664205d2a"></a>void *</td>
-<td class="fieldname">
-v</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="a077393852be20e37026d6281827662f2" name="a077393852be20e37026d6281827662f2"></a>uint8_t *</td>
-<td class="fieldname">
-u8</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="ade59a481c9d8ace262670bda2b39cb1f" name="ade59a481c9d8ace262670bda2b39cb1f"></a>uint16_t *</td>
-<td class="fieldname">
-u16</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="aa311a831b48d59687cf0822a612c9032" name="aa311a831b48d59687cf0822a612c9032"></a>uint32_t *</td>
-<td class="fieldname">
-u32</td>
-<td class="fielddoc">
-</td></tr>
-</table>
-
-</div>
-</div>
-<a name="unionmtb__hal__dma__t_8descriptor" id="unionmtb__hal__dma__t_8descriptor"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#unionmtb__hal__dma__t_8descriptor">&#9670;&nbsp;</a></span>mtb_hal_dma_t.descriptor</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">union mtb_hal_dma_t.descriptor</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<table class="fieldtable">
-<tr><th colspan="3">Data Fields</th></tr>
-<tr><td class="fieldtype">
-<a id="a1f2121f36f817bd18540e5fa7de06f59" name="a1f2121f36f817bd18540e5fa7de06f59"></a>cy_stc_dma_descriptor_t *</td>
-<td class="fieldname">
-dw</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="ae555fc29296b95adb45c0092d8f35338" name="ae555fc29296b95adb45c0092d8f35338"></a>cy_stc_dmac_descriptor_t *</td>
-<td class="fieldname">
-dmac</td>
+lpcomp_base</td>
 <td class="fielddoc">
 </td></tr>
 </table>
@@ -2154,42 +675,59 @@ dmac</td>
 <table class="fieldtable">
 <tr><th colspan="3">Data Fields</th></tr>
 <tr><td class="fieldtype">
-<a id="a9cc230b8c52591f48c65ae2401d6fb68" name="a9cc230b8c52591f48c65ae2401d6fb68"></a>DW_Type *</td>
+<a id="a9cc230b8c52591f48c65ae2401d6fb68" name="a9cc230b8c52591f48c65ae2401d6fb68"></a>_mtb_hal_dw_base_t *</td>
 <td class="fieldname">
 dw_base</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="a81f62927145625a360bf3669d7696346" name="a81f62927145625a360bf3669d7696346"></a>DMAC_Type *</td>
-<td class="fieldname">
-dmac_base</td>
 <td class="fielddoc">
 </td></tr>
 </table>
 
 </div>
 </div>
-<a name="structmtb__hal__dma__configurator__t_8____unnamed4____" id="structmtb__hal__dma__configurator__t_8____unnamed4____"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#structmtb__hal__dma__configurator__t_8____unnamed4____">&#9670;&nbsp;</a></span>mtb_hal_dma_configurator_t.__unnamed4__</h2>
+<a name="unionmtb__hal__dma__t_8descriptor" id="unionmtb__hal__dma__t_8descriptor"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#unionmtb__hal__dma__t_8descriptor">&#9670;&nbsp;</a></span>mtb_hal_dma_t.descriptor</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">struct mtb_hal_dma_configurator_t.__unnamed4__</td>
+          <td class="memname">union mtb_hal_dma_t.descriptor</td>
         </tr>
       </table>
 </div><div class="memdoc">
 <table class="fieldtable">
 <tr><th colspan="3">Data Fields</th></tr>
 <tr><td class="fieldtype">
-<a id="a21945c50944818f4cf3b6aef8608f9ce" name="a21945c50944818f4cf3b6aef8608f9ce"></a>union <a class="el" href="group__group__hal__impl__hw__types.html#unionmtb__hal__dma__configurator__t_8____unnamed4_____8____unnamed6____">mtb_hal_dma_configurator_t.__unnamed4__.__unnamed6__</a></td>
+<a id="a1f2121f36f817bd18540e5fa7de06f59" name="a1f2121f36f817bd18540e5fa7de06f59"></a>_mtb_hal_dw_descriptor_t *</td>
+<td class="fieldname">
+dw</td>
+<td class="fielddoc">
+</td></tr>
+</table>
+
+</div>
+</div>
+<a name="structmtb__hal__dma__configurator__t_8____unnamed11____" id="structmtb__hal__dma__configurator__t_8____unnamed11____"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#structmtb__hal__dma__configurator__t_8____unnamed11____">&#9670;&nbsp;</a></span>mtb_hal_dma_configurator_t.__unnamed11__</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct mtb_hal_dma_configurator_t.__unnamed11__</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="3">Data Fields</th></tr>
+<tr><td class="fieldtype">
+<a id="abdf416144f79b0adea50b8078e2b2c7f" name="abdf416144f79b0adea50b8078e2b2c7f"></a>union <a class="el" href="group__group__hal__impl__hw__types.html#unionmtb__hal__dma__configurator__t_8____unnamed11_____8____unnamed13____">mtb_hal_dma_configurator_t.__unnamed11__.__unnamed13__</a></td>
 <td class="fieldname">
 __unnamed__</td>
 <td class="fielddoc">
 </td></tr>
 <tr><td class="fieldtype">
-<a id="a63f5f87eab8bf5d1395b98caa0a448ba" name="a63f5f87eab8bf5d1395b98caa0a448ba"></a>union <a class="el" href="group__group__hal__impl__hw__types.html#unionmtb__hal__dma__configurator__t_8____unnamed4_____8____unnamed8____">mtb_hal_dma_configurator_t.__unnamed4__.__unnamed8__</a></td>
+<a id="a83e65c6f5037b6249378b339db52d84d" name="a83e65c6f5037b6249378b339db52d84d"></a>union <a class="el" href="group__group__hal__impl__hw__types.html#unionmtb__hal__dma__configurator__t_8____unnamed11_____8____unnamed15____">mtb_hal_dma_configurator_t.__unnamed11__.__unnamed15__</a></td>
 <td class="fieldname">
 __unnamed__</td>
 <td class="fielddoc">
@@ -2198,232 +736,71 @@ __unnamed__</td>
 
 </div>
 </div>
-<a name="unionmtb__hal__dma__configurator__t_8____unnamed4_____8____unnamed6____" id="unionmtb__hal__dma__configurator__t_8____unnamed4_____8____unnamed6____"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#unionmtb__hal__dma__configurator__t_8____unnamed4_____8____unnamed6____">&#9670;&nbsp;</a></span>mtb_hal_dma_configurator_t.__unnamed4__.__unnamed6__</h2>
+<a name="unionmtb__hal__dma__configurator__t_8____unnamed11_____8____unnamed13____" id="unionmtb__hal__dma__configurator__t_8____unnamed11_____8____unnamed13____"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#unionmtb__hal__dma__configurator__t_8____unnamed11_____8____unnamed13____">&#9670;&nbsp;</a></span>mtb_hal_dma_configurator_t.__unnamed11__.__unnamed13__</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">union mtb_hal_dma_configurator_t.__unnamed4__.__unnamed6__</td>
+          <td class="memname">union mtb_hal_dma_configurator_t.__unnamed11__.__unnamed13__</td>
         </tr>
       </table>
 </div><div class="memdoc">
 <table class="fieldtable">
 <tr><th colspan="3">Data Fields</th></tr>
 <tr><td class="fieldtype">
-<a id="a9cc230b8c52591f48c65ae2401d6fb68" name="a9cc230b8c52591f48c65ae2401d6fb68"></a>DW_Type const *</td>
+<a id="a9cc230b8c52591f48c65ae2401d6fb68" name="a9cc230b8c52591f48c65ae2401d6fb68"></a>_mtb_hal_dw_base_t const *</td>
 <td class="fieldname">
 dw_base</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="a81f62927145625a360bf3669d7696346" name="a81f62927145625a360bf3669d7696346"></a>DMAC_Type const *</td>
-<td class="fieldname">
-dmac_base</td>
 <td class="fielddoc">
 </td></tr>
 </table>
 
 </div>
 </div>
-<a name="unionmtb__hal__dma__configurator__t_8____unnamed4_____8____unnamed8____" id="unionmtb__hal__dma__configurator__t_8____unnamed4_____8____unnamed8____"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#unionmtb__hal__dma__configurator__t_8____unnamed4_____8____unnamed8____">&#9670;&nbsp;</a></span>mtb_hal_dma_configurator_t.__unnamed4__.__unnamed8__</h2>
+<a name="unionmtb__hal__dma__configurator__t_8____unnamed11_____8____unnamed15____" id="unionmtb__hal__dma__configurator__t_8____unnamed11_____8____unnamed15____"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#unionmtb__hal__dma__configurator__t_8____unnamed11_____8____unnamed15____">&#9670;&nbsp;</a></span>mtb_hal_dma_configurator_t.__unnamed11__.__unnamed15__</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">union mtb_hal_dma_configurator_t.__unnamed4__.__unnamed8__</td>
+          <td class="memname">union mtb_hal_dma_configurator_t.__unnamed11__.__unnamed15__</td>
         </tr>
       </table>
 </div><div class="memdoc">
 <table class="fieldtable">
 <tr><th colspan="3">Data Fields</th></tr>
 <tr><td class="fieldtype">
-<a id="a915d32d8b964e146b640300f538678f0" name="a915d32d8b964e146b640300f538678f0"></a>cy_stc_dma_descriptor_t *</td>
+<a id="a915d32d8b964e146b640300f538678f0" name="a915d32d8b964e146b640300f538678f0"></a>_mtb_hal_dw_descriptor_t *</td>
 <td class="fieldname">
 dw_descriptor</td>
 <td class="fielddoc">
 </td></tr>
-<tr><td class="fieldtype">
-<a id="a20e0ca52330f8ed46dc9f0f67b1e2e2c" name="a20e0ca52330f8ed46dc9f0f67b1e2e2c"></a>cy_stc_dmac_descriptor_t *</td>
-<td class="fieldname">
-dmac_descriptor</td>
-<td class="fielddoc">
-</td></tr>
 </table>
 
 </div>
 </div>
-<a name="unionmtb__hal__comp__t_8____unnamed10____" id="unionmtb__hal__comp__t_8____unnamed10____"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#unionmtb__hal__comp__t_8____unnamed10____">&#9670;&nbsp;</a></span>mtb_hal_comp_t.__unnamed10__</h2>
+<h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="gab0d2684c4f81636e93488c9844e5c8bb" name="gab0d2684c4f81636e93488c9844e5c8bb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gab0d2684c4f81636e93488c9844e5c8bb">&#9670;&nbsp;</a></span>_MTB_HAL_DMA_ALIGN</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">union mtb_hal_comp_t.__unnamed10__</td>
+          <td class="memname">#define _MTB_HAL_DMA_ALIGN</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<table class="fieldtable">
-<tr><th colspan="3">Data Fields</th></tr>
-<tr><td class="fieldtype">
-<a id="a0deb488364ff2caa9ee5f6413710ffc9" name="a0deb488364ff2caa9ee5f6413710ffc9"></a>LPCOMP_Type *</td>
-<td class="fieldname">
-base_lpcomp</td>
-<td class="fielddoc">
-</td></tr>
-</table>
 
-</div>
-</div>
-<a name="unionmtb__hal__comp__configurator__t_8____unnamed12____" id="unionmtb__hal__comp__configurator__t_8____unnamed12____"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#unionmtb__hal__comp__configurator__t_8____unnamed12____">&#9670;&nbsp;</a></span>mtb_hal_comp_configurator_t.__unnamed12__</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">union mtb_hal_comp_configurator_t.__unnamed12__</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<table class="fieldtable">
-<tr><th colspan="3">Data Fields</th></tr>
-<tr><td class="fieldtype">
-<a id="a2e5544f07e7bd9920937fbb47d8dbd87" name="a2e5544f07e7bd9920937fbb47d8dbd87"></a>const cy_stc_lpcomp_config_t *</td>
-<td class="fieldname">
-lpcomp</td>
-<td class="fielddoc">
-</td></tr>
-</table>
-
-</div>
-</div>
-<a name="structmtb__hal__sdhc__configurator__t_8gpios" id="structmtb__hal__sdhc__configurator__t_8gpios"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#structmtb__hal__sdhc__configurator__t_8gpios">&#9670;&nbsp;</a></span>mtb_hal_sdhc_configurator_t.gpios</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">struct mtb_hal_sdhc_configurator_t.gpios</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<table class="fieldtable">
-<tr><th colspan="3">Data Fields</th></tr>
-<tr><td class="fieldtype">
-<a id="a0a3bc2148686f2b562665c3891507e35" name="a0a3bc2148686f2b562665c3891507e35"></a><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__gpio__t">mtb_hal_gpio_t</a></td>
-<td class="fieldname">
-clk</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="adfff0a7fa1a55c8c1a4966c19f6da452" name="adfff0a7fa1a55c8c1a4966c19f6da452"></a><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__gpio__t">mtb_hal_gpio_t</a></td>
-<td class="fieldname">
-cmd</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="a63ed1b8883d72f6c440cbe698a0486fd" name="a63ed1b8883d72f6c440cbe698a0486fd"></a><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__gpio__t">mtb_hal_gpio_t</a></td>
-<td class="fieldname">
-data[8]</td>
-<td class="fielddoc">
-</td></tr>
-</table>
-
-</div>
-</div>
-<a name="structmtb__hal__sdio__configurator__t_8gpios" id="structmtb__hal__sdio__configurator__t_8gpios"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#structmtb__hal__sdio__configurator__t_8gpios">&#9670;&nbsp;</a></span>mtb_hal_sdio_configurator_t.gpios</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">struct mtb_hal_sdio_configurator_t.gpios</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<table class="fieldtable">
-<tr><th colspan="3">Data Fields</th></tr>
-<tr><td class="fieldtype">
-<a id="a0a3bc2148686f2b562665c3891507e35" name="a0a3bc2148686f2b562665c3891507e35"></a><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__gpio__t">mtb_hal_gpio_t</a></td>
-<td class="fieldname">
-clk</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="adfff0a7fa1a55c8c1a4966c19f6da452" name="adfff0a7fa1a55c8c1a4966c19f6da452"></a><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__gpio__t">mtb_hal_gpio_t</a></td>
-<td class="fieldname">
-cmd</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
-<a id="a3fbd200a7024d776bc2a6eae2ca0c5b7" name="a3fbd200a7024d776bc2a6eae2ca0c5b7"></a><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__gpio__t">mtb_hal_gpio_t</a></td>
-<td class="fieldname">
-data[4]</td>
-<td class="fielddoc">
-</td></tr>
-</table>
+<p>Aligns a symbol as required by the DMA hardware. </p>
+<p >If DCACHE is present, it takes precedence. Otherwise, defer to the alignment defined by the DMAC hardware, if any </p>
 
 </div>
 </div>
 <h2 class="groupheader">Typedef Documentation</h2>
-<a id="ga6b2c10c0469e0c636265fe3374b58971" name="ga6b2c10c0469e0c636265fe3374b58971"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga6b2c10c0469e0c636265fe3374b58971">&#9670;&nbsp;</a></span>mtb_hal_gpio_port_t</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef GPIO_PRT_Type* <a class="el" href="group__group__hal__impl__hw__types.html#ga6b2c10c0469e0c636265fe3374b58971">mtb_hal_gpio_port_t</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>GPIO Port object. </p>
-<p >Application code should not rely on the specific contents of this struct. They are considered an implementation detail which is subject to change between platforms and/or HAL releases. </p>
-
-</div>
-</div>
-<a id="ga641d8b5693dd367a3eeb3d47ffc81371" name="ga641d8b5693dd367a3eeb3d47ffc81371"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga641d8b5693dd367a3eeb3d47ffc81371">&#9670;&nbsp;</a></span>mtb_hal_nvm_configurator_t</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef void* <a class="el" href="group__group__hal__impl__hw__types.html#ga641d8b5693dd367a3eeb3d47ffc81371">mtb_hal_nvm_configurator_t</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>NVM configurator struct. </p>
-<p >This struct allows a configurator to provide block configuration information to the HAL. Because configurator-generated configurations are platform specific, the contents of this struct is subject to change between platforms and/or HAL releases. </p>
-
-</div>
-</div>
-<a id="ga994293a41e46fcd5369bbbbda908359e" name="ga994293a41e46fcd5369bbbbda908359e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga994293a41e46fcd5369bbbbda908359e">&#9670;&nbsp;</a></span>mtb_hal_nvm_t</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef void* <a class="el" href="group__group__hal__impl__hw__types.html#ga994293a41e46fcd5369bbbbda908359e">mtb_hal_nvm_t</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>NVM object. </p>
-<p >Application code should not rely on the specific contents of this struct. They are considered an implementation detail which is subject to change between platforms and/or HAL releases. </p>
-
-</div>
-</div>
 <a id="ga048a8b2dba1b8d344e99abb9c800682e" name="ga048a8b2dba1b8d344e99abb9c800682e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga048a8b2dba1b8d344e99abb9c800682e">&#9670;&nbsp;</a></span>mtb_hal_trng_configurator_t</h2>
 
@@ -2438,121 +815,6 @@ data[4]</td>
 
 <p>TRNG configurator struct. </p>
 <p >This struct allows a configurator to provide block configuration information to the HAL. Because configurator-generated configurations are platform specific, the contents of this struct is subject to change between platforms and/or HAL releases. </p>
-
-</div>
-</div>
-<h2 class="groupheader">Enumeration Type Documentation</h2>
-<a id="ga38bf37979b995e99b36bedc30c4f9144" name="ga38bf37979b995e99b36bedc30c4f9144"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga38bf37979b995e99b36bedc30c4f9144">&#9670;&nbsp;</a></span>mtb_hal_resource_t</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum <a class="el" href="group__group__hal__impl__hw__types.html#ga38bf37979b995e99b36bedc30c4f9144">mtb_hal_resource_t</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Resource types that the hardware manager supports. </p>
-<table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="gga38bf37979b995e99b36bedc30c4f9144af2be7c85ac8bfb01624aaacd06ff64cf" name="gga38bf37979b995e99b36bedc30c4f9144af2be7c85ac8bfb01624aaacd06ff64cf"></a>MTB_HAL_RSC_ADC&#160;</td><td class="fielddoc"><p >Analog to digital converter </p>
-</td></tr>
-<tr><td class="fieldname"><a id="gga38bf37979b995e99b36bedc30c4f9144acf4b32899a352879ac97ec7f9702ddcc" name="gga38bf37979b995e99b36bedc30c4f9144acf4b32899a352879ac97ec7f9702ddcc"></a>MTB_HAL_RSC_ADCMIC&#160;</td><td class="fielddoc"><p >Analog to digital converter with Analog Mic support </p>
-</td></tr>
-<tr><td class="fieldname"><a id="gga38bf37979b995e99b36bedc30c4f9144aa116508e0c34e00267a54cf4f29b2bbb" name="gga38bf37979b995e99b36bedc30c4f9144aa116508e0c34e00267a54cf4f29b2bbb"></a>MTB_HAL_RSC_BLESS&#160;</td><td class="fielddoc"><p >Bluetooth communications block </p>
-</td></tr>
-<tr><td class="fieldname"><a id="gga38bf37979b995e99b36bedc30c4f9144a2f0e91bc85086d815c95d6beb2bc2b11" name="gga38bf37979b995e99b36bedc30c4f9144a2f0e91bc85086d815c95d6beb2bc2b11"></a>MTB_HAL_RSC_CAN&#160;</td><td class="fielddoc"><p >CAN communication block </p>
-</td></tr>
-<tr><td class="fieldname"><a id="gga38bf37979b995e99b36bedc30c4f9144af3b506137e26a3846478f69fc8081065" name="gga38bf37979b995e99b36bedc30c4f9144af3b506137e26a3846478f69fc8081065"></a>MTB_HAL_RSC_CLKPATH&#160;</td><td class="fielddoc"><p >Clock Path. DEPRECATED. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="gga38bf37979b995e99b36bedc30c4f9144af8173534edbe0f074db15cebf0d14ab3" name="gga38bf37979b995e99b36bedc30c4f9144af8173534edbe0f074db15cebf0d14ab3"></a>MTB_HAL_RSC_CLOCK&#160;</td><td class="fielddoc"><p >Clock </p>
-</td></tr>
-<tr><td class="fieldname"><a id="gga38bf37979b995e99b36bedc30c4f9144a20a33cf5d70ab618717c0485fd88aa24" name="gga38bf37979b995e99b36bedc30c4f9144a20a33cf5d70ab618717c0485fd88aa24"></a>MTB_HAL_RSC_CORDIC&#160;</td><td class="fielddoc"><p >CORDIC </p>
-</td></tr>
-<tr><td class="fieldname"><a id="gga38bf37979b995e99b36bedc30c4f9144ae142577757bcc7e7d97b12e0da8422c0" name="gga38bf37979b995e99b36bedc30c4f9144ae142577757bcc7e7d97b12e0da8422c0"></a>MTB_HAL_RSC_CRYPTO&#160;</td><td class="fielddoc"><p >Crypto hardware accelerator </p>
-</td></tr>
-<tr><td class="fieldname"><a id="gga38bf37979b995e99b36bedc30c4f9144a9892afa6d5e68062dbf4841aafb4a6a7" name="gga38bf37979b995e99b36bedc30c4f9144a9892afa6d5e68062dbf4841aafb4a6a7"></a>MTB_HAL_RSC_CSG&#160;</td><td class="fielddoc"><p >Comparator and slope generator (CSG) </p>
-</td></tr>
-<tr><td class="fieldname"><a id="gga38bf37979b995e99b36bedc30c4f9144a32d37aece4da2dfd63e2ba34a5310c98" name="gga38bf37979b995e99b36bedc30c4f9144a32d37aece4da2dfd63e2ba34a5310c98"></a>MTB_HAL_RSC_DAC&#160;</td><td class="fielddoc"><p >Digital to analog converter </p>
-</td></tr>
-<tr><td class="fieldname"><a id="gga38bf37979b995e99b36bedc30c4f9144a611a7576784931ae5c77cb665aea6d9d" name="gga38bf37979b995e99b36bedc30c4f9144a611a7576784931ae5c77cb665aea6d9d"></a>MTB_HAL_RSC_DMA&#160;</td><td class="fielddoc"><p >DMA controller </p>
-</td></tr>
-<tr><td class="fieldname"><a id="gga38bf37979b995e99b36bedc30c4f9144ad906a4103f6ce6764f3b10b2664455cb" name="gga38bf37979b995e99b36bedc30c4f9144ad906a4103f6ce6764f3b10b2664455cb"></a>MTB_HAL_RSC_DW&#160;</td><td class="fielddoc"><p >Datawire DMA controller </p>
-</td></tr>
-<tr><td class="fieldname"><a id="gga38bf37979b995e99b36bedc30c4f9144a8baac2b4feaa628efd88d76a863af2a5" name="gga38bf37979b995e99b36bedc30c4f9144a8baac2b4feaa628efd88d76a863af2a5"></a>MTB_HAL_RSC_ETH&#160;</td><td class="fielddoc"><p >Ethernet communications block </p>
-</td></tr>
-<tr><td class="fieldname"><a id="gga38bf37979b995e99b36bedc30c4f9144a4108109d0e0eb4d3b3f3af3149c736c2" name="gga38bf37979b995e99b36bedc30c4f9144a4108109d0e0eb4d3b3f3af3149c736c2"></a>MTB_HAL_RSC_GPIO&#160;</td><td class="fielddoc"><p >General purpose I/O pin </p>
-</td></tr>
-<tr><td class="fieldname"><a id="gga38bf37979b995e99b36bedc30c4f9144a5b8d0440daeef1cf4b205fb39ae78219" name="gga38bf37979b995e99b36bedc30c4f9144a5b8d0440daeef1cf4b205fb39ae78219"></a>MTB_HAL_RSC_I2S&#160;</td><td class="fielddoc"><p >I2S communications block </p>
-</td></tr>
-<tr><td class="fieldname"><a id="gga38bf37979b995e99b36bedc30c4f9144a1dfb6e47f6370fca6d22b1d129564e8a" name="gga38bf37979b995e99b36bedc30c4f9144a1dfb6e47f6370fca6d22b1d129564e8a"></a>MTB_HAL_RSC_I3C&#160;</td><td class="fielddoc"><p >I3C communications block </p>
-</td></tr>
-<tr><td class="fieldname"><a id="gga38bf37979b995e99b36bedc30c4f9144ad2ab8e28ebcf8175e23d46044c5bdbd5" name="gga38bf37979b995e99b36bedc30c4f9144ad2ab8e28ebcf8175e23d46044c5bdbd5"></a>MTB_HAL_RSC_KEYSCAN&#160;</td><td class="fielddoc"><p >KeyScan block </p>
-</td></tr>
-<tr><td class="fieldname"><a id="gga38bf37979b995e99b36bedc30c4f9144ab6675654774348642244fa28c4c0f92d" name="gga38bf37979b995e99b36bedc30c4f9144ab6675654774348642244fa28c4c0f92d"></a>MTB_HAL_RSC_LCD&#160;</td><td class="fielddoc"><p >Segment LCD controller </p>
-</td></tr>
-<tr><td class="fieldname"><a id="gga38bf37979b995e99b36bedc30c4f9144ab06612162e209c84407d75de71162093" name="gga38bf37979b995e99b36bedc30c4f9144ab06612162e209c84407d75de71162093"></a>MTB_HAL_RSC_LIN&#160;</td><td class="fielddoc"><p >LIN communications block </p>
-</td></tr>
-<tr><td class="fieldname"><a id="gga38bf37979b995e99b36bedc30c4f9144a26b844edf2856c4a2930b99424022693" name="gga38bf37979b995e99b36bedc30c4f9144a26b844edf2856c4a2930b99424022693"></a>MTB_HAL_RSC_LPCOMP&#160;</td><td class="fielddoc"><p >Low power comparator </p>
-</td></tr>
-<tr><td class="fieldname"><a id="gga38bf37979b995e99b36bedc30c4f9144a7cee683f5ccdf441b6289b7dd4a30b8a" name="gga38bf37979b995e99b36bedc30c4f9144a7cee683f5ccdf441b6289b7dd4a30b8a"></a>MTB_HAL_RSC_LPTIMER&#160;</td><td class="fielddoc"><p >Low power timer </p>
-</td></tr>
-<tr><td class="fieldname"><a id="gga38bf37979b995e99b36bedc30c4f9144a3cf8cc6789d823627755b055d5ce33f4" name="gga38bf37979b995e99b36bedc30c4f9144a3cf8cc6789d823627755b055d5ce33f4"></a>MTB_HAL_RSC_MOTIF&#160;</td><td class="fielddoc"><p >MOTIF </p>
-</td></tr>
-<tr><td class="fieldname"><a id="gga38bf37979b995e99b36bedc30c4f9144aa6612f56fe634f0c918db44c9b2d49d8" name="gga38bf37979b995e99b36bedc30c4f9144aa6612f56fe634f0c918db44c9b2d49d8"></a>MTB_HAL_RSC_OPAMP&#160;</td><td class="fielddoc"><p >Opamp </p>
-</td></tr>
-<tr><td class="fieldname"><a id="gga38bf37979b995e99b36bedc30c4f9144aebeeab1b5db047856b12440014e56e86" name="gga38bf37979b995e99b36bedc30c4f9144aebeeab1b5db047856b12440014e56e86"></a>MTB_HAL_RSC_PDM&#160;</td><td class="fielddoc"><p >PCM/PDM communications block </p>
-</td></tr>
-<tr><td class="fieldname"><a id="gga38bf37979b995e99b36bedc30c4f9144a4bb512affd5c62777cc937c43fe76619" name="gga38bf37979b995e99b36bedc30c4f9144a4bb512affd5c62777cc937c43fe76619"></a>MTB_HAL_RSC_PTC&#160;</td><td class="fielddoc"><p >Programmable Threshold comparator </p>
-</td></tr>
-<tr><td class="fieldname"><a id="gga38bf37979b995e99b36bedc30c4f9144ab92f99d38c4256e59e8ea927fb22beb5" name="gga38bf37979b995e99b36bedc30c4f9144ab92f99d38c4256e59e8ea927fb22beb5"></a>MTB_HAL_RSC_SMIF&#160;</td><td class="fielddoc"><p >Quad-SPI communications block </p>
-</td></tr>
-<tr><td class="fieldname"><a id="gga38bf37979b995e99b36bedc30c4f9144aee2ff3444b75da4c88833d05759518c2" name="gga38bf37979b995e99b36bedc30c4f9144aee2ff3444b75da4c88833d05759518c2"></a>MTB_HAL_RSC_RTC&#160;</td><td class="fielddoc"><p >Real time clock </p>
-</td></tr>
-<tr><td class="fieldname"><a id="gga38bf37979b995e99b36bedc30c4f9144a1fca6de621b9895009e326b745793d17" name="gga38bf37979b995e99b36bedc30c4f9144a1fca6de621b9895009e326b745793d17"></a>MTB_HAL_RSC_SCB&#160;</td><td class="fielddoc"><p >Serial Communications Block </p>
-</td></tr>
-<tr><td class="fieldname"><a id="gga38bf37979b995e99b36bedc30c4f9144adba9ecdf95b0d900fe0abcb36b1a88fb" name="gga38bf37979b995e99b36bedc30c4f9144adba9ecdf95b0d900fe0abcb36b1a88fb"></a>MTB_HAL_RSC_SDHC&#160;</td><td class="fielddoc"><p >SD Host Controller </p>
-</td></tr>
-<tr><td class="fieldname"><a id="gga38bf37979b995e99b36bedc30c4f9144a9631e8d912656217753fde06dc857be3" name="gga38bf37979b995e99b36bedc30c4f9144a9631e8d912656217753fde06dc857be3"></a>MTB_HAL_RSC_SDIODEV&#160;</td><td class="fielddoc"><p >SDIO Device Block </p>
-</td></tr>
-<tr><td class="fieldname"><a id="gga38bf37979b995e99b36bedc30c4f9144a570d9b1479214143842372df00d93b97" name="gga38bf37979b995e99b36bedc30c4f9144a570d9b1479214143842372df00d93b97"></a>MTB_HAL_RSC_TCPWM&#160;</td><td class="fielddoc"><p >Timer/Counter/PWM block </p>
-</td></tr>
-<tr><td class="fieldname"><a id="gga38bf37979b995e99b36bedc30c4f9144abccee35fbdd30982a5ca318a341ef27a" name="gga38bf37979b995e99b36bedc30c4f9144abccee35fbdd30982a5ca318a341ef27a"></a>MTB_HAL_RSC_TDM&#160;</td><td class="fielddoc"><p >TDM block </p>
-</td></tr>
-<tr><td class="fieldname"><a id="gga38bf37979b995e99b36bedc30c4f9144a51eca0a588747895bff3284fe2a23dcf" name="gga38bf37979b995e99b36bedc30c4f9144a51eca0a588747895bff3284fe2a23dcf"></a>MTB_HAL_RSC_UDB&#160;</td><td class="fielddoc"><p >UDB Array </p>
-</td></tr>
-<tr><td class="fieldname"><a id="gga38bf37979b995e99b36bedc30c4f9144a5aa095b691fc76cd2697d069ee2a62f0" name="gga38bf37979b995e99b36bedc30c4f9144a5aa095b691fc76cd2697d069ee2a62f0"></a>MTB_HAL_RSC_USB&#160;</td><td class="fielddoc"><p >USB communication block </p>
-</td></tr>
-<tr><td class="fieldname"><a id="gga38bf37979b995e99b36bedc30c4f9144aae79ed965ef8244aaeac3f6125c0ad08" name="gga38bf37979b995e99b36bedc30c4f9144aae79ed965ef8244aaeac3f6125c0ad08"></a>MTB_HAL_RSC_INVALID&#160;</td><td class="fielddoc"><p >Placeholder for invalid type </p>
-</td></tr>
-</table>
-
-</div>
-</div>
-<a id="gac1ee9d2300303ba1b0918e52db53912e" name="gac1ee9d2300303ba1b0918e52db53912e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gac1ee9d2300303ba1b0918e52db53912e">&#9670;&nbsp;</a></span>_mtb_hal_sdxx_data_transfer_status_t</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum <a class="el" href="group__group__hal__impl__hw__types.html#gac1ee9d2300303ba1b0918e52db53912e">_mtb_hal_sdxx_data_transfer_status_t</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Data transfer status on SDHC/SDIO. </p>
-<table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ggac1ee9d2300303ba1b0918e52db53912ea85a02864732123f6e773ffb1857a9516" name="ggac1ee9d2300303ba1b0918e52db53912ea85a02864732123f6e773ffb1857a9516"></a>_MTB_HAL_SDXX_NOT_RUNNING&#160;</td><td class="fielddoc"><p >No data transfer in progress. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="ggac1ee9d2300303ba1b0918e52db53912eaac1a881e5856d72801d111c8f543561a" name="ggac1ee9d2300303ba1b0918e52db53912eaac1a881e5856d72801d111c8f543561a"></a>_MTB_HAL_SDXX_WAIT_CMD_COMPLETE&#160;</td><td class="fielddoc"><p >Waiting for a command to complete. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="ggac1ee9d2300303ba1b0918e52db53912eab896a730e1133e5d7977ab5504bf63ec" name="ggac1ee9d2300303ba1b0918e52db53912eab896a730e1133e5d7977ab5504bf63ec"></a>_MTB_HAL_SDXX_WAIT_XFER_COMPLETE&#160;</td><td class="fielddoc"><p >Waiting for a transfer to complete. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="ggac1ee9d2300303ba1b0918e52db53912ead83947964ab8ff4b81c3bc72080cdc04" name="ggac1ee9d2300303ba1b0918e52db53912ead83947964ab8ff4b81c3bc72080cdc04"></a>_MTB_HAL_SDXX_WAIT_BOTH&#160;</td><td class="fielddoc"><p >Waiting for completion of both a command and a transfer. </p>
-</td></tr>
-</table>
 
 </div>
 </div>

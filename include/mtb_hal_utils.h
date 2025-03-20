@@ -46,8 +46,9 @@ extern "C" {
 #define _MTB_HAL_UTILS_US_PER_MS              (1000)
 #define _MTB_HAL_UTILS_ONE_TIME_UNIT          (1)     /**< Used to do a delay in one time unit (1
                                                          ms, 1 us) */
-#define _MTB_HAL_UTILS_KHZ_TO_HZ(khz)         ((uint32_t)((khz) * 1000UL))
+#define _MTB_HAL_UTILS_KHZ_TO_HZ(khz)         (((uint64_t)(khz)) * 1000ULL)
 #define _MTB_HAL_UTILS_MHZ_TO_HZ(mhz)         ((uint32_t)((mhz) * 1000UL * 1000UL))
+#define _MTB_HAL_UTILS_HZ_TO_KHZ(hz)          ((uint32_t)((hz) / 1000UL))
 
 /* Return the smaller of two uint32_t values */
 #define _MTB_HAL_MIN(actBufSize, bufSize)  (((uint32_t) (actBufSize) < (uint32_t) (bufSize)) ? \

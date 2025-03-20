@@ -25,21 +25,9 @@
 * limitations under the License.
 *******************************************************************************/
 
-/**
- * \addtogroup group_hal_impl_nvm NVM (Onboard Non-Volatile Memory)
- * \ingroup group_hal_impl
- * \{
- * On PSE84 the OTP region is accessible in Secure mode.
- *  That's why NVM APIs which working with OTP memory available only in Secure mode.
- *
- * \} group_hal_impl_nvm
- */
 
 #include "mtb_hal_nvm_impl.h"
 #include <string.h>
-#if (MTB_HAL_DRIVER_AVAILABLE_SYSPM)
-#include "mtb_hal_syspm.h"
-#endif // (MTB_HAL_DRIVER_AVAILABLE_SYSPM)
 
 
 #if (MTB_HAL_DRIVER_AVAILABLE_NVM)

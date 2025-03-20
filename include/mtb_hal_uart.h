@@ -123,7 +123,8 @@
 #include <stdbool.h>
 #include "cy_result.h"
 #include "mtb_hal_hw_types.h"
-#include "mtb_hal_pdl_map.h"
+
+#if defined(MTB_HAL_DRIVER_AVAILABLE_UART)
 
 #if defined(__cplusplus)
 extern "C" {
@@ -147,6 +148,9 @@ extern "C" {
 /** The actual clock tolerance is greater than the maximum allowed tolerance */
 #define MTB_HAL_UART_RSLT_ERR_CLOCK_FREQ_TOLERANCE             \
     (CY_RSLT_CREATE_EX(CY_RSLT_TYPE_ERROR, CY_RSLT_MODULE_ABSTRACTION_HAL, MTB_HAL_RSLT_MODULE_UART, 2))
+/** Other operation in progress */
+#define MTB_HAL_UART_RSLT_ERR_BUSY                         \
+    (CY_RSLT_CREATE_EX(CY_RSLT_TYPE_ERROR, CY_RSLT_MODULE_ABSTRACTION_HAL, MTB_HAL_RSLT_MODULE_UART, 3))
 /**
  * \}
  */
@@ -316,13 +320,13 @@ void mtb_hal_uart_enable_event(mtb_hal_uart_t* obj, mtb_hal_uart_event_t event, 
 
 #if defined(COMPONENT_MW_ASYNC_TRANSFER)
 
-/**Configure the UART async transfer interface
+/**Configure the UART async transfer interface for CPU based transfer
  *
  * This facilitates the data transfer on the UART peripheral in the background once the
  * transfer is intiated without any application involvement.Users should set up the async
  * transfer interface before calling any async transfer functions. This function sets
- * up all the interfaces needed by  Async Transfer Library to perform the background
- * transfer.
+ * up all the interfaces needed by  Async Transfer Library to perform the CPU copy based
+ * background transfer.
  *
  * @param[in] obj               The UART object
  * @param[in] context           The context structure used by the async transfer library
@@ -330,6 +334,27 @@ void mtb_hal_uart_enable_event(mtb_hal_uart_t* obj, mtb_hal_uart_event_t event, 
  * @return The status of the config request
  */
 cy_rslt_t mtb_hal_uart_config_async(mtb_hal_uart_t* obj, mtb_async_transfer_context_t* context);
+
+#if (MTB_HAL_DRIVER_AVAILABLE_DMA)
+/**Configure the UART async transfer interface for DMA based transfer
+ *
+ * This facilitates the data transfer on the UART peripheral in the background using the
+ * DMA once the transfer is intiated without any application involvement.Users should
+ * set up the async transfer interface before calling any async transfer functions. This
+ * function sets up all the interfaces needed by  Async Transfer Library to perform the
+ * DMA based background transfer.
+ *
+ * @param[in] obj               The UART object
+ * @param[in] dma_rx            RX DMA object set up for transfer from UART RX FIFO to memory
+ * @param[in] dma_tx            TX DMA object set up for transfer from memory to UART TX FIFO
+ * @param[in] context           The context structure used by the async transfer library
+ *                              to perform the data transfers
+ * @return The status of the config request
+ */
+cy_rslt_t mtb_hal_uart_config_async_dma(mtb_hal_uart_t* obj, mtb_hal_dma_t* dma_rx,
+                                        mtb_hal_dma_t* dma_tx,
+                                        mtb_async_transfer_context_t* context);
+#endif /* (MTB_HAL_DRIVER_AVAILABLE_DMA) */
 
 /** Begin asynchronous RX transfer.
  *
@@ -339,6 +364,10 @@ cy_rslt_t mtb_hal_uart_config_async(mtb_hal_uart_t* obj, mtb_async_transfer_cont
  * Received data is placed in the user specified buffer. The user must register a callback with
  * \ref mtb_hal_uart_register_callback. RX callback events can be enabled using \ref
  * mtb_hal_uart_enable_event with the appropriate events.
+ *
+ * \note This function modifies the RX FIFO level internally depending on the number of bytes
+ * to receive. User is expected to set it back to the desired RX FIFO level after the read
+ * is complete, if required.
  *
  * @param[in]  obj              The UART object
  * @param[out] rx               The user specified receive buffer
@@ -355,6 +384,9 @@ cy_rslt_t mtb_hal_uart_read_async(mtb_hal_uart_t* obj, void* rx, size_t length);
  * be raised. The transmit buffer is a user defined buffer that will be sent on the UART. The user
  * must register a callback with \ref mtb_hal_uart_register_callback. If desired, TX callback
  * events can be enabled using \ref mtb_hal_uart_enable_event with the appropriate events.
+ *
+ * \note This function modifies the TX FIFO level internally. User is expected to set it back to
+ * the desired TX FIFO level after the write is complete, if required.
  *
  * @param[in] obj               The UART object
  * @param[in] tx                The transmit buffer
@@ -418,5 +450,7 @@ cy_rslt_t mtb_hal_uart_process_interrupt(mtb_hal_uart_t* obj);
 #ifdef MTB_HAL_UART_IMPL_HEADER
 #include MTB_HAL_UART_IMPL_HEADER
 #endif /* MTB_HAL_UART_IMPL_HEADER */
+
+#endif // defined(MTB_HAL_DRIVER_AVAILABLE_UART)
 
 /** \} group_hal_uart */

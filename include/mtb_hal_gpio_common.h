@@ -3,7 +3,7 @@
 *
 * \brief
 * Provides common API declarations of the MXS IOSS IP's ( MXS22 IOSS v1, MXS40
-* IOSS v3, MXS40S IOSS v1)
+* IOCL v1, IOSS v3, MXS40S IOSS v1)
 *
 ********************************************************************************
 * \copyright

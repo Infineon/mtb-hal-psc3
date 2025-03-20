@@ -76,6 +76,31 @@ __STATIC_INLINE bool mtb_hal_spi_is_busy(mtb_hal_spi_t* obj)
 }
 
 
+//--------------------------------------------------------------------------------------------------
+// mtb_hal_spi_set_fifo_level_internal
+//--------------------------------------------------------------------------------------------------
+__STATIC_INLINE cy_rslt_t mtb_hal_spi_set_fifo_level_internal(mtb_hal_spi_t* obj,
+                                                              mtb_hal_spi_fifo_type_t type,
+                                                              uint16_t level)
+{
+    if (type == MTB_HAL_SPI_FIFO_RX)
+    {
+        Cy_SCB_SetRxFifoLevel(obj->base, level);
+        return CY_RSLT_SUCCESS;
+    }
+    else if (type == MTB_HAL_SPI_FIFO_TX)
+    {
+        Cy_SCB_SetTxFifoLevel(obj->base, level);
+        return CY_RSLT_SUCCESS;
+    }
+
+    return MTB_HAL_SPI_RSLT_BAD_ARGUMENT;
+}
+
+
+#define mtb_hal_spi_set_fifo_level(obj, type, \
+                                   level) mtb_hal_spi_set_fifo_level_internal(obj, type, level)
+
 #if defined(__cplusplus)
 }
 #endif /* __cplusplus */

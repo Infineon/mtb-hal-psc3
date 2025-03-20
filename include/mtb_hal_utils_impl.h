@@ -34,6 +34,7 @@
 #pragma once
 
 #include "cy_result.h"
+#include "cy_pdl.h"
 #include "mtb_hal_hw_types.h"
 #include "cy_utils.h"
 #include "mtb_hal_utils.h"
@@ -72,6 +73,11 @@ typedef bool (* _mtb_hal_wait_status_funcptr_t)(void* obj, uint32_t status);
 cy_rslt_t _mtb_hal_wait_for_status(void* obj, uint32_t status, uint32_t* timeout,
                                    _mtb_hal_wait_status_funcptr_t funcptr);
 
+
+#if defined(COMPONENT_SECURE_DEVICE) || defined(CY_PDL_TZ_ENABLED)
+/** Define if the image is secure or non-secure */
+#define _MTB_HAL_IMAGE_TYPE_SECURE
+#endif
 
 #if defined(__cplusplus)
 }

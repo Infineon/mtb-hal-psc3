@@ -105,7 +105,8 @@
 #include <stdbool.h>
 #include "cy_result.h"
 #include "mtb_hal_hw_types.h"
-#include "mtb_hal_pdl_map.h"
+
+#if defined(MTB_HAL_DRIVER_AVAILABLE_SPI)
 
 #if defined(__cplusplus)
 extern "C" {
@@ -146,6 +147,13 @@ typedef enum
 /** Handler for SPI interrupts */
 typedef void (* mtb_hal_spi_event_callback_t)(void* callback_arg, mtb_hal_spi_event_t event);
 
+/** SPI FIFO type */
+typedef enum
+{
+    MTB_HAL_SPI_FIFO_RX, //!< RX FIFO for incoming data
+    MTB_HAL_SPI_FIFO_TX  //!< TX FIFO for outgoing datas
+} mtb_hal_spi_fifo_type_t;
+
 /** Set the SPI baud rate
  *
  * Actual frequency may differ from the desired frequency due to available dividers and bus clock
@@ -156,6 +164,19 @@ typedef void (* mtb_hal_spi_event_callback_t)(void* callback_arg, mtb_hal_spi_ev
  */
 cy_rslt_t mtb_hal_spi_set_frequency(mtb_hal_spi_t* obj, uint32_t hz);
 
+/** Sets a threshold level for a FIFO that will generate an interrupt and a
+ * trigger output. The RX FIFO interrupt and trigger will be activated when
+ * the receive FIFO has more entries than the threshold. The TX FIFO interrupt
+ * and trigger will be activated when the transmit FIFO has less entries than
+ * the threshold.
+ *
+ * @param[in]  obj        The SPI object
+ * @param[in]  type       FIFO type to set level for
+ * @param[in]  level      Level threshold to set. See the device datasheet for valid range.
+ * @return The status of the level set
+ * */
+cy_rslt_t mtb_hal_spi_set_fifo_level(mtb_hal_spi_t* obj, mtb_hal_spi_fifo_type_t type,
+                                     uint16_t level);
 /** Synchronously get a received value out of the SPI receive buffer
  *
  * In Controller mode - transmits fill-in value and read the data from RxFifo
@@ -293,5 +314,7 @@ cy_rslt_t mtb_hal_spi_process_interrupt(mtb_hal_spi_t* obj);
 #ifdef MTB_HAL_SPI_IMPL_HEADER
 #include MTB_HAL_SPI_IMPL_HEADER
 #endif /* MTB_HAL_SPI_IMPL_HEADER */
+
+#endif // defined(MTB_HAL_DRIVER_AVAILABLE_SPI)
 
 /** \} group_hal_spi */

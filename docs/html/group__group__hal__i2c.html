@@ -115,7 +115,7 @@ Snippet 1: I2C Initialization and Configuration</h2>
 <p >This snippet initializes an I2C resource as controller or target and assigns the <b>sda</b> and <b>scl</b> pins.</p>
 <p >Initializing as I2C controller </p><div class="fragment"><div class="line">    <span class="comment">// Declare variables</span></div>
 <div class="line">    <a class="code hl_typedef" href="group__group__result.html#gaca79700fcc701534ce61778a9bcf57d1">cy_rslt_t</a>   rslt;</div>
-<div class="line">    <a class="code hl_struct" href="group__group__hal__impl__hw__types.html#structmtb__hal__i2c__t">mtb_hal_i2c_t</a> i2c_controller_obj;</div>
+<div class="line">    <a class="code hl_struct" href="structmtb__hal__i2c__t.html">mtb_hal_i2c_t</a> i2c_controller_obj;</div>
 <div class="line"> </div>
 <div class="line">    <span class="comment">// Define frequency</span></div>
 <div class="line">    uint32_t I2C_CONTROLLER_FREQUENCY = 100000u;</div>
@@ -134,15 +134,15 @@ Snippet 1: I2C Initialization and Configuration</h2>
 <div class="line"> </div>
 <div class="line">    <span class="comment">// Configure the I2C resource to be controller</span></div>
 <div class="line">    rslt = <a class="code hl_function" href="group__group__hal__i2c.html#ga3e6a19afa75a6bcdd6fb700c2c0e8748">mtb_hal_i2c_configure</a>(&amp;i2c_controller_obj, &amp;i2c_controller_config);</div>
-<div class="ttc" id="agroup__group__hal__i2c_html_ga3e6a19afa75a6bcdd6fb700c2c0e8748"><div class="ttname"><a href="group__group__hal__i2c.html#ga3e6a19afa75a6bcdd6fb700c2c0e8748">mtb_hal_i2c_configure</a></div><div class="ttdeci">cy_rslt_t mtb_hal_i2c_configure(mtb_hal_i2c_t *obj, const mtb_hal_i2c_cfg_t *cfg)</div><div class="ttdoc">Configure the I2C block.</div></div>
-<div class="ttc" id="agroup__group__hal__i2c_html_ga4cd902f7ba1326902a2aa4f04173b77a"><div class="ttname"><a href="group__group__hal__i2c.html#ga4cd902f7ba1326902a2aa4f04173b77a">MTB_HAL_I2C_DEFAULT_ADDR_MASK</a></div><div class="ttdeci">#define MTB_HAL_I2C_DEFAULT_ADDR_MASK</div><div class="ttdoc">Named define for default address mask for use when initializing the mtb_hal_i2c_cfg_t structure.</div><div class="ttdef"><b>Definition:</b> mtb_hal_i2c.h:140</div></div>
-<div class="ttc" id="agroup__group__hal__i2c_html_ga7f2554a3095dc72de7b6eeb5bef228aa"><div class="ttname"><a href="group__group__hal__i2c.html#ga7f2554a3095dc72de7b6eeb5bef228aa">MTB_HAL_I2C_MODE_CONTROLLER</a></div><div class="ttdeci">#define MTB_HAL_I2C_MODE_CONTROLLER</div><div class="ttdoc">Named define for Controller mode for use when initializing the mtb_hal_i2c_cfg_t structure.</div><div class="ttdef"><b>Definition:</b> mtb_hal_i2c.h:137</div></div>
-<div class="ttc" id="agroup__group__hal__i2c_html_structmtb__hal__i2c__cfg__t"><div class="ttname"><a href="group__group__hal__i2c.html#structmtb__hal__i2c__cfg__t">mtb_hal_i2c_cfg_t</a></div><div class="ttdoc">I2C configuration.</div><div class="ttdef"><b>Definition:</b> mtb_hal_i2c.h:212</div></div>
-<div class="ttc" id="agroup__group__hal__impl__hw__types_html_structmtb__hal__i2c__t"><div class="ttname"><a href="group__group__hal__impl__hw__types.html#structmtb__hal__i2c__t">mtb_hal_i2c_t</a></div><div class="ttdoc">I2C object.</div><div class="ttdef"><b>Definition:</b> mtb_hal_hw_types.h:600</div></div>
-<div class="ttc" id="agroup__group__result_html_gaca79700fcc701534ce61778a9bcf57d1"><div class="ttname"><a href="group__group__result.html#gaca79700fcc701534ce61778a9bcf57d1">cy_rslt_t</a></div><div class="ttdeci">uint32_t cy_rslt_t</div><div class="ttdoc">Provides the result of an operation as a structured bitfield.</div><div class="ttdef"><b>Definition:</b> cy_result.h:451</div></div>
+<div class="ttc" id="agroup__group__hal__i2c_html_ga3e6a19afa75a6bcdd6fb700c2c0e8748"><div class="ttname"><a href="group__group__hal__i2c.html#ga3e6a19afa75a6bcdd6fb700c2c0e8748">mtb_hal_i2c_configure</a></div><div class="ttdeci">cy_rslt_t mtb_hal_i2c_configure(mtb_hal_i2c_t *obj, const mtb_hal_i2c_cfg_t *cfg)</div><div class="ttdoc">Configure the I2C block.</div><div class="ttdef"><b>Definition:</b> mtb_hal_i2c.c:332</div></div>
+<div class="ttc" id="agroup__group__hal__i2c_html_ga4cd902f7ba1326902a2aa4f04173b77a"><div class="ttname"><a href="group__group__hal__i2c.html#ga4cd902f7ba1326902a2aa4f04173b77a">MTB_HAL_I2C_DEFAULT_ADDR_MASK</a></div><div class="ttdeci">#define MTB_HAL_I2C_DEFAULT_ADDR_MASK</div><div class="ttdoc">Named define for default address mask for use when initializing the mtb_hal_i2c_cfg_t structure.</div><div class="ttdef"><b>Definition:</b> mtb_hal_i2c.h:141</div></div>
+<div class="ttc" id="agroup__group__hal__i2c_html_ga7f2554a3095dc72de7b6eeb5bef228aa"><div class="ttname"><a href="group__group__hal__i2c.html#ga7f2554a3095dc72de7b6eeb5bef228aa">MTB_HAL_I2C_MODE_CONTROLLER</a></div><div class="ttdeci">#define MTB_HAL_I2C_MODE_CONTROLLER</div><div class="ttdoc">Named define for Controller mode for use when initializing the mtb_hal_i2c_cfg_t structure.</div><div class="ttdef"><b>Definition:</b> mtb_hal_i2c.h:138</div></div>
+<div class="ttc" id="agroup__group__hal__i2c_html_structmtb__hal__i2c__cfg__t"><div class="ttname"><a href="group__group__hal__i2c.html#structmtb__hal__i2c__cfg__t">mtb_hal_i2c_cfg_t</a></div><div class="ttdoc">I2C configuration.</div><div class="ttdef"><b>Definition:</b> mtb_hal_i2c.h:213</div></div>
+<div class="ttc" id="agroup__group__result_html_gaca79700fcc701534ce61778a9bcf57d1"><div class="ttname"><a href="group__group__result.html#gaca79700fcc701534ce61778a9bcf57d1">cy_rslt_t</a></div><div class="ttdeci">uint32_t cy_rslt_t</div><div class="ttdoc">Provides the result of an operation as a structured bitfield.</div><div class="ttdef"><b>Definition:</b> cy_result.h:457</div></div>
+<div class="ttc" id="astructmtb__hal__i2c__t_html"><div class="ttname"><a href="structmtb__hal__i2c__t.html">mtb_hal_i2c_t</a></div><div class="ttdoc">I2C object.</div><div class="ttdef"><b>Definition:</b> mtb_hal_hw_types_i2c_scb.h:65</div></div>
 </div><!-- fragment --><p >Initializing as I2C target </p><div class="fragment"><div class="line">    <span class="comment">// Declare variables</span></div>
 <div class="line">    <a class="code hl_typedef" href="group__group__result.html#gaca79700fcc701534ce61778a9bcf57d1">cy_rslt_t</a>   rslt;</div>
-<div class="line">    <a class="code hl_struct" href="group__group__hal__impl__hw__types.html#structmtb__hal__i2c__t">mtb_hal_i2c_t</a> i2c_target_obj;</div>
+<div class="line">    <a class="code hl_struct" href="structmtb__hal__i2c__t.html">mtb_hal_i2c_t</a> i2c_target_obj;</div>
 <div class="line"> </div>
 <div class="line">    <span class="comment">// Define address</span></div>
 <div class="line">    uint16_t I2C_TARGET_ADDRESS = 0x08u;</div>
@@ -155,7 +155,8 @@ Snippet 1: I2C Initialization and Configuration</h2>
 <div class="line"> </div>
 <div class="line">    <span class="comment">// Define the target dev_config_struct structure</span></div>
 <div class="line">    <a class="code hl_struct" href="group__group__hal__i2c.html#structmtb__hal__i2c__cfg__t">mtb_hal_i2c_cfg_t</a> i2c_target_config =</div>
-<div class="line">        { <a class="code hl_define" href="group__group__hal__i2c.html#gaf2168badd030c55381c470b849f0d9e8">MTB_HAL_I2C_MODE_TARGET</a>, I2C_TARGET_ADDRESS, I2C_TARGET_FREQUENCY, I2C_TARGET_ADDRESS_MASK,</div>
+<div class="line">        { <a class="code hl_define" href="group__group__hal__i2c.html#gaf2168badd030c55381c470b849f0d9e8">MTB_HAL_I2C_MODE_TARGET</a>, I2C_TARGET_ADDRESS, I2C_TARGET_FREQUENCY,</div>
+<div class="line">          I2C_TARGET_ADDRESS_MASK,</div>
 <div class="line">          I2C_ENABLE_ADDRESS_EVENT };</div>
 <div class="line"> </div>
 <div class="line">    rslt = mtb_hal_i2c_setup(&amp;i2c_target_obj, &amp;dev_config_struct, &amp;context, &amp;i2c_clock);</div>
@@ -163,7 +164,7 @@ Snippet 1: I2C Initialization and Configuration</h2>
 <div class="line">    <span class="comment">// Configure the I2C resource to be target</span></div>
 <div class="line">    rslt = <a class="code hl_function" href="group__group__hal__i2c.html#ga3e6a19afa75a6bcdd6fb700c2c0e8748">mtb_hal_i2c_configure</a>(&amp;i2c_target_obj, &amp;i2c_target_config);</div>
 <div class="line"> </div>
-<div class="ttc" id="agroup__group__hal__i2c_html_gaf2168badd030c55381c470b849f0d9e8"><div class="ttname"><a href="group__group__hal__i2c.html#gaf2168badd030c55381c470b849f0d9e8">MTB_HAL_I2C_MODE_TARGET</a></div><div class="ttdeci">#define MTB_HAL_I2C_MODE_TARGET</div><div class="ttdoc">Named define for Target mode for use when initializing the mtb_hal_i2c_cfg_t structure.</div><div class="ttdef"><b>Definition:</b> mtb_hal_i2c.h:134</div></div>
+<div class="ttc" id="agroup__group__hal__i2c_html_gaf2168badd030c55381c470b849f0d9e8"><div class="ttname"><a href="group__group__hal__i2c.html#gaf2168badd030c55381c470b849f0d9e8">MTB_HAL_I2C_MODE_TARGET</a></div><div class="ttdeci">#define MTB_HAL_I2C_MODE_TARGET</div><div class="ttdoc">Named define for Target mode for use when initializing the mtb_hal_i2c_cfg_t structure.</div><div class="ttdef"><b>Definition:</b> mtb_hal_i2c.h:135</div></div>
 </div><!-- fragment --><h2><a class="anchor" id="subsection_i2c_snippet_2"></a>
 Snippet 2: Handling events</h2>
 <p >This snippet shows how to enable and handle I2C events using <a class="el" href="group__group__hal__i2c.html#ga3728b432e01d66c3262b1e962ca4af62">mtb_hal_i2c_enable_event</a> and <a class="el" href="group__group__hal__i2c.html#ga61c290cdd41065107b55b395bbd87dfd">mtb_hal_i2c_register_callback</a>.<br  />
@@ -219,7 +220,7 @@ Snippet 2: Handling events</h2>
 <div class="line">{</div>
 <div class="line">    <span class="comment">// Declare variables</span></div>
 <div class="line">    <a class="code hl_typedef" href="group__group__result.html#gaca79700fcc701534ce61778a9bcf57d1">cy_rslt_t</a>   rslt;</div>
-<div class="line">    <a class="code hl_struct" href="group__group__hal__impl__hw__types.html#structmtb__hal__i2c__t">mtb_hal_i2c_t</a> i2c_target_obj;</div>
+<div class="line">    <a class="code hl_struct" href="structmtb__hal__i2c__t.html">mtb_hal_i2c_t</a> i2c_target_obj;</div>
 <div class="line"> </div>
 <div class="line">    <span class="comment">// Define the target dev_config_struct structure</span></div>
 <div class="line">    <a class="code hl_struct" href="group__group__hal__i2c.html#structmtb__hal__i2c__cfg__t">mtb_hal_i2c_cfg_t</a> i2c_target_config =</div>
@@ -262,21 +263,21 @@ Snippet 2: Handling events</h2>
 <div class="line">}</div>
 <div class="line"> </div>
 <div class="line"> </div>
-<div class="ttc" id="agroup__group__hal__i2c_html_ga18ae3a199400fc5c7caccb21bcefdf5e"><div class="ttname"><a href="group__group__hal__i2c.html#ga18ae3a199400fc5c7caccb21bcefdf5e">mtb_hal_i2c_address_callback_t</a></div><div class="ttdeci">mtb_hal_i2c_command_rsp_t(* mtb_hal_i2c_address_callback_t)(void *callback_arg, mtb_hal_i2c_addr_event_t event, uint8_t address)</div><div class="ttdoc">Handler for I2C address events.</div><div class="ttdef"><b>Definition:</b> mtb_hal_i2c.h:206</div></div>
-<div class="ttc" id="agroup__group__hal__i2c_html_ga2176dab61482eae237d3c7d6f5d30d43"><div class="ttname"><a href="group__group__hal__i2c.html#ga2176dab61482eae237d3c7d6f5d30d43">mtb_hal_i2c_event_callback_t</a></div><div class="ttdeci">void(* mtb_hal_i2c_event_callback_t)(void *callback_arg, mtb_hal_i2c_event_t event)</div><div class="ttdoc">Handler for I2C events.</div><div class="ttdef"><b>Definition:</b> mtb_hal_i2c.h:204</div></div>
-<div class="ttc" id="agroup__group__hal__i2c_html_ga3728b432e01d66c3262b1e962ca4af62"><div class="ttname"><a href="group__group__hal__i2c.html#ga3728b432e01d66c3262b1e962ca4af62">mtb_hal_i2c_enable_event</a></div><div class="ttdeci">void mtb_hal_i2c_enable_event(mtb_hal_i2c_t *obj, mtb_hal_i2c_event_t event, bool enable)</div><div class="ttdoc">Configure and Enable or Disable I2C Interrupt.</div></div>
-<div class="ttc" id="agroup__group__hal__i2c_html_ga61c290cdd41065107b55b395bbd87dfd"><div class="ttname"><a href="group__group__hal__i2c.html#ga61c290cdd41065107b55b395bbd87dfd">mtb_hal_i2c_register_callback</a></div><div class="ttdeci">void mtb_hal_i2c_register_callback(mtb_hal_i2c_t *obj, mtb_hal_i2c_event_callback_t callback, void *callback_arg)</div><div class="ttdoc">Register an I2C event callback handler</div></div>
-<div class="ttc" id="agroup__group__hal__i2c_html_ga7cae29ddae7ca97363b43a6e8607579b"><div class="ttname"><a href="group__group__hal__i2c.html#ga7cae29ddae7ca97363b43a6e8607579b">mtb_hal_i2c_enable_address_event</a></div><div class="ttdeci">void mtb_hal_i2c_enable_address_event(mtb_hal_i2c_t *obj, mtb_hal_i2c_addr_event_t event, bool enable)</div><div class="ttdoc">Configure and Enable or Disable I2C Address Interrupt.</div></div>
-<div class="ttc" id="agroup__group__hal__i2c_html_ga8e634b8ee008faefc71f4d7854976791"><div class="ttname"><a href="group__group__hal__i2c.html#ga8e634b8ee008faefc71f4d7854976791">mtb_hal_i2c_event_t</a></div><div class="ttdeci">mtb_hal_i2c_event_t</div><div class="ttdoc">I2C enum to enable/disable/report interrupt cause flags.</div><div class="ttdef"><b>Definition:</b> mtb_hal_i2c.h:144</div></div>
-<div class="ttc" id="agroup__group__hal__i2c_html_gab6a1e408f6959f2b4fb0505acaa59571"><div class="ttname"><a href="group__group__hal__i2c.html#gab6a1e408f6959f2b4fb0505acaa59571">mtb_hal_i2c_command_rsp_t</a></div><div class="ttdeci">mtb_hal_i2c_command_rsp_t</div><div class="ttdoc">I2C Command ACK / NAK.</div><div class="ttdef"><b>Definition:</b> mtb_hal_i2c.h:187</div></div>
-<div class="ttc" id="agroup__group__hal__i2c_html_gaca10fd3fc422bf113f71409b2ec1ddfe"><div class="ttname"><a href="group__group__hal__i2c.html#gaca10fd3fc422bf113f71409b2ec1ddfe">mtb_hal_i2c_register_address_callback</a></div><div class="ttdeci">void mtb_hal_i2c_register_address_callback(mtb_hal_i2c_t *obj, mtb_hal_i2c_address_callback_t callback, void *callback_arg)</div><div class="ttdoc">Register an I2C address callback handler</div></div>
-<div class="ttc" id="agroup__group__hal__i2c_html_gae0be6d796369cbf15cbb598801b74d42"><div class="ttname"><a href="group__group__hal__i2c.html#gae0be6d796369cbf15cbb598801b74d42">mtb_hal_i2c_addr_event_t</a></div><div class="ttdeci">mtb_hal_i2c_addr_event_t</div><div class="ttdoc">I2C enum to enable/disable/report address interrupt cause flags.</div><div class="ttdef"><b>Definition:</b> mtb_hal_i2c.h:169</div></div>
-<div class="ttc" id="agroup__group__hal__i2c_html_gga8e634b8ee008faefc71f4d7854976791a9e98f71ffa45e9312fdc82317674ba93"><div class="ttname"><a href="group__group__hal__i2c.html#gga8e634b8ee008faefc71f4d7854976791a9e98f71ffa45e9312fdc82317674ba93">MTB_HAL_I2C_TARGET_WR_CMPLT_EVENT</a></div><div class="ttdeci">@ MTB_HAL_I2C_TARGET_WR_CMPLT_EVENT</div><div class="ttdoc">Indicates the I2C hardware detected an error.</div><div class="ttdef"><b>Definition:</b> mtb_hal_i2c.h:160</div></div>
-<div class="ttc" id="agroup__group__hal__i2c_html_gga8e634b8ee008faefc71f4d7854976791ab4ff58efc8e2819f2f4f0329f39368b6"><div class="ttname"><a href="group__group__hal__i2c.html#gga8e634b8ee008faefc71f4d7854976791ab4ff58efc8e2819f2f4f0329f39368b6">MTB_HAL_I2C_TARGET_ERR_EVENT</a></div><div class="ttdeci">@ MTB_HAL_I2C_TARGET_ERR_EVENT</div><div class="ttdoc">Indicates the I2C hardware has detected an error.</div><div class="ttdef"><b>Definition:</b> mtb_hal_i2c.h:162</div></div>
-<div class="ttc" id="agroup__group__hal__i2c_html_gga8e634b8ee008faefc71f4d7854976791ab83e093ed163ac8e59f68ad073f07189"><div class="ttname"><a href="group__group__hal__i2c.html#gga8e634b8ee008faefc71f4d7854976791ab83e093ed163ac8e59f68ad073f07189">MTB_HAL_I2C_TARGET_RD_CMPLT_EVENT</a></div><div class="ttdeci">@ MTB_HAL_I2C_TARGET_RD_CMPLT_EVENT</div><div class="ttdoc">Indicates the controller completed writing to the target (set by the controller Stop or Restart)</div><div class="ttdef"><b>Definition:</b> mtb_hal_i2c.h:157</div></div>
-<div class="ttc" id="agroup__group__hal__i2c_html_ggab6a1e408f6959f2b4fb0505acaa59571ad257ce69207c5f0cf68de0103b3cc9e5"><div class="ttname"><a href="group__group__hal__i2c.html#ggab6a1e408f6959f2b4fb0505acaa59571ad257ce69207c5f0cf68de0103b3cc9e5">MTB_HAL_I2C_CMD_ACK</a></div><div class="ttdeci">@ MTB_HAL_I2C_CMD_ACK</div><div class="ttdoc">Send ACK to current byte.</div><div class="ttdef"><b>Definition:</b> mtb_hal_i2c.h:188</div></div>
-<div class="ttc" id="agroup__group__hal__i2c_html_ggae0be6d796369cbf15cbb598801b74d42a1b78bc2abf10d05fa2124093b9889c86"><div class="ttname"><a href="group__group__hal__i2c.html#ggae0be6d796369cbf15cbb598801b74d42a1b78bc2abf10d05fa2124093b9889c86">MTB_HAL_I2C_GENERAL_CALL_EVENT</a></div><div class="ttdeci">@ MTB_HAL_I2C_GENERAL_CALL_EVENT</div><div class="ttdoc">Indicates the target matching address received.</div><div class="ttdef"><b>Definition:</b> mtb_hal_i2c.h:173</div></div>
-<div class="ttc" id="agroup__group__result_html_gaf58fac450d9fff4472f03ad68f6e546e"><div class="ttname"><a href="group__group__result.html#gaf58fac450d9fff4472f03ad68f6e546e">CY_RSLT_SUCCESS</a></div><div class="ttdeci">#define CY_RSLT_SUCCESS</div><div class="ttdoc">cy_rslt_t return value indicating success</div><div class="ttdef"><b>Definition:</b> cy_result.h:478</div></div>
+<div class="ttc" id="agroup__group__hal__i2c_html_ga18ae3a199400fc5c7caccb21bcefdf5e"><div class="ttname"><a href="group__group__hal__i2c.html#ga18ae3a199400fc5c7caccb21bcefdf5e">mtb_hal_i2c_address_callback_t</a></div><div class="ttdeci">mtb_hal_i2c_command_rsp_t(* mtb_hal_i2c_address_callback_t)(void *callback_arg, mtb_hal_i2c_addr_event_t event, uint8_t address)</div><div class="ttdoc">Handler for I2C address events.</div><div class="ttdef"><b>Definition:</b> mtb_hal_i2c.h:207</div></div>
+<div class="ttc" id="agroup__group__hal__i2c_html_ga2176dab61482eae237d3c7d6f5d30d43"><div class="ttname"><a href="group__group__hal__i2c.html#ga2176dab61482eae237d3c7d6f5d30d43">mtb_hal_i2c_event_callback_t</a></div><div class="ttdeci">void(* mtb_hal_i2c_event_callback_t)(void *callback_arg, mtb_hal_i2c_event_t event)</div><div class="ttdoc">Handler for I2C events.</div><div class="ttdef"><b>Definition:</b> mtb_hal_i2c.h:205</div></div>
+<div class="ttc" id="agroup__group__hal__i2c_html_ga3728b432e01d66c3262b1e962ca4af62"><div class="ttname"><a href="group__group__hal__i2c.html#ga3728b432e01d66c3262b1e962ca4af62">mtb_hal_i2c_enable_event</a></div><div class="ttdeci">void mtb_hal_i2c_enable_event(mtb_hal_i2c_t *obj, mtb_hal_i2c_event_t event, bool enable)</div><div class="ttdoc">Configure and Enable or Disable I2C Interrupt.</div><div class="ttdef"><b>Definition:</b> mtb_hal_i2c.c:644</div></div>
+<div class="ttc" id="agroup__group__hal__i2c_html_ga61c290cdd41065107b55b395bbd87dfd"><div class="ttname"><a href="group__group__hal__i2c.html#ga61c290cdd41065107b55b395bbd87dfd">mtb_hal_i2c_register_callback</a></div><div class="ttdeci">void mtb_hal_i2c_register_callback(mtb_hal_i2c_t *obj, mtb_hal_i2c_event_callback_t callback, void *callback_arg)</div><div class="ttdoc">Register an I2C event callback handler</div><div class="ttdef"><b>Definition:</b> mtb_hal_i2c.c:615</div></div>
+<div class="ttc" id="agroup__group__hal__i2c_html_ga7cae29ddae7ca97363b43a6e8607579b"><div class="ttname"><a href="group__group__hal__i2c.html#ga7cae29ddae7ca97363b43a6e8607579b">mtb_hal_i2c_enable_address_event</a></div><div class="ttdeci">void mtb_hal_i2c_enable_address_event(mtb_hal_i2c_t *obj, mtb_hal_i2c_addr_event_t event, bool enable)</div><div class="ttdoc">Configure and Enable or Disable I2C Address Interrupt.</div><div class="ttdef"><b>Definition:</b> mtb_hal_i2c.c:660</div></div>
+<div class="ttc" id="agroup__group__hal__i2c_html_ga8e634b8ee008faefc71f4d7854976791"><div class="ttname"><a href="group__group__hal__i2c.html#ga8e634b8ee008faefc71f4d7854976791">mtb_hal_i2c_event_t</a></div><div class="ttdeci">mtb_hal_i2c_event_t</div><div class="ttdoc">I2C enum to enable/disable/report interrupt cause flags.</div><div class="ttdef"><b>Definition:</b> mtb_hal_i2c.h:145</div></div>
+<div class="ttc" id="agroup__group__hal__i2c_html_gab6a1e408f6959f2b4fb0505acaa59571"><div class="ttname"><a href="group__group__hal__i2c.html#gab6a1e408f6959f2b4fb0505acaa59571">mtb_hal_i2c_command_rsp_t</a></div><div class="ttdeci">mtb_hal_i2c_command_rsp_t</div><div class="ttdoc">I2C Command ACK / NAK.</div><div class="ttdef"><b>Definition:</b> mtb_hal_i2c.h:188</div></div>
+<div class="ttc" id="agroup__group__hal__i2c_html_gaca10fd3fc422bf113f71409b2ec1ddfe"><div class="ttname"><a href="group__group__hal__i2c.html#gaca10fd3fc422bf113f71409b2ec1ddfe">mtb_hal_i2c_register_address_callback</a></div><div class="ttdeci">void mtb_hal_i2c_register_address_callback(mtb_hal_i2c_t *obj, mtb_hal_i2c_address_callback_t callback, void *callback_arg)</div><div class="ttdoc">Register an I2C address callback handler</div><div class="ttdef"><b>Definition:</b> mtb_hal_i2c.c:629</div></div>
+<div class="ttc" id="agroup__group__hal__i2c_html_gae0be6d796369cbf15cbb598801b74d42"><div class="ttname"><a href="group__group__hal__i2c.html#gae0be6d796369cbf15cbb598801b74d42">mtb_hal_i2c_addr_event_t</a></div><div class="ttdeci">mtb_hal_i2c_addr_event_t</div><div class="ttdoc">I2C enum to enable/disable/report address interrupt cause flags.</div><div class="ttdef"><b>Definition:</b> mtb_hal_i2c.h:170</div></div>
+<div class="ttc" id="agroup__group__hal__i2c_html_gga8e634b8ee008faefc71f4d7854976791a9e98f71ffa45e9312fdc82317674ba93"><div class="ttname"><a href="group__group__hal__i2c.html#gga8e634b8ee008faefc71f4d7854976791a9e98f71ffa45e9312fdc82317674ba93">MTB_HAL_I2C_TARGET_WR_CMPLT_EVENT</a></div><div class="ttdeci">@ MTB_HAL_I2C_TARGET_WR_CMPLT_EVENT</div><div class="ttdoc">Indicates the I2C hardware detected an error.</div><div class="ttdef"><b>Definition:</b> mtb_hal_i2c.h:161</div></div>
+<div class="ttc" id="agroup__group__hal__i2c_html_gga8e634b8ee008faefc71f4d7854976791ab4ff58efc8e2819f2f4f0329f39368b6"><div class="ttname"><a href="group__group__hal__i2c.html#gga8e634b8ee008faefc71f4d7854976791ab4ff58efc8e2819f2f4f0329f39368b6">MTB_HAL_I2C_TARGET_ERR_EVENT</a></div><div class="ttdeci">@ MTB_HAL_I2C_TARGET_ERR_EVENT</div><div class="ttdoc">Indicates the I2C hardware has detected an error.</div><div class="ttdef"><b>Definition:</b> mtb_hal_i2c.h:163</div></div>
+<div class="ttc" id="agroup__group__hal__i2c_html_gga8e634b8ee008faefc71f4d7854976791ab83e093ed163ac8e59f68ad073f07189"><div class="ttname"><a href="group__group__hal__i2c.html#gga8e634b8ee008faefc71f4d7854976791ab83e093ed163ac8e59f68ad073f07189">MTB_HAL_I2C_TARGET_RD_CMPLT_EVENT</a></div><div class="ttdeci">@ MTB_HAL_I2C_TARGET_RD_CMPLT_EVENT</div><div class="ttdoc">Indicates the controller completed writing to the target (set by the controller Stop or Restart)</div><div class="ttdef"><b>Definition:</b> mtb_hal_i2c.h:158</div></div>
+<div class="ttc" id="agroup__group__hal__i2c_html_ggab6a1e408f6959f2b4fb0505acaa59571ad257ce69207c5f0cf68de0103b3cc9e5"><div class="ttname"><a href="group__group__hal__i2c.html#ggab6a1e408f6959f2b4fb0505acaa59571ad257ce69207c5f0cf68de0103b3cc9e5">MTB_HAL_I2C_CMD_ACK</a></div><div class="ttdeci">@ MTB_HAL_I2C_CMD_ACK</div><div class="ttdoc">Send ACK to current byte.</div><div class="ttdef"><b>Definition:</b> mtb_hal_i2c.h:189</div></div>
+<div class="ttc" id="agroup__group__hal__i2c_html_ggae0be6d796369cbf15cbb598801b74d42a1b78bc2abf10d05fa2124093b9889c86"><div class="ttname"><a href="group__group__hal__i2c.html#ggae0be6d796369cbf15cbb598801b74d42a1b78bc2abf10d05fa2124093b9889c86">MTB_HAL_I2C_GENERAL_CALL_EVENT</a></div><div class="ttdeci">@ MTB_HAL_I2C_GENERAL_CALL_EVENT</div><div class="ttdoc">Indicates the target matching address received.</div><div class="ttdef"><b>Definition:</b> mtb_hal_i2c.h:174</div></div>
+<div class="ttc" id="agroup__group__result_html_gaf58fac450d9fff4472f03ad68f6e546e"><div class="ttname"><a href="group__group__result.html#gaf58fac450d9fff4472f03ad68f6e546e">CY_RSLT_SUCCESS</a></div><div class="ttdeci">#define CY_RSLT_SUCCESS</div><div class="ttdoc">cy_rslt_t return value indicating success</div><div class="ttdef"><b>Definition:</b> cy_result.h:484</div></div>
 </div><!-- fragment --><h1><a class="anchor" id="subsection_i2c_moreinformation"></a>
 More Information</h1>
 <p ><b>Peripheral Driver Library (PDL)</b></p><ul>
@@ -386,54 +387,54 @@ Enumerations</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ga3e6a19afa75a6bcdd6fb700c2c0e8748"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__group__result.html#gaca79700fcc701534ce61778a9bcf57d1">cy_rslt_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__i2c.html#ga3e6a19afa75a6bcdd6fb700c2c0e8748">mtb_hal_i2c_configure</a> (<a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__i2c__t">mtb_hal_i2c_t</a> *obj, const <a class="el" href="group__group__hal__i2c.html#structmtb__hal__i2c__cfg__t">mtb_hal_i2c_cfg_t</a> *cfg)</td></tr>
+<tr class="memitem:ga3e6a19afa75a6bcdd6fb700c2c0e8748"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__group__result.html#gaca79700fcc701534ce61778a9bcf57d1">cy_rslt_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__i2c.html#ga3e6a19afa75a6bcdd6fb700c2c0e8748">mtb_hal_i2c_configure</a> (<a class="el" href="structmtb__hal__i2c__t.html">mtb_hal_i2c_t</a> *obj, const <a class="el" href="group__group__hal__i2c.html#structmtb__hal__i2c__cfg__t">mtb_hal_i2c_cfg_t</a> *cfg)</td></tr>
 <tr class="memdesc:ga3e6a19afa75a6bcdd6fb700c2c0e8748"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configure the I2C block.  <a href="group__group__hal__i2c.html#ga3e6a19afa75a6bcdd6fb700c2c0e8748">More...</a><br /></td></tr>
 <tr class="separator:ga3e6a19afa75a6bcdd6fb700c2c0e8748"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gae11e1deef221b6d628c9e0c0727c1ae8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__group__result.html#gaca79700fcc701534ce61778a9bcf57d1">cy_rslt_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__i2c.html#gae11e1deef221b6d628c9e0c0727c1ae8">mtb_hal_i2c_controller_write</a> (<a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__i2c__t">mtb_hal_i2c_t</a> *obj, uint16_t dev_addr, const uint8_t *data, uint16_t size, uint32_t timeout, bool send_stop)</td></tr>
+<tr class="memitem:gae11e1deef221b6d628c9e0c0727c1ae8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__group__result.html#gaca79700fcc701534ce61778a9bcf57d1">cy_rslt_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__i2c.html#gae11e1deef221b6d628c9e0c0727c1ae8">mtb_hal_i2c_controller_write</a> (<a class="el" href="structmtb__hal__i2c__t.html">mtb_hal_i2c_t</a> *obj, uint16_t dev_addr, const uint8_t *data, uint16_t size, uint32_t timeout, bool send_stop)</td></tr>
 <tr class="memdesc:gae11e1deef221b6d628c9e0c0727c1ae8"><td class="mdescLeft">&#160;</td><td class="mdescRight">I2C controller blocking write.  <a href="group__group__hal__i2c.html#gae11e1deef221b6d628c9e0c0727c1ae8">More...</a><br /></td></tr>
 <tr class="separator:gae11e1deef221b6d628c9e0c0727c1ae8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gadc139fce1bba59e5dcf5969b7ce8336d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__group__result.html#gaca79700fcc701534ce61778a9bcf57d1">cy_rslt_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__i2c.html#gadc139fce1bba59e5dcf5969b7ce8336d">mtb_hal_i2c_controller_read</a> (<a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__i2c__t">mtb_hal_i2c_t</a> *obj, uint16_t dev_addr, uint8_t *data, uint16_t size, uint32_t timeout, bool send_stop)</td></tr>
+<tr class="memitem:gadc139fce1bba59e5dcf5969b7ce8336d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__group__result.html#gaca79700fcc701534ce61778a9bcf57d1">cy_rslt_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__i2c.html#gadc139fce1bba59e5dcf5969b7ce8336d">mtb_hal_i2c_controller_read</a> (<a class="el" href="structmtb__hal__i2c__t.html">mtb_hal_i2c_t</a> *obj, uint16_t dev_addr, uint8_t *data, uint16_t size, uint32_t timeout, bool send_stop)</td></tr>
 <tr class="memdesc:gadc139fce1bba59e5dcf5969b7ce8336d"><td class="mdescLeft">&#160;</td><td class="mdescRight">I2C controller blocking read.  <a href="group__group__hal__i2c.html#gadc139fce1bba59e5dcf5969b7ce8336d">More...</a><br /></td></tr>
 <tr class="separator:gadc139fce1bba59e5dcf5969b7ce8336d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa70af44eda7574252b42f0309b11d133"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__group__result.html#gaca79700fcc701534ce61778a9bcf57d1">cy_rslt_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__i2c.html#gaa70af44eda7574252b42f0309b11d133">mtb_hal_i2c_target_config_read_buffer</a> (<a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__i2c__t">mtb_hal_i2c_t</a> *obj, const uint8_t *data, uint16_t size)</td></tr>
+<tr class="memitem:gaa70af44eda7574252b42f0309b11d133"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__group__result.html#gaca79700fcc701534ce61778a9bcf57d1">cy_rslt_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__i2c.html#gaa70af44eda7574252b42f0309b11d133">mtb_hal_i2c_target_config_read_buffer</a> (<a class="el" href="structmtb__hal__i2c__t.html">mtb_hal_i2c_t</a> *obj, const uint8_t *data, uint16_t size)</td></tr>
 <tr class="memdesc:gaa70af44eda7574252b42f0309b11d133"><td class="mdescLeft">&#160;</td><td class="mdescRight">The function configures the read buffer on an I2C Target.  <a href="group__group__hal__i2c.html#gaa70af44eda7574252b42f0309b11d133">More...</a><br /></td></tr>
 <tr class="separator:gaa70af44eda7574252b42f0309b11d133"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga7ecbce89119cefaca18a27f1ef937fe0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__group__result.html#gaca79700fcc701534ce61778a9bcf57d1">cy_rslt_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__i2c.html#ga7ecbce89119cefaca18a27f1ef937fe0">mtb_hal_i2c_target_config_write_buffer</a> (<a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__i2c__t">mtb_hal_i2c_t</a> *obj, uint8_t *data, uint16_t size)</td></tr>
+<tr class="memitem:ga7ecbce89119cefaca18a27f1ef937fe0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__group__result.html#gaca79700fcc701534ce61778a9bcf57d1">cy_rslt_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__i2c.html#ga7ecbce89119cefaca18a27f1ef937fe0">mtb_hal_i2c_target_config_write_buffer</a> (<a class="el" href="structmtb__hal__i2c__t.html">mtb_hal_i2c_t</a> *obj, uint8_t *data, uint16_t size)</td></tr>
 <tr class="memdesc:ga7ecbce89119cefaca18a27f1ef937fe0"><td class="mdescLeft">&#160;</td><td class="mdescRight">The function configures the write buffer on an I2C Target.  <a href="group__group__hal__i2c.html#ga7ecbce89119cefaca18a27f1ef937fe0">More...</a><br /></td></tr>
 <tr class="separator:ga7ecbce89119cefaca18a27f1ef937fe0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga61c290cdd41065107b55b395bbd87dfd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__i2c.html#ga61c290cdd41065107b55b395bbd87dfd">mtb_hal_i2c_register_callback</a> (<a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__i2c__t">mtb_hal_i2c_t</a> *obj, <a class="el" href="group__group__hal__i2c.html#ga2176dab61482eae237d3c7d6f5d30d43">mtb_hal_i2c_event_callback_t</a> callback, void *callback_arg)</td></tr>
+<tr class="memitem:ga61c290cdd41065107b55b395bbd87dfd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__i2c.html#ga61c290cdd41065107b55b395bbd87dfd">mtb_hal_i2c_register_callback</a> (<a class="el" href="structmtb__hal__i2c__t.html">mtb_hal_i2c_t</a> *obj, <a class="el" href="group__group__hal__i2c.html#ga2176dab61482eae237d3c7d6f5d30d43">mtb_hal_i2c_event_callback_t</a> callback, void *callback_arg)</td></tr>
 <tr class="memdesc:ga61c290cdd41065107b55b395bbd87dfd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Register an I2C event callback handler<br  />
   <a href="group__group__hal__i2c.html#ga61c290cdd41065107b55b395bbd87dfd">More...</a><br /></td></tr>
 <tr class="separator:ga61c290cdd41065107b55b395bbd87dfd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaca10fd3fc422bf113f71409b2ec1ddfe"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__i2c.html#gaca10fd3fc422bf113f71409b2ec1ddfe">mtb_hal_i2c_register_address_callback</a> (<a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__i2c__t">mtb_hal_i2c_t</a> *obj, <a class="el" href="group__group__hal__i2c.html#ga18ae3a199400fc5c7caccb21bcefdf5e">mtb_hal_i2c_address_callback_t</a> callback, void *callback_arg)</td></tr>
+<tr class="memitem:gaca10fd3fc422bf113f71409b2ec1ddfe"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__i2c.html#gaca10fd3fc422bf113f71409b2ec1ddfe">mtb_hal_i2c_register_address_callback</a> (<a class="el" href="structmtb__hal__i2c__t.html">mtb_hal_i2c_t</a> *obj, <a class="el" href="group__group__hal__i2c.html#ga18ae3a199400fc5c7caccb21bcefdf5e">mtb_hal_i2c_address_callback_t</a> callback, void *callback_arg)</td></tr>
 <tr class="memdesc:gaca10fd3fc422bf113f71409b2ec1ddfe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Register an I2C address callback handler<br  />
   <a href="group__group__hal__i2c.html#gaca10fd3fc422bf113f71409b2ec1ddfe">More...</a><br /></td></tr>
 <tr class="separator:gaca10fd3fc422bf113f71409b2ec1ddfe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga3728b432e01d66c3262b1e962ca4af62"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__i2c.html#ga3728b432e01d66c3262b1e962ca4af62">mtb_hal_i2c_enable_event</a> (<a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__i2c__t">mtb_hal_i2c_t</a> *obj, <a class="el" href="group__group__hal__i2c.html#ga8e634b8ee008faefc71f4d7854976791">mtb_hal_i2c_event_t</a> event, bool enable)</td></tr>
+<tr class="memitem:ga3728b432e01d66c3262b1e962ca4af62"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__i2c.html#ga3728b432e01d66c3262b1e962ca4af62">mtb_hal_i2c_enable_event</a> (<a class="el" href="structmtb__hal__i2c__t.html">mtb_hal_i2c_t</a> *obj, <a class="el" href="group__group__hal__i2c.html#ga8e634b8ee008faefc71f4d7854976791">mtb_hal_i2c_event_t</a> event, bool enable)</td></tr>
 <tr class="memdesc:ga3728b432e01d66c3262b1e962ca4af62"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configure and Enable or Disable I2C Interrupt.  <a href="group__group__hal__i2c.html#ga3728b432e01d66c3262b1e962ca4af62">More...</a><br /></td></tr>
 <tr class="separator:ga3728b432e01d66c3262b1e962ca4af62"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga7cae29ddae7ca97363b43a6e8607579b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__i2c.html#ga7cae29ddae7ca97363b43a6e8607579b">mtb_hal_i2c_enable_address_event</a> (<a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__i2c__t">mtb_hal_i2c_t</a> *obj, <a class="el" href="group__group__hal__i2c.html#gae0be6d796369cbf15cbb598801b74d42">mtb_hal_i2c_addr_event_t</a> event, bool enable)</td></tr>
+<tr class="memitem:ga7cae29ddae7ca97363b43a6e8607579b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__i2c.html#ga7cae29ddae7ca97363b43a6e8607579b">mtb_hal_i2c_enable_address_event</a> (<a class="el" href="structmtb__hal__i2c__t.html">mtb_hal_i2c_t</a> *obj, <a class="el" href="group__group__hal__i2c.html#gae0be6d796369cbf15cbb598801b74d42">mtb_hal_i2c_addr_event_t</a> event, bool enable)</td></tr>
 <tr class="memdesc:ga7cae29ddae7ca97363b43a6e8607579b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configure and Enable or Disable I2C Address Interrupt.  <a href="group__group__hal__i2c.html#ga7cae29ddae7ca97363b43a6e8607579b">More...</a><br /></td></tr>
 <tr class="separator:ga7cae29ddae7ca97363b43a6e8607579b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga09dddf41f9d9fb76137261c07e54a607"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__i2c.html#ga09dddf41f9d9fb76137261c07e54a607">mtb_hal_i2c_target_readable</a> (<a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__i2c__t">mtb_hal_i2c_t</a> *obj)</td></tr>
+<tr class="memitem:ga09dddf41f9d9fb76137261c07e54a607"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__i2c.html#ga09dddf41f9d9fb76137261c07e54a607">mtb_hal_i2c_target_readable</a> (<a class="el" href="structmtb__hal__i2c__t.html">mtb_hal_i2c_t</a> *obj)</td></tr>
 <tr class="memdesc:ga09dddf41f9d9fb76137261c07e54a607"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the number of bytes written by the I2C controller.  <a href="group__group__hal__i2c.html#ga09dddf41f9d9fb76137261c07e54a607">More...</a><br /></td></tr>
 <tr class="separator:ga09dddf41f9d9fb76137261c07e54a607"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga81b8391e21326905ce86744f4c8d616b"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__i2c.html#ga81b8391e21326905ce86744f4c8d616b">mtb_hal_i2c_target_writable</a> (<a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__i2c__t">mtb_hal_i2c_t</a> *obj)</td></tr>
+<tr class="memitem:ga81b8391e21326905ce86744f4c8d616b"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__i2c.html#ga81b8391e21326905ce86744f4c8d616b">mtb_hal_i2c_target_writable</a> (<a class="el" href="structmtb__hal__i2c__t.html">mtb_hal_i2c_t</a> *obj)</td></tr>
 <tr class="memdesc:ga81b8391e21326905ce86744f4c8d616b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the number of bytes can be read by the I2C controller.  <a href="group__group__hal__i2c.html#ga81b8391e21326905ce86744f4c8d616b">More...</a><br /></td></tr>
 <tr class="separator:ga81b8391e21326905ce86744f4c8d616b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaf759556840ee7ca1f2c073ebab60b006"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__group__result.html#gaca79700fcc701534ce61778a9bcf57d1">cy_rslt_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__i2c.html#gaf759556840ee7ca1f2c073ebab60b006">mtb_hal_i2c_target_read</a> (<a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__i2c__t">mtb_hal_i2c_t</a> *obj, uint8_t *dst_buff, uint16_t *size, uint32_t timeout)</td></tr>
+<tr class="memitem:gaf759556840ee7ca1f2c073ebab60b006"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__group__result.html#gaca79700fcc701534ce61778a9bcf57d1">cy_rslt_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__i2c.html#gaf759556840ee7ca1f2c073ebab60b006">mtb_hal_i2c_target_read</a> (<a class="el" href="structmtb__hal__i2c__t.html">mtb_hal_i2c_t</a> *obj, uint8_t *dst_buff, uint16_t *size, uint32_t timeout)</td></tr>
 <tr class="memdesc:gaf759556840ee7ca1f2c073ebab60b006"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wait for controller send data to RX buffer and store them to the user-defined buffer.  <a href="group__group__hal__i2c.html#gaf759556840ee7ca1f2c073ebab60b006">More...</a><br /></td></tr>
 <tr class="separator:gaf759556840ee7ca1f2c073ebab60b006"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gac2464f25bda991130f901761a3308681"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__group__result.html#gaca79700fcc701534ce61778a9bcf57d1">cy_rslt_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__i2c.html#gac2464f25bda991130f901761a3308681">mtb_hal_i2c_target_write</a> (<a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__i2c__t">mtb_hal_i2c_t</a> *obj, const uint8_t *src_buff, uint16_t *size, uint32_t timeout)</td></tr>
+<tr class="memitem:gac2464f25bda991130f901761a3308681"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__group__result.html#gaca79700fcc701534ce61778a9bcf57d1">cy_rslt_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__i2c.html#gac2464f25bda991130f901761a3308681">mtb_hal_i2c_target_write</a> (<a class="el" href="structmtb__hal__i2c__t.html">mtb_hal_i2c_t</a> *obj, const uint8_t *src_buff, uint16_t *size, uint32_t timeout)</td></tr>
 <tr class="memdesc:gac2464f25bda991130f901761a3308681"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write data from the user-defined buffer to I2C TX buffer.  <a href="group__group__hal__i2c.html#gac2464f25bda991130f901761a3308681">More...</a><br /></td></tr>
 <tr class="separator:gac2464f25bda991130f901761a3308681"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga23c14f27347735729166e5b189baee07"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__group__result.html#gaca79700fcc701534ce61778a9bcf57d1">cy_rslt_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__i2c.html#ga23c14f27347735729166e5b189baee07">mtb_hal_i2c_target_abort_read</a> (<a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__i2c__t">mtb_hal_i2c_t</a> *obj)</td></tr>
+<tr class="memitem:ga23c14f27347735729166e5b189baee07"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__group__result.html#gaca79700fcc701534ce61778a9bcf57d1">cy_rslt_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__i2c.html#ga23c14f27347735729166e5b189baee07">mtb_hal_i2c_target_abort_read</a> (<a class="el" href="structmtb__hal__i2c__t.html">mtb_hal_i2c_t</a> *obj)</td></tr>
 <tr class="memdesc:ga23c14f27347735729166e5b189baee07"><td class="mdescLeft">&#160;</td><td class="mdescRight">The function aborts the configured target read buffer to be read by the controller.  <a href="group__group__hal__i2c.html#ga23c14f27347735729166e5b189baee07">More...</a><br /></td></tr>
 <tr class="separator:ga23c14f27347735729166e5b189baee07"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaac6918b173a4bae3e27686385da4e0ee"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__group__result.html#gaca79700fcc701534ce61778a9bcf57d1">cy_rslt_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__i2c.html#gaac6918b173a4bae3e27686385da4e0ee">mtb_hal_i2c_clear</a> (<a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__i2c__t">mtb_hal_i2c_t</a> *obj)</td></tr>
+<tr class="memitem:gaac6918b173a4bae3e27686385da4e0ee"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__group__result.html#gaca79700fcc701534ce61778a9bcf57d1">cy_rslt_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__i2c.html#gaac6918b173a4bae3e27686385da4e0ee">mtb_hal_i2c_clear</a> (<a class="el" href="structmtb__hal__i2c__t.html">mtb_hal_i2c_t</a> *obj)</td></tr>
 <tr class="memdesc:gaac6918b173a4bae3e27686385da4e0ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear the I2C buffers.  <a href="group__group__hal__i2c.html#gaac6918b173a4bae3e27686385da4e0ee">More...</a><br /></td></tr>
 <tr class="separator:gaac6918b173a4bae3e27686385da4e0ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaf8f477fc9daf0ea1bd2213187a96cf1c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__group__result.html#gaca79700fcc701534ce61778a9bcf57d1">cy_rslt_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__i2c.html#gaf8f477fc9daf0ea1bd2213187a96cf1c">mtb_hal_i2c_process_interrupt</a> (<a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__i2c__t">mtb_hal_i2c_t</a> *obj)</td></tr>
+<tr class="memitem:gaf8f477fc9daf0ea1bd2213187a96cf1c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__group__result.html#gaca79700fcc701534ce61778a9bcf57d1">cy_rslt_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__i2c.html#gaf8f477fc9daf0ea1bd2213187a96cf1c">mtb_hal_i2c_process_interrupt</a> (<a class="el" href="structmtb__hal__i2c__t.html">mtb_hal_i2c_t</a> *obj)</td></tr>
 <tr class="memdesc:gaf8f477fc9daf0ea1bd2213187a96cf1c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Process interrupts related related to an I2C instance.  <a href="group__group__hal__i2c.html#gaf8f477fc9daf0ea1bd2213187a96cf1c">More...</a><br /></td></tr>
 <tr class="separator:gaf8f477fc9daf0ea1bd2213187a96cf1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -622,7 +623,7 @@ Indicates address callback feature is enabled or disable. <p >When it's true the
         <tr>
           <td class="memname"><a class="el" href="group__group__result.html#gaca79700fcc701534ce61778a9bcf57d1">cy_rslt_t</a> mtb_hal_i2c_configure </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__i2c__t">mtb_hal_i2c_t</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="structmtb__hal__i2c__t.html">mtb_hal_i2c_t</a> *&#160;</td>
           <td class="paramname"><em>obj</em>, </td>
         </tr>
         <tr>
@@ -662,7 +663,7 @@ Indicates address callback feature is enabled or disable. <p >When it's true the
         <tr>
           <td class="memname"><a class="el" href="group__group__result.html#gaca79700fcc701534ce61778a9bcf57d1">cy_rslt_t</a> mtb_hal_i2c_controller_write </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__i2c__t">mtb_hal_i2c_t</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="structmtb__hal__i2c__t.html">mtb_hal_i2c_t</a> *&#160;</td>
           <td class="paramname"><em>obj</em>, </td>
         </tr>
         <tr>
@@ -729,7 +730,7 @@ Indicates address callback feature is enabled or disable. <p >When it's true the
         <tr>
           <td class="memname"><a class="el" href="group__group__result.html#gaca79700fcc701534ce61778a9bcf57d1">cy_rslt_t</a> mtb_hal_i2c_controller_read </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__i2c__t">mtb_hal_i2c_t</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="structmtb__hal__i2c__t.html">mtb_hal_i2c_t</a> *&#160;</td>
           <td class="paramname"><em>obj</em>, </td>
         </tr>
         <tr>
@@ -796,7 +797,7 @@ Indicates address callback feature is enabled or disable. <p >When it's true the
         <tr>
           <td class="memname"><a class="el" href="group__group__result.html#gaca79700fcc701534ce61778a9bcf57d1">cy_rslt_t</a> mtb_hal_i2c_target_config_read_buffer </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__i2c__t">mtb_hal_i2c_t</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="structmtb__hal__i2c__t.html">mtb_hal_i2c_t</a> *&#160;</td>
           <td class="paramname"><em>obj</em>, </td>
         </tr>
         <tr>
@@ -843,7 +844,7 @@ Indicates address callback feature is enabled or disable. <p >When it's true the
         <tr>
           <td class="memname"><a class="el" href="group__group__result.html#gaca79700fcc701534ce61778a9bcf57d1">cy_rslt_t</a> mtb_hal_i2c_target_config_write_buffer </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__i2c__t">mtb_hal_i2c_t</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="structmtb__hal__i2c__t.html">mtb_hal_i2c_t</a> *&#160;</td>
           <td class="paramname"><em>obj</em>, </td>
         </tr>
         <tr>
@@ -890,7 +891,7 @@ Indicates address callback feature is enabled or disable. <p >When it's true the
         <tr>
           <td class="memname">void mtb_hal_i2c_register_callback </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__i2c__t">mtb_hal_i2c_t</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="structmtb__hal__i2c__t.html">mtb_hal_i2c_t</a> *&#160;</td>
           <td class="paramname"><em>obj</em>, </td>
         </tr>
         <tr>
@@ -937,7 +938,7 @@ Indicates address callback feature is enabled or disable. <p >When it's true the
         <tr>
           <td class="memname">void mtb_hal_i2c_register_address_callback </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__i2c__t">mtb_hal_i2c_t</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="structmtb__hal__i2c__t.html">mtb_hal_i2c_t</a> *&#160;</td>
           <td class="paramname"><em>obj</em>, </td>
         </tr>
         <tr>
@@ -984,7 +985,7 @@ Indicates address callback feature is enabled or disable. <p >When it's true the
         <tr>
           <td class="memname">void mtb_hal_i2c_enable_event </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__i2c__t">mtb_hal_i2c_t</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="structmtb__hal__i2c__t.html">mtb_hal_i2c_t</a> *&#160;</td>
           <td class="paramname"><em>obj</em>, </td>
         </tr>
         <tr>
@@ -1030,7 +1031,7 @@ Indicates address callback feature is enabled or disable. <p >When it's true the
         <tr>
           <td class="memname">void mtb_hal_i2c_enable_address_event </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__i2c__t">mtb_hal_i2c_t</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="structmtb__hal__i2c__t.html">mtb_hal_i2c_t</a> *&#160;</td>
           <td class="paramname"><em>obj</em>, </td>
         </tr>
         <tr>
@@ -1076,7 +1077,7 @@ Indicates address callback feature is enabled or disable. <p >When it's true the
         <tr>
           <td class="memname">uint32_t mtb_hal_i2c_target_readable </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__i2c__t">mtb_hal_i2c_t</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="structmtb__hal__i2c__t.html">mtb_hal_i2c_t</a> *&#160;</td>
           <td class="paramname"><em>obj</em></td><td>)</td>
           <td></td>
         </tr>
@@ -1104,7 +1105,7 @@ Indicates address callback feature is enabled or disable. <p >When it's true the
         <tr>
           <td class="memname">uint32_t mtb_hal_i2c_target_writable </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__i2c__t">mtb_hal_i2c_t</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="structmtb__hal__i2c__t.html">mtb_hal_i2c_t</a> *&#160;</td>
           <td class="paramname"><em>obj</em></td><td>)</td>
           <td></td>
         </tr>
@@ -1132,7 +1133,7 @@ Indicates address callback feature is enabled or disable. <p >When it's true the
         <tr>
           <td class="memname"><a class="el" href="group__group__result.html#gaca79700fcc701534ce61778a9bcf57d1">cy_rslt_t</a> mtb_hal_i2c_target_read </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__i2c__t">mtb_hal_i2c_t</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="structmtb__hal__i2c__t.html">mtb_hal_i2c_t</a> *&#160;</td>
           <td class="paramname"><em>obj</em>, </td>
         </tr>
         <tr>
@@ -1185,7 +1186,7 @@ Indicates address callback feature is enabled or disable. <p >When it's true the
         <tr>
           <td class="memname"><a class="el" href="group__group__result.html#gaca79700fcc701534ce61778a9bcf57d1">cy_rslt_t</a> mtb_hal_i2c_target_write </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__i2c__t">mtb_hal_i2c_t</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="structmtb__hal__i2c__t.html">mtb_hal_i2c_t</a> *&#160;</td>
           <td class="paramname"><em>obj</em>, </td>
         </tr>
         <tr>
@@ -1238,7 +1239,7 @@ Indicates address callback feature is enabled or disable. <p >When it's true the
         <tr>
           <td class="memname"><a class="el" href="group__group__result.html#gaca79700fcc701534ce61778a9bcf57d1">cy_rslt_t</a> mtb_hal_i2c_target_abort_read </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__i2c__t">mtb_hal_i2c_t</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="structmtb__hal__i2c__t.html">mtb_hal_i2c_t</a> *&#160;</td>
           <td class="paramname"><em>obj</em></td><td>)</td>
           <td></td>
         </tr>
@@ -1266,7 +1267,7 @@ Indicates address callback feature is enabled or disable. <p >When it's true the
         <tr>
           <td class="memname"><a class="el" href="group__group__result.html#gaca79700fcc701534ce61778a9bcf57d1">cy_rslt_t</a> mtb_hal_i2c_clear </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__i2c__t">mtb_hal_i2c_t</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="structmtb__hal__i2c__t.html">mtb_hal_i2c_t</a> *&#160;</td>
           <td class="paramname"><em>obj</em></td><td>)</td>
           <td></td>
         </tr>
@@ -1293,7 +1294,7 @@ Indicates address callback feature is enabled or disable. <p >When it's true the
         <tr>
           <td class="memname"><a class="el" href="group__group__result.html#gaca79700fcc701534ce61778a9bcf57d1">cy_rslt_t</a> mtb_hal_i2c_process_interrupt </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="group__group__hal__impl__hw__types.html#structmtb__hal__i2c__t">mtb_hal_i2c_t</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="structmtb__hal__i2c__t.html">mtb_hal_i2c_t</a> *&#160;</td>
           <td class="paramname"><em>obj</em></td><td>)</td>
           <td></td>
         </tr>
