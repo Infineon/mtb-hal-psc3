@@ -209,6 +209,9 @@ cy_rslt_t mtb_hal_nvm_write(mtb_hal_nvm_t* obj, uint32_t address, const uint32_t
         else if (MTB_HAL_NVM_TYPE_RRAM == _mtb_hal_nvm_current_block_info->nvm_type)
         {
             #if (_MTB_HAL_DRIVER_AVAILABLE_NVM_RRAM)
+            #if defined (__DCACHE_PRESENT) && (__DCACHE_PRESENT == 1U)
+            SCB_CleanDCache_by_Addr((void*)data, _mtb_hal_nvm_current_block_info->block_size);
+            #endif
             status = _mtb_hal_nvm_write_helper_rram(address, data);
             #endif /* _MTB_HAL_DRIVER_AVAILABLE_NVM_RRAM */
         }
@@ -268,6 +271,9 @@ cy_rslt_t mtb_hal_nvm_program(mtb_hal_nvm_t* obj, uint32_t address, const uint32
         else if (MTB_HAL_NVM_TYPE_RRAM == _mtb_hal_nvm_current_block_info->nvm_type)
         {
             #if (_MTB_HAL_DRIVER_AVAILABLE_NVM_RRAM)
+            #if defined (__DCACHE_PRESENT) && (__DCACHE_PRESENT == 1U)
+            SCB_CleanDCache_by_Addr((void*)data, _mtb_hal_nvm_current_block_info->block_size);
+            #endif
             status = _mtb_hal_nvm_program_helper_rram(address, data);
             #endif /* _MTB_HAL_DRIVER_AVAILABLE_NVM_RRAM */
         }

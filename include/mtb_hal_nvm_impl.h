@@ -47,11 +47,15 @@ typedef cy_en_flashdrv_status_t (* _mtb_hal_flash_operation)(uint32_t rowAddr,
 
 #if defined(CPUSS_FLASHC_ECT)
 #define _MTB_HAL_USES_ECT_FLASH (CPUSS_FLASHC_ECT == 1)
+#if defined(CY_IP_M4CPUSS) && (CY_IP_M4CPUSS_VERSION == 2)
+#include "mtb_hal_nvm_m4cpuss_ver2.h"
+#else
 #include "mtb_hal_nvm_m7cpuss_v1.h"
+#endif /* defined(CY_IP_M4CPUSS) && (CY_IP_M4CPUSS_VERSION == 2) */
 #else
 #define _MTB_HAL_USES_ECT_FLASH (0u)
 #include "mtb_hal_nvm_mxs40flashc_v1.h"
-#endif
+#endif /* defined(CPUSS_FLASHC_ECT) */
 
 #if (_MTB_HAL_USES_ECT_FLASH)
 #define _MTB_HAL_INTERNAL_FLASH_MEMORY_BLOCKS (4u)

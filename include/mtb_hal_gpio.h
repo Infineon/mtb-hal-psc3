@@ -136,14 +136,14 @@ extern "C" {
 /** Pin events */
 typedef enum
 {
-    MTB_HAL_GPIO_IRQ_NONE = 0,                                            /**< No interrupt */
-    MTB_HAL_GPIO_IRQ_RISE = 1 << 0,                                       /**< Interrupt on rising
-                                                                             edge */
-    MTB_HAL_GPIO_IRQ_FALL = 1 << 1,                                       /**< Interrupt on falling
-                                                                             edge */
-    MTB_HAL_GPIO_IRQ_BOTH = (MTB_HAL_GPIO_IRQ_RISE | MTB_HAL_GPIO_IRQ_FALL)   /**< Interrupt on both
-                                                                                 rising and falling
-                                                                                 edges */
+    /** No interrupt */
+    MTB_HAL_GPIO_IRQ_NONE = 0,
+    /** Interrupt on rising edge */
+    MTB_HAL_GPIO_IRQ_RISE = 1 << 0,
+    /** Interrupt on falling edge */
+    MTB_HAL_GPIO_IRQ_FALL = 1 << 1,
+    /** Interrupt on both rising and falling edges */
+    MTB_HAL_GPIO_IRQ_BOTH = (MTB_HAL_GPIO_IRQ_RISE | MTB_HAL_GPIO_IRQ_FALL)
 } mtb_hal_gpio_event_t;
 
 /** Pin direction */
@@ -166,25 +166,25 @@ typedef enum
 
 typedef enum
 {
-    /**< Digital Hi-Z. Input only. Input init value(s): 0 or 1 */
+    /** Digital Hi-Z. Input only. Input init value(s): 0 or 1 */
     MTB_HAL_GPIO_DRIVE_ANALOG                 = (MTB_HAL_MAP_GPIO_DRIVE_ANALOG),
-    /**< Analog Hi-Z. Use only for analog purpose */
+    /** Analog Hi-Z. Use only for analog purpose */
     MTB_HAL_GPIO_DRIVE_NONE                   = (MTB_HAL_MAP_GPIO_DRIVE_NONE),
-    /**< Pull-up resistor. Input and output. Input init value(s): 1, output value(s): 0 */
+    /** Pull-up resistor. Input and output. Input init value(s): 1, output value(s): 0 */
     MTB_HAL_GPIO_DRIVE_PULLUP                 = (MTB_HAL_MAP_GPIO_DRIVE_PULLUP),
-    /**< Pull-down resistor. Input and output. Input init value(s): 0, output value(s): 1 */
+    /** Pull-down resistor. Input and output. Input init value(s): 0, output value(s): 1 */
     MTB_HAL_GPIO_DRIVE_PULLDOWN               = (MTB_HAL_MAP_GPIO_DRIVE_PULLDOWN),
-    /**< Open-drain, Drives Low. Input and output. Input init value(s): 1, output value(s): 0 */
+    /** Open-drain, Drives Low. Input and output. Input init value(s): 1, output value(s): 0 */
     MTB_HAL_GPIO_DRIVE_OPENDRAINDRIVESLOW     = (MTB_HAL_MAP_GPIO_DRIVE_OPENDRAINDRIVESLOW),
-    /**< Open-drain, Drives High. Input and output. Input init value(s): 0, output value(s): 1 */
+    /** Open-drain, Drives High. Input and output. Input init value(s): 0, output value(s): 1 */
     MTB_HAL_GPIO_DRIVE_OPENDRAINDRIVESHIGH    = (MTB_HAL_MAP_GPIO_DRIVE_OPENDRAINDRIVESHIGH),
-    /**< Strong output. Output only. Output init value(s): 0 or 1 */
+    /** Strong output. Output only. Output init value(s): 0 or 1 */
     MTB_HAL_GPIO_DRIVE_STRONG                 = (MTB_HAL_MAP_GPIO_DRIVE_STRONG),
-    /**< Pull-up and pull-down resistors. Input and output. Input init value(s): 0 or 1, output
-       value(s): 0 or 1 */
+    /** Pull-up and pull-down resistors. Input and output. Input init value(s): 0 or 1,
+     * output value(s): 0 or 1 */
     MTB_HAL_GPIO_DRIVE_PULLUPDOWN             = (MTB_HAL_MAP_GPIO_DRIVE_PULLUPDOWN),
-    /**< No Pull-up or pull-down resistors. Input and output. Input init value(s): 0 or 1, output
-       value(s): 0 or 1 */
+    /** No Pull-up or pull-down resistors. Input and output. Input init value(s): 0 or 1,
+     * output value(s): 0 or 1 */
     MTB_HAL_GPIO_DRIVE_PULL_NONE              = (MTB_HAL_MAP_GPIO_DRIVE_PULL_NONE)
 } mtb_hal_gpio_drive_mode_t;
 

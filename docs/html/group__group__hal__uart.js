@@ -27,6 +27,7 @@ var group__group__hal__uart =
     [ "mtb_hal_uart_write", "group__group__hal__uart.html#ga2a7bab0a1fc98289ce5ed23f223d4d05", null ],
     [ "mtb_hal_uart_read", "group__group__hal__uart.html#gaf1ab834a30f34f2f5e678c2a33715eea", null ],
     [ "mtb_hal_uart_is_tx_active", "group__group__hal__uart.html#ga9c36a3abecf7fc20c33749888c0cb012", null ],
+    [ "mtb_hal_uart_is_rx_active", "group__group__hal__uart.html#gaeaa3b7065039e8c0a979656d76276b47", null ],
     [ "mtb_hal_uart_register_callback", "group__group__hal__uart.html#ga487dd43d7c3ff9aa3796befc88cb5201", null ],
     [ "mtb_hal_uart_enable_event", "group__group__hal__uart.html#ga4174a8b56f39e4855daa81c833cd3388", null ],
     [ "mtb_hal_uart_process_interrupt", "group__group__hal__uart.html#ga610e83a5a1614589dd4c436605b7f8f1", null ]

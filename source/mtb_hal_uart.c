@@ -248,26 +248,10 @@ static void _mtb_hal_uart_cb_wrapper(uint32_t event)
 }
 
 
-/** Determines if the UART peripheral is currently in use for RX */
-static bool _mtb_hal_uart_is_rx_active(mtb_hal_uart_t* obj)
-{
-    CY_ASSERT(NULL != obj);
-    CY_ASSERT(NULL != obj->context);
-    return
-        #if defined(COMPONENT_MW_ASYNC_TRANSFER)
-        //Calling the mtb_async_transfer_available_read directly (instead of accessing via
-        //a function pointer setup only when the async interface is used) as it is simple
-        //function and overhead may be comparable to setting up the function pointer option
-        ((NULL != obj->async_ctx) && (!mtb_async_transfer_available_read(obj->async_ctx))) ||
-        #endif // defined(COMPONENT_MW_ASYNC_TRANSFER)
-        (0UL != (obj->context->rxStatus & CY_SCB_UART_RECEIVE_ACTIVE));
-}
-
-
 /** Determines if UART peripheral is in use */
 __STATIC_INLINE bool _mtb_hal_uart_is_busy(mtb_hal_uart_t* obj)
 {
-    return (_mtb_hal_uart_is_rx_active(obj) || mtb_hal_uart_is_tx_active(obj));
+    return (mtb_hal_uart_is_rx_active(obj) || mtb_hal_uart_is_tx_active(obj));
 }
 
 
@@ -556,8 +540,26 @@ cy_rslt_t mtb_hal_uart_setup(mtb_hal_uart_t* obj, const mtb_hal_uart_configurato
     obj->base    = cfg->base;
     obj->clock   = (clock == NULL) ? cfg->clock : clock;
     obj->context = context;
+    if (cfg->tx_port != 0xFF)
+    {
+        obj->tx_pin.port = ((GPIO_PRT_Type*)&GPIO->PRT[cfg->tx_port]);
+    }
+    else
+    {
+        obj->tx_pin.port = NULL;
+    }
+    obj->tx_pin.pinNum = cfg->tx_pin;
     #if defined(COMPONENT_MW_ASYNC_TRANSFER)
     obj->rts_enable = cfg->rts_enable;
+    if (cfg->rts_port != 0xFF)
+    {
+        obj->rts_pin.port = ((GPIO_PRT_Type*)&GPIO->PRT[cfg->rts_port]);
+    }
+    else
+    {
+        obj->rts_pin.port = NULL;
+    }
+    obj->rts_pin.pinNum = cfg->rts_pin;
     #endif // defined(COMPONENT_MW_ASYNC_TRANSFER)
     obj->irq_cause = MTB_HAL_UART_IRQ_NONE;
     return CY_RSLT_SUCCESS;
@@ -578,6 +580,10 @@ cy_rslt_t mtb_hal_uart_set_baud(mtb_hal_uart_t* obj, uint32_t baudrate, uint32_t
     uint32_t  actual_freq;
     uint32_t  tolerance;
     uint32_t  oversample;
+    en_hsiom_sel_t  tx_hsiom = (en_hsiom_sel_t)0U;
+    #if defined(COMPONENT_MW_ASYNC_TRANSFER)
+    en_hsiom_sel_t  rts_hsiom = (en_hsiom_sel_t)0U;
+    #endif
 
     #if defined(MTB_HAL_DISABLE_ERR_CHECK)
     CY_ASSERT_AND_RETURN((!_mtb_hal_uart_is_busy(obj)), MTB_HAL_UART_RSLT_ERR_BUSY);
@@ -585,6 +591,23 @@ cy_rslt_t mtb_hal_uart_set_baud(mtb_hal_uart_t* obj, uint32_t baudrate, uint32_t
     if (_mtb_hal_uart_is_busy(obj))
     {
         return MTB_HAL_UART_RSLT_ERR_BUSY;
+    }
+    #endif
+
+    // The output pins need to be set to high before going to deepsleep.
+    // Otherwise the UART on the other side would see incoming data as '0'.
+    if (NULL != obj->tx_pin.port)
+    {
+        tx_hsiom = Cy_GPIO_GetHSIOM(obj->tx_pin.port, obj->tx_pin.pinNum);
+        Cy_GPIO_Set(obj->tx_pin.port, obj->tx_pin.pinNum);
+        Cy_GPIO_SetHSIOM(obj->tx_pin.port, obj->tx_pin.pinNum, HSIOM_SEL_GPIO);
+    }
+    #if defined(COMPONENT_MW_ASYNC_TRANSFER)
+    if (NULL != obj->rts_pin.port)
+    {
+        rts_hsiom = Cy_GPIO_GetHSIOM(obj->rts_pin.port, obj->rts_pin.pinNum);
+        Cy_GPIO_Set(obj->rts_pin.port, obj->rts_pin.pinNum);
+        Cy_GPIO_SetHSIOM(obj->rts_pin.port, obj->rts_pin.pinNum, HSIOM_SEL_GPIO);
     }
     #endif
 
@@ -624,6 +647,18 @@ cy_rslt_t mtb_hal_uart_set_baud(mtb_hal_uart_t* obj, uint32_t baudrate, uint32_t
     {
         *actualbaud = actual_freq/oversample;
     }
+
+    //Restore the pins fuctionality
+    if (NULL != obj->tx_pin.port)
+    {
+        Cy_GPIO_SetHSIOM(obj->tx_pin.port, obj->tx_pin.pinNum, tx_hsiom);
+    }
+    #if defined(COMPONENT_MW_ASYNC_TRANSFER)
+    if (NULL != obj->rts_pin.port)
+    {
+        Cy_GPIO_SetHSIOM(obj->rts_pin.port, obj->rts_pin.pinNum, rts_hsiom);
+    }
+    #endif
 
     Cy_SCB_UART_Enable(obj->base);
     return result;
@@ -751,6 +786,22 @@ bool mtb_hal_uart_is_tx_active(mtb_hal_uart_t* obj)
         #endif // defined(COMPONENT_MW_ASYNC_TRANSFER)
         (0UL != (obj->context->txStatus & CY_SCB_UART_TRANSMIT_ACTIVE)) || !Cy_SCB_IsTxComplete(
         obj->base);
+}
+
+
+/** Determines if the UART peripheral is currently in use for RX */
+bool mtb_hal_uart_is_rx_active(mtb_hal_uart_t* obj)
+{
+    CY_ASSERT(NULL != obj);
+    CY_ASSERT(NULL != obj->context);
+    return
+        #if defined(COMPONENT_MW_ASYNC_TRANSFER)
+        //Calling the mtb_async_transfer_available_read directly (instead of accessing via
+        //a function pointer setup only when the async interface is used) as it is simple
+        //function and overhead may be comparable to setting up the function pointer option
+        ((NULL != obj->async_ctx) && (!mtb_async_transfer_available_read(obj->async_ctx))) ||
+        #endif // defined(COMPONENT_MW_ASYNC_TRANSFER)
+        (0UL != (obj->context->rxStatus & CY_SCB_UART_RECEIVE_ACTIVE));
 }
 
 

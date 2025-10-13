@@ -2,7 +2,7 @@
 * \file mtb_hal_system_impl.h
 *
 * \brief
-* Provides a PSoC™ Specific interface for interacting with the Infineon power
+* Provides a PSOC™ Specific interface for interacting with the Infineon power
 * management and system clock configuration. This interface abstracts out the
 * chip specific details. If any chip specific functionality is necessary, or
 * performance is critical the low level functions can be used directly.
@@ -99,6 +99,14 @@ __STATIC_INLINE mtb_hal_reset_reason_t _mtb_hal_system_convert_reset_reason(uint
         reason |= MTB_HAL_SYSTEM_RESET_WDT;
     }
     #endif // if defined(CY_IP_MXS40SRSS) || defined(CY_IP_MXS40SSRSS) || defined(CY_IP_MXS22SRSS)
+    #if defined(CY_SYSLIB_RESET_SOFT0) && defined(CY_SYSLIB_RESET_SOFT1) \
+    && defined(CY_SYSLIB_RESET_SOFT2)
+    if ((CY_SYSLIB_RESET_SOFT0 | CY_SYSLIB_RESET_SOFT1 | CY_SYSLIB_RESET_SOFT2) & pdl_reason)
+    {
+        reason |= MTB_HAL_SYSTEM_RESET_SOFT;
+    }
+    #endif // if defined(CY_SYSLIB_RESET_SOFT0) && defined(CY_SYSLIB_RESET_SOFT1)
+    //                                   && defined(CY_SYSLIB_RESET_SOFT2)
     #if (SRSS_WCOCSV_PRESENT != 0U)
     if (CY_SYSLIB_RESET_CSV_WCO_LOSS & pdl_reason)
     {

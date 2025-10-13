@@ -56,7 +56,7 @@ extern "C"
  */
 #define _MTB_HAL_SYSPM_CALLBACK_ORDER    (10u)
 
-static cy_stc_syspm_callback_params_t _mtb_hal_syspm_cb_params_default = { NULL, NULL };
+cy_stc_syspm_callback_params_t _mtb_hal_syspm_cb_params_default = { NULL, NULL };
 static uint16_t _mtb_hal_syspm_deepsleep_lock = 0;
 
 #if (MTB_HAL_DRIVER_AVAILABLE_LPTIMER != 0)
@@ -124,8 +124,8 @@ void _mtb_hal_syspm_ensure_cb_registered_dslock(void)
 //--------------------------------------------------------------------------------------------------
 // _mtb_hal_syspm_handle_lptimer
 //--------------------------------------------------------------------------------------------------
-static cy_en_syspm_status_t _mtb_hal_syspm_handle_lptimer(cy_stc_syspm_callback_params_t* params,
-                                                          cy_en_syspm_callback_mode_t mode)
+cy_en_syspm_status_t _mtb_hal_syspm_handle_lptimer(cy_stc_syspm_callback_params_t* params,
+                                                   cy_en_syspm_callback_mode_t mode)
 {
     CY_UNUSED_PARAMETER(params);
     cy_en_syspm_status_t result = CY_SYSPM_SUCCESS;
@@ -137,7 +137,7 @@ static cy_en_syspm_status_t _mtb_hal_syspm_handle_lptimer(cy_stc_syspm_callback_
         if (CY_SYSPM_BEFORE_TRANSITION == mode)
         {
             // LPTimer is driven by clk_lf
-            uint32_t lptimer_frequency_hz = Cy_SysClk_ClkLfGetFrequency();
+            uint32_t lptimer_frequency_hz = lptimer->lfclk_freqhz;
 
             // lp_ticks = ms * lp_rate_khz
             uint32_t sleep_ticks = _MTB_HAL_UTILS_HZ_TO_KHZ(
@@ -224,10 +224,14 @@ void _mtb_hal_syspm_ensure_cb_registered_lptimer(void)
         bool newly_registered = Cy_SysPm_RegisterCallback(&cb_deepsleep);
         // We only try the registration once, so the PDL should never report false
         CY_ASSERT(newly_registered);
-        CY_UNUSED_PARAMETER(newly_registered);
+
+        newly_registered = _mtb_hal_syspm_ensure_cb_registered_dsram_lptimer();
+        CY_ASSERT(newly_registered);
 
         newly_registered = Cy_SysPm_RegisterCallback(&cb_sleep);
         CY_ASSERT(newly_registered);
+
+        CY_UNUSED_PARAMETER(newly_registered);
     }
     mtb_hal_system_critical_section_exit(intr_status);
 }
@@ -358,6 +362,8 @@ cy_rslt_t mtb_hal_syspm_deepsleep(void)
 }
 
 
+#if (MTB_HAL_DRIVER_AVAILABLE_LPTIMER != 0)
+
 //--------------------------------------------------------------------------------------------------
 // _mtb_hal_syspm_tickless_sleep_deepsleep
 //--------------------------------------------------------------------------------------------------
@@ -389,7 +395,7 @@ cy_rslt_t _mtb_hal_syspm_tickless_sleep_deepsleep(mtb_hal_lptimer_t* obj, uint32
         /* We need to do the following steps whether or not the DeepSleep entry succeeded */
         uint32_t final_ticks = mtb_hal_lptimer_read(obj);
         _mtb_hal_syspm_enable_systick();
-        uint32_t lptimer_frequency_hz = Cy_SysClk_ClkLfGetFrequency();
+        uint32_t lptimer_frequency_hz = obj->lfclk_freqhz;
         /* Total Idle ticks, handling rollover */
         uint32_t idle_ticks = (final_ticks < initial_ticks)
                         ? (_MTB_HAL_LPTIMER_MAX_DELAY_TICKS - initial_ticks) + final_ticks
@@ -411,6 +417,9 @@ cy_rslt_t _mtb_hal_syspm_tickless_sleep_deepsleep(mtb_hal_lptimer_t* obj, uint32
 
     return result;
 }
+
+
+#endif /* (MTB_HAL_DRIVER_AVAILABLE_LPTIMER != 0) */
 
 
 //--------------------------------------------------------------------------------------------------

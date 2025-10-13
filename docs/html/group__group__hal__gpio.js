@@ -23,7 +23,8 @@ var group__group__hal__gpio =
       [ "MTB_HAL_GPIO_DRIVE_OPENDRAINDRIVESLOW", "group__group__hal__gpio.html#gga956ed6125bbe06ebcd33d9f460335febab3cb38301f7fe1726a40d9317f7e20d0", null ],
       [ "MTB_HAL_GPIO_DRIVE_OPENDRAINDRIVESHIGH", "group__group__hal__gpio.html#gga956ed6125bbe06ebcd33d9f460335feba4f1fca530e607aea1be3f3e1836f35eb", null ],
       [ "MTB_HAL_GPIO_DRIVE_STRONG", "group__group__hal__gpio.html#gga956ed6125bbe06ebcd33d9f460335feba306570f5ce7d49937118fa18d847c62c", null ],
-      [ "MTB_HAL_GPIO_DRIVE_PULLUPDOWN", "group__group__hal__gpio.html#gga956ed6125bbe06ebcd33d9f460335feba5de7957aa35f26934e2c984eb8531b24", null ]
+      [ "MTB_HAL_GPIO_DRIVE_PULLUPDOWN", "group__group__hal__gpio.html#gga956ed6125bbe06ebcd33d9f460335feba5de7957aa35f26934e2c984eb8531b24", null ],
+      [ "MTB_HAL_GPIO_DRIVE_PULL_NONE", "group__group__hal__gpio.html#gga956ed6125bbe06ebcd33d9f460335feba55bc076187f90e85fb688ba8a9c92066", null ]
     ] ],
     [ "mtb_hal_gpio_setup", "group__group__hal__gpio.html#ga599df9e705aa8ed970808a7abda33fcd", null ],
     [ "mtb_hal_gpio_configure", "group__group__hal__gpio.html#gaf86fb99fdef21de4c0804a629edd2376", null ],

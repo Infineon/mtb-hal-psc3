@@ -53,6 +53,7 @@ cy_rslt_t mtb_hal_lptimer_setup(mtb_hal_lptimer_t* obj,
     obj->callback_data.callback = NULL;
     obj->callback_data.callback_arg = NULL;
     obj->isr_instruction = 0;
+    obj->lfclk_freqhz = config->lfclk_freqhz;
 
     /* Perform any additional IP-specific setup */
     _mtb_hal_lptimer_setup(obj);

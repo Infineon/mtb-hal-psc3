@@ -23,6 +23,11 @@ This release of the HAL includes support for the following drivers:
 * UART
 
 ### What Changed?
+#### v1.1.1
+* UART: Populate Tx/RTS pin from configurator-provided value. Avoids glitch when changing baudrate.
+* LPTimer: Populate lfclock frequency from configurator-provided value. Improves DeepSleep entry speed.
+* This release requires mtb-pdl-cat1 version 3.18.0 or later
+
 #### v1.1.0
 * Added support for ADC, Clock, Comp, DMA, I2C, LPTimer, PWM, RTC, SPI, Syspm, Timer, TRNG drivers.
 
@@ -35,10 +40,11 @@ This version of the Hardware Abstraction Layer was validated for compatibility w
 
 | Software and Tools                        | Version |
 | :---                                      | :----:  |
-| ModusToolbox™ Software Environment        | 3.3.0   |
-| GCC Compiler                              | 11.3.1  |
+| ModusToolbox™ Software Environment        | 3.6.0   |
+| GCC Compiler                              | 14.2.1  |
 | IAR Compiler                              | 9.50.2  |
 | ARM Compiler                              | 6.22    |
+| LLVM ARM Compiler                         | 19.1.5  |
 
 Minimum required ModusToolbox™ Software Environment: v3.3
 
@@ -50,4 +56,4 @@ Use the following links for more information, as needed:
 * [ModusToolbox™](https://www.cypress.com/products/modustoolbox-software-environment)
 
 ---
-© Cypress Semiconductor Corporation (an Infineon company) or an affiliate of Cypress Semiconductor Corporation, 2019-2024.
+© Cypress Semiconductor Corporation (an Infineon company) or an affiliate of Cypress Semiconductor Corporation, 2019-2025.

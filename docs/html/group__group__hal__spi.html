@@ -124,7 +124,7 @@ Snippet 1: SPI controller or target initialization</h2>
 <div class="line">    <span class="comment">// Activate SSEL pin you selected</span></div>
 <div class="line">    Cy_SCB_SPI_SetActiveSlaveSelect(SPI_HW, CY_SCB_SPI_SLAVE_SELECT0);</div>
 <div class="line"> </div>
-<div class="ttc" id="agroup__group__result_html_gaca79700fcc701534ce61778a9bcf57d1"><div class="ttname"><a href="group__group__result.html#gaca79700fcc701534ce61778a9bcf57d1">cy_rslt_t</a></div><div class="ttdeci">uint32_t cy_rslt_t</div><div class="ttdoc">Provides the result of an operation as a structured bitfield.</div><div class="ttdef"><b>Definition:</b> cy_result.h:457</div></div>
+<div class="ttc" id="agroup__group__result_html_gaca79700fcc701534ce61778a9bcf57d1"><div class="ttname"><a href="group__group__result.html#gaca79700fcc701534ce61778a9bcf57d1">cy_rslt_t</a></div><div class="ttdeci">uint32_t cy_rslt_t</div><div class="ttdoc">Provides the result of an operation as a structured bitfield.</div><div class="ttdef"><b>Definition:</b> cy_result.h:481</div></div>
 <div class="ttc" id="astructmtb__hal__spi__t_html"><div class="ttname"><a href="structmtb__hal__spi__t.html">mtb_hal_spi_t</a></div><div class="ttdoc">SPI object.</div><div class="ttdef"><b>Definition:</b> mtb_hal_hw_types_spi_scb.h:58</div></div>
 </div><!-- fragment --><h2><a class="anchor" id="subsection_spi_snippet_2"></a>
 Snippet 2: SPI controller - Single byte transfer operation (Read and Write)</h2>
@@ -154,10 +154,10 @@ Snippet 2: SPI controller - Single byte transfer operation (Read and Write)</h2>
 <div class="line">            <span class="comment">// Transfer Complete and successful</span></div>
 <div class="line">        }</div>
 <div class="line">    }</div>
-<div class="ttc" id="agroup__group__hal__spi_html_ga0f3e46217b46ed98ea29ca0a9fa9340a"><div class="ttname"><a href="group__group__hal__spi.html#ga0f3e46217b46ed98ea29ca0a9fa9340a">mtb_hal_spi_set_frequency</a></div><div class="ttdeci">cy_rslt_t mtb_hal_spi_set_frequency(mtb_hal_spi_t *obj, uint32_t hz)</div><div class="ttdoc">Set the SPI baud rate.</div><div class="ttdef"><b>Definition:</b> mtb_hal_spi.c:276</div></div>
-<div class="ttc" id="agroup__group__hal__spi_html_ga2d632a03356463e361053298ab04c859"><div class="ttname"><a href="group__group__hal__spi.html#ga2d632a03356463e361053298ab04c859">mtb_hal_spi_put</a></div><div class="ttdeci">cy_rslt_t mtb_hal_spi_put(mtb_hal_spi_t *obj, uint32_t value)</div><div class="ttdoc">Synchronously send a byte out.</div><div class="ttdef"><b>Definition:</b> mtb_hal_spi.c:368</div></div>
-<div class="ttc" id="agroup__group__hal__spi_html_ga5cc0a0f76ffba41ed77d6e3c9751757c"><div class="ttname"><a href="group__group__hal__spi.html#ga5cc0a0f76ffba41ed77d6e3c9751757c">mtb_hal_spi_get</a></div><div class="ttdeci">cy_rslt_t mtb_hal_spi_get(mtb_hal_spi_t *obj, uint32_t *value)</div><div class="ttdoc">Synchronously get a received value out of the SPI receive buffer.</div><div class="ttdef"><b>Definition:</b> mtb_hal_spi.c:348</div></div>
-<div class="ttc" id="agroup__group__result_html_gaf58fac450d9fff4472f03ad68f6e546e"><div class="ttname"><a href="group__group__result.html#gaf58fac450d9fff4472f03ad68f6e546e">CY_RSLT_SUCCESS</a></div><div class="ttdeci">#define CY_RSLT_SUCCESS</div><div class="ttdoc">cy_rslt_t return value indicating success</div><div class="ttdef"><b>Definition:</b> cy_result.h:484</div></div>
+<div class="ttc" id="agroup__group__hal__spi_html_ga0f3e46217b46ed98ea29ca0a9fa9340a"><div class="ttname"><a href="group__group__hal__spi.html#ga0f3e46217b46ed98ea29ca0a9fa9340a">mtb_hal_spi_set_frequency</a></div><div class="ttdeci">cy_rslt_t mtb_hal_spi_set_frequency(mtb_hal_spi_t *obj, uint32_t hz)</div><div class="ttdoc">Set the SPI baud rate.</div><div class="ttdef"><b>Definition:</b> mtb_hal_spi.c:279</div></div>
+<div class="ttc" id="agroup__group__hal__spi_html_ga2d632a03356463e361053298ab04c859"><div class="ttname"><a href="group__group__hal__spi.html#ga2d632a03356463e361053298ab04c859">mtb_hal_spi_put</a></div><div class="ttdeci">cy_rslt_t mtb_hal_spi_put(mtb_hal_spi_t *obj, uint32_t value)</div><div class="ttdoc">Synchronously send a byte out.</div><div class="ttdef"><b>Definition:</b> mtb_hal_spi.c:371</div></div>
+<div class="ttc" id="agroup__group__hal__spi_html_ga5cc0a0f76ffba41ed77d6e3c9751757c"><div class="ttname"><a href="group__group__hal__spi.html#ga5cc0a0f76ffba41ed77d6e3c9751757c">mtb_hal_spi_get</a></div><div class="ttdeci">cy_rslt_t mtb_hal_spi_get(mtb_hal_spi_t *obj, uint32_t *value)</div><div class="ttdoc">Synchronously get a received value out of the SPI receive buffer.</div><div class="ttdef"><b>Definition:</b> mtb_hal_spi.c:351</div></div>
+<div class="ttc" id="agroup__group__result_html_gaf58fac450d9fff4472f03ad68f6e546e"><div class="ttname"><a href="group__group__result.html#gaf58fac450d9fff4472f03ad68f6e546e">CY_RSLT_SUCCESS</a></div><div class="ttdeci">#define CY_RSLT_SUCCESS</div><div class="ttdoc">cy_rslt_t return value indicating success</div><div class="ttdef"><b>Definition:</b> cy_result.h:508</div></div>
 </div><!-- fragment --><h2><a class="anchor" id="subsection_spi_snippet_3"></a>
 Snippet 3: SPI Target - Single byte transfer operation (Read and Write)</h2>
 <p >The following code snippet initializes an SPI Target interface using the PDL. The data rate of transfer is set using <a class="el" href="group__group__hal__spi.html#ga0f3e46217b46ed98ea29ca0a9fa9340a">mtb_hal_spi_set_frequency</a>. The code snippet shows how to transfer a single byte of data using <a class="el" href="group__group__hal__spi.html#ga2d632a03356463e361053298ab04c859">mtb_hal_spi_put()</a> and <a class="el" href="group__group__hal__spi.html#ga5cc0a0f76ffba41ed77d6e3c9751757c">mtb_hal_spi_get</a>. </p><div class="fragment"><div class="line">    <a class="code hl_typedef" href="group__group__result.html#gaca79700fcc701534ce61778a9bcf57d1">cy_rslt_t</a>       rslt;</div>
@@ -232,8 +232,8 @@ Snippet 4: SPI Block Data transfer</h2>
 <div class="line">}</div>
 <div class="line"> </div>
 <div class="line"> </div>
-<div class="ttc" id="agroup__group__hal__spi_html_ga3ebc405007719a8bf3bab63067b1082e"><div class="ttname"><a href="group__group__hal__spi.html#ga3ebc405007719a8bf3bab63067b1082e">mtb_hal_spi_transfer</a></div><div class="ttdeci">cy_rslt_t mtb_hal_spi_transfer(mtb_hal_spi_t *obj, const uint8_t *tx, size_t tx_length, uint8_t *rx, size_t rx_length, uint8_t write_fill)</div><div class="ttdoc">Synchronously Write a block out and receive a value.</div><div class="ttdef"><b>Definition:</b> mtb_hal_spi.c:462</div></div>
-<div class="ttc" id="agroup__group__hal__spi_html_ga3fad1b35e2d2b2cfe869a993c58632cb"><div class="ttname"><a href="group__group__hal__spi.html#ga3fad1b35e2d2b2cfe869a993c58632cb">mtb_hal_spi_process_interrupt</a></div><div class="ttdeci">cy_rslt_t mtb_hal_spi_process_interrupt(mtb_hal_spi_t *obj)</div><div class="ttdoc">Process interrupts related to a SPI instance.</div><div class="ttdef"><b>Definition:</b> mtb_hal_spi.c:561</div></div>
+<div class="ttc" id="agroup__group__hal__spi_html_ga3ebc405007719a8bf3bab63067b1082e"><div class="ttname"><a href="group__group__hal__spi.html#ga3ebc405007719a8bf3bab63067b1082e">mtb_hal_spi_transfer</a></div><div class="ttdeci">cy_rslt_t mtb_hal_spi_transfer(mtb_hal_spi_t *obj, const uint8_t *tx, size_t tx_length, uint8_t *rx, size_t rx_length, uint8_t write_fill)</div><div class="ttdoc">Synchronously Write a block out and receive a value.</div><div class="ttdef"><b>Definition:</b> mtb_hal_spi.c:491</div></div>
+<div class="ttc" id="agroup__group__hal__spi_html_ga3fad1b35e2d2b2cfe869a993c58632cb"><div class="ttname"><a href="group__group__hal__spi.html#ga3fad1b35e2d2b2cfe869a993c58632cb">mtb_hal_spi_process_interrupt</a></div><div class="ttdeci">cy_rslt_t mtb_hal_spi_process_interrupt(mtb_hal_spi_t *obj)</div><div class="ttdoc">Process interrupts related to a SPI instance.</div><div class="ttdef"><b>Definition:</b> mtb_hal_spi.c:590</div></div>
 </div><!-- fragment --><h2><a class="anchor" id="subsection_spi_snippet_5"></a>
 Snippet 5: SPI Target - Write Block Data</h2>
 <p >The following snippet sends an array of data in a single SPI transaction using <a class="el" href="group__group__hal__spi.html#gabf7d1b275787ea669058a25d5bea783e">mtb_hal_spi_target_write()</a>. The example uses SPI target to transmit 5 bytes of data in a single transaction with 50 ms timeout values. </p><div class="fragment"><div class="line"><a class="code hl_struct" href="structmtb__hal__spi__t.html">mtb_hal_spi_t</a> spi_s_obj;</div>
@@ -279,7 +279,7 @@ Snippet 5: SPI Target - Write Block Data</h2>
 <div class="line">}</div>
 <div class="line"> </div>
 <div class="line"> </div>
-<div class="ttc" id="agroup__group__hal__spi_html_gabf7d1b275787ea669058a25d5bea783e"><div class="ttname"><a href="group__group__hal__spi.html#gabf7d1b275787ea669058a25d5bea783e">mtb_hal_spi_target_write</a></div><div class="ttdeci">cy_rslt_t mtb_hal_spi_target_write(mtb_hal_spi_t *obj, const uint8_t *src_buff, uint16_t *size, uint32_t timeout)</div><div class="ttdoc">Write data from the user-defined buffer to TX buffer and wait until either all data has been read fro...</div><div class="ttdef"><b>Definition:</b> mtb_hal_spi.c:432</div></div>
+<div class="ttc" id="agroup__group__hal__spi_html_gabf7d1b275787ea669058a25d5bea783e"><div class="ttname"><a href="group__group__hal__spi.html#gabf7d1b275787ea669058a25d5bea783e">mtb_hal_spi_target_write</a></div><div class="ttdeci">cy_rslt_t mtb_hal_spi_target_write(mtb_hal_spi_t *obj, const uint8_t *src_buff, uint16_t *size, uint32_t timeout)</div><div class="ttdoc">Write data from the user-defined buffer to TX buffer and wait until either all data has been read fro...</div><div class="ttdef"><b>Definition:</b> mtb_hal_spi.c:461</div></div>
 </div><!-- fragment --><h2><a class="anchor" id="subsection_spi_snippet_6"></a>
 Snippet 6: Interrupts on SPI events</h2>
 <p >SPI interrupt events (mtb_hal_spi_event_t) can be mapped to an interrupt and assigned to a callback function. The callback function needs to be first registered and then the event needs to be enabled. A callback function is registered using <a class="el" href="group__group__hal__spi.html#ga9dcb0faceb70ca33a722ba35815a33f8">mtb_hal_spi_register_callback</a> to notify whenever the SPI transfer is complete. </p><div class="fragment"><div class="line"><a class="code hl_struct" href="structmtb__hal__spi__t.html">mtb_hal_spi_t</a> spi_obj;</div>
@@ -349,13 +349,13 @@ Snippet 6: Interrupts on SPI events</h2>
 <div class="line"> </div>
 <div class="line"> </div>
 <div class="ttc" id="agroup__group__hal__spi_html_ga624acbf39d283dee474cc25efacbe7b4"><div class="ttname"><a href="group__group__hal__spi.html#ga624acbf39d283dee474cc25efacbe7b4">mtb_hal_spi_event_callback_t</a></div><div class="ttdeci">void(* mtb_hal_spi_event_callback_t)(void *callback_arg, mtb_hal_spi_event_t event)</div><div class="ttdoc">Handler for SPI interrupts.</div><div class="ttdef"><b>Definition:</b> mtb_hal_spi.h:148</div></div>
-<div class="ttc" id="agroup__group__hal__spi_html_ga9dcb0faceb70ca33a722ba35815a33f8"><div class="ttname"><a href="group__group__hal__spi.html#ga9dcb0faceb70ca33a722ba35815a33f8">mtb_hal_spi_register_callback</a></div><div class="ttdeci">void mtb_hal_spi_register_callback(mtb_hal_spi_t *obj, mtb_hal_spi_event_callback_t callback, void *callback_arg)</div><div class="ttdoc">Register a SPI callback handler.</div><div class="ttdef"><b>Definition:</b> mtb_hal_spi.c:547</div></div>
+<div class="ttc" id="agroup__group__hal__spi_html_ga9dcb0faceb70ca33a722ba35815a33f8"><div class="ttname"><a href="group__group__hal__spi.html#ga9dcb0faceb70ca33a722ba35815a33f8">mtb_hal_spi_register_callback</a></div><div class="ttdeci">void mtb_hal_spi_register_callback(mtb_hal_spi_t *obj, mtb_hal_spi_event_callback_t callback, void *callback_arg)</div><div class="ttdoc">Register a SPI callback handler.</div><div class="ttdef"><b>Definition:</b> mtb_hal_spi.c:576</div></div>
 <div class="ttc" id="agroup__group__hal__spi_html_gac7012d47f3054e7b3e207531e08351db"><div class="ttname"><a href="group__group__hal__spi.html#gac7012d47f3054e7b3e207531e08351db">mtb_hal_spi_event_t</a></div><div class="ttdeci">mtb_hal_spi_event_t</div><div class="ttdoc">SPI interrupt triggers.</div><div class="ttdef"><b>Definition:</b> mtb_hal_spi.h:137</div></div>
-<div class="ttc" id="agroup__group__hal__spi_html_gacd34ff8b2db7e9ebdc33c5a2ade404d6"><div class="ttname"><a href="group__group__hal__spi.html#gacd34ff8b2db7e9ebdc33c5a2ade404d6">mtb_hal_spi_enable_event</a></div><div class="ttdeci">void mtb_hal_spi_enable_event(mtb_hal_spi_t *obj, mtb_hal_spi_event_t event, bool enable)</div><div class="ttdoc">Configure SPI interrupt.</div><div class="ttdef"><b>Definition:</b> mtb_hal_spi.c:504</div></div>
+<div class="ttc" id="agroup__group__hal__spi_html_gacd34ff8b2db7e9ebdc33c5a2ade404d6"><div class="ttname"><a href="group__group__hal__spi.html#gacd34ff8b2db7e9ebdc33c5a2ade404d6">mtb_hal_spi_enable_event</a></div><div class="ttdeci">void mtb_hal_spi_enable_event(mtb_hal_spi_t *obj, mtb_hal_spi_event_t event, bool enable)</div><div class="ttdoc">Configure SPI interrupt.</div><div class="ttdef"><b>Definition:</b> mtb_hal_spi.c:533</div></div>
 <div class="ttc" id="agroup__group__hal__spi_html_ggac7012d47f3054e7b3e207531e08351dba44087672f13ef0f2d312f513217473d8"><div class="ttname"><a href="group__group__hal__spi.html#ggac7012d47f3054e7b3e207531e08351dba44087672f13ef0f2d312f513217473d8">MTB_HAL_SPI_IRQ_DONE</a></div><div class="ttdeci">@ MTB_HAL_SPI_IRQ_DONE</div><div class="ttdoc">Transfer complete.</div><div class="ttdef"><b>Definition:</b> mtb_hal_spi.h:142</div></div>
 </div><!-- fragment --><h1><a class="anchor" id="subsection_spi_moreinfor"></a>
 More Information</h1>
-<p ><a href="https://github.com/infineon/mtb-example-psoc6-spi-controller"><b>mtb-example-psoc6-spi-controller</b></a>: This example project demonstrates use of SPI (HAL) resource in PSoC® 6 MCU in Controller mode to write data to an SPI target. </p>
+<p ><a href="https://github.com/infineon/mtb-example-psoc6-spi-controller"><b>mtb-example-psoc6-spi-controller</b></a>: This example project demonstrates use of SPI (HAL) resource in PSOC® 6 MCU in Controller mode to write data to an SPI target. </p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="groups" name="groups"></a>
 API Reference</h2></td></tr>
@@ -431,6 +431,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ga3fad1b35e2d2b2cfe869a993c58632cb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__group__result.html#gaca79700fcc701534ce61778a9bcf57d1">cy_rslt_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__spi.html#ga3fad1b35e2d2b2cfe869a993c58632cb">mtb_hal_spi_process_interrupt</a> (<a class="el" href="structmtb__hal__spi__t.html">mtb_hal_spi_t</a> *obj)</td></tr>
 <tr class="memdesc:ga3fad1b35e2d2b2cfe869a993c58632cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Process interrupts related to a SPI instance.  <a href="group__group__hal__spi.html#ga3fad1b35e2d2b2cfe869a993c58632cb">More...</a><br /></td></tr>
 <tr class="separator:ga3fad1b35e2d2b2cfe869a993c58632cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga75d319c0e3880d7e635a8225b5d6af5b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__group__result.html#gaca79700fcc701534ce61778a9bcf57d1">cy_rslt_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__spi.html#ga75d319c0e3880d7e635a8225b5d6af5b">mtb_hal_spi_target_read_transaction</a> (<a class="el" href="structmtb__hal__spi__t.html">mtb_hal_spi_t</a> *obj, uint8_t *dst_buff, uint16_t *size, uint32_t timeout)</td></tr>
+<tr class="memdesc:ga75d319c0e3880d7e635a8225b5d6af5b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wait for controller send data to RX buffer and store them to the user-defined buffer.  <a href="group__group__hal__spi.html#ga75d319c0e3880d7e635a8225b5d6af5b">More...</a><br /></td></tr>
+<tr class="separator:ga75d319c0e3880d7e635a8225b5d6af5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Enumeration Type Documentation</h2>
 <a id="gac7012d47f3054e7b3e207531e08351db" name="gac7012d47f3054e7b3e207531e08351db"></a>
@@ -1017,6 +1020,59 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>CY_RSLT_SUCCESS if the interrupt was processed successfully; otherwise an error </dd></dl>
+
+</div>
+</div>
+<a id="ga75d319c0e3880d7e635a8225b5d6af5b" name="ga75d319c0e3880d7e635a8225b5d6af5b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga75d319c0e3880d7e635a8225b5d6af5b">&#9670;&nbsp;</a></span>mtb_hal_spi_target_read_transaction()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__group__result.html#gaca79700fcc701534ce61778a9bcf57d1">cy_rslt_t</a> mtb_hal_spi_target_read_transaction </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structmtb__hal__spi__t.html">mtb_hal_spi_t</a> *&#160;</td>
+          <td class="paramname"><em>obj</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>dst_buff</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t *&#160;</td>
+          <td class="paramname"><em>size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>timeout</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Wait for controller send data to RX buffer and store them to the user-defined buffer. </p>
+<p >NOTE: If this function will returt on the timeout or all data was read or SS line is de-asserted.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">obj</td><td>The SPI object </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">dst_buff</td><td>Pointer on memory to store the data from the target RX buffer. </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">size</td><td>[in] The number of bytes to read, [out] number actually read. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">timeout</td><td>Timeout in millisecond, set this value to 0 if you don't want to wait at all. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The status of the read request </dd></dl>
 
 </div>
 </div>

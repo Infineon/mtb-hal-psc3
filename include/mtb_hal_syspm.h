@@ -164,19 +164,19 @@ typedef enum
  */
 typedef enum
 {
-/** Flag for MCU sleep callback. */
+    /** Flag for MCU sleep callback. */
     MTB_HAL_SYSPM_CB_CPU_SLEEP             = MTB_HAL_MAP_SYSPM_CB_SLEEP,
-/** Flag for MCU deep sleep callback. */
+    /** Flag for MCU deep sleep callback. */
     MTB_HAL_SYSPM_CB_CPU_DEEPSLEEP         = MTB_HAL_MAP_SYSPM_CB_DEEPSLEEP,
-/** Flag for MCU deep sleep ram callback. */
+    /** Flag for MCU deep sleep ram callback. */
     MTB_HAL_SYSPM_CB_CPU_DEEPSLEEP_RAM     = MTB_HAL_MAP_SYSPM_CB_DEEPSLEEP_RAM,
-/** Flag for Hibernate callback. */
+    /** Flag for Hibernate callback. */
     MTB_HAL_SYSPM_CB_SYSTEM_HIBERNATE      = MTB_HAL_MAP_SYSPM_CB_HIBERNATE,
-/** Flag for Normal mode callback. */
+    /** Flag for Normal mode callback. */
     MTB_HAL_SYSPM_CB_SYSTEM_NORMAL         = MTB_HAL_MAP_SYSPM_CB_NORMAL,
-/** Flag for Low power mode callback. */
+    /** Flag for Low power mode callback. */
     MTB_HAL_SYSPM_CB_SYSTEM_LOW            = MTB_HAL_MAP_SYSPM_CB_LOW,
-/** Flag for High Performance mode callback. */
+    /** Flag for High Performance mode callback. */
     MTB_HAL_SYSPM_CB_SYSTEM_HIGH           = MTB_HAL_MAP_SYSPM_CB_HIGH
 } mtb_hal_syspm_callback_state_t;
 
@@ -291,6 +291,8 @@ void mtb_hal_syspm_lock_deepsleep(void);
  */
 void mtb_hal_syspm_unlock_deepsleep(void);
 
+#if (MTB_HAL_DRIVER_AVAILABLE_LPTIMER != 0)
+
 /** Timed deep-sleep without system timer.
  *
  * Provides a way to deep-sleep for a desired number of milliseconds(ms) with the system timer
@@ -329,6 +331,8 @@ cy_rslt_t mtb_hal_syspm_tickless_deepsleep(mtb_hal_lptimer_t* lptimer_obj, uint3
  */
 cy_rslt_t mtb_hal_syspm_tickless_sleep(mtb_hal_lptimer_t* lptimer_obj, uint32_t desired_ms,
                                        uint32_t* actual_ms);
+
+#endif /* (MTB_HAL_DRIVER_AVAILABLE_LPTIMER != 0) */
 
 /** Get current deep sleep mode.
  *

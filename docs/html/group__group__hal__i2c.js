@@ -13,6 +13,7 @@ var group__group__hal__i2c =
     [ "MTB_HAL_I2C_DEFAULT_ADDR_MASK", "group__group__hal__i2c.html#ga4cd902f7ba1326902a2aa4f04173b77a", null ],
     [ "mtb_hal_i2c_event_callback_t", "group__group__hal__i2c.html#ga2176dab61482eae237d3c7d6f5d30d43", null ],
     [ "mtb_hal_i2c_address_callback_t", "group__group__hal__i2c.html#ga18ae3a199400fc5c7caccb21bcefdf5e", null ],
+    [ "mtb_hal_i2c_byte_callback_t", "group__group__hal__i2c.html#gaf8483dfbb99126f5551712607c9f154c", null ],
     [ "mtb_hal_i2c_event_t", "group__group__hal__i2c.html#ga8e634b8ee008faefc71f4d7854976791", [
       [ "MTB_HAL_I2C_EVENT_NONE", "group__group__hal__i2c.html#gga8e634b8ee008faefc71f4d7854976791a9fdc57bf933a6137ac3073b817b6d7ba", null ],
       [ "MTB_HAL_I2C_TARGET_READ_EVENT", "group__group__hal__i2c.html#gga8e634b8ee008faefc71f4d7854976791a13725e0f04c2c731ba5c3c548b635f1b", null ],
@@ -21,11 +22,23 @@ var group__group__hal__i2c =
       [ "MTB_HAL_I2C_TARGET_RD_BUF_EMPTY_EVENT", "group__group__hal__i2c.html#gga8e634b8ee008faefc71f4d7854976791a6ef8dd93795afe0c3eadf50cc8bdef48", null ],
       [ "MTB_HAL_I2C_TARGET_RD_CMPLT_EVENT", "group__group__hal__i2c.html#gga8e634b8ee008faefc71f4d7854976791ab83e093ed163ac8e59f68ad073f07189", null ],
       [ "MTB_HAL_I2C_TARGET_WR_CMPLT_EVENT", "group__group__hal__i2c.html#gga8e634b8ee008faefc71f4d7854976791a9e98f71ffa45e9312fdc82317674ba93", null ],
-      [ "MTB_HAL_I2C_TARGET_ERR_EVENT", "group__group__hal__i2c.html#gga8e634b8ee008faefc71f4d7854976791ab4ff58efc8e2819f2f4f0329f39368b6", null ]
+      [ "MTB_HAL_I2C_TARGET_ERR_EVENT", "group__group__hal__i2c.html#gga8e634b8ee008faefc71f4d7854976791ab4ff58efc8e2819f2f4f0329f39368b6", null ],
+      [ "MTB_HAL_I2C_TARGET_RESTART_EVENT", "group__group__hal__i2c.html#gga8e634b8ee008faefc71f4d7854976791a13d354ee07c9e3f2a550bf1182a483f5", null ],
+      [ "MTB_HAL_I2C_TARGET_STOP_EVENT", "group__group__hal__i2c.html#gga8e634b8ee008faefc71f4d7854976791a9f92076d3d1bdcb3d6a9129653d3bb55", null ],
+      [ "MTB_HAL_I2C_TARGET_ARB_LOST_EVENT", "group__group__hal__i2c.html#gga8e634b8ee008faefc71f4d7854976791aafb45169abea46ab7b8cf426b97c2645", null ],
+      [ "MTB_HAL_I2C_TARGET_TIMEOUT0_EVENT", "group__group__hal__i2c.html#gga8e634b8ee008faefc71f4d7854976791ad66e8e03d1bdc350f0b911c5cfc9df28", null ],
+      [ "MTB_HAL_I2C_TARGET_TIMEOUT1_EVENT", "group__group__hal__i2c.html#gga8e634b8ee008faefc71f4d7854976791a25b4903c893faceaa85f9cad5aa69612", null ],
+      [ "MTB_HAL_I2C_TARGET_TIMEOUT2_EVENT", "group__group__hal__i2c.html#gga8e634b8ee008faefc71f4d7854976791afbaa27227ede850eda0e299c4fd7a22a", null ],
+      [ "MTB_HAL_I2C_CONTROLLER_ERR_EVENT", "group__group__hal__i2c.html#gga8e634b8ee008faefc71f4d7854976791a1b76717c61ba994e8ed604143f871325", null ],
+      [ "MTB_HAL_I2C_CONTROLLER_ARB_LOST_EVENT", "group__group__hal__i2c.html#gga8e634b8ee008faefc71f4d7854976791a4558c9d44d124a94d7747e3eedf9755e", null ],
+      [ "MTB_HAL_I2C_CONTROLLER_TIMEOUT0_EVENT", "group__group__hal__i2c.html#gga8e634b8ee008faefc71f4d7854976791ad54e30dd823a630aed512cd82957c9f2", null ],
+      [ "MTB_HAL_I2C_CONTROLLER_TIMEOUT1_EVENT", "group__group__hal__i2c.html#gga8e634b8ee008faefc71f4d7854976791a4704be8d2c9da07ab3c044fc7d8a5e90", null ],
+      [ "MTB_HAL_I2C_CONTROLLER_TIMEOUT2_EVENT", "group__group__hal__i2c.html#gga8e634b8ee008faefc71f4d7854976791a98c049404db1c171432b9f4e9eb486ad", null ]
     ] ],
     [ "mtb_hal_i2c_addr_event_t", "group__group__hal__i2c.html#gae0be6d796369cbf15cbb598801b74d42", [
       [ "MTB_HAL_I2C_ADDR_EVENT_NONE", "group__group__hal__i2c.html#ggae0be6d796369cbf15cbb598801b74d42ad39064cdeccdc77c441962e824eb823b", null ],
-      [ "MTB_HAL_I2C_GENERAL_CALL_EVENT", "group__group__hal__i2c.html#ggae0be6d796369cbf15cbb598801b74d42a1b78bc2abf10d05fa2124093b9889c86", null ]
+      [ "MTB_HAL_I2C_GENERAL_CALL_EVENT", "group__group__hal__i2c.html#ggae0be6d796369cbf15cbb598801b74d42a1b78bc2abf10d05fa2124093b9889c86", null ],
+      [ "MTB_HAL_I2C_ADDR_MATCH_EVENT", "group__group__hal__i2c.html#ggae0be6d796369cbf15cbb598801b74d42a657868f03c276eada4a2af63889651e4", null ]
     ] ],
     [ "mtb_hal_i2c_fifo_type_t", "group__group__hal__i2c.html#gaebd4305fa37b4f0b80f3e8edc9772c9e", [
       [ "MTB_HAL_I2C_FIFO_RX", "group__group__hal__i2c.html#ggaebd4305fa37b4f0b80f3e8edc9772c9eae1c6dfca880e84bdc37859f2fddd6f60", null ],
@@ -46,6 +59,7 @@ var group__group__hal__i2c =
     [ "mtb_hal_i2c_target_config_write_buffer", "group__group__hal__i2c.html#ga7ecbce89119cefaca18a27f1ef937fe0", null ],
     [ "mtb_hal_i2c_register_callback", "group__group__hal__i2c.html#ga61c290cdd41065107b55b395bbd87dfd", null ],
     [ "mtb_hal_i2c_register_address_callback", "group__group__hal__i2c.html#gaca10fd3fc422bf113f71409b2ec1ddfe", null ],
+    [ "mtb_hal_i2c_register_byte_received_callback", "group__group__hal__i2c.html#ga6eb3eb37b10d3e258f84d8bce313dd1e", null ],
     [ "mtb_hal_i2c_enable_event", "group__group__hal__i2c.html#ga3728b432e01d66c3262b1e962ca4af62", null ],
     [ "mtb_hal_i2c_enable_address_event", "group__group__hal__i2c.html#ga7cae29ddae7ca97363b43a6e8607579b", null ],
     [ "mtb_hal_i2c_target_readable", "group__group__hal__i2c.html#ga09dddf41f9d9fb76137261c07e54a607", null ],

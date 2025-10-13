@@ -47,6 +47,7 @@
 #define _MTB_HAL_LPTIMER_MCWDT_A
 #endif
 
+#define MTB_HAL_LPTIMER_CFG_LFCLK_FREQ
 
 /**
  * @brief LPTIMER object
@@ -67,6 +68,7 @@ typedef struct
     #if (defined(CY_IP_MXS22SRSS) && (SRSS_NUM_MCWDT == 1) && (SRSS_WDT_A_PRESENT == 0))
     volatile uint32_t                   offset;
     #endif /* (defined(CY_IP_MXS22SRSS) && (SRSS_NUM_MCWDT == 1) && (SRSS_WDT_A_PRESENT == 0)) */
+    uint32_t                            lfclk_freqhz;
     _mtb_hal_event_callback_data_t      callback_data;
     bool                                clear_int_mask;
     uint8_t                             isr_instruction;
@@ -87,6 +89,7 @@ typedef struct
     #else // MCWDT A
     MCWDT_STRUCT_Type*                  base;
     #endif
+    uint32_t                            lfclk_freqhz;
 } mtb_hal_lptimer_configurator_t;
 #endif // if (defined (CY_IP_MXS40SSRSS) || defined (CY_IP_MXS40SRSS) || defined (CY_IP_MXS22SRSS))
 // && ((SRSS_NUM_MCWDT) > 0)

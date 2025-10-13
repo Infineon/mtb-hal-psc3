@@ -23,5 +23,6 @@ var group__group__hal__spi =
     [ "mtb_hal_spi_clear", "group__group__hal__spi.html#ga3f9176dd8ca2fb3300818472d648fbe1", null ],
     [ "mtb_hal_spi_register_callback", "group__group__hal__spi.html#ga9dcb0faceb70ca33a722ba35815a33f8", null ],
     [ "mtb_hal_spi_enable_event", "group__group__hal__spi.html#gacd34ff8b2db7e9ebdc33c5a2ade404d6", null ],
-    [ "mtb_hal_spi_process_interrupt", "group__group__hal__spi.html#ga3fad1b35e2d2b2cfe869a993c58632cb", null ]
+    [ "mtb_hal_spi_process_interrupt", "group__group__hal__spi.html#ga3fad1b35e2d2b2cfe869a993c58632cb", null ],
+    [ "mtb_hal_spi_target_read_transaction", "group__group__hal__spi.html#ga75d319c0e3880d7e635a8225b5d6af5b", null ]
 ];

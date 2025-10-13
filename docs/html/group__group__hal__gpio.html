@@ -124,7 +124,7 @@ Snippet 1: Reading value from GPIO</h2>
 <div class="ttc" id="agroup__group__hal__gpio_html_ga599df9e705aa8ed970808a7abda33fcd"><div class="ttname"><a href="group__group__hal__gpio.html#ga599df9e705aa8ed970808a7abda33fcd">mtb_hal_gpio_setup</a></div><div class="ttdeci">void mtb_hal_gpio_setup(mtb_hal_gpio_t *obj, const uint8_t port, const uint8_t pin)</div><div class="ttdoc">Init the GPIO object</div><div class="ttdef"><b>Definition:</b> mtb_hal_gpio.c:132</div></div>
 <div class="ttc" id="agroup__group__hal__gpio_html_ga67808459294bfacd5dcd745b7c368d9b"><div class="ttname"><a href="group__group__hal__gpio.html#ga67808459294bfacd5dcd745b7c368d9b">mtb_hal_gpio_read</a></div><div class="ttdeci">bool mtb_hal_gpio_read(mtb_hal_gpio_t *obj)</div><div class="ttdoc">Read the input value.</div></div>
 <div class="ttc" id="agroup__group__hal__gpio_html_ggaf13b0539edee6341725f8cfe29e919eba4c06d056ad6f0e5b128327fa4594a437"><div class="ttname"><a href="group__group__hal__gpio.html#ggaf13b0539edee6341725f8cfe29e919eba4c06d056ad6f0e5b128327fa4594a437">MTB_HAL_GPIO_DIR_INPUT</a></div><div class="ttdeci">@ MTB_HAL_GPIO_DIR_INPUT</div><div class="ttdoc">Input pin.</div><div class="ttdef"><b>Definition:</b> mtb_hal_gpio.h:152</div></div>
-<div class="ttc" id="agroup__group__result_html_gaca79700fcc701534ce61778a9bcf57d1"><div class="ttname"><a href="group__group__result.html#gaca79700fcc701534ce61778a9bcf57d1">cy_rslt_t</a></div><div class="ttdeci">uint32_t cy_rslt_t</div><div class="ttdoc">Provides the result of an operation as a structured bitfield.</div><div class="ttdef"><b>Definition:</b> cy_result.h:457</div></div>
+<div class="ttc" id="agroup__group__result_html_gaca79700fcc701534ce61778a9bcf57d1"><div class="ttname"><a href="group__group__result.html#gaca79700fcc701534ce61778a9bcf57d1">cy_rslt_t</a></div><div class="ttdeci">uint32_t cy_rslt_t</div><div class="ttdoc">Provides the result of an operation as a structured bitfield.</div><div class="ttdef"><b>Definition:</b> cy_result.h:481</div></div>
 <div class="ttc" id="astructmtb__hal__gpio__t_html"><div class="ttname"><a href="structmtb__hal__gpio__t.html">mtb_hal_gpio_t</a></div><div class="ttdoc">Connection type definition.</div><div class="ttdef"><b>Definition:</b> mtb_hal_hw_types_gpio_mxsio.h:66</div></div>
 </div><!-- fragment --><h2><a class="anchor" id="subsection_gpio_snippet_2"></a>
 Snippet 2: Writing value to a GPIO</h2>
@@ -156,7 +156,7 @@ Snippet 3: Reconfiguring a GPIO</h2>
 <div class="line">    <span class="comment">// Re-configure pin as an input pin</span></div>
 <div class="line">    <a class="code hl_function" href="group__group__hal__gpio.html#gaf86fb99fdef21de4c0804a629edd2376">mtb_hal_gpio_configure</a>(&amp;pin, <a class="code hl_enumvalue" href="group__group__hal__gpio.html#ggaf13b0539edee6341725f8cfe29e919eba4c06d056ad6f0e5b128327fa4594a437">MTB_HAL_GPIO_DIR_INPUT</a>, <a class="code hl_enumvalue" href="group__group__hal__gpio.html#gga956ed6125bbe06ebcd33d9f460335febad0415fee3b9918dc244f95754e4f73b4">MTB_HAL_GPIO_DRIVE_NONE</a>);</div>
 <div class="ttc" id="agroup__group__hal__gpio_html_gaf86fb99fdef21de4c0804a629edd2376"><div class="ttname"><a href="group__group__hal__gpio.html#gaf86fb99fdef21de4c0804a629edd2376">mtb_hal_gpio_configure</a></div><div class="ttdeci">void mtb_hal_gpio_configure(mtb_hal_gpio_t *obj, mtb_hal_gpio_direction_t direction, mtb_hal_gpio_drive_mode_t drive_mode)</div><div class="ttdoc">Configure the GPIO pin   See Snippet 3: Reconfiguring a GPIO.</div><div class="ttdef"><b>Definition:</b> mtb_hal_gpio.c:146</div></div>
-<div class="ttc" id="agroup__group__hal__gpio_html_gga956ed6125bbe06ebcd33d9f460335febad0415fee3b9918dc244f95754e4f73b4"><div class="ttname"><a href="group__group__hal__gpio.html#gga956ed6125bbe06ebcd33d9f460335febad0415fee3b9918dc244f95754e4f73b4">MTB_HAL_GPIO_DRIVE_NONE</a></div><div class="ttdeci">@ MTB_HAL_GPIO_DRIVE_NONE</div><div class="ttdoc">Pull-up resistor.</div><div class="ttdef"><b>Definition:</b> mtb_hal_gpio.h:172</div></div>
+<div class="ttc" id="agroup__group__hal__gpio_html_gga956ed6125bbe06ebcd33d9f460335febad0415fee3b9918dc244f95754e4f73b4"><div class="ttname"><a href="group__group__hal__gpio.html#gga956ed6125bbe06ebcd33d9f460335febad0415fee3b9918dc244f95754e4f73b4">MTB_HAL_GPIO_DRIVE_NONE</a></div><div class="ttdeci">@ MTB_HAL_GPIO_DRIVE_NONE</div><div class="ttdoc">Analog Hi-Z.</div><div class="ttdef"><b>Definition:</b> mtb_hal_gpio.h:172</div></div>
 </div><!-- fragment --><h2><a class="anchor" id="subsection_gpio_snippet_4"></a>
 Snippet 4: Interrupts on GPIO events</h2>
 <p >GPIO events can be mapped to an interrupt and assigned to a callback function. The callback function needs to be first registered and then the event needs to be enabled. The following snippet initializes GPIO pin as an input pin. It registers a callback function and enables detection of a falling edge event to trigger the callback. </p><dl class="section note"><dt>Note</dt><dd>If no argument needs to be passed to the callback function then a NULL can be passed during registering. <br  />
@@ -219,7 +219,7 @@ Snippet 4: Interrupts on GPIO events</h2>
 <div class="ttc" id="agroup__group__hal__gpio_html_ga9e7b025a81a3cdd4ab0c93147c9ac1c9"><div class="ttname"><a href="group__group__hal__gpio.html#ga9e7b025a81a3cdd4ab0c93147c9ac1c9">mtb_hal_gpio_enable_event</a></div><div class="ttdeci">void mtb_hal_gpio_enable_event(mtb_hal_gpio_t *obj, mtb_hal_gpio_event_t event, bool enable)</div><div class="ttdoc">Enable or Disable the specified GPIO event</div><div class="ttdef"><b>Definition:</b> mtb_hal_gpio.c:170</div></div>
 <div class="ttc" id="agroup__group__hal__gpio_html_gaec4e40c5efbba3882e026776e55fe7e1"><div class="ttname"><a href="group__group__hal__gpio.html#gaec4e40c5efbba3882e026776e55fe7e1">mtb_hal_gpio_toggle</a></div><div class="ttdeci">void mtb_hal_gpio_toggle(mtb_hal_gpio_t *obj)</div><div class="ttdoc">Toggle the output value   See Snippet 4: Interrupts on GPIO events.</div></div>
 <div class="ttc" id="agroup__group__hal__gpio_html_gafb3d2f608c15ab01ed8830870943ac25"><div class="ttname"><a href="group__group__hal__gpio.html#gafb3d2f608c15ab01ed8830870943ac25">mtb_hal_gpio_register_callback</a></div><div class="ttdeci">void mtb_hal_gpio_register_callback(mtb_hal_gpio_t *obj, mtb_hal_gpio_event_callback_t callback, void *callback_arg)</div><div class="ttdoc">Register/clear a callback handler for pin events</div><div class="ttdef"><b>Definition:</b> mtb_hal_gpio.c:157</div></div>
-<div class="ttc" id="agroup__group__hal__gpio_html_gga1df6d7e90106b8f34bbdbf2174643290a8d323bddc06446dff7d8b7f375c8abb2"><div class="ttname"><a href="group__group__hal__gpio.html#gga1df6d7e90106b8f34bbdbf2174643290a8d323bddc06446dff7d8b7f375c8abb2">MTB_HAL_GPIO_IRQ_FALL</a></div><div class="ttdeci">@ MTB_HAL_GPIO_IRQ_FALL</div><div class="ttdoc">Interrupt on falling edge.</div><div class="ttdef"><b>Definition:</b> mtb_hal_gpio.h:142</div></div>
+<div class="ttc" id="agroup__group__hal__gpio_html_gga1df6d7e90106b8f34bbdbf2174643290a8d323bddc06446dff7d8b7f375c8abb2"><div class="ttname"><a href="group__group__hal__gpio.html#gga1df6d7e90106b8f34bbdbf2174643290a8d323bddc06446dff7d8b7f375c8abb2">MTB_HAL_GPIO_IRQ_FALL</a></div><div class="ttdeci">@ MTB_HAL_GPIO_IRQ_FALL</div><div class="ttdoc">Interrupt on falling edge.</div><div class="ttdef"><b>Definition:</b> mtb_hal_gpio.h:144</div></div>
 </div><!-- fragment --><h2><a class="anchor" id="subsection_gpio_snippet_5"></a>
 Snippet 5: Reading and writing from a port</h2>
 <p >The following snippet shows how to configure a GPIO port to do port-wide reads and writes. The GPIO pins are first initialized as output pins with strong drive mode. These are then accessed at a port level.</p>
@@ -327,7 +327,7 @@ Enumerations</h2></td></tr>
 , <br />
 &#160;&#160;<a class="el" href="group__group__hal__gpio.html#gga956ed6125bbe06ebcd33d9f460335feba5de7957aa35f26934e2c984eb8531b24">MTB_HAL_GPIO_DRIVE_PULLUPDOWN</a> = (MTB_HAL_MAP_GPIO_DRIVE_PULLUPDOWN)
 , <br />
-&#160;&#160;<b>MTB_HAL_GPIO_DRIVE_PULL_NONE</b> = (MTB_HAL_MAP_GPIO_DRIVE_PULL_NONE)
+&#160;&#160;<a class="el" href="group__group__hal__gpio.html#gga956ed6125bbe06ebcd33d9f460335feba55bc076187f90e85fb688ba8a9c92066">MTB_HAL_GPIO_DRIVE_PULL_NONE</a> = (MTB_HAL_MAP_GPIO_DRIVE_PULL_NONE)
 <br />
  }</td></tr>
 <tr class="memdesc:ga956ed6125bbe06ebcd33d9f460335feb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pin drive mode.  <a href="group__group__hal__gpio.html#ga956ed6125bbe06ebcd33d9f460335feb">More...</a><br /></td></tr>
@@ -450,27 +450,30 @@ Functions</h2></td></tr>
 <dl class="section note"><dt>Note</dt><dd>When the <b> drive_mode </b> of the <b> pin </b> is set to <b> MTB_HAL_GPIO_DRIVE_PULL_NONE </b>, it is set to <b> MTB_HAL_GPIO_DRIVE_STRONG </b> if the <b> direction </b> of the <b> pin </b> is <b> MTB_HAL_GPIO_DIR_OUTPUT </b> or <b> MTB_HAL_GPIO_DIR_BIDIRECTIONAL</b>. If not, the <b> drive_mode </b> of the <b> pin </b> is set to <b> MTB_HAL_GPIO_DRIVE_NONE</b>. </dd></dl>
 <table class="fieldtable">
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="gga956ed6125bbe06ebcd33d9f460335feba7ee636ff30372f8d60e3b33304c6fea1" name="gga956ed6125bbe06ebcd33d9f460335feba7ee636ff30372f8d60e3b33304c6fea1"></a>MTB_HAL_GPIO_DRIVE_ANALOG&#160;</td><td class="fielddoc"><p >Digital Hi-Z. </p>
-<p >Input only. Input init value(s): 0 or 1 Analog Hi-Z. Use only for analog purpose </p>
+<p >Input only. Input init value(s): 0 or 1 </p>
 </td></tr>
-<tr><td class="fieldname"><a id="gga956ed6125bbe06ebcd33d9f460335febad0415fee3b9918dc244f95754e4f73b4" name="gga956ed6125bbe06ebcd33d9f460335febad0415fee3b9918dc244f95754e4f73b4"></a>MTB_HAL_GPIO_DRIVE_NONE&#160;</td><td class="fielddoc"><p >Pull-up resistor. </p>
+<tr><td class="fieldname"><a id="gga956ed6125bbe06ebcd33d9f460335febad0415fee3b9918dc244f95754e4f73b4" name="gga956ed6125bbe06ebcd33d9f460335febad0415fee3b9918dc244f95754e4f73b4"></a>MTB_HAL_GPIO_DRIVE_NONE&#160;</td><td class="fielddoc"><p >Analog Hi-Z. </p>
+<p >Use only for analog purpose </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga956ed6125bbe06ebcd33d9f460335febae5b266fc3b372246b592398bc0015869" name="gga956ed6125bbe06ebcd33d9f460335febae5b266fc3b372246b592398bc0015869"></a>MTB_HAL_GPIO_DRIVE_PULLUP&#160;</td><td class="fielddoc"><p >Pull-up resistor. </p>
 <p >Input and output. Input init value(s): 1, output value(s): 0 </p>
 </td></tr>
-<tr><td class="fieldname"><a id="gga956ed6125bbe06ebcd33d9f460335febae5b266fc3b372246b592398bc0015869" name="gga956ed6125bbe06ebcd33d9f460335febae5b266fc3b372246b592398bc0015869"></a>MTB_HAL_GPIO_DRIVE_PULLUP&#160;</td><td class="fielddoc"><p >Pull-down resistor. </p>
+<tr><td class="fieldname"><a id="gga956ed6125bbe06ebcd33d9f460335feba3885e34fcd579b2d37307cb029c201bb" name="gga956ed6125bbe06ebcd33d9f460335feba3885e34fcd579b2d37307cb029c201bb"></a>MTB_HAL_GPIO_DRIVE_PULLDOWN&#160;</td><td class="fielddoc"><p >Pull-down resistor. </p>
 <p >Input and output. Input init value(s): 0, output value(s): 1 </p>
 </td></tr>
-<tr><td class="fieldname"><a id="gga956ed6125bbe06ebcd33d9f460335feba3885e34fcd579b2d37307cb029c201bb" name="gga956ed6125bbe06ebcd33d9f460335feba3885e34fcd579b2d37307cb029c201bb"></a>MTB_HAL_GPIO_DRIVE_PULLDOWN&#160;</td><td class="fielddoc"><p >Open-drain, Drives Low. </p>
+<tr><td class="fieldname"><a id="gga956ed6125bbe06ebcd33d9f460335febab3cb38301f7fe1726a40d9317f7e20d0" name="gga956ed6125bbe06ebcd33d9f460335febab3cb38301f7fe1726a40d9317f7e20d0"></a>MTB_HAL_GPIO_DRIVE_OPENDRAINDRIVESLOW&#160;</td><td class="fielddoc"><p >Open-drain, Drives Low. </p>
 <p >Input and output. Input init value(s): 1, output value(s): 0 </p>
 </td></tr>
-<tr><td class="fieldname"><a id="gga956ed6125bbe06ebcd33d9f460335febab3cb38301f7fe1726a40d9317f7e20d0" name="gga956ed6125bbe06ebcd33d9f460335febab3cb38301f7fe1726a40d9317f7e20d0"></a>MTB_HAL_GPIO_DRIVE_OPENDRAINDRIVESLOW&#160;</td><td class="fielddoc"><p >Open-drain, Drives High. </p>
+<tr><td class="fieldname"><a id="gga956ed6125bbe06ebcd33d9f460335feba4f1fca530e607aea1be3f3e1836f35eb" name="gga956ed6125bbe06ebcd33d9f460335feba4f1fca530e607aea1be3f3e1836f35eb"></a>MTB_HAL_GPIO_DRIVE_OPENDRAINDRIVESHIGH&#160;</td><td class="fielddoc"><p >Open-drain, Drives High. </p>
 <p >Input and output. Input init value(s): 0, output value(s): 1 </p>
 </td></tr>
-<tr><td class="fieldname"><a id="gga956ed6125bbe06ebcd33d9f460335feba4f1fca530e607aea1be3f3e1836f35eb" name="gga956ed6125bbe06ebcd33d9f460335feba4f1fca530e607aea1be3f3e1836f35eb"></a>MTB_HAL_GPIO_DRIVE_OPENDRAINDRIVESHIGH&#160;</td><td class="fielddoc"><p >Strong output. </p>
+<tr><td class="fieldname"><a id="gga956ed6125bbe06ebcd33d9f460335feba306570f5ce7d49937118fa18d847c62c" name="gga956ed6125bbe06ebcd33d9f460335feba306570f5ce7d49937118fa18d847c62c"></a>MTB_HAL_GPIO_DRIVE_STRONG&#160;</td><td class="fielddoc"><p >Strong output. </p>
 <p >Output only. Output init value(s): 0 or 1 </p>
 </td></tr>
-<tr><td class="fieldname"><a id="gga956ed6125bbe06ebcd33d9f460335feba306570f5ce7d49937118fa18d847c62c" name="gga956ed6125bbe06ebcd33d9f460335feba306570f5ce7d49937118fa18d847c62c"></a>MTB_HAL_GPIO_DRIVE_STRONG&#160;</td><td class="fielddoc"><p >Pull-up and pull-down resistors. </p>
+<tr><td class="fieldname"><a id="gga956ed6125bbe06ebcd33d9f460335feba5de7957aa35f26934e2c984eb8531b24" name="gga956ed6125bbe06ebcd33d9f460335feba5de7957aa35f26934e2c984eb8531b24"></a>MTB_HAL_GPIO_DRIVE_PULLUPDOWN&#160;</td><td class="fielddoc"><p >Pull-up and pull-down resistors. </p>
 <p >Input and output. Input init value(s): 0 or 1, output value(s): 0 or 1 </p>
 </td></tr>
-<tr><td class="fieldname"><a id="gga956ed6125bbe06ebcd33d9f460335feba5de7957aa35f26934e2c984eb8531b24" name="gga956ed6125bbe06ebcd33d9f460335feba5de7957aa35f26934e2c984eb8531b24"></a>MTB_HAL_GPIO_DRIVE_PULLUPDOWN&#160;</td><td class="fielddoc"><p >No Pull-up or pull-down resistors. </p>
+<tr><td class="fieldname"><a id="gga956ed6125bbe06ebcd33d9f460335feba55bc076187f90e85fb688ba8a9c92066" name="gga956ed6125bbe06ebcd33d9f460335feba55bc076187f90e85fb688ba8a9c92066"></a>MTB_HAL_GPIO_DRIVE_PULL_NONE&#160;</td><td class="fielddoc"><p >No Pull-up or pull-down resistors. </p>
 <p >Input and output. Input init value(s): 0 or 1, output value(s): 0 or 1 </p>
 </td></tr>
 </table>

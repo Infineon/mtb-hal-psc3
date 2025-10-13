@@ -37,7 +37,7 @@
 #include "mtb_hal_comp_mxs22lpcomp_v1.h"
 #endif
 
-#if ((CY_IP_MXS40PPSS_INSTANCES) > 0)
+#if ((CY_IP_MXS40PPSS_INSTANCES) > 0) && defined (_MTB_HAL_DRIVER_AVAILABLE_COMP_DCSG)
 #include "mtb_hal_comp_mxs40ppss_dcsg_v1.h"
 #endif
 #if ((CY_IP_MXS40MCPASS_INSTANCES) > 0)

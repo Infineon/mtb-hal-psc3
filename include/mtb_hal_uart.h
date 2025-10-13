@@ -165,27 +165,28 @@ extern "C" {
 /** UART enum to enable/disable/report interrupt cause flags. */
 typedef enum
 {
-    //! No interrupt
+    /** No interrupt */
     MTB_HAL_UART_IRQ_NONE                = 0,
-    //! All TX data from transmit has been moved to the HW TX FIFO buffer
+    /** All TX data from transmit has been moved to the HW TX FIFO buffer */
     MTB_HAL_UART_IRQ_TX_TRANSMIT_IN_FIFO = (MTB_HAL_MAP_UART_IRQ_TX_TRANSMIT_IN_FIFO),
-    //! All TX data has been transmitted (applicable only for mtb_hal_uart_write_async)
+    /** All TX data has been transmitted (applicable only for mtb_hal_uart_write_async) */
     MTB_HAL_UART_IRQ_TX_DONE             = (MTB_HAL_MAP_UART_IRQ_TX_DONE),
-    //! An error occurred during TX
+    /** An error occurred during TX */
     MTB_HAL_UART_IRQ_RX_DONE             = (MTB_HAL_MAP_UART_IRQ_RX_DONE),
-    //! The SW RX buffer (if used) is full. Additional data will be stored in the HW RX FIFO buffer
+    /** The SW RX buffer (if used) is full. Additional data will be stored in the
+     *  HW RX FIFO buffer */
     MTB_HAL_UART_IRQ_RX_FULL             = (MTB_HAL_MAP_UART_IRQ_RX_FULL),
-    //! All RX data has been received (applicable only for mtb_hal_uart_read_async)
+    /** All RX data has been received (applicable only for mtb_hal_uart_read_async) */
     MTB_HAL_UART_IRQ_RX_ERROR            = (MTB_HAL_MAP_UART_IRQ_RX_ERROR),
-    //! An error occurred during RX
+    /** An error occurred during RX */
     MTB_HAL_UART_IRQ_TX_ERROR            = (MTB_HAL_MAP_UART_IRQ_TX_ERROR),
-    //! The HW RX FIFO buffer is not empty
+    /** The HW RX FIFO buffer is not empty */
     MTB_HAL_UART_IRQ_RX_NOT_EMPTY        = (MTB_HAL_MAP_UART_IRQ_RX_NOT_EMPTY),
-    //! The HW TX FIFO buffer is empty
+    /** The HW TX FIFO buffer is empty */
     MTB_HAL_UART_IRQ_TX_EMPTY            = (MTB_HAL_MAP_UART_IRQ_TX_EMPTY),
-    //! Number of entries in the HW TX FIFO is less than the TX FIFO trigger level
+    /** Number of entries in the HW TX FIFO is less than the TX FIFO trigger level */
     MTB_HAL_UART_IRQ_TX_FIFO             = (MTB_HAL_MAP_UART_IRQ_TX_FIFO),
-    //! Number of entries in the HW RX FIFO is more than the RX FIFO trigger level
+    /** Number of entries in the HW RX FIFO is more than the RX FIFO trigger level */
     MTB_HAL_UART_IRQ_RX_FIFO             = (MTB_HAL_MAP_UART_IRQ_RX_FIFO)
 } mtb_hal_uart_event_t;
 
@@ -293,6 +294,15 @@ cy_rslt_t mtb_hal_uart_read(mtb_hal_uart_t* obj, void* rx, size_t* rx_length);
  * @return TX channel active status (active=true)
  */
 bool mtb_hal_uart_is_tx_active(mtb_hal_uart_t* obj);
+
+/** Determines if the UART peripheral is currently in use for RX
+ *
+ * This checks if all the data in the UART RX FIFO is received
+ *
+ * @param[in]  obj              The UART object
+ * @return RX channel active status (active=true)
+ */
+bool mtb_hal_uart_is_rx_active(mtb_hal_uart_t* obj);
 
 /** Register a uart callback handler
  *

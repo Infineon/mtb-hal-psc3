@@ -93,7 +93,7 @@
  *
  * <a
  * href="https://github.com/infineon/mtb-example-psoc6-spi-controller"><b>mtb-example-psoc6-spi-controller</b></a>:
- * This example project demonstrates use of SPI (HAL) resource in PSoC® 6 MCU in Controller mode to
+ * This example project demonstrates use of SPI (HAL) resource in PSOC® 6 MCU in Controller mode to
  * write data
  * to an SPI target.
  *
@@ -306,6 +306,19 @@ void mtb_hal_spi_enable_event(mtb_hal_spi_t* obj, mtb_hal_spi_event_t event, boo
  * @return CY_RSLT_SUCCESS if the interrupt was processed successfully; otherwise an error
  */
 cy_rslt_t mtb_hal_spi_process_interrupt(mtb_hal_spi_t* obj);
+
+/** Wait for controller send data to RX buffer and store them to the user-defined buffer.
+ * NOTE: If this function will returt on the timeout or all data was read or SS line is de-asserted.
+ *
+ * @param[in]     obj        The SPI object
+ * @param[in]     dst_buff   Pointer on memory to store the data from the target RX buffer.
+ * @param[in,out] size       [in] The number of bytes to read, [out] number actually read.
+ * @param[in]     timeout    Timeout in millisecond, set this value to 0 if you don't want to wait
+ * at all.
+ * @return  The status of the read request
+ * */
+cy_rslt_t mtb_hal_spi_target_read_transaction(mtb_hal_spi_t* obj, uint8_t* dst_buff, uint16_t* size,
+                                              uint32_t timeout);
 
 #if defined(__cplusplus)
 }

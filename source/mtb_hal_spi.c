@@ -73,6 +73,7 @@ extern "C"
 
 /** The maximum allowable tolerance in PPM on the SPI clock frequency **/
 #define MTB_HAL_SPI_CLOCK_FREQ_MAX_TOLERANCE_PPM (20000UL)
+#define MTB_HAL_SPI_US_IN_MS                     (1000UL)
 /*******************************************************************************
 *       internal Functions
 *******************************************************************************/
@@ -105,11 +106,13 @@ static bool _mtb_hal_check_spi_status(void* obj, uint32_t op)
     switch (op)
     {
         case _MTB_HAL_SPI_WAIT_OP_RD_BUSY:
-            op_condition = (_mtb_hal_spi_readable(_obj) == 0 && !mtb_hal_spi_is_busy(_obj));
+            op_condition =
+                (false == (_mtb_hal_spi_readable(_obj) != 0 && !mtb_hal_spi_is_busy(_obj)));
             break;
 
         case _MTB_HAL_SPI_WAIT_OP_RD_NOT_BUSY:
-            op_condition = (_mtb_hal_spi_readable(_obj) == 0 || mtb_hal_spi_is_busy(_obj));
+            op_condition =
+                (false == (_mtb_hal_spi_readable(_obj) != 0 || mtb_hal_spi_is_busy(_obj)));
             break;
 
         case _MTB_HAL_SPI_WAIT_OP_WR:
@@ -385,23 +388,49 @@ cy_rslt_t mtb_hal_spi_target_read(mtb_hal_spi_t* obj, uint8_t* dst_buff, uint16_
     if ((dst_buff != NULL) && (size != NULL))
     #endif // defined(MTB_HAL_DISABLE_ERR_CHECK)
     {
-        /* Wait until the controller start writing or any data will be in the target RX buffer */
-        status = _mtb_hal_wait_for_status(obj, _MTB_HAL_SPI_WAIT_OP_RD_NOT_BUSY, &timeout,
-                                          _mtb_hal_check_spi_status);
+        // In case controller completed SPI transcation before this API is called.
+        bool transfer_start = Cy_SCB_SPI_GetNumInRxFifo(obj->base);
 
-        if (CY_RSLT_SUCCESS == status)
+        uint32_t i = 0U;
+        uint16_t size_remaining = *size;
+        do
         {
-            /* Wait until the controller finish writing */
-            status = _mtb_hal_wait_for_status(obj, _MTB_HAL_SPI_WAIT_OP_RD_BUSY, &timeout,
-                                              _mtb_hal_check_spi_status);
-        }
+            if (mtb_hal_spi_is_busy(obj))
+            {
+                transfer_start = true;
+            }
+            else if (transfer_start)
+            {
+                if ((Cy_SCB_SPI_GetNumInRxFifo(obj->base) == 0U) && (!mtb_hal_spi_is_busy(obj)))
+                {
+                    //Stop receiving while line is no longer active
+                    transfer_start = false;
+                }
+            }
+            if ((Cy_SCB_SPI_GetNumInRxFifo(obj->base) > 0U) && (transfer_start == true))
+            {
+                size_remaining -=
+                    (uint16_t)Cy_SCB_SPI_ReadArray(obj->base,
+                                                   (void*)&dst_buff[*size - size_remaining],
+                                                   size_remaining);
+            }
+            // If all expected data is received - exit the loop
+            if (size_remaining == 0U)
+            {
+                break;
+            }
+            mtb_hal_system_delay_us(1U);
+            i++;
+        } while(i < (timeout * MTB_HAL_SPI_US_IN_MS));
 
-        if (CY_RSLT_SUCCESS == status)
+
+        if ((i != (timeout * MTB_HAL_SPI_US_IN_MS)) || (size_remaining == 0U))
         {
-            *size = _MTB_HAL_MIN(_mtb_hal_spi_readable(obj), *size);
-            *size = Cy_SCB_SPI_ReadArray(obj->base, (void*)dst_buff, (uint32_t)*size);
+            status = CY_RSLT_SUCCESS;
         }
+        *size = (*size - size_remaining);
     }
+
     return status;
 }
 
@@ -589,6 +618,77 @@ cy_rslt_t mtb_hal_spi_process_interrupt(mtb_hal_spi_t* spi)
     _mtb_hal_spi_irq_obj = old_irq_obj;
 
     return CY_RSLT_SUCCESS;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+// mtb_hal_spi_target_read_transaction
+//--------------------------------------------------------------------------------------------------
+cy_rslt_t mtb_hal_spi_target_read_transaction(mtb_hal_spi_t* obj, uint8_t* dst_buff, uint16_t* size,
+                                              uint32_t timeout)
+{
+    cy_rslt_t status = MTB_HAL_SPI_RSLT_BAD_ARGUMENT;
+
+    #if defined(MTB_HAL_DISABLE_ERR_CHECK)
+    CY_ASSERT_AND_RETURN(((dst_buff != NULL) && (size != NULL)), MTB_HAL_SPI_RSLT_BAD_ARGUMENT);
+    #else
+    if ((dst_buff != NULL) && (size != NULL))
+    #endif // defined(MTB_HAL_DISABLE_ERR_CHECK)
+    {
+        /* Wait until the controller start writing or any data will be in the target RX buffer */
+        status = _mtb_hal_wait_for_status(obj, _MTB_HAL_SPI_WAIT_OP_RD_NOT_BUSY, &timeout,
+                                          _mtb_hal_check_spi_status);
+
+        if (CY_RSLT_SUCCESS != status)
+        {
+            return status;
+        }
+
+        // In case controller completed SPI transcation before this API is called.
+        bool transfer_start = Cy_SCB_SPI_GetNumInRxFifo(obj->base);
+        bool exit_loop = false;
+
+        uint32_t i = 0U;
+        uint16_t size_remaining = *size;
+        do
+        {
+            if (mtb_hal_spi_is_busy(obj))
+            {
+                transfer_start = true;
+            }
+            else if (transfer_start)
+            {
+                if ((Cy_SCB_SPI_GetNumInRxFifo(obj->base) == 0U) && (!mtb_hal_spi_is_busy(obj)))
+                {
+                    transfer_start = false;
+                }
+                if (!mtb_hal_spi_is_busy(obj))
+                {
+                    exit_loop = true;
+                }
+            }
+            if ((Cy_SCB_SPI_GetNumInRxFifo(obj->base) > 0U) && (transfer_start == true))
+            {
+                size_remaining -=
+                    (uint16_t)Cy_SCB_SPI_ReadArray(obj->base,
+                                                   (void*)&dst_buff[*size - size_remaining],
+                                                   size_remaining);
+            }
+            mtb_hal_system_delay_us(1U);
+            i++;
+            // If all expected data is received, timeout reached or line is inacyive - exit the loop
+        } while((i < (timeout * MTB_HAL_SPI_US_IN_MS)) && (size_remaining > 0U) &&
+                (exit_loop == false));
+
+
+        if ((i != (timeout * MTB_HAL_SPI_US_IN_MS)) || (size_remaining == 0U))
+        {
+            status = CY_RSLT_SUCCESS;
+        }
+        *size = (*size - size_remaining);
+    }
+
+    return status;
 }
 
 

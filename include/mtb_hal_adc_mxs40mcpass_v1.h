@@ -207,6 +207,8 @@ __STATIC_INLINE int32_t _mtb_hal_adc_read(const mtb_hal_adc_channel_t* obj)
         timeout--;
     }
 
+    CY_ASSERT(timeout > 0);
+
     _mtb_hal_adc_read_latest(obj, &latest);
     Cy_HPPASS_SAR_Result_ClearStatus(obj->channel_msk); // Cleanup
 

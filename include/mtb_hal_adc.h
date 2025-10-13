@@ -89,11 +89,6 @@ extern "C" {
  * \}
  */
 
-/** Number of bits populated with meaningful data by each ADC sample */
-#define MTB_HAL_ADC_BITS 16
-/** Maximum value that the ADC can return */
-#define MTB_HAL_ADC_MAX_VALUE ((1 << MTB_HAL_ADC_BITS) - 1)
-
 /**
  * Sets up a HAL instance to use the specified hardware resource. This hardware
  * resource must have already been configured via the PDL.

@@ -40,7 +40,7 @@
 /** \} group_hal_availability */
 
 
-/** I2C HAL to PDL enum map to enable/disable/report interrupt cause flags. */
+/** I2C HAL to PDL enum map to enable/disable/report event cause flags. */
 #define MTB_HAL_MAP_I2C_TARGET_READ_EVENT                     (CY_SCB_I2C_SLAVE_READ_EVENT)
 #define MTB_HAL_MAP_I2C_TARGET_WRITE_EVENT                    (CY_SCB_I2C_SLAVE_WRITE_EVENT)
 #define MTB_HAL_MAP_I2C_TARGET_RD_IN_FIFO_EVENT               (CY_SCB_I2C_SLAVE_RD_IN_FIFO_EVENT)
@@ -48,6 +48,29 @@
 #define MTB_HAL_MAP_I2C_TARGET_RD_CMPLT_EVENT                 (CY_SCB_I2C_SLAVE_RD_CMPLT_EVENT)
 #define MTB_HAL_MAP_I2C_TARGET_WR_CMPLT_EVENT                 (CY_SCB_I2C_SLAVE_WR_CMPLT_EVENT)
 #define MTB_HAL_MAP_I2C_TARGET_ERR_EVENT                      (CY_SCB_I2C_SLAVE_ERR_EVENT)
+#if ((CY_IP_MXSCB_VERSION >= 4) && (CY_IP_MXSCB_VERSION_MINOR >= 4))
+#define MTB_HAL_MAP_I2C_TARGET_RESTART_EVENT                  (CY_SCB_I2C_SLAVE_RESTART_EVENT)
+#define MTB_HAL_MAP_I2C_TARGET_STOP_EVENT                     (CY_SCB_I2C_SLAVE_STOP_ANY_EVENT)
+#define MTB_HAL_MAP_I2C_TARGET_ARB_LOST_EVENT                 (CY_SCB_I2C_SLAVE_ARB_LOST_EVENT)
+#define MTB_HAL_MAP_I2C_TARGET_TIMEOUT0_EVENT                 (CY_SCB_I2C_SLAVE_TIMEOUT0_EVENT)
+#define MTB_HAL_MAP_I2C_TARGET_TIMEOUT1_EVENT                 (CY_SCB_I2C_SLAVE_TIMEOUT1_EVENT)
+#define MTB_HAL_MAP_I2C_TARGET_TIMEOUT2_EVENT                 (CY_SCB_I2C_SLAVE_TIMEOUT2_EVENT)
+#define MTB_HAL_MAP_I2C_CONTROLLER_ARB_LOST_EVENT             (CY_SCB_I2C_MASTER_ARB_LOST_EVENT)
+#define MTB_HAL_MAP_I2C_CONTROLLER_TIMEOUT0_EVENT             (CY_SCB_I2C_MASTER_TIMEOUT0_EVENT)
+#define MTB_HAL_MAP_I2C_CONTROLLER_TIMEOUT1_EVENT             (CY_SCB_I2C_MASTER_TIMEOUT1_EVENT)
+#define MTB_HAL_MAP_I2C_CONTROLLER_TIMEOUT2_EVENT             (CY_SCB_I2C_MASTER_TIMEOUT2_EVENT)
+#else /* ((CY_IP_MXSCB_VERSION>=4) && (CY_IP_MXSCB_VERSION_MINOR>=4)) */
+#define MTB_HAL_MAP_I2C_TARGET_RESTART_EVENT                  (0UL)
+#define MTB_HAL_MAP_I2C_TARGET_STOP_EVENT                     (0UL)
+#define MTB_HAL_MAP_I2C_TARGET_ARB_LOST_EVENT                 (0UL)
+#define MTB_HAL_MAP_I2C_TARGET_TIMEOUT0_EVENT                 (0UL)
+#define MTB_HAL_MAP_I2C_TARGET_TIMEOUT1_EVENT                 (0UL)
+#define MTB_HAL_MAP_I2C_TARGET_TIMEOUT2_EVENT                 (0UL)
+#define MTB_HAL_MAP_I2C_CONTROLLER_ARB_LOST_EVENT             (0UL)
+#define MTB_HAL_MAP_I2C_CONTROLLER_TIMEOUT0_EVENT             (0UL)
+#define MTB_HAL_MAP_I2C_CONTROLLER_TIMEOUT1_EVENT             (0UL)
+#define MTB_HAL_MAP_I2C_CONTROLLER_TIMEOUT2_EVENT             (0UL)
+#endif /* ((CY_IP_MXSCB_VERSION>=4) && (CY_IP_MXSCB_VERSION_MINOR>=4)) */
 #define MTB_HAL_MAP_I2C_CONTROLLER_ERR_EVENT                  (CY_SCB_I2C_MASTER_ERR_EVENT)
 
 /** I2C HAL to PDL enum map to enable/disable/report address interrupt cause flags. */
@@ -68,6 +91,7 @@ typedef struct
     const mtb_hal_clock_t*              clock; //!< Clock interface
     _mtb_hal_event_callback_data_t      callback_data; //!< User-registered callback
     _mtb_hal_event_callback_data_t      addr_callback_data; //!< User-registered address callback
+    _mtb_hal_event_callback_data_t      byte_callback_data; //!< User-registered byte callback
     uint32_t                            irq_cause; //!< User-enabled events
     uint8_t                             addr_irq_cause; //!< User-enabled address events
     bool                                op_in_callback; //!< Currently operating in callback context

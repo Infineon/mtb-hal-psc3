@@ -26,7 +26,9 @@
 
 #pragma once
 
-#if (defined (CY_IP_MXS40SRSS_RTC))
+#if (defined (CY_IP_MXS40SRSS_RTC) && (CY_IP_MXS40SRSS_RTC_VERSION == 2))
+#include "mtb_hal_rtc_mxs40srss_ver2.h"
+#elif (defined (CY_IP_MXS40SRSS_RTC))
 #include "mtb_hal_rtc_mxs40srss_ver3.h"
 #elif (defined (CY_IP_MXS40SSRSS))
 #include "mtb_hal_rtc_mxs40ssrss.h"

@@ -85,7 +85,6 @@ $(document).ready(function(){initNavTree('group__group__hal__adc.html',''); init
 <div class="header">
   <div class="summary">
 <a href="#groups">API Reference</a> &#124;
-<a href="#define-members">Macros</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">ADC (Analog to Digital Converter)<div class="ingroups"><a class="el" href="group__group__hal.html">HAL Drivers</a></div></div></div>
 </div><!--header-->
@@ -127,7 +126,7 @@ Snippet 1: Simple ADC initialization and reading conversion result</h2>
 <div class="line"> </div>
 <div class="ttc" id="agroup__group__hal__adc_html_gaca5af65e04a892d71430cf9a3bb589cf"><div class="ttname"><a href="group__group__hal__adc.html#gaca5af65e04a892d71430cf9a3bb589cf">mtb_hal_adc_setup</a></div><div class="ttdeci">cy_rslt_t mtb_hal_adc_setup(mtb_hal_adc_t *obj, const mtb_hal_adc_configurator_t *config, mtb_hal_clock_t *clk, mtb_hal_adc_channel_t **channels)</div><div class="ttdoc">Sets up a HAL instance to use the specified hardware resource.</div></div>
 <div class="ttc" id="agroup__group__hal__adc_html_gaf81e53ff86c18a67d12cdecf48c956e6"><div class="ttname"><a href="group__group__hal__adc.html#gaf81e53ff86c18a67d12cdecf48c956e6">mtb_hal_adc_read_u16</a></div><div class="ttdeci">uint16_t mtb_hal_adc_read_u16(const mtb_hal_adc_channel_t *obj)</div><div class="ttdoc">Read the value from the ADC pin, represented as an unsigned 16bit value where 0x0000 represents the m...</div></div>
-<div class="ttc" id="agroup__group__result_html_gaca79700fcc701534ce61778a9bcf57d1"><div class="ttname"><a href="group__group__result.html#gaca79700fcc701534ce61778a9bcf57d1">cy_rslt_t</a></div><div class="ttdeci">uint32_t cy_rslt_t</div><div class="ttdoc">Provides the result of an operation as a structured bitfield.</div><div class="ttdef"><b>Definition:</b> cy_result.h:457</div></div>
+<div class="ttc" id="agroup__group__result_html_gaca79700fcc701534ce61778a9bcf57d1"><div class="ttname"><a href="group__group__result.html#gaca79700fcc701534ce61778a9bcf57d1">cy_rslt_t</a></div><div class="ttdeci">uint32_t cy_rslt_t</div><div class="ttdoc">Provides the result of an operation as a structured bitfield.</div><div class="ttdef"><b>Definition:</b> cy_result.h:481</div></div>
 </div><!-- fragment --> <h2><a class="anchor" id="subsection_adc_snippet_2"></a>
 Snippet 2: Single-channel ADC initialization set to start a fresh conversion and read the latest result.</h2>
 <div class="fragment"><div class="line"> </div>
@@ -183,24 +182,13 @@ Snippet 2: Single-channel ADC initialization set to start a fresh conversion and
 <div class="ttc" id="agroup__group__hal__adc_html_ga0281466b2261ce8fda1a401e7ed9241a"><div class="ttname"><a href="group__group__hal__adc.html#ga0281466b2261ce8fda1a401e7ed9241a">mtb_hal_adc_read_latest</a></div><div class="ttdeci">cy_rslt_t mtb_hal_adc_read_latest(const mtb_hal_adc_channel_t *obj, int32_t *result)</div><div class="ttdoc">Reads the result of the most recent scan for the specified channel and writes it to the given result ...</div></div>
 <div class="ttc" id="agroup__group__hal__adc_html_ga37fb86a5ac856ecd92abbe614afc5cc8"><div class="ttname"><a href="group__group__hal__adc.html#ga37fb86a5ac856ecd92abbe614afc5cc8">mtb_hal_adc_start_convert</a></div><div class="ttdeci">cy_rslt_t mtb_hal_adc_start_convert(mtb_hal_adc_t *obj)</div><div class="ttdoc">Triggers start of conversion for all enabled channels.</div></div>
 <div class="ttc" id="agroup__group__hal__adc_html_gab211ace287827ccd83473caa818474fe"><div class="ttname"><a href="group__group__hal__adc.html#gab211ace287827ccd83473caa818474fe">mtb_hal_adc_is_conversion_complete</a></div><div class="ttdeci">bool mtb_hal_adc_is_conversion_complete(const mtb_hal_adc_channel_t *obj)</div><div class="ttdoc">Returns true if the most recently triggered conversion has completed for the specified channel.</div></div>
-<div class="ttc" id="agroup__group__result_html_gaf58fac450d9fff4472f03ad68f6e546e"><div class="ttname"><a href="group__group__result.html#gaf58fac450d9fff4472f03ad68f6e546e">CY_RSLT_SUCCESS</a></div><div class="ttdeci">#define CY_RSLT_SUCCESS</div><div class="ttdoc">cy_rslt_t return value indicating success</div><div class="ttdef"><b>Definition:</b> cy_result.h:484</div></div>
+<div class="ttc" id="agroup__group__result_html_gaf58fac450d9fff4472f03ad68f6e546e"><div class="ttname"><a href="group__group__result.html#gaf58fac450d9fff4472f03ad68f6e546e">CY_RSLT_SUCCESS</a></div><div class="ttdeci">#define CY_RSLT_SUCCESS</div><div class="ttdoc">cy_rslt_t return value indicating success</div><div class="ttdef"><b>Definition:</b> cy_result.h:508</div></div>
 </div><!-- fragment --> <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="groups" name="groups"></a>
 API Reference</h2></td></tr>
 <tr class="memitem:group__group__hal__results__adc"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__results__adc.html">ADC HAL Results</a></td></tr>
 <tr class="memdesc:group__group__hal__results__adc"><td class="mdescLeft">&#160;</td><td class="mdescRight">ADC specific return codes. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
-Macros</h2></td></tr>
-<tr class="memitem:ga0f660e25abb00fd9d2a34703f9c2af7b"><td class="memItemLeft" align="right" valign="top"><a id="ga0f660e25abb00fd9d2a34703f9c2af7b" name="ga0f660e25abb00fd9d2a34703f9c2af7b"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>MTB_HAL_ADC_BITS</b>&#160;&#160;&#160;16</td></tr>
-<tr class="memdesc:ga0f660e25abb00fd9d2a34703f9c2af7b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of bits populated with meaningful data by each ADC sample. <br /></td></tr>
-<tr class="separator:ga0f660e25abb00fd9d2a34703f9c2af7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga623a7d16adc8d7923014570835ce1f65"><td class="memItemLeft" align="right" valign="top"><a id="ga623a7d16adc8d7923014570835ce1f65" name="ga623a7d16adc8d7923014570835ce1f65"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>MTB_HAL_ADC_MAX_VALUE</b>&#160;&#160;&#160;((1 &lt;&lt; <a class="el" href="group__group__hal__adc.html#ga0f660e25abb00fd9d2a34703f9c2af7b">MTB_HAL_ADC_BITS</a>) - 1)</td></tr>
-<tr class="memdesc:ga623a7d16adc8d7923014570835ce1f65"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maximum value that the ADC can return. <br /></td></tr>
-<tr class="separator:ga623a7d16adc8d7923014570835ce1f65"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>

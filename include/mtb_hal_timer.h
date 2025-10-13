@@ -113,16 +113,16 @@ typedef enum
 {
     /** No event */
     MTB_HAL_TIMER_EVENT_NONE            = (MTB_HAL_MAP_TIMER_EVENT_NONE),
-/** Timer Event Terminal Count = (timer reached max count), */
+    /** Timer Event Terminal Count = (timer reached max count), */
     MTB_HAL_TIMER_EVENT_TERMINAL_COUNT  = (MTB_HAL_MAP_TIMER_EVENT_TERMINAL_COUNT),
-/** Timer Event Compare Count 0 = (timer reached compare 0 count), */
+    /** Timer Event Compare Count 0 = (timer reached compare 0 count), */
     MTB_HAL_TIMER_EVENT_COMPARE_CC0     = (MTB_HAL_MAP_TIMER_EVENT_COMPARE_CC0),
-/** Timer Event Compare Count 0 -or- Terminal Count */
+    /** Timer Event Compare Count 0 -or- Terminal Count */
     MTB_HAL_TIMER_EVENT_COMPARE_CC0_OR_TERMINAL_COUNT \
         = (MTB_HAL_MAP_TIMER_EVENT_COMPARE_CC0_OR_TERMINAL_COUNT),
-/** Timer Event Compare Count 1 = (timer reached compare 1 count), */
+    /** Timer Event Compare Count 1 = (timer reached compare 1 count), */
     MTB_HAL_TIMER_EVENT_COMPARE_CC1     = (MTB_HAL_MAP_TIMER_EVENT_COMPARE_CC1),
-/** All Timer Events Combined */
+    /** All Timer Events Combined */
     MTB_HAL_TIMER_EVENT_ALL             = (MTB_HAL_MAP_TIMER_EVENT_ALL)
 } mtb_hal_timer_event_t;
 

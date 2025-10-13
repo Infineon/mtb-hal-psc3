@@ -56,6 +56,17 @@
 #define MTB_HAL_MAP_UART_IRQ_RX_FIFO                          (CY_SCB_UART_TRANSMIT_EMTPY << 2)
 
 /**
+ * @brief UART pin structure
+ *
+ * This is the pin structure that stores info about the pin configurations
+ */
+typedef struct
+{
+    GPIO_PRT_Type*  port;       /**< Port base address */
+    uint8_t         pinNum;     /**< Pin number */
+} _mtb_hal_uart_pin_t;
+
+/**
  * @brief UART object
  *
  * Application code should not rely on the specific contents of this struct.
@@ -69,8 +80,10 @@ typedef struct
     const mtb_hal_clock_t*              clock; //!< Clock interface
     _mtb_hal_event_callback_data_t      callback_data; //!< User-registered callback
     uint32_t                            irq_cause; //!< User-enabled events
+    _mtb_hal_uart_pin_t                 tx_pin; //!< TX pin info
     #if defined(COMPONENT_MW_ASYNC_TRANSFER)
     bool                                rts_enable; //!< Is the RTS pin connected to the SCB
+    _mtb_hal_uart_pin_t                 rts_pin; //!< RTS pin info (if used)
     /** Function pointer to call during process_interrupts for handling async transfers */
     async_transfer_handler_t            async_handler;
     mtb_async_transfer_context_t*       async_ctx; //!< Context for async-transfer
@@ -92,9 +105,13 @@ typedef struct
 {
     CySCB_Type*                             base; //!< Base address for the SCB
     const mtb_hal_clock_t*                  clock; //!< Default clock object
+    uint8_t                                 tx_port; //!< TX Pin port number
+    uint8_t                                 tx_pin; //!< TX Pin number
     #if defined(COMPONENT_MW_ASYNC_TRANSFER)
     /** Set if the Flow control is enabled and RTS is connected to a pin */
     bool                                    rts_enable;
+    uint8_t                                 rts_port; //!< RTS Pin port number (if specified)
+    uint8_t                                 rts_pin; //!< RTS Pin number (if specified)
     #endif // defined(COMPONENT_MW_ASYNC_TRANSFER)
 } mtb_hal_uart_configurator_t;
 
