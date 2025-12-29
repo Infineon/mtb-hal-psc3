@@ -126,7 +126,7 @@ Snippet 1: Measuring time of an operation</h2>
 <div class="line">        rslt = <a class="code hl_function" href="group__group__hal__timer.html#ga5df17e8d4ec40a698c722b8c8dd10a30">mtb_hal_timer_setup</a>(&amp;my_timer, &amp;timer_hal_config, NULL);</div>
 <div class="line">        <span class="keywordflow">if</span> (rslt == <a class="code hl_define" href="group__group__result.html#gaf58fac450d9fff4472f03ad68f6e546e">CY_RSLT_SUCCESS</a>)</div>
 <div class="line">        {</div>
-<div class="line">            Cy_TCPWM_Counter_Enable(timer_HW, timer_NUM);</div>
+<div class="line">            rslt = <a class="code hl_function" href="group__group__hal__timer.html#gadc9cf4e85b6c70e3541d311036506b2d">mtb_hal_timer_enable</a>(&amp;my_timer, <span class="keyword">true</span>);</div>
 <div class="line">        }</div>
 <div class="line">    }</div>
 <div class="line"> </div>
@@ -145,6 +145,7 @@ Snippet 1: Measuring time of an operation</h2>
 <div class="ttc" id="agroup__group__hal__timer_html_ga30c43f62f557306497c63bae5a752552"><div class="ttname"><a href="group__group__hal__timer.html#ga30c43f62f557306497c63bae5a752552">mtb_hal_timer_read</a></div><div class="ttdeci">uint32_t mtb_hal_timer_read(const mtb_hal_timer_t *obj)</div><div class="ttdoc">Reads the current value from the timer/counter   See Snippet 1: Measuring time of an operation.</div><div class="ttdef"><b>Definition:</b> mtb_hal_timer.c:152</div></div>
 <div class="ttc" id="agroup__group__hal__timer_html_ga5df17e8d4ec40a698c722b8c8dd10a30"><div class="ttname"><a href="group__group__hal__timer.html#ga5df17e8d4ec40a698c722b8c8dd10a30">mtb_hal_timer_setup</a></div><div class="ttdeci">cy_rslt_t mtb_hal_timer_setup(mtb_hal_timer_t *obj, const mtb_hal_timer_configurator_t *config, mtb_hal_clock_t *clock)</div><div class="ttdoc">Sets up a HAL instance to use the specified hardware resource.</div><div class="ttdef"><b>Definition:</b> mtb_hal_timer.c:51</div></div>
 <div class="ttc" id="agroup__group__hal__timer_html_ga7ced1a8474a0e7234472baeb49bab372"><div class="ttname"><a href="group__group__hal__timer.html#ga7ced1a8474a0e7234472baeb49bab372">mtb_hal_timer_start</a></div><div class="ttdeci">cy_rslt_t mtb_hal_timer_start(mtb_hal_timer_t *obj)</div><div class="ttdoc">Starts the timer/counter with the pre-set configuration.</div><div class="ttdef"><b>Definition:</b> mtb_hal_timer.c:89</div></div>
+<div class="ttc" id="agroup__group__hal__timer_html_gadc9cf4e85b6c70e3541d311036506b2d"><div class="ttname"><a href="group__group__hal__timer.html#gadc9cf4e85b6c70e3541d311036506b2d">mtb_hal_timer_enable</a></div><div class="ttdeci">cy_rslt_t mtb_hal_timer_enable(mtb_hal_timer_t *obj, bool enable)</div><div class="ttdoc">Enable/disable the Timer.</div></div>
 <div class="ttc" id="agroup__group__result_html_gaca79700fcc701534ce61778a9bcf57d1"><div class="ttname"><a href="group__group__result.html#gaca79700fcc701534ce61778a9bcf57d1">cy_rslt_t</a></div><div class="ttdeci">uint32_t cy_rslt_t</div><div class="ttdoc">Provides the result of an operation as a structured bitfield.</div><div class="ttdef"><b>Definition:</b> cy_result.h:481</div></div>
 <div class="ttc" id="agroup__group__result_html_gaf58fac450d9fff4472f03ad68f6e546e"><div class="ttname"><a href="group__group__result.html#gaf58fac450d9fff4472f03ad68f6e546e">CY_RSLT_SUCCESS</a></div><div class="ttdeci">#define CY_RSLT_SUCCESS</div><div class="ttdoc">cy_rslt_t return value indicating success</div><div class="ttdef"><b>Definition:</b> cy_result.h:508</div></div>
 </div><!-- fragment --><h2><a class="anchor" id="subsection_timer_snippet_2"></a>
@@ -171,7 +172,7 @@ Snippet 2: Handling an event in a callback function</h2>
 <div class="line">        rslt = <a class="code hl_function" href="group__group__hal__timer.html#ga5df17e8d4ec40a698c722b8c8dd10a30">mtb_hal_timer_setup</a>(&amp;my_timer, &amp;timer_hal_config, NULL);</div>
 <div class="line">        <span class="keywordflow">if</span> (rslt == <a class="code hl_define" href="group__group__result.html#gaf58fac450d9fff4472f03ad68f6e546e">CY_RSLT_SUCCESS</a>)</div>
 <div class="line">        {</div>
-<div class="line">            Cy_TCPWM_Counter_Enable(timer_HW, timer_NUM);</div>
+<div class="line">            rslt = <a class="code hl_function" href="group__group__hal__timer.html#gadc9cf4e85b6c70e3541d311036506b2d">mtb_hal_timer_enable</a>(&amp;my_timer, <span class="keyword">true</span>);</div>
 <div class="line">        }</div>
 <div class="line">    }</div>
 <div class="line"> </div>
@@ -267,6 +268,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ga5df17e8d4ec40a698c722b8c8dd10a30"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__group__result.html#gaca79700fcc701534ce61778a9bcf57d1">cy_rslt_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__timer.html#ga5df17e8d4ec40a698c722b8c8dd10a30">mtb_hal_timer_setup</a> (<a class="el" href="structmtb__hal__timer__t.html">mtb_hal_timer_t</a> *obj, const <a class="el" href="structmtb__hal__timer__configurator__t.html">mtb_hal_timer_configurator_t</a> *config, <a class="el" href="structmtb__hal__clock__t.html">mtb_hal_clock_t</a> *clock)</td></tr>
 <tr class="memdesc:ga5df17e8d4ec40a698c722b8c8dd10a30"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets up a HAL instance to use the specified hardware resource.  <a href="group__group__hal__timer.html#ga5df17e8d4ec40a698c722b8c8dd10a30">More...</a><br /></td></tr>
 <tr class="separator:ga5df17e8d4ec40a698c722b8c8dd10a30"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gadc9cf4e85b6c70e3541d311036506b2d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__group__result.html#gaca79700fcc701534ce61778a9bcf57d1">cy_rslt_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__timer.html#gadc9cf4e85b6c70e3541d311036506b2d">mtb_hal_timer_enable</a> (<a class="el" href="structmtb__hal__timer__t.html">mtb_hal_timer_t</a> *obj, bool enable)</td></tr>
+<tr class="memdesc:gadc9cf4e85b6c70e3541d311036506b2d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enable/disable the Timer.  <a href="group__group__hal__timer.html#gadc9cf4e85b6c70e3541d311036506b2d">More...</a><br /></td></tr>
+<tr class="separator:gadc9cf4e85b6c70e3541d311036506b2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga7ced1a8474a0e7234472baeb49bab372"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__group__result.html#gaca79700fcc701534ce61778a9bcf57d1">cy_rslt_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__timer.html#ga7ced1a8474a0e7234472baeb49bab372">mtb_hal_timer_start</a> (<a class="el" href="structmtb__hal__timer__t.html">mtb_hal_timer_t</a> *obj)</td></tr>
 <tr class="memdesc:ga7ced1a8474a0e7234472baeb49bab372"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts the timer/counter with the pre-set configuration.  <a href="group__group__hal__timer.html#ga7ced1a8474a0e7234472baeb49bab372">More...</a><br /></td></tr>
 <tr class="separator:ga7ced1a8474a0e7234472baeb49bab372"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -367,6 +371,45 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the status of the HAL setup </dd></dl>
+
+</div>
+</div>
+<a id="gadc9cf4e85b6c70e3541d311036506b2d" name="gadc9cf4e85b6c70e3541d311036506b2d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gadc9cf4e85b6c70e3541d311036506b2d">&#9670;&nbsp;</a></span>mtb_hal_timer_enable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__group__result.html#gaca79700fcc701534ce61778a9bcf57d1">cy_rslt_t</a> mtb_hal_timer_enable </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structmtb__hal__timer__t.html">mtb_hal_timer_t</a> *&#160;</td>
+          <td class="paramname"><em>obj</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>enable</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Enable/disable the Timer. </p>
+<p >The function returns without waiting for the enable to complete.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">obj</td><td>The Timer object </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">enable</td><td>Enable/disable </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The status of the enable request </dd></dl>
 
 </div>
 </div>

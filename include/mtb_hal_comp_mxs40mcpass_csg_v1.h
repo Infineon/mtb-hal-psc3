@@ -95,6 +95,70 @@ __STATIC_INLINE cy_rslt_t _mtb_hal_comp_csg_set_ref(mtb_hal_comp_t* obj, uint16_
 }
 
 
+//--------------------------------------------------------------------------------------------------
+// _mtb_hal_comp_csg_enable
+//--------------------------------------------------------------------------------------------------
+__STATIC_INLINE cy_rslt_t _mtb_hal_comp_csg_enable(mtb_hal_comp_t* obj, bool enable)
+{
+    CY_UNUSED_PARAMETER(obj);
+    return (enable ? (cy_rslt_t)Cy_HPPASS_AC_Start(0U, 0U) : MTB_HAL_COMP_RSLT_ERR_NOT_SUPPORTED);
+}
+
+
+//--------------------------------------------------------------------------------------------------
+// _mtb_hal_comp_csg_set_ref_count
+//--------------------------------------------------------------------------------------------------
+__STATIC_INLINE cy_rslt_t _mtb_hal_comp_csg_set_ref_count(mtb_hal_comp_t* obj, uint32_t count)
+{
+    Cy_HPPASS_DAC_SetValue(obj->slice_csg, count);
+    return CY_RSLT_SUCCESS;
+}
+
+
+#define mtb_hal_comp_slice_enable        _mtb_hal_comp_csg_enable
+#define mtb_hal_comp_slice_read          _mtb_hal_comp_csg_read
+#define mtb_hal_comp_slice_set_ref_count _mtb_hal_comp_csg_set_ref_count
+#define mtb_hal_comp_slice_set_ref_mv    _mtb_hal_comp_csg_set_ref
+
+
+//--------------------------------------------------------------------------------------------------
+// _mtb_hal_comp_csg_enable_event
+//--------------------------------------------------------------------------------------------------
+__STATIC_INLINE void _mtb_hal_comp_csg_enable_event(mtb_hal_comp_t* obj, mtb_hal_comp_event_t event,
+                                                    bool enable)
+{
+    CY_ASSERT(NULL != obj);
+    // Note: Cannot update edge type without reconfiguring the entire slice. We only enable/disable
+    // mask and callbacks
+    uint32_t previous_mask = Cy_HPPASS_Comp_GetInterruptMask();
+    uint32_t current_mask = (uint32_t)(CY_HPPASS_INTR_CSG_0_CMP << obj->slice_csg);
+    Cy_HPPASS_Comp_ClearInterrupt(current_mask);
+
+    if (enable)
+    {
+        Cy_HPPASS_Comp_SetInterruptMask(previous_mask | current_mask);
+        obj->callback_event    |= event;
+    }
+    else
+    {
+        Cy_HPPASS_Comp_SetInterruptMask(previous_mask & (uint32_t) ~current_mask);
+        obj->callback_event    &= ~event;
+    }
+}
+
+
+//--------------------------------------------------------------------------------------------------
+// _mtb_hal_comp_csg_process_interrupt
+//--------------------------------------------------------------------------------------------------
+__STATIC_INLINE bool _mtb_hal_comp_csg_process_interrupt(mtb_hal_comp_t* obj)
+{
+    uint32_t interrupt_status = Cy_HPPASS_Comp_GetInterruptStatusMasked();
+    uint32_t slice_mask = (uint32_t)((uint32_t)CY_HPPASS_INTR_CSG_0_CMP << obj->slice_csg);
+    Cy_HPPASS_Comp_ClearInterrupt(slice_mask);
+    return ((interrupt_status & slice_mask) != 0UL);
+}
+
+
 #if defined(__cplusplus)
 }
 #endif

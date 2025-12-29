@@ -1,7 +1,8 @@
 var group__group__hal__availability =
 [
     [ "mtb_hal_pwm_t", "group__group__hal__availability.html#structmtb__hal__pwm__t", [
-      [ "tcpwm", "group__group__hal__availability.html#a45662a39385f17a88ad19752bfd4a5a2", null ]
+      [ "tcpwm", "group__group__hal__availability.html#a45662a39385f17a88ad19752bfd4a5a2", null ],
+      [ "callback_event", "group__group__hal__availability.html#aa3401d76aa08a117f1b27cdf506e0e40", null ]
     ] ],
     [ "MTB_HAL_DRIVER_AVAILABLE_CLOCK", "group__group__hal__availability.html#gaecc39bd4d6a2394a2fb0c566983890ea", null ],
     [ "MTB_HAL_COMP_IMPL_HEADER", "group__group__hal__availability.html#gaf8039def96c0dcdf1afc8e9b2a5443e5", null ],

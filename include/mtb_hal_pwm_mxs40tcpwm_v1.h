@@ -105,6 +105,137 @@ __STATIC_INLINE cy_rslt_t _mtb_hal_pwm_get_killed_state(mtb_hal_pwm_t* obj, bool
 }
 
 
+//--------------------------------------------------------------------------------------------------
+// _mtb_hal_pwm_set_period0
+//--------------------------------------------------------------------------------------------------
+__STATIC_INLINE cy_rslt_t _mtb_hal_pwm_set_period0(mtb_hal_pwm_t* obj, uint32_t count)
+{
+// *SUSPEND-FORMATTING*
+    Cy_TCPWM_PWM_SetPeriod0(obj->tcpwm.base, obj->tcpwm.cntnum, count);
+// *RESUME-FORMATTING*
+    return CY_RSLT_SUCCESS;
+}
+
+
+#define mtb_hal_pwm_set_period_count _mtb_hal_pwm_set_period0
+
+//--------------------------------------------------------------------------------------------------
+// _mtb_hal_pwm_set_period1
+//--------------------------------------------------------------------------------------------------
+__STATIC_INLINE cy_rslt_t _mtb_hal_pwm_set_period1(mtb_hal_pwm_t* obj, uint32_t count)
+{
+// *SUSPEND-FORMATTING*
+    Cy_TCPWM_PWM_SetPeriod1(obj->tcpwm.base, obj->tcpwm.cntnum, count);
+// *RESUME-FORMATTING*
+    return CY_RSLT_SUCCESS;
+}
+
+
+#define mtb_hal_pwm_set_period_alt_count _mtb_hal_pwm_set_period1
+
+//--------------------------------------------------------------------------------------------------
+// _mtb_hal_pwm_set_compare0
+//--------------------------------------------------------------------------------------------------
+__STATIC_INLINE cy_rslt_t _mtb_hal_pwm_set_compare0(mtb_hal_pwm_t* obj, uint32_t count)
+{
+// *SUSPEND-FORMATTING*
+    Cy_TCPWM_PWM_SetCompare0Val(obj->tcpwm.base, obj->tcpwm.cntnum, count);
+// *RESUME-FORMATTING*
+    return CY_RSLT_SUCCESS;
+}
+
+
+#define mtb_hal_pwm_set_compare_count _mtb_hal_pwm_set_compare0
+
+//--------------------------------------------------------------------------------------------------
+// _mtb_hal_pwm_set_compare0_shadow
+//--------------------------------------------------------------------------------------------------
+__STATIC_INLINE cy_rslt_t _mtb_hal_pwm_set_compare0_shadow(mtb_hal_pwm_t* obj, uint32_t count)
+{
+// *SUSPEND-FORMATTING*
+    Cy_TCPWM_PWM_SetCompare0BufVal(obj->tcpwm.base, obj->tcpwm.cntnum, count);
+// *RESUME-FORMATTING*
+    return CY_RSLT_SUCCESS;
+}
+
+
+#define mtb_hal_pwm_set_compare_shadow_count _mtb_hal_pwm_set_compare0_shadow
+
+//--------------------------------------------------------------------------------------------------
+// _mtb_hal_pwm_set_compare1
+//--------------------------------------------------------------------------------------------------
+__STATIC_INLINE cy_rslt_t _mtb_hal_pwm_set_compare1(mtb_hal_pwm_t* obj, uint32_t count)
+{
+// *SUSPEND-FORMATTING*
+    Cy_TCPWM_PWM_SetCompare1Val(obj->tcpwm.base, obj->tcpwm.cntnum, count);
+// *RESUME-FORMATTING*
+    return CY_RSLT_SUCCESS;
+}
+
+
+#define mtb_hal_pwm_set_compare_alt_count _mtb_hal_pwm_set_compare1
+
+//--------------------------------------------------------------------------------------------------
+// _mtb_hal_pwm_set_compare1_shadow
+//--------------------------------------------------------------------------------------------------
+__STATIC_INLINE cy_rslt_t _mtb_hal_pwm_set_compare1_shadow(mtb_hal_pwm_t* obj, uint32_t count)
+{
+// *SUSPEND-FORMATTING*
+    Cy_TCPWM_PWM_SetCompare1BufVal(obj->tcpwm.base, obj->tcpwm.cntnum, count);
+// *RESUME-FORMATTING*
+    return CY_RSLT_SUCCESS;
+}
+
+
+#define mtb_hal_pwm_set_compare_alt_shadow_count _mtb_hal_pwm_set_compare1_shadow
+
+//--------------------------------------------------------------------------------------------------
+// _mtb_hal_pwm_set_deadtime
+//--------------------------------------------------------------------------------------------------
+__STATIC_INLINE cy_rslt_t _mtb_hal_pwm_set_deadtime(mtb_hal_pwm_t* obj, uint32_t count)
+{
+// *SUSPEND-FORMATTING*
+    Cy_TCPWM_PWM_SetDT(obj->tcpwm.base, obj->tcpwm.cntnum, count);
+// *RESUME-FORMATTING*
+    return CY_RSLT_SUCCESS;
+}
+
+
+#define mtb_hal_pwm_set_deadtime_count _mtb_hal_pwm_set_deadtime
+
+//--------------------------------------------------------------------------------------------------
+// _mtb_hal_pwm_set_deadtime_shadow
+//--------------------------------------------------------------------------------------------------
+__STATIC_INLINE cy_rslt_t _mtb_hal_pwm_set_deadtime_shadow(mtb_hal_pwm_t* obj, uint32_t count)
+{
+// *SUSPEND-FORMATTING*
+    Cy_TCPWM_PWM_SetDTBuff(obj->tcpwm.base, obj->tcpwm.cntnum, count);
+// *RESUME-FORMATTING*
+    return CY_RSLT_SUCCESS;
+}
+
+
+#define mtb_hal_pwm_set_deadtime_shadow_count _mtb_hal_pwm_set_deadtime_shadow
+
+//--------------------------------------------------------------------------------------------------
+// _mtb_hal_pwm_configure_output
+//--------------------------------------------------------------------------------------------------
+__STATIC_INLINE cy_rslt_t _mtb_hal_pwm_configure_output(mtb_hal_pwm_t* obj,
+                                                        mtb_hal_pwm_output_t out,
+                                                        mtb_hal_pwm_output_t out_compl)
+{
+// *SUSPEND-FORMATTING*
+    Cy_TCPWM_PWM_Configure_LineSelect(obj->tcpwm.base, obj->tcpwm.cntnum,
+                                      (cy_en_line_select_config_t)out,
+                                      (cy_en_line_select_config_t)out_compl);
+// *RESUME-FORMATTING*
+    return CY_RSLT_SUCCESS;
+}
+
+
+#define mtb_hal_pwm_configure_output _mtb_hal_pwm_configure_output
+
+
 #endif // defined(CY_IP_MXS40TCPWM) && (CY_IP_MXS40TCPWM_VERSION == 1)
 
 #if defined(__cplusplus)

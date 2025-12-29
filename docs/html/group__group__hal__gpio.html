@@ -382,6 +382,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ga8397d02b803c68b6c4171786f04a3adb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__group__result.html#gaca79700fcc701534ce61778a9bcf57d1">cy_rslt_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__gpio.html#ga8397d02b803c68b6c4171786f04a3adb">mtb_hal_gpio_process_interrupt</a> (<a class="el" href="structmtb__hal__gpio__t.html">mtb_hal_gpio_t</a> *obj)</td></tr>
 <tr class="memdesc:ga8397d02b803c68b6c4171786f04a3adb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Process interrupts related related to a GPIO instance.  <a href="group__group__hal__gpio.html#ga8397d02b803c68b6c4171786f04a3adb">More...</a><br /></td></tr>
 <tr class="separator:ga8397d02b803c68b6c4171786f04a3adb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaba8865dd225c56fb2a9a1a21d85d2b4f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__hal__gpio.html#gaba8865dd225c56fb2a9a1a21d85d2b4f">mtb_hal_gpio_read_out</a> (<a class="el" href="structmtb__hal__gpio__t.html">mtb_hal_gpio_t</a> *obj)</td></tr>
+<tr class="memdesc:gaba8865dd225c56fb2a9a1a21d85d2b4f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads the output state of the pin.  <a href="group__group__hal__gpio.html#gaba8865dd225c56fb2a9a1a21d85d2b4f">More...</a><br /></td></tr>
+<tr class="separator:gaba8865dd225c56fb2a9a1a21d85d2b4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Enumeration Type Documentation</h2>
 <a id="ga1df6d7e90106b8f34bbdbf2174643290" name="ga1df6d7e90106b8f34bbdbf2174643290"></a>
@@ -1010,6 +1013,33 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>CY_RSLT_SUCCESS if the interrupt was processed successfully; otherwise an error </dd></dl>
+
+</div>
+</div>
+<a id="gaba8865dd225c56fb2a9a1a21d85d2b4f" name="gaba8865dd225c56fb2a9a1a21d85d2b4f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaba8865dd225c56fb2a9a1a21d85d2b4f">&#9670;&nbsp;</a></span>mtb_hal_gpio_read_out()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool mtb_hal_gpio_read_out </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structmtb__hal__gpio__t.html">mtb_hal_gpio_t</a> *&#160;</td>
+          <td class="paramname"><em>obj</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Reads the output state of the pin. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">obj</td><td>The GPIO object </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The value of the IO (true = high, false = low) </dd></dl>
 
 </div>
 </div>

@@ -23,6 +23,9 @@ This release of the HAL includes support for the following drivers:
 * UART
 
 ### What Changed?
+#### v1.1.2
+* DMA (DW): Fixed the compatibility issues encountered when building projects in EWARM using the "C++ only" option.
+
 #### v1.1.1
 * UART: Populate Tx/RTS pin from configurator-provided value. Avoids glitch when changing baudrate.
 * LPTimer: Populate lfclock frequency from configurator-provided value. Improves DeepSleep entry speed.
@@ -44,7 +47,6 @@ This version of the Hardware Abstraction Layer was validated for compatibility w
 | GCC Compiler                              | 14.2.1  |
 | IAR Compiler                              | 9.50.2  |
 | ARM Compiler                              | 6.22    |
-| LLVM ARM Compiler                         | 19.1.5  |
 
 Minimum required ModusToolbox™ Software Environment: v3.3
 

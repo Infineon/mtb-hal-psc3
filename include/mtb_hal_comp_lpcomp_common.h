@@ -1,8 +1,8 @@
 /***************************************************************************//**
-* \file mtb_hal_comp_mxs40lpcomp_v2.h
+* \file mtb_hal_comp_lpcomp_common.h
 *
 * \brief
-* Provides common API declarations of the mxs40lpcomp_v2 driver
+* Provides common API declarations of the lpcomp driver
 *
 ********************************************************************************
 * \copyright
@@ -27,6 +27,15 @@
 #pragma once
 
 #include "mtb_hal_comp.h"
+#include "cy_pdl.h"
+
+#if defined (CY_IP_MXLPCOMP) || defined (CY_IP_MXS40LPCOMP)
+#define SetInterruptTriggerMode Cy_LPComp_SetInterruptTriggerMode_Ext
+#elif defined (CY_IP_MXS22LPCOMP)
+#define SetInterruptTriggerMode Cy_LPComp_SetInterruptTriggerMode
+#else
+#define SetInterruptTriggerMode Cy_LPComp_SetInterruptTriggerMode
+#endif
 
 #if defined(__cplusplus)
 extern "C" {
@@ -73,6 +82,43 @@ __STATIC_INLINE cy_rslt_t _mtb_hal_comp_lpcomp_set_ref(mtb_hal_comp_t* obj, uint
     CY_UNUSED_PARAMETER(obj);
     CY_UNUSED_PARAMETER(ref_mv);
     return MTB_HAL_COMP_RSLT_ERR_NOT_SUPPORTED;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+// _mtb_hal_comp_lpcomp_enable_event
+//--------------------------------------------------------------------------------------------------
+__STATIC_INLINE void _mtb_hal_comp_lpcomp_enable_event(mtb_hal_comp_t* obj,
+                                                       mtb_hal_comp_event_t event, bool enable)
+{
+    uint32_t previous_mask = Cy_LPComp_GetInterruptMask(obj->base_lpcomp);
+    uint32_t current_mask = obj->channel_lpcomp;
+    Cy_LPComp_ClearInterrupt(obj->base_lpcomp, obj->channel_lpcomp);
+    cy_stc_lpcomp_context_t lpcomp_context;
+    SetInterruptTriggerMode(obj->base_lpcomp, obj->channel_lpcomp, (cy_en_lpcomp_int_t)event,
+                            &lpcomp_context);
+
+    if (enable)
+    {
+        Cy_LPComp_SetInterruptMask(obj->base_lpcomp, previous_mask | current_mask);
+        obj->callback_event    |= event;
+    }
+    else
+    {
+        Cy_LPComp_SetInterruptMask(obj->base_lpcomp, previous_mask & (uint32_t) ~current_mask);
+        obj->callback_event    &= ~event;
+    }
+}
+
+
+//--------------------------------------------------------------------------------------------------
+// _mtb_hal_comp_lpcomp_process_interrupt
+//--------------------------------------------------------------------------------------------------
+__STATIC_INLINE bool _mtb_hal_comp_lpcomp_process_interrupt(mtb_hal_comp_t* obj)
+{
+    uint32_t interrupt_status = Cy_LPComp_GetInterruptStatusMasked(obj->base_lpcomp);
+    Cy_LPComp_ClearInterrupt(obj->base_lpcomp, obj->channel_lpcomp);
+    return ((interrupt_status & obj->channel_lpcomp) != 0UL);
 }
 
 
